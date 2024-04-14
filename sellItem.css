@@ -1,0 +1,128 @@
+header {
+    background-color: #333;
+    padding: 60px;
+}
+
+main{
+    --backgroundColor: #f8e7e7;
+    --bordeaux: #800000; 
+}
+
+p{
+    width: 200px;
+    color: var(--bordeaux);
+    font-size: 30px;
+    margin-left: 4.1em;
+}
+
+label{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+input[type="text"] {
+    border: 1px solid var(--bordeaux);
+    border-radius: 2px; 
+    margin: .75em;
+}
+
+
+.form > div {
+    display: flex;
+    align-items: first baseline;
+    margin-right: 20px;
+    margin-bottom: 10px;/*espaço entre grupos label-input*/
+}
+
+
+.form>div label {
+    margin-right: 15px; /*espaço label e input*/
+}
+
+.form {
+    display: flex;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    min-width: 200px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    max-width: max-content; /*para n ir direita*/
+    padding: .5em 4em;
+    align-items: center;
+    margin-left: 1em;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.title, .description, .brand, .model, .size, 
+.condition, .category, .price {
+    display: flex;
+    align-items: baseline; 
+    margin-bottom: 10px; 
+}
+
+.title label, .description label,
+.brand label, .model label, .size label 
+.condition label, .category label, .price label{
+    margin-right: 10px; /* espaço label e input */
+}
+
+.title input, .description input,
+.brand input, .model input, .size input, 
+.condition input, .category input, .price input {
+    border: 1px solid var(--bordeaux);
+    border-radius: 2px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.title input{
+    padding-right: 30px; /*size of box*/
+}
+
+
+label[for="description"] + input {
+    padding-bottom: 5em;
+    padding-right: 10em;
+}
+
+.quadrado {
+    width: 170px;
+    height: 200px;
+    background-color: var(--backgroundColor);
+    border-radius: 10px;
+    border-style: dotted;
+    border-color: #800000;
+    border-width: 2px;
+    margin-left: 48px;
+    text-align: center;
+    color: var(--bordeaux);
+}
+
+.foto-input {
+    display: none;
+}
+
+.submitButton{
+    background: var(--bordeaux);
+    color: white;
+    border-radius: 10em;
+    padding: .5em 4em;
+    align-items: center;
+    border: 3px solid var(--bordeaux);
+    margin-left: 30em;
+}
+.submitButton:hover{
+    background: var(--backgroundColor);
+    color: var(--bordeaux);
+    border: 3px solid var(--bordeaux);    
+}
