@@ -17,6 +17,7 @@ h1{
     color: var(--bordeaux);
 }
 .box{
+    padding: 1em;
     text-align: center;
     background: white;
     border: 3px solid var(--bordeaux);
@@ -25,7 +26,7 @@ h1{
     grid-column: 2;
     display: flex;
     flex-direction: column;
-    form input[type = "text"], input[type = "password"]{
+    form input[type = "text"], input[type = "password"], input[type = "email"]{
         padding: .5em;
         margin: .5em;
         background: var(--backgroundColor);
@@ -38,7 +39,7 @@ h1{
     }
     header{
         color: #800000;
-        margin: 2em auto;
+        margin: 1em auto;
         font-size: 1.6em;
         text-shadow: 0em .2em .2em rgb(162, 161, 161);
         font-family:Georgia, 'Times New Roman', Times, serif;
