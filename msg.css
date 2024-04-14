@@ -1,0 +1,50 @@
+body{
+    --backgroundColor: #f8e7e7;
+    --beige: #D19F9D;
+    --bordeaux: #800000;
+    --borderLine: #E2D0BC;
+}
+main{
+    display: flex;
+    flex-direction: row;
+}
+img{
+    border-radius: 50%;
+    width: 2em;
+    border: .15em solid var(--beige);
+    
+}
+.sideBar{
+    margin: 1%;
+    width: 20%;
+    h2{
+       color: var(--bordeaux); 
+    }
+}
+.pessoas{
+    display: flex;
+    flex-direction: column;
+}
+.pessoas .pessoa{
+    display: flex;
+    flex-direction: row;
+    background: var(--backgroundColor);
+    border-radius: 15px;
+    border: none;
+}
+.mensagem{
+    width: 60%;
+    margin: 2em;
+    border: 1.5px solid var(--borderLine);
+    border-radius: 10px;
+    .pessoa{
+        border-bottom: 1.5px solid var(--borderLine);
+        span{
+            
+        }
+        button{
+            background: white;
+            border: none;
+        }
+    }
+}

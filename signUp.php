@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include("topo.php")?>
     <main>    
         <h1>Random name/logo</h1>
         <div class="box">
