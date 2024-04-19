@@ -38,7 +38,26 @@
                 </div>
                 <div class="size">
                     <label for="size">Size</label>
-                    <input type="text" name="size">
+                    <div class="size2">
+                    <label for="xs">
+                        <input type="radio" id="xs" name="sizes" value="xs"> XS 
+                    </label> 
+                    <label for="s">
+                        <input type="radio" id="s" name="sizes" value="s"> S 
+                    </label> 
+                    <label for="m">
+                        <input type="radio" id="m" name="sizes" value="m"> M 
+                    </label>
+                    <label for="l">
+                        <input type="radio" id="l" name="sizes" value="l"> L 
+                    </label>
+                    <label for="xl">
+                        <input type="radio" id="xl" name="sizes" value="xl"> XL 
+                    </label>
+                    <label for="xxl">
+                        <input type="radio" id="xxl" name="sizes" value="xxl"> XXL 
+                    </label>
+                    </div>
                 </div>
                 <div class="condition">
                     <label for="condition">Condition</label>

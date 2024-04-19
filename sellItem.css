@@ -1,5 +1,5 @@
 header {
-    padding: 60px;
+    padding: 10px;
 }
 
 main{
@@ -24,11 +24,10 @@ input[type="text"] {
     margin: .75em;
 }
 
-
 .form > div {
     display: flex;
     align-items: first baseline;
-    margin-right: 20px;
+    margin-right: 5em;
     margin-bottom: 10px;/*espaço entre grupos label-input*/
 }
 
@@ -88,10 +87,39 @@ input[type="text"] {
     padding-right: 30px; /*size of box*/
 }
 
+.condition select {
+    border: 1px solid var(--bordeaux);
+    border-radius: 2px;
+    margin: 0;  
+    margin-bottom: 10px; 
+    background-color: #fff; 
+    color: #000; 
+    padding-right: 30px;
+}
+
+.category select {
+    border: 1px solid var(--bordeaux);
+    border-radius: 2px;
+    margin: 0;  
+    margin-bottom: 10px; 
+    background-color: #fff; 
+    color: #000; 
+    padding-right: 30px;
+}
 
 label[for="description"] + input {
     padding-bottom: 5em;
     padding-right: 10em;
+}
+
+.size input[type="radio"] {
+    display: none; 
+}
+
+.size2 label {
+    display: inline-block; 
+    cursor: pointer; 
+    color: var(--bordeaux);
 }
 
 .quadrado {
