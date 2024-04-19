@@ -7,9 +7,7 @@
         <link rel="stylesheet" href="sellItem.css">
     </head>
     <body>
-        <header>
-
-        </header>
+    <header><?php include('topo.php')?></header>
         <main>
         <p>Sell an item</p>
         <div class="form">
