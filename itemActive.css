@@ -122,11 +122,6 @@ label[for="description"] + input {
     color: var(--bordeaux);
 }
 
-.size2 label:active{
-    color:#000;
-    background-color: var(--backgroundColor);
-}
-
 .quadrado {
     width: 170px;
     height: 200px;

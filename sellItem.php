@@ -10,17 +10,18 @@
     <header><?php include('topo.php')?></header>
         <main>
         <p>Sell an item</p>
+        <form action="itemActive.php" method="post">
         <div class="form">
             <div class="left-column">
                 <div class="title">
                     <label for="title">Title</label>
-                    <input type="text" name="title">
+                    <input type="text" id="title" name="title">
                 </div>
                 <label for="foto" class="foto-label">
                     <div class="quadrado">
                         Load photo
                     </div>
-                    <input type="file" id="foto" accept="image/*" class="foto-input">
+                    <input type="file" id="foto" accept="image/*" class="foto-input" name="foto">
                 </label>                
             </div>
             <div class="right-column">
@@ -85,6 +86,7 @@
             </div>
         </div>        
         <input type="submit" class="submitButton" value="Continue">
+        </form>
     </main>
     </body>
 </html>
