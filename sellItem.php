@@ -41,22 +41,22 @@
                     <label for="size">Size</label>
                     <div class="size2">
                     <label for="xs">
-                        <input type="radio" id="xs" name="sizes" value="xs"> XS 
+                        <input type="radio" id="xs" name="sizes" value="XS"> XS 
                     </label> 
                     <label for="s">
-                        <input type="radio" id="s" name="sizes" value="s"> S 
+                        <input type="radio" id="s" name="sizes" value="S"> S 
                     </label> 
                     <label for="m">
-                        <input type="radio" id="m" name="sizes" value="m"> M 
+                        <input type="radio" id="m" name="sizes" value="M"> M 
                     </label>
                     <label for="l">
-                        <input type="radio" id="l" name="sizes" value="l"> L 
+                        <input type="radio" id="l" name="sizes" value="L"> L 
                     </label>
                     <label for="xl">
-                        <input type="radio" id="xl" name="sizes" value="xl"> XL 
+                        <input type="radio" id="xl" name="sizes" value="XL"> XL 
                     </label>
                     <label for="xxl">
-                        <input type="radio" id="xxl" name="sizes" value="xxl"> XXL 
+                        <input type="radio" id="xxl" name="sizes" value="XXL"> XXL 
                     </label>
                     </div>
                 </div>

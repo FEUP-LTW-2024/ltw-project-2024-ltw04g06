@@ -34,7 +34,7 @@
                     Model <?php echo htmlspecialchars($_POST['model']); ?>
                 </div>
                 <div class="size">
-                    Size 
+                    Size <?php echo htmlspecialchars($_POST['sizes']); ?>
                 </div>
                 <div class="condition">
                     Condition <?php echo htmlspecialchars($_POST['condition']); ?>
