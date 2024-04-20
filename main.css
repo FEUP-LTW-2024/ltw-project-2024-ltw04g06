@@ -47,12 +47,14 @@ body{
         }
     }
     .carrinho{
+        height: 2em;
         background: var(--backgroundColor);
         border: var(--backgroundColor);
         border-radius: 5px;
         margin: .1em;
     }
     .avatar{
+        height: 2em;
         display: flex;
         flex-direction: row;
         img{
@@ -70,14 +72,93 @@ body{
     border-top: .1em solid var(--borderLine);
     border-bottom: .1em solid var(--borderLine);
     padding-right: 50%;
-    > *{
-        margin: auto;
+    display: flex;
+    overflow-x: auto;
+    ul{
+      padding: .2em;
+      margin: 0;
+      list-style-type: none;
+      display: flex;
+      li{
+        transition: all 1s ease-in-out;
+        margin-right: 3em;
         a{
-            color: black;
+          text-decoration: none;
+          font-size: large;
+          padding: 5px 10px;
+          transition: transform 0.3s ease;
+          color: black;
         }
+        a:hover{
+          transform: translateY(-5px);
+          border-bottom: .15em solid var(--beige);
+          color: var(--bordeaux);
+        }
+      }
     }
 }
 a{
     text-decoration: none;
     color: #2E6963;
 }
+
+#menu .hamburger {
+    display: block;
+    padding: 1em;
+    color: #D19F9D;
+    text-align: right;
+  }
+
+  #menu .hamburger:before {
+    content:'\22C0';
+  }
+
+  #hamburger:checked + .hamburger + ul li{
+    max-height: 1em;
+    padding: 1em;
+    opacity: 1;
+  }
+  #hamburger:checked + .hamburger + ul{
+    background: white;
+    border: .1em solid var(--beige);
+    li{
+      background: white;
+    }
+    li:hover{
+      background-color: var(--backgroundColor);
+    }
+  }
+
+  #hamburger:checked + .hamburger:before {
+    content:'\22C1';
+  }
+
+  #menu ul li {
+    max-height: 0;
+    padding: 0 1em;
+    background-color: #edeff0;
+    text-align: left;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+  }
+
+  #menu ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #menu li {
+      background-color: white;
+      text-align: center;
+      list-style-type: none;
+      padding: 1em 0;
+      a{
+        color: var(--bordeaux);
+      }
+  }
+  #hamburger, .hamburger {
+    display: none;
+  }
+  .hidden{
+    display: none;
+  }
