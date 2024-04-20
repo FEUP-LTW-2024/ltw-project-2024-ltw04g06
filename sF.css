@@ -1,0 +1,55 @@
+#overlayForm{
+    --backgroundColor: #f8e7e7;
+    --beige: #D19F9D;
+    --bordeaux: #800000;
+    --borderLine: #E2D0BC;
+    background: white;
+    border: .1em solid var(--beige);
+    padding: .5em;
+    max-width: 35%;
+    position: fixed;
+    z-index: 999;
+    top: 3em;
+    left: 19.2em;
+    form{
+        margin: 1em;
+        display: flex;
+        flex-direction: row;
+        > *{
+            display: flex;
+            flex-direction: column;
+            margin-right: 5em;
+            select{
+                border: 1px solid var(--beige); 
+                padding: 5px; 
+                width: 120px;
+                outline: none;
+                color: #800000;
+                option{
+                    color: #800000;
+                }
+            }
+        }
+    }
+    
+}
+.category input[type="radio"] {
+    display: none;
+}
+
+.category input[type="radio"] + label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 10px;
+    color: var(--bordeaux);
+}
+
+.category input[type="radio"]:checked + label {
+    background-color: var(--backgroundColor);
+}
+.price input[type="number"]{
+    border: 1px solid var(--beige); 
+    padding: 5px; 
+    width: 5em;
+}
