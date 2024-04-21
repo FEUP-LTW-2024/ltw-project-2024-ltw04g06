@@ -1,0 +1,36 @@
+body{
+    --backgroundColor: #f8e7e7;
+    --bordeaux: #800000; 
+}
+.anuncios{
+    width: 90%;
+    height: 8em;
+    margin: 3em auto;
+    border: 2px solid var(--bordeaux); 
+    border-radius: 7px;
+    background: var(--backgroundColor);
+}
+.products{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2em 5em;
+    .product{
+        margin-right: 2em;
+        header {
+            display: flex;
+            flex-direction: row;
+            img{
+                margin: 1em;
+                border-radius: 50%;
+                width: 2em;
+            }
+        }
+        .foto{
+            height: 10em;
+        }
+        h4{
+            color: #2E6963;
+        }
+    }
+}
