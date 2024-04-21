@@ -3,13 +3,13 @@
 declare(strict_types = 1);
 
 	class Wishlist {
-		private int $id;
-		private int $itemId;
+		private int $wishlistID;
+		private int $itemID;
 
 
-		public function __construct(int $id, int $itemId) {
-			$this->id = $id;
-			$this->itemId = $itemId;
+		public function __construct(int $wishlistID, int $itemID) {
+			$this->wishlistID = $wishlistID;
+			$this->itemID = $itemID;
 		}
 	}
 

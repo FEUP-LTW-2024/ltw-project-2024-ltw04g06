@@ -3,12 +3,12 @@
 declare(strict_types = 1);
 
 class Size {
-	private int $id;
+	private int $sizeID;
 	private string $name;
 
 
-	public function __construct(int $id, string $name) {
-		$this->id = $id;
+	public function __construct(int $sizeID, string $name) {
+		$this->id = $sizeID;
 		$this->name = $name;
 	}
 }
