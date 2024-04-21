@@ -17,6 +17,7 @@ body{
     margin: 2em 5em;
     .product{
         margin-right: 2em;
+        margin-bottom: 2em;
         header {
             display: flex;
             flex-direction: row;
