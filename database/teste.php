@@ -20,6 +20,7 @@ require_once(__DIR__ . '/item.class.php');
   $item = Item::getItem($db, 1);
 
   echo "Item ID: " . $item->itemID . "<br>";
+  echo "Images" . $item ->images . "<br>";
   echo "Description: " . $item->description . "<br>";
   echo "<br>";
 

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Wishlist;
 DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS ShippingForm;
-DROP TABLE IF EXISTS Messages; 
+DROP TABLE IF EXISTS Message; 
 DROP TABLE IF EXISTS Status; 
 DROP TABLE IF EXISTS Category; 
 DROP TABLE IF EXISTS Size; 
@@ -41,33 +41,40 @@ CREATE TABLE User (
     email VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
     profilePicture TEXT,
-    wishlistID INT,
+    wishlistID INT NOT NULL,
     FOREIGN KEY (wishlistID) REFERENCES Wishlist(wishlistID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 CREATE TABLE Wishlist (
-    wishlistID INT PRIMARY KEY,
-    itemID INT,
-    FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE SET NULL
+    wishlistID INT PRIMARY KEY
 );
 
 CREATE TABLE Item (
     itemID INT PRIMARY KEY,
-    sellerID INT,
-    categoryID INT,
+    name VARCHAR(255) NOT NULL,
+    sellerID INT NOT NULL,
+    categoryID INT NOT NULL,
     sizeID INT,
-    conditionID INT,
+    conditionID INT NOT NULL,
     statusID INT,
     brand VARCHAR(255),
     model VARCHAR(255),
     description TEXT,
-    price REAL,
+    price REAL NOT NULL,
     images TEXT,
     FOREIGN KEY (sellerID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (categoryID) REFERENCES Category(categoryID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (sizeID) REFERENCES Size(sizeID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (conditionID) REFERENCES Condition(conditionID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (statusID) REFERENCES Status(statusID) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE TABLE WishlistItem (
+    wishlistID INT,
+    itemID INT,
+    PRIMARY KEY (wishlistID, itemID),
+    FOREIGN KEY (wishlistID) REFERENCES wishlist(wishlistID) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 CREATE TABLE ShippingForm (
@@ -82,7 +89,15 @@ CREATE TABLE ShippingForm (
     FOREIGN KEY (buyerID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
-CREATE TABLE Messages (
+CREATE TABLE UserShippingForm (
+    userID INT,
+    shippingFormID INT,
+    PRIMARY KEY (userID, shippingFormID),
+    FOREIGN KEY (userID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (shippingFormID) REFERENCES ShippingForm(shippingFormID) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE TABLE Message (
     messageID INT PRIMARY KEY,
     senderID INT,
     recipientID INT,
@@ -90,4 +105,12 @@ CREATE TABLE Messages (
     time TEXT,
     FOREIGN KEY (senderID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (recipientID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE TABLE MessageUser (
+    messageID INT,
+    userID INT,
+    PRIMARY KEY (messageID, userID),
+    FOREIGN KEY (messageID) REFERENCES Message(messageID) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (userID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL
 );
