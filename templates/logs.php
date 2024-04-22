@@ -1,6 +1,3 @@
-<?php 
-
-?>
 
 <?php function displayNameLogo(){ ?>
     <head>
@@ -50,7 +47,6 @@
         <div class="box">
             <a href="">Create your account</a>
         </div>
-        
     </main>    
 <?php } ?>
 
