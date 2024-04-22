@@ -30,7 +30,7 @@
                         <li><a href="">Log out</a></li>
                     </ul>
                 </div>
-                <img src="images/leetcode.png">
+                <img src="">
             </div>
         </div>
         <div class="types">
