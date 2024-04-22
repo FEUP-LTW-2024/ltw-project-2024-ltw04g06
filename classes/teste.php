@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/connectdb.php');
+require_once(__DIR__ . '/../database/connectdb.php');
 require_once(__DIR__ . '/user.class.php');
 require_once(__DIR__ . '/item.class.php');
 
@@ -16,12 +16,16 @@ require_once(__DIR__ . '/item.class.php');
   echo "Profile Picture: " . $user->profilePicture . "<br>";
   echo "Wishlist ID: " . $user->wishlistID . "<br>";
   echo "<br>";
-
+/*
   $item = Item::getItem($db, 1);
 
   echo "Item ID: " . $item->itemID . "<br>";
   echo "Images" . $item ->images . "<br>";
   echo "Description: " . $item->description . "<br>";
   echo "<br>";
-
+*/
+  $items = Item::getFilteredItems($db);
+  foreach($items as $item) {
+    echo "Item ID: " . $item->itemID . "<br>";
+  }
 ?>
