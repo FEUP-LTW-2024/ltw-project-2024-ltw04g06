@@ -3,12 +3,12 @@
 	declare(strict_types = 1);
 
 	class Status {
-    private int $id;
+    private int $statusID;
     private string $date;
     private string $name;
 
-    public function __construct(int $id, string $date, string $name) {
-      $this->id = $id;
+    public function __construct(int $statusID, string $date, string $name) {
+      $this->statusID = $statusID;
       $this->date = $date;
       $this->name = $name;
     }

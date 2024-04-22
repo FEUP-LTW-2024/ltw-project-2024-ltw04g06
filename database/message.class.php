@@ -3,17 +3,17 @@
 declare(strict_types = 1);
 
 	class Message {
-    private int $id;
-    private int $senderId;
-    private int $recipientId;
+    private int $messageID;
+    private int $senderID;
+    private int $recipientID;
     private string $content;
     private string $time;
 
 		
-    public function __construct(int $id, int $senderId, int $recipientId, string $content, string $time) {
-      $this->id = $id;
-      $this->senderId = $senderId;
-      $this->recipientId = $recipientId;
+    public function __construct(int $messageID, int $senderID, int $recipientID, string $content, string $time) {
+      $this->messageID = $messageID;
+      $this->senderID = $senderID;
+      $this->recipientID = $recipientID;
       $this->content = $content;
       $this->time = $time;
     }
