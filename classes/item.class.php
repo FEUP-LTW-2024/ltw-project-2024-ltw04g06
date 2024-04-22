@@ -50,11 +50,26 @@ declare(strict_types = 1);
       );
     }
 
-
-    
-
-
-
+    static function getFilteredItems(PDO $db) { // adicionar nos parametros os filtros
+      $preparedStmt = $db->prepare( 'SELECT * FROM Item');
+      $preparedStmt->execute();
+      $items = array();
+      while ($item = $preparedStmt->fetch()){
+        $items[] = new Item (
+          $item['itemID'],
+          $item['sellerID'],
+          $item['categoryID'],
+          $item['sizeID'],
+          $item['conditionID'],
+          $item['statusID'],
+          $item['price'],
+          $item['brand'],
+          $item['description'],
+          $item['images'],
+        );
+      }
+      return $items;
   }
+};
 
 ?>
