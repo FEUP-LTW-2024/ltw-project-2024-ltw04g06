@@ -1,5 +1,7 @@
+
+<?php function searchForm(){ ?>
 <head>
-    <link rel="stylesheet" href="sF.css">
+    <link rel="stylesheet" href="../css/sF.css">
 </head>
 <div id="overlayForm">
     <header>
@@ -41,3 +43,4 @@
         </div>
     </form>
 </div>
+<?php } ?>
