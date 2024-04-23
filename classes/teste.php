@@ -29,7 +29,7 @@ require_once(__DIR__ . '/item.class.php');
     echo "Item ID: " . $item->itemID . "<br>";
   }
 
-  $user = Item::getItemSeller($db,1);
+  $user = Item::getItemSeller($db,3);
   echo "User ID: " . $user->userID . "<br>";
   echo "Username: " . $user->username . "<br>";
   echo "Name: " . $user->name . "<br>";
