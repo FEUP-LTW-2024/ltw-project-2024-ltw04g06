@@ -3,11 +3,11 @@
 declare(strict_types = 1);
 
 	class Message {
-    private int $messageID;
-    private int $senderID;
-    private int $recipientID;
-    private string $content;
-    private string $time;
+    public int $messageID;
+    public int $senderID;
+    public int $recipientID;
+    public string $content;
+    public string $time;
 
 		
     public function __construct(int $messageID, int $senderID, int $recipientID, string $content, string $time) {
@@ -17,6 +17,46 @@ declare(strict_types = 1);
       $this->content = $content;
       $this->time = $time;
     }
+
+
+    /*Gives array of users that a certain user has messages with*/ 
+    static function getUserMessageContacts(PDO $db, int $userID) { 
+      $preparedStmt = $db->prepare('SELECT DISTINCT senderID AS contactID FROM Message WHERE recipientID = ? 
+                                    UNION
+                                    SELECT DISTINCT recipientID AS contactID FROM Message WHERE senderID = ?');
+      $preparedStmt->execute([$userID, $userID]);
+      $contacts = [];
+      while ($contact = $preparedStmt->fetch()) {
+        $contacts[] = User::getUser($db, $contact['contactID']);
+      }
+      return $contacts;
   }
+
+
+    /*Gives array of messages between 2 users*/
+    static function getUserMessages(PDO $db, int $userID1, int $userID2) {
+      $preparedStmt = $db->prepare('SELECT  DISTINCT m.*
+                                      FROM Message m
+                                      JOIN MessageUser mu ON m.messageID = mu.messageID
+                                      WHERE (m.senderID = ? AND m.recipientID = ?) OR
+                                            (m.senderID = ? AND m.recipientID = ?)');
+      $preparedStmt->execute([$userID1, $userID2, $userID2, $userID1]);
+      $msgs = [];
+      while ($msg = $preparedStmt->fetch()) {
+          $msgs[] = new Message (
+              $msg['messageID'],
+              $msg['senderID'],
+              $msg['recipientID'],
+              $msg['content'],
+              $msg['time']
+          );
+      }
+      if (empty($msgs)) {
+        throw new Exception('No messages found between the users.');
+    }
+      return $msgs;
+  }
+}
+
 
 ?>

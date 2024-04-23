@@ -3,7 +3,7 @@
 require_once(__DIR__ . '/../database/connectdb.php');
 require_once(__DIR__ . '/user.class.php');
 require_once(__DIR__ . '/item.class.php');
-
+require_once(__DIR__ . '/message.class.php');
   $db = getDatabaseConnection();
 /*
   $user = User::getUser($db, 1);
@@ -23,7 +23,7 @@ require_once(__DIR__ . '/item.class.php');
   echo "Images" . $item ->images . "<br>";
   echo "Description: " . $item->description . "<br>";
   echo "<br>";
-*/
+
   $items = Item::getFilteredItems($db);
   foreach($items as $item) {
     echo "Item ID: " . $item->itemID . "<br>";
@@ -37,6 +37,19 @@ require_once(__DIR__ . '/item.class.php');
   echo "Role: " . $user->role . "<br>";
   echo "Profile Picture: " . $user->profilePicture . "<br>";
   echo "Wishlist ID: " . $user->wishlistID . "<br>";
-  echo "<br>";
+  echo "<br>";*/
+
+
+  $msgs = Message::getUserMessages($db,2,1);
+  foreach($msgs as $msg) {
+    echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
+  }
+
+
+  $contacts = Message::getUserMessageContacts($db,1);
+  foreach($contacts as $contact) {
+  echo "User ID: " . $contact->userID . "<br>";
+  echo "Username: " . $contact->username . "<br>";
+  }
 
 ?>
