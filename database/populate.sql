@@ -1,8 +1,8 @@
 
 INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, wishlistID)
 VALUES 
-    (1, 'john_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'John Doe', 'john@example.com', 'Admin', 'profile_picture_url', 1),
-    (2, 'jane_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Jane Doe', 'jane@example.com', 'User',  'profile_picture2_url', 2);
+    (1, 'john_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'John Doe', 'john@example.com', 'Admin', 'images/pp2', 1),
+    (2, 'jane_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Jane Doe', 'jane@example.com', 'User',  'images/pp1', 2);
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 
@@ -23,7 +23,11 @@ VALUES
 INSERT OR IGNORE INTO Message (messageID, senderID, recipientID, content, time)
 VALUES 
     (1, 1, 2, 'Hello, Jane!', '2022-04-18 10:00:00'),
-    (2, 2, 1, 'Hi, John!', '2022-04-18 10:05:00');
+    (2, 2, 1, 'Hi, John!', '2022-04-18 10:05:00'),
+    (3, 1, 2,'How are you?','2022-04-18 10:10:00'),
+    (4, 2, 1, 'Very good!', '2022-04-18 10:20:00'),
+    (5, 1, 2,'Ok','2022-04-18 10:21:00');
+
 
 INSERT OR IGNORE INTO Status (statusID, date, name)
 VALUES 
@@ -65,3 +69,20 @@ INSERT OR IGNORE INTO UserShippingForm (userID, shippingFormID)
  VALUES 
     (1, 1),
     (2, 2);
+
+INSERT OR IGNORE INTO UserShippingForm (userID, shippingFormID)
+ VALUES 
+    (1, 1),
+    (2, 2);
+
+INSERT OR IGNORE INTO MessageUser (messageID, userID)
+ VALUES
+    (1,1),
+    (1,2),
+    (1,3),
+    (1,4),
+    (2,1),
+    (2,2),
+    (2,3),
+    (2,4);
+
