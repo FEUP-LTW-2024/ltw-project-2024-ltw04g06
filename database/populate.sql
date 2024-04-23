@@ -2,7 +2,7 @@
 INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, wishlistID)
 VALUES 
     (1, 'john_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'John Doe', 'john@example.com', 'Admin', 'profile_picture_url', 1),
-    (2, 'jane_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Jane Doe', 'jane@example.com', 'User', NULL, 2);
+    (2, 'jane_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Jane Doe', 'jane@example.com', 'User',  'profile_picture2_url', 2);
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 

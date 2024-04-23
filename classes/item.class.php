@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
   class Item {
     public int $itemID;
+    public string $name;
     public int $sellerID;
     public int $categoryID;
     public int $sizeID;
@@ -15,8 +16,9 @@ declare(strict_types = 1);
     public string $description;
     public string $images;
 
-    public function __construct(int $itemID, int $sellerID, int $categoryID, int $sizeID, int $conditionID, int $statusID, float $price, string $brand, string $description, string $images) {
+    public function __construct(int $itemID,string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, int $statusID, float $price, string $brand, string $description, string $images) {
       $this->itemID = $itemID;
+      $this->name = $name;
       $this->sellerID = $sellerID;
       $this->categoryID = $categoryID;
       $this->sizeID = $sizeID;
@@ -38,6 +40,7 @@ declare(strict_types = 1);
     }
       return new Item(
         $item['itemID'],
+        $item['name'],
         $item['sellerID'],
         $item['categoryID'],
         $item['sizeID'],
@@ -57,6 +60,7 @@ declare(strict_types = 1);
       while ($item = $preparedStmt->fetch()){
         $items[] = new Item (
           $item['itemID'],
+          $item['name'],
           $item['sellerID'],
           $item['categoryID'],
           $item['sizeID'],
@@ -69,7 +73,31 @@ declare(strict_types = 1);
         );
       }
       return $items;
+    }
+
+
+    static function getItemSeller(PDO $db, int $itemID) {
+      $preparedStmt = $db->prepare('SELECT User.* FROM Item JOIN User ON Item.sellerID = User.userID
+                                  WHERE Item.itemID = ?;');
+                                  
+      $preparedStmt->execute([$itemID]);
+      $user = $preparedStmt->fetch();
+
+      if (!$user) {
+        throw new Exception("Seller not found for itemID: $itemID");
+    }
+      return new User(
+        $user['userID'],
+        $user['username'],
+        $user['password'],
+        $user['name'],
+        $user['email'],
+        $user['role'],
+        $user['profilePicture'],
+        $user['wishlistID'],
+      );
+    }
   }
-};
+  
 
 ?>
