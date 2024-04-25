@@ -45,11 +45,16 @@ require_once(__DIR__ . '/message.class.php');
     echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
   }
 
-
+/*
   $contacts = Message::getUserMessageContacts($db,1);
   foreach($contacts as $contact) {
   echo "User ID: " . $contact->userID . "<br>";
   echo "Username: " . $contact->username . "<br>";
   }
+  */
+
+
+ $user = User::verifyUserPass($db,"john_doe","7110eda4d09e062aa5e4a390b0a572ac0d2c0220");
+ echo "User ID: " . $user->userID . "<br>";
 
 ?>

@@ -43,6 +43,38 @@ declare(strict_types = 1);
         $user['wishlistID'],
       );
     }
+
+    static function validUsername(PDO $db, string $username) {                  //----------temos de filtrar as coisas que recebemos nesta string antes de chegar aqui. ver pp de segurança ex: slide28---------//
+      $preparedStmt = $db->prepare('SELECT * FROM User WHERE username = ?');
+        
+      $preparedStmt->execute(array($username));
+      $existingUser = $preparedStmt->fetch();
+
+      if(empty($existingUser)){
+       return true;
+      } else return false;
+    }
+
+    static function verifyUserPass(PDO $db, string $userField, string $password) {
+      if (strpos($userField, '@')) {                                                     //userField is email
+        $preparedStmt = $db->prepare('SELECT * FROM User WHERE email = ?');
+      } else {                                                                           //userField is username
+        $preparedStmt = $db->prepare('SELECT * FROM User WHERE username = ?');
+      }
+
+      $preparedStmt->execute(array($userField));
+      $user = $preparedStmt->fetch();
+
+      if($user !== false && password_verify($password, $user['password'])) {
+        return $user;
+      }
+      else {
+          return false;
+      }
+    }
+
+
+
   }
 
 ?>

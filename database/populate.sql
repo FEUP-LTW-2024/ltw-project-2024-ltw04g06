@@ -1,8 +1,8 @@
 
 INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, wishlistID)
 VALUES 
-    (1, 'john_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'John Doe', 'john@example.com', 'Admin', 'images/pp2', 1),
-    (2, 'jane_doe', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Jane Doe', 'jane@example.com', 'User',  'images/pp1', 2);
+    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', 'images/pp2', 1), -- ola123
+    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  'images/pp1', 2);
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 
