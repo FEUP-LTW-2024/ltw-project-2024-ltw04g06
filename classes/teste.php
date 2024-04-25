@@ -54,7 +54,17 @@ require_once(__DIR__ . '/message.class.php');
   */
 
 
- $user = User::verifyUserPass($db,"john_doe","7110eda4d09e062aa5e4a390b0a572ac0d2c0220");
+ $user = User::verifyUserPass($db,'john@example.com','ola123');
  echo "User ID: " . $user->userID . "<br>";
 
+ $existingUser = User::existingUser($db,'ola' );
+ if($existingUser){echo "user Exists <br>";}
+ else {echo "user doesnt Exist <br>";}
+
+ $addUser = User::addUser($db, 'ola', 'ola@example.com','$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q');
+ if($addUser){echo "added user <br>";}
+ else {echo"user not added <br>";}
+ $existingUser = User::existingUser($db,'ola' );
+ if($existingUser){echo "user Exists <br>";}
+ else {echo "user doesnt Exist <br>";}
 ?>
