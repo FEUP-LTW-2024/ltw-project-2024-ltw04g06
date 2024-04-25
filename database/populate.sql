@@ -70,19 +70,18 @@ INSERT OR IGNORE INTO UserShippingForm (userID, shippingFormID)
     (1, 1),
     (2, 2);
 
-INSERT OR IGNORE INTO UserShippingForm (userID, shippingFormID)
- VALUES 
-    (1, 1),
-    (2, 2);
+
 
 INSERT OR IGNORE INTO MessageUser (messageID, userID)
  VALUES
     (1,1),
     (1,2),
-    (1,3),
-    (1,4),
     (2,1),
     (2,2),
-    (2,3),
-    (2,4);
+    (3,1),
+    (3,2),
+    (4,1),
+    (4,2),
+    (5,1),
+    (5,2);
 
