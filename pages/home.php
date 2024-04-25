@@ -11,5 +11,5 @@
   topo();
   anuncio();
   $items = Item::getFilteredItems($db);
-  itemDisplay($items);
+  itemDisplay($items, $db);
 ?>

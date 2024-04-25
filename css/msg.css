@@ -31,6 +31,12 @@ img{
     background: var(--backgroundColor);
     border-radius: 15px;
     border: none;
+    margin-bottom: 2em;
+    > *{
+        align-self: center;
+        margin: .2em;
+    }
+        
 }
 .mensagem{
     width: 60%;
@@ -39,12 +45,47 @@ img{
     border-radius: 10px;
     .pessoa{
         border-bottom: 1.5px solid var(--borderLine);
-        span{
-            
-        }
+        display: flex;
+        flex-direction: row;
         button{
             background: white;
             border: none;
+            align-self: center;
+            margin-left: auto;
+        }
+        > *{
+            align-self: center;
+            margin: .5em;
         }
     }
+    .caixa{
+        height: 400px;
+        overflow-y: auto;
+        margin: 1em;
+        .msg{
+            margin-bottom: 1em;
+            margin-left: 7%;
+            font-size: small;
+            display: flex;
+        }
+        .fr{
+            display: flex;
+            flex-direction: row;
+            > *{
+                align-self: center;
+                margin: .5em;
+            }
+            .time{
+                font-size: .5em;
+                color: gray;
+            }
+        }
+        
+    }
+}
+.align-right {
+    justify-content: flex-end;
+}
+.msg.align-right{
+    margin-right: 7%;
 }

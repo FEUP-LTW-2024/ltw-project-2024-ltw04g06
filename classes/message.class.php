@@ -51,9 +51,9 @@ declare(strict_types = 1);
               $msg['time']
           );
       }
-      if (empty($msgs)) {
+      /*if (empty($msgs)) {
         throw new Exception('No messages found between the users.');
-    }
+    }*/
       return $msgs;
   }
 }
