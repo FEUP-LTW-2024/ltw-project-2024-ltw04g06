@@ -31,6 +31,27 @@ declare(strict_types = 1);
       
       if (!$user) {
         throw new Exception("User not found with ID: $userID");
+        return null;
+    }
+      return new User(
+        $user['userID'],
+        $user['username'],
+        $user['password'],
+        $user['name'],
+        $user['email'],
+        $user['role'],
+        $user['profilePicture'],
+        $user['wishlistID'],
+      );
+    }
+    static function getUserByUsername(PDO $db, string $username) {
+      $preparedStmt = $db->prepare( 'SELECT * FROM User WHERE username = ?');
+      $preparedStmt->execute(array($username));
+      $user = $preparedStmt->fetch();
+      
+      if (!$user) {
+        throw new Exception("User not found with username: $username");
+        return false;
     }
       return new User(
         $user['userID'],
@@ -87,16 +108,21 @@ declare(strict_types = 1);
       }
     }
 
-    static function addUser (PDO $db, string $username, string $email, string $password) : bool {
+    static function addUser (PDO $db, string $username, string $email, string $password)  {
       if(self::existingUser($db, $username) or self::existingUser($db, $email)) { return false; }
 
       $preparedStmt = $db->prepare("INSERT INTO Wishlist (wishlistID) VALUES (NULL)");
       $preparedStmt->execute();
 
       $wishlistID = $db->lastInsertId();
-      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, wishlistID) VALUES (?, ?, ?, ?, ?, ?, ?)");
-      $stmt->execute([$username, $password, '', $email, 'User', 'images/profilePictures/default', $wishlistID]);
-      return true;
+      
+      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, wishlistID) VALUES ( ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]), '', $email, 'User', 'images/profilePictures/default', $wishlistID]);
+      $userID = $db->lastInsertId();
+
+  
+      echo "User added successfully with userID: $userID";
+      return $userID;
     }
   }
 

@@ -39,11 +39,11 @@ require_once(__DIR__ . '/message.class.php');
   echo "Wishlist ID: " . $user->wishlistID . "<br>";
   echo "<br>";*/
 
-
+/*
   $msgs = Message::getUserMessages($db,2,1);
   foreach($msgs as $msg) {
     echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
-  }
+  }*/
 
 /*
   $contacts = Message::getUserMessageContacts($db,1);
@@ -54,17 +54,42 @@ require_once(__DIR__ . '/message.class.php');
   */
 
 
- $user = User::verifyUserPass($db,'john@example.com','ola123');
- echo "User ID: " . $user->userID . "<br>";
 
- $existingUser = User::existingUser($db,'ola' );
+  /*
+  $user1 = User::verifyUserPass($db,'john_doe', 'ola123');
+
+ $existingUser = User::existingUser($db,'di' );
  if($existingUser){echo "user Exists <br>";}
  else {echo "user doesnt Exist <br>";}
 
- $addUser = User::addUser($db, 'ola', 'ola@example.com','$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q');
+ $addUser = User::addUser($db, 'di', 'di@example.com','ola123');
  if($addUser){echo "added user <br>";}
  else {echo"user not added <br>";}
- $existingUser = User::existingUser($db,'ola' );
+ $existingUser = User::existingUser($db,'di' );
  if($existingUser){echo "user Exists <br>";}
  else {echo "user doesnt Exist <br>";}
+
+ $user2 = User::verifyUserPass($db,'di', 'ola123');
+ //$user2 = User::getUserByUsername($db,'ola');
+ if( $user2  == false ){echo "FAILED VERIFY USER PASS";}
+ else {echo "User2 ID: " . $user2->username . "<br>";}*/ 
+
+ $existingUser = User::existingUser($db,'di' );
+ if($existingUser){echo "user Exists <br>";}
+ else {echo "user doesnt Exist <br>";}
+
+ $addUserID = User::addUser($db, 'di', 'di@example.com','ola123');
+ if($addUserID!= false){echo "added user <br>";
+  $user2 = User::getUser($db, $addUserID);
+  echo "User2 ID: " . $user2->userID . "<br>";
+}
+ else {echo"user not added <br>";}
+
+ $existingUser = User::existingUser($db,'di' );
+ if($existingUser){echo "user Exists <br>";}
+ else {echo "user doesnt Exist <br>";}
+
+
+
+
 ?>
