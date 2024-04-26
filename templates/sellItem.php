@@ -2,7 +2,6 @@
     <head>
         <link rel="stylesheet" href="/../css/sellItem.css">
     </head>
-    <header><?php include("/../templates/topo.php")?></header>
     <main>
          <p>Sell an item</p>
 <?php } ?>
