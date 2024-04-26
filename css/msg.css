@@ -28,15 +28,23 @@ img{
 .pessoas .pessoa{
     display: flex;
     flex-direction: row;
-    background: var(--backgroundColor);
     border-radius: 15px;
     border: none;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+    cursor: pointer;
     > *{
         align-self: center;
         margin: .2em;
     }
-        
+}
+.pessoas .pessoa:hover {
+    background-color: var(--backgroundColor);
+}
+.radio-btn{
+    display: none;
+}
+.radio-btn:checked + .pessoa {
+    background: var(--beige);
 }
 .mensagem{
     width: 60%;
@@ -82,10 +90,4 @@ img{
         }
         
     }
-}
-.align-right {
-    justify-content: flex-end;
-}
-.msg.align-right{
-    margin-right: 7%;
 }

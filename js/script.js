@@ -1,4 +1,4 @@
-const showFormButton = document.getElementById('showFormButton');
+//const showFormButton = document.getElementById('showFormButton');
 const elementToToggle = document.getElementById('elementToToggle');
 
     showFormButton.addEventListener('click', () => {
