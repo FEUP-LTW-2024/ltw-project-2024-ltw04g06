@@ -91,5 +91,10 @@ require_once(__DIR__ . '/message.class.php');
 
 
 
+ $itemID = Item::addItem($db, "ola", 1, 2, 0, 3, "adidas", "ola", "ola", 12.00,"images/profilePictures/default");
+ echo "ItemID" . $itemID . "<br>";
+ $item = Item::getItem($db, $itemID);
+ echo "StatusID: ". $item->statusID."<br>";
+
 
 ?>
