@@ -90,11 +90,13 @@ require_once(__DIR__ . '/message.class.php');
  else {echo "user doesnt Exist <br>";}
 
 
-
+/*
  $itemID = Item::addItem($db, "ola", 1, 2, 0, 3, "adidas", "ola", "ola", 12.00,"images/profilePictures/default");
  echo "ItemID" . $itemID . "<br>";
  $item = Item::getItem($db, $itemID);
+ echo "StatusID: ". $item->statusID."<br>";*/
+
+$editStatus = Item::editItemStatus($db, 1, "Available");
+ $item = Item::getItem($db, 1);
  echo "StatusID: ". $item->statusID."<br>";
-
-
 ?>
