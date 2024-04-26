@@ -34,7 +34,7 @@ CREATE TABLE Condition (
 );
 
 CREATE TABLE User (
-    userID INT PRIMARY KEY,
+    userID INTEGER PRIMARY KEY AUTOINCREMENT,
     username VARCHAR(255) UNIQUE NOT NULL,   
     password VARCHAR(255) NOT NULL,                 
     name VARCHAR(255),                       
@@ -46,7 +46,7 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Wishlist (
-    wishlistID INT PRIMARY KEY
+    wishlistID INTEGER PRIMARY KEY AUTOINCREMENT
 );
 
 CREATE TABLE Item (
