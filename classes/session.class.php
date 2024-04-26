@@ -2,10 +2,22 @@
 
 class Session {
     private array $msgs;
+    private string $csrf;
+
+    static function generate_random_token() {
+      return bin2hex(openssl_random_pseudo_bytes(32));
+    }
 
     public function __construct() {
+      //session_set_cookie_params(60*60*12, '/');
+      session_set_cookie_params(10, '/');
+
         session_start();
-  
+
+        if (!isset($_SESSION['csrf'])) {
+          $_SESSION['csrf'] = self::generate_random_token();
+        }
+
         $this->msgs = isset($_SESSION['msgs']) ? $_SESSION['msgs'] : array();
         unset($_SESSION['msgs']);
       }
