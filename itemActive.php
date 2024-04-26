@@ -11,7 +11,7 @@
     <main>
       <script src="itemActive.js"></script>
         <button class="submitButton">Sold</button>
-        <button class="submitButton" onclick="soldButton()">Edit item</button>
+        <button class="submitButton" onclick="editButton()">Edit item</button>
         <div class="form">
             <div class="left-column">
                 <div class="title">
