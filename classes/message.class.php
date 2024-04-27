@@ -58,9 +58,12 @@ declare(strict_types = 1);
     }
 
     static function addToMessage(PDO $db, int $senderID, int $recipientID, string $content){ 
-      $time = date('Y-m-d H:i:s');
+      $timeZone = new DateTimeZone('Europe/Lisbon');
+      $dateTime = new DateTime('now', $timeZone);
+      $time = $dateTime->format('Y-m-d H:i:s');
+      
       $preparedStmt = $db->prepare("INSERT INTO Message( senderID, recipientID, content, time ) VALUES ( ?, ?, ?, ?)");
-      if(!$preparedStmt->execute([$senderID, $recipientID, $content, "time"])) {
+      if(!$preparedStmt->execute([$senderID, $recipientID, $content, $time])) {
         return false;
       }
       $messageID = $db->lastInsertId();

@@ -32,7 +32,10 @@
 
 
     static function addStatus(PDO $db, string $name) {
-      $date = date('Y-m-d');
+      $timeZone = new DateTimeZone('Europe/Lisbon');
+      $dateTime = new DateTime('now', $timeZone);
+      $date = $dateTime->format('Y-m-d');
+      
       echo "CURRENT DATE". $date . "<br>";
       $preparedStmt = $db->prepare("INSERT INTO Status (date, name) VALUES ( ?, ?)");
       $preparedStmt->execute([$date, $name]);

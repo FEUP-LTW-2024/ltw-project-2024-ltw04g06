@@ -22,7 +22,6 @@ body{
             display: flex;
             flex-direction: row;
             img{
-                margin: 1em;
                 border-radius: 50%;
                 width: 2em;
             }
