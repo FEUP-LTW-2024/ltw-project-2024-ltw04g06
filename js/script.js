@@ -39,9 +39,7 @@ function closeModal() {
 
 document.addEventListener('DOMContentLoaded', function() {
     var caixa = document.querySelector('.addProduct');
-  
     caixa.addEventListener('click', function() {
-      console.log(2);
       openModal();
     });
   });

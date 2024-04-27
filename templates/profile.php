@@ -14,31 +14,25 @@
         </div>
 <?php } ?>
 <?php function myItemsAnalytics(){?>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Adicionar Produto</h2>
-        </div>
-    </div>
     <div class="choice">
             <button><h3>My items</h3></button>
             <button><h3>Analytics</h3></button>
         </div>
         <div class="myItems">
-            <div class="condicion">
+            <div class="condition">
                 <select name="condition">
-                    <option value="Active">Active</option>
                     <option value="Sold" selected>Sold</option>
+                    <option value="Active">Active</option>
                 </select>
             </div>
             <div class="products">
-                <div class="addProduct">
+                <a class="addProduct" href="/../pages/sellItem.php">
                     <div class="mais">+</div>
-                </div>
+                </a>
                     <?php 
                         //
                     ?>
-                <div class="product" onclick="openModal();">
+                <div class="product" >
                     <img class="foto" src='/../images/leetcode.png'alt="">
                     <p>Used unicorn shirt</i></p>
                     <h4 class="price">20.00<i class="fa-solid fa-euro-sign"></i> XXL</h4>
