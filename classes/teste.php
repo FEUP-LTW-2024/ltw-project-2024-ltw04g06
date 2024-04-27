@@ -4,6 +4,7 @@ require_once(__DIR__ . '/../database/connectdb.php');
 require_once(__DIR__ . '/user.class.php');
 require_once(__DIR__ . '/item.class.php');
 require_once(__DIR__ . '/message.class.php');
+require_once(__DIR__ . '/wishlist.class.php');
   $db = getDatabaseConnection();
 /*
   $user = User::getUser($db, 1);
@@ -95,8 +96,30 @@ require_once(__DIR__ . '/message.class.php');
  echo "ItemID" . $itemID . "<br>";
  $item = Item::getItem($db, $itemID);
  echo "StatusID: ". $item->statusID."<br>";*/
-
+/*
 $editStatus = Item::editItemStatus($db, 1, "Available");
  $item = Item::getItem($db, 1);
  echo "StatusID: ". $item->statusID."<br>";
+*/
+$items = User::getUserWishlist($db, 1);
+ foreach($items as $item) {
+  echo "Item ID: " . $item->name . "<br>";
+}
+
+$itemID = User::addItemUserWishlist($db,1,3);
+if($itemID!= false){echo "ADD SUCCESSFUL <br>";}
+
+$items = User::getUserWishlist($db, 1);
+ foreach($items as $item) {
+  echo "Item ID: " . $item->itemID . "<br>";
+}
+
+
+$items = User::remItemUserWishlist($db, 1, 3);
+if($itemID){echo "REMOVE SUCCESSFUL <br>";}
+
+$items = User::getUserWishlist($db, 1);
+ foreach($items as $item) {
+  echo "Item ID: " . $item->itemID . "<br>";
+}
 ?>
