@@ -60,10 +60,10 @@
                         <?=$m->content?>
                     </div>
                 <?php } ?>
-                <form action="/../pages/message.php" method="post" class="typing-area">
-                    <input type="text" class="writerID" name="writerID" value="<?= $userID1 ?>" hidden>
-                    <input type="text" class="receiverID" name="receiverID" value="<?= $userID2 ?>" hidden>
-                    <input type="text" name="message" class="input-field" placeholder="Message..." autocomplete="off">
+                <form action="/../actions/action_message.php" method="post" class="typing-area">
+                    <input type="text" class="writerID" name="senderID" value="<?= $userID1 ?>" hidden>
+                    <input type="text" class="receiverID" name="recipientID" value="<?= $userID2 ?>" hidden>
+                    <input type="text" name="content" class="input-field" placeholder="Message..." autocomplete="off">
                     <button type="submit" class="send_message"><i class="fab fa-telegram-plane"></i></button>
                 </form>
             </div>        
