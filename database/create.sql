@@ -13,28 +13,28 @@ DROP TABLE IF EXISTS Size;
 DROP TABLE IF EXISTS Condition;
 
 CREATE TABLE Status (
-    statusID INT PRIMARY KEY,
+    statusID INTEGER PRIMARY KEY AUTOINCREMENT,
     date TEXT,
     name VARCHAR(255)
 );
 
 CREATE TABLE Category (
-    categoryID INT PRIMARY KEY,
+    categoryID INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255)
 );
 
 CREATE TABLE Size (
-    sizeID INT PRIMARY KEY,
+    sizeID INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255)
 );
 
 CREATE TABLE Condition (
-    conditionID INT PRIMARY KEY,
+    conditionID INTEGER PRIMARY KEY AUTOINCREMENT,
     usage VARCHAR(255)
 );
 
 CREATE TABLE User (
-    userID INT PRIMARY KEY,
+    userID INTEGER PRIMARY KEY AUTOINCREMENT,
     username VARCHAR(255) UNIQUE NOT NULL,   
     password VARCHAR(255) NOT NULL,                 
     name VARCHAR(255),                       
@@ -46,11 +46,11 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Wishlist (
-    wishlistID INT PRIMARY KEY
+    wishlistID INTEGER PRIMARY KEY AUTOINCREMENT
 );
 
 CREATE TABLE Item (
-    itemID INT PRIMARY KEY,
+    itemID INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255) NOT NULL,
     sellerID INT NOT NULL,
     categoryID INT NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE WishlistItem (
 );
 
 CREATE TABLE ShippingForm (
-    shippingFormID INT PRIMARY KEY,
+    shippingFormID INTEGER PRIMARY KEY AUTOINCREMENT,
     itemID INT,
     sellerID INT,
     buyerID INT,
@@ -98,7 +98,7 @@ CREATE TABLE UserShippingForm (
 );
 
 CREATE TABLE Message (
-    messageID INT PRIMARY KEY,
+    messageID INTEGER PRIMARY KEY AUTOINCREMENT,
     senderID INT,
     recipientID INT,
     content TEXT,

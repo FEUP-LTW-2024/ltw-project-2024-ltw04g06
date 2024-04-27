@@ -13,11 +13,11 @@
             <header>
                 Log in
             </header>
-            <form action="">
+            <form action="/../actions/action_signIn.php" method = "post">
                 <label for=""><i class="fa-regular fa-user"></i></label>
-                <input type="text" placeholder="Email or username"><br>
+                <input type="text" name = "userField" placeholder="Email or username"><br>
                 <label for=""><i class="fa-solid fa-lock"></i></label>
-                <input type="password" placeholder="Password"><br>
+                <input type="password" name = "password" placeholder="Password"><br>
                 <input type="submit" class="submitButton" value="Continue">
             </form>
         </div>
@@ -33,13 +33,13 @@
             <header>
                 Sign up
             </header>
-            <form action="">
+            <form action="/../actions/action_signUp.php" method = "post">
                 <label for=""><i class="fa-regular fa-user"></i></label>
-                <input type="text" placeholder="Username"><br>
+                <input type="text" name = "username" placeholder="Username"><br>
                 <label for=""><i class="fa-regular fa-envelope"></i></label>
-                <input type="email" placeholder="Email"><br>
+                <input type="email" name = "email" placeholder="Email"><br>
                 <label for=""><i class="fa-solid fa-lock"></i></label>
-                <input type="password" placeholder="Password"><br>
+                <input type="password" name = "password" placeholder="Password"><br>
                 <input type="submit" class="submitButton" value="Continue">
             </form>
         </div>
