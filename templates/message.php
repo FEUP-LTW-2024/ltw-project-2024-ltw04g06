@@ -1,3 +1,4 @@
+
 <?php 
     function sideBar(PDO $db, int $userID){ 
     $contacts = Message::getUserMessageContacts($db, $userID);
@@ -8,36 +9,38 @@
 <main>
     <div class="sideBar">
         <h2>Messages</h2>
-        <div class="pessoas">
+        <form action="messageBox.php" method="get" class="pessoas" id="contactForm">
         <?php
         foreach ($contacts as $contact) { 
     ?>
-    <input type="radio" id="<?=$contact->username ?>" name="contact" class="radio-btn" value="<?=$contact->userID?>">
+    <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
     <label for="<?=$contact->username ?>" class="pessoa">
         <img src="<?=$contact->profilePicture?>" alt="">
         <p><?=$contact->username ?></p>
     </label> 
     <?php 
-     }?> 
-</div>
-    </div>
-<?php
-if (isset($_POST['contact'])) {
-    $userID = $_POST['contact'];
-    return  $userID;
-} 
-} ?>
+     }?>
+     </form>
+    </div> 
+    <div class="mensagem">
+
+     </div>
+<?php } ?>
+
 
 <?php 
-    function  messageBox(PDO $db, int $userID1, int $userID2){ 
-        $msgs = Message::getUserMessages($db, $userID1, $userID2);
-        $user1 = User::getUser($db, $userID1);
+    require_once(__DIR__ . '/../database/connectdb.php');
+    require_once(__DIR__ . '/../classes/message.class.php');
+    require_once(__DIR__ . '/../classes/user.class.php');
+    function  messageBox(int $userID2){ 
+        $db = getDatabaseConnection();
         $user2 = User::getUser($db, $userID2);
+        $userID1 = 1;
+        $msgs = Message::getUserMessages($db, $userID1, $userID2);
     ?>
 <head>
     <link rel="stylesheet" href="../css/msg.css">
 </head>
-<div class="mensagem">
             <div class="pessoa">
                 <img src=" <?=$user2->profilePicture?> ">
                 <span><?=$user2->username?></span>
@@ -57,7 +60,12 @@ if (isset($_POST['contact'])) {
                         <?=$m->content?>
                     </div>
                 <?php } ?>
+                <form action="/../pages/message.php" method="post" class="typing-area">
+                    <input type="text" class="writerID" name="writerID" value="<?= $userID1 ?>" hidden>
+                    <input type="text" class="receiverID" name="receiverID" value="<?= $userID2 ?>" hidden>
+                    <input type="text" name="message" class="input-field" placeholder="Message..." autocomplete="off">
+                    <button type="submit" class="send_message"><i class="fab fa-telegram-plane"></i></button>
+                </form>
             </div>        
-    </div>
     </main>
 <?php } ?>

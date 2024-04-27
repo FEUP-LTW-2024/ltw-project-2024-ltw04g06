@@ -1,4 +1,4 @@
-//const showFormButton = document.getElementById('showFormButton');
+const showFormButton = document.getElementById('showFormButton');
 const elementToToggle = document.getElementById('elementToToggle');
 
     showFormButton.addEventListener('click', () => {
@@ -6,11 +6,23 @@ const elementToToggle = document.getElementById('elementToToggle');
         else elementToToggle.style.display = 'none';
     });
 
-document.addEventListener("DOMContentLoaded", function() {
+function scrollDown(){
     var caixaDeMensagens = document.getElementById("caixaDeMensagens");
-    if (caixaDeMensagens) {
-        caixaDeMensagens.scrollTop = caixaDeMensagens.scrollHeight - caixaDeMensagens.clientHeight;
-    } else {
-        console.error("A caixa de mensagens não foi encontrada.");
-    }
+    caixaDeMensagens.scrollTop = caixaDeMensagens.scrollHeight;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.radio-btn').forEach(function(radio) {
+        radio.addEventListener('click', function() {
+            var selectedUserID = this.value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/../templates/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.querySelector('.mensagem').innerHTML = xhr.responseText;
+                    scrollDown();
+                }
+            };
+            xhr.send();
+        });
+    });
 });

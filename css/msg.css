@@ -70,6 +70,7 @@ img{
         height: 400px;
         overflow-y: auto;
         margin: 1em;
+        position: relative;
         .msg{
             margin-bottom: 1em;
             margin-left: 7%;
@@ -91,3 +92,31 @@ img{
         
     }
 }
+.typing-area{
+    display: flex;
+  }
+  .typing-area input{
+    background: var(--backgroundColor);
+    width: 100%;
+    height: 2em;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    &::placeholder{
+        color: #d19f9d;
+    }
+    
+  }
+  .typing-area button{
+    background: var(--backgroundColor);
+    color: #8d6363;
+    width: 55px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .typing-area button:hover{
+    color: black;
+  }
