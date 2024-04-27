@@ -8,12 +8,12 @@
 	$db = getDatabaseConnection();
     $session = new Session();
 
-    /*
+    
     // Check if the user is logged in ( para já como nao temos conexao com o sign in e msgs isto vai ficar comentado)
     if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;
-    }*/
+    }
 
 	$content = $_POST['content'];
 	$recipientID = $_POST['recipientID'];
@@ -21,12 +21,13 @@
     $sender = User::getUser($db, $senderID);
 
 	$messageID = Message::addMessage($db, $senderID, $recipientID, $content);
+    $message = Message::getMessage($db, $messageID);
 
     if($messageID!= false){
         echo '<div class="fr">
-        <img src='.$sender->profilePicture.'alt="">
+        <img src='.$sender->profilePicture.'>
         <span>'.$sender->username.'</span>
-        <div class="time"> Que horas serao </div>
+        <div class="time"> '.$message->time.' </div>
          </div>
         <div class="msg">
         '.$content.'

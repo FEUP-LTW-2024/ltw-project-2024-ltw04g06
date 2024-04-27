@@ -9,8 +9,8 @@ class Session {
     }
 
     public function __construct() {
-      //session_set_cookie_params(60*60*12, '/');
-      session_set_cookie_params(10, '/');
+      session_set_cookie_params(60*60*12, '/');
+      //session_set_cookie_params(10, '/');
 
         session_start();
 

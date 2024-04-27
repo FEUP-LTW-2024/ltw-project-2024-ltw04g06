@@ -39,7 +39,7 @@ require_once(__DIR__ . '/status.class.php');
       $item = $preparedStmt->fetch();
       
       if (!$item) {
-        throw new Exception("User not found with ID: $itemID");
+        throw new Exception("Item not found with ID: $itemID");
         return null;
     }
       return new Item(
