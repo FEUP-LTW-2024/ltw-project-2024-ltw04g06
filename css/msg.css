@@ -17,6 +17,7 @@ img{
 .sideBar{
     margin: 1%;
     width: 20%;
+    max-height: 400px;
     h2{
        color: var(--bordeaux); 
     }

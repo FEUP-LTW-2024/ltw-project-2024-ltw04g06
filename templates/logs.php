@@ -21,9 +21,9 @@
                 <input type="submit" class="submitButton" value="Continue">
             </form>
         </div>
-        <h5><a href="/../pages/signUp.php">New to website?</a></h5>
+        <h5>New to website?</h5>
         <div class="box">
-            <a href="">Log in</a>
+            <a href="/../pages/signUp.php">Create your account</a>
         </div>
     </main>  
 <?php } ?>
@@ -43,9 +43,9 @@
                 <input type="submit" class="submitButton" value="Continue">
             </form>
         </div>
-        <h5><a href="/../pages/signIn.php">Already have a account?</a></h5>
+        <h5>Already have a account?</h5>
         <div class="box">
-            <a href="">Create your account</a>
+            <a href="/../pages/signIn.php">Log in</a>
         </div>
     </main>    
 <?php } ?>
