@@ -28,9 +28,23 @@ img{
 .pessoas .pessoa{
     display: flex;
     flex-direction: row;
-    background: var(--backgroundColor);
     border-radius: 15px;
     border: none;
+    margin-bottom: 1em;
+    cursor: pointer;
+    > *{
+        align-self: center;
+        margin: .2em;
+    }
+}
+.pessoas .pessoa:hover {
+    background-color: var(--backgroundColor);
+}
+.radio-btn{
+    display: none;
+}
+.radio-btn:checked + .pessoa {
+    background: var(--beige);
 }
 .mensagem{
     width: 60%;
@@ -39,12 +53,70 @@ img{
     border-radius: 10px;
     .pessoa{
         border-bottom: 1.5px solid var(--borderLine);
-        span{
-            
-        }
+        display: flex;
+        flex-direction: row;
         button{
             background: white;
             border: none;
+            align-self: center;
+            margin-left: auto;
+        }
+        > *{
+            align-self: center;
+            margin: .5em;
         }
     }
+    .caixa{
+        height: 400px;
+        overflow-y: auto;
+        margin: 1em;
+        position: relative;
+        .msg{
+            margin-bottom: 1em;
+            margin-left: 7%;
+            font-size: small;
+            display: flex;
+        }
+        .fr{
+            display: flex;
+            flex-direction: row;
+            > *{
+                align-self: center;
+                margin: .5em;
+            }
+            .time{
+                font-size: .5em;
+                color: gray;
+            }
+        }
+        
+    }
 }
+.typing-area{
+    display: flex;
+  }
+  .typing-area input{
+    background: var(--backgroundColor);
+    width: 100%;
+    height: 2em;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    &::placeholder{
+        color: #d19f9d;
+    }
+    
+  }
+  .typing-area button{
+    background: var(--backgroundColor);
+    color: #8d6363;
+    width: 55px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .typing-area button:hover{
+    color: black;
+  }
