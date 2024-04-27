@@ -1,8 +1,10 @@
 
 INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, wishlistID)
 VALUES 
-    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', 'images/pp2', 1), -- ola123
-    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  'images/pp1', 2);
+
+    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg', 1),
+    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg', 2),
+    (3, 'Toze', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg', 2);
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 
@@ -26,7 +28,15 @@ VALUES
     (2, 2, 1, 'Hi, John!', '2022-04-18 10:05:00'),
     (3, 1, 2,'How are you?','2022-04-18 10:10:00'),
     (4, 2, 1, 'Very good!', '2022-04-18 10:20:00'),
-    (5, 1, 2,'Ok','2022-04-18 10:21:00');
+    (5, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (6, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (7, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (8, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (9, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (10, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (11, 1, 2,'Ok','2022-04-18 10:21:00'),
+    (11, 2, 1,'Obrigado','2022-04-18 10:21:00'),
+    (12, 1, 3,'Ok','2022-04-18 10:21:00');
 
 
 INSERT OR IGNORE INTO Status (statusID, date, name)
@@ -83,5 +93,19 @@ INSERT OR IGNORE INTO MessageUser (messageID, userID)
     (4,1),
     (4,2),
     (5,1),
-    (5,2);
+    (5,2),
+    (6,1),
+    (6,2),
+    (7,1),
+    (7,2),
+    (8,1),
+    (8,2),
+    (9,1),
+    (9,2),
+    (10,1),
+    (10,2),
+    (11,1),
+    (11,2),
+    (12,1),
+    (12,3);
 

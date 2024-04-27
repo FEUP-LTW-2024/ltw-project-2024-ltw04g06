@@ -28,9 +28,9 @@ body{
             }
         }
         .foto{
-            height: 10em;
+            height: 13em;
         }
-        h4{
+        .price{
             color: #2E6963;
         }
     }
