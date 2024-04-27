@@ -9,7 +9,7 @@
 <main>
     <div class="sideBar">
         <h2>Messages</h2>
-        <form action="messageBox.php" method="get" class="pessoas" id="contactForm">
+        <form method="get" class="pessoas" id="contactForm">
         <?php
         foreach ($contacts as $contact) { 
     ?>
@@ -47,7 +47,8 @@
                 <button><i class="fa-regular fa-trash-can"></i></button>
             </div>
             <div class="caixa" id="caixaDeMensagens">
-            <?php foreach ($msgs as $m) { 
+                <div class="conjunto">
+                <?php foreach ($msgs as $m) { 
                 $messageUser = User::getUser($db, $m->senderID);
                 ?>
                     <div class="fr">
@@ -60,11 +61,13 @@
                         <?=$m->content?>
                     </div>
                 <?php } ?>
-                <form action="/../actions/action_message.php" method="post" class="typing-area">
+                </div>
+           
+                <form  id="messageForm" class="typing-area" method="post">
                     <input type="text" class="writerID" name="senderID" value="<?= $userID1 ?>" hidden>
                     <input type="text" class="receiverID" name="recipientID" value="<?= $userID2 ?>" hidden>
-                    <input type="text" name="content" class="input-field" placeholder="Message..." autocomplete="off">
-                    <button type="submit" class="send_message"><i class="fab fa-telegram-plane"></i></button>
+                    <input type="text" name="content" class="input-field" id="messageContent" placeholder="Message..." autocomplete="off">
+                    <button type="button" class="send_message"><i class="fab fa-telegram-plane"></i></button>
                 </form>
             </div>        
     </main>

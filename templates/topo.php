@@ -17,7 +17,7 @@
                 <button class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <h3><i class="fa-regular fa-bell"></i></h3> 
-            <h3><i class="fa-regular fa-envelope"></i></h3> 
+            <h3><a href="/../pages/message.php"><i class="fa-regular fa-envelope"></i></a></h3> 
             <h3><i class="fa-regular fa-heart"></i></h3>
             <button class="carrinho"><i class="fa-solid fa-cart-shopping"></i></button>
             <h3><a href="">Sell an item</a></h3>
@@ -26,7 +26,7 @@
                     <input type="checkbox" id="hamburger"> 
                     <label class="hamburger" for="hamburger"></label>
                     <ul>
-                        <li><a href="">Profile</a></li>
+                        <li><a href="/../pages/profile.php">Profile</a></li>
                         <li><a href="">Settings</a></li>
                         <li><a href="">Log out</a></li>
                     </ul>
