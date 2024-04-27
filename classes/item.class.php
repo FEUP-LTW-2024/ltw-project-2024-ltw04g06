@@ -2,6 +2,9 @@
 
 declare(strict_types = 1);
 
+require_once(__DIR__ . '/status.class.php');
+
+
   class Item {
     public int $itemID;
     public string $name;
@@ -37,6 +40,7 @@ declare(strict_types = 1);
       
       if (!$item) {
         throw new Exception("User not found with ID: $itemID");
+        return null;
     }
       return new Item(
         $item['itemID'],
@@ -97,7 +101,35 @@ declare(strict_types = 1);
         $user['wishlistID'],
       );
     }
+
+        
+    static function editItemStatus (PDO $db, int $itemID, string $name) : bool {
+      $item = self::getItem($db, $itemID);
+      $itemStatus = Status::getStatus($db, $item->statusID);
+
+      if($itemStatus->name == $name){
+        return false;}
+      $statusID = Status::addStatus($db, $name);
+      $preparedStmt = $db->prepare("UPDATE Item SET statusID = :statusID WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':statusID', $statusID, PDO::PARAM_INT);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      if ($preparedStmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+  }
+
+
+    static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $images)  {
+      $statusID = Status::addStatus($db,"Available");
+
+      $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, images ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $images]);
+      $itemID = $db->lastInsertId();
   
+      return $itemID;
+    }
   }
 
   
