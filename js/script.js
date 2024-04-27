@@ -26,3 +26,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function openModal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'block';
+}
+  
+function closeModal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var caixa = document.querySelector('.addProduct');
+    caixa.addEventListener('click', function() {
+      openModal();
+    });
+  });
+  
+  
