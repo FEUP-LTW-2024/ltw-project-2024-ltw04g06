@@ -13,7 +13,7 @@ declare(strict_types = 1);
 			$preparedStmt = $db->prepare('SELECT itemID FROM WishlistItem WHERE wishlistID = ?');
 			$preparedStmt->execute(array($wishlistID));
 			$items = array();
-			
+
 			while ($itemID = $preparedStmt->fetch(PDO::FETCH_ASSOC)) {
 				$ID = $itemID['itemID'];
 				$item = Item::getItem($db, $ID);
@@ -46,7 +46,6 @@ declare(strict_types = 1);
       		$preparedStmt->execute([$wishlistID, $itemID]);
 
 			return $itemID;
-
 		}
 		
 		static function remItemFromWishlist(PDO $db, int $wishlistID, int $itemID){

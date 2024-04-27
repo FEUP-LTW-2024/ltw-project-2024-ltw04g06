@@ -53,9 +53,43 @@ declare(strict_types = 1);
       }
       if (empty($msgs)) {
         throw new Exception('No messages found between the users.');
+      }
+        return $msgs;
     }
-      return $msgs;
-  }
+
+    static function addToMessage(PDO $db, int $senderID, int $recipientID, string $content){ 
+      $time = date('Y-m-d H:i:s');
+      $preparedStmt = $db->prepare("INSERT INTO Message( senderID, recipientID, content, time ) VALUES ( ?, ?, ?, ?)");
+      if(!$preparedStmt->execute([$senderID, $recipientID, $content, "time"])) {
+        return false;
+      }
+      $messageID = $db->lastInsertId();
+
+      return $messageID;
+    }
+
+
+    static function addMessage(PDO $db, int $senderID, int $recipientID, string $content){ // VERIFICAR O QUE PASSA AQUI NO CONTENT
+      $messageID = self::addToMessage($db, $senderID, $recipientID, $content);
+
+      $preparedStmt = $db->prepare("INSERT INTO MessageUser(messageID, userID) VALUES (?, ?)");
+      if (!$preparedStmt->execute([$messageID, $senderID])) {
+          return false;
+      }
+      
+      $preparedStmt = $db->prepare("INSERT INTO MessageUser(messageID, userID) VALUES (?, ?)");
+      if (!$preparedStmt->execute([$messageID, $recipientID])) {
+          return false;
+      }
+
+      return $messageID;
+    }
+
+
+
+
+
+
 }
 
 

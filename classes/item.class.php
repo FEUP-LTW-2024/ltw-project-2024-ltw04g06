@@ -128,7 +128,6 @@ require_once(__DIR__ . '/status.class.php');
       $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $images]);
       $itemID = $db->lastInsertId();
   
-      echo "Item added successfully with itemID: $itemID";
       return $itemID;
     }
   }
