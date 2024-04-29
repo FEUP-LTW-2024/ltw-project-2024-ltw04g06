@@ -27,7 +27,7 @@
                     <label class="hamburger" for="hamburger"></label>
                     <ul>
                         <li><a href="/../pages/profile.php">Profile</a></li>
-                        <li><a href="">Settings</a></li>
+                        <li><a href="/../pages/settings.php">Settings</a></li>
                         <li><a href="">Log out</a></li>
                     </ul>
                 </div>
