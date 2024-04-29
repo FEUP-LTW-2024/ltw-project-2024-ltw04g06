@@ -151,7 +151,7 @@ $msgs = Message::getUserMessages($db,2,1);
     $status = Status::getStatus($db, $statusID);
     echo "Item Status: " . $status->name . "<br>";
   }
-*/
+
   $edited = User::editName($db, 1, "Joaquim_doe");
   if($edited){
     $user = User::getUser($db, 1);
@@ -180,6 +180,13 @@ $msgs = Message::getUserMessages($db,2,1);
     echo "Edited email! ". $user->email . "<br>";
   }
     else echo "DIDNT edit email. <br>";
+*/
+  $edited = User::editPassword($db, 1, "adeus123","adeus123", "adeus123");
+  if($edited){
+    $user = User::getUser($db, 1);
+    echo "Edited password! ". $user->password . "<br>";
+  }
+    else echo "DIDNT edit password. <br>";
 
 
 

@@ -189,7 +189,7 @@ require_once(__DIR__ . '/wishlist.class.php');
       } else {
           return array("success" => false, "message" => "Failed to update About Me for userID: $userID");
       }
-  }
+    }
 
 
     static function editUsername(PDO $db, int $userID, string $newUsername) {
@@ -209,7 +209,7 @@ require_once(__DIR__ . '/wishlist.class.php');
       } else {
           return false;
           //return array("success" => false, "message" => "Failed to change username for userID: $userID");
-      }
+        }
     }
 
 
@@ -232,7 +232,29 @@ require_once(__DIR__ . '/wishlist.class.php');
           return false;
           //return array("success" => false, "message" => "Failed to change email for userID: $userID");
       }
-  }
+    }
+
+    static function editPassword(PDO $db, int $userID,string $currentPass, string $newPass, string $confirmNewPass) {
+      $user = self::getUser($db,$userID);
+      if(self::verifyUserPass($db,$user->username, $currentPass) == false){ echo "Wrong current pass";return false;}
+      if($newPass != $confirmNewPass || $currentPass == $newPass ) return false;
+      
+      $hashedPassword = password_hash($newPass, PASSWORD_DEFAULT, ['cost' => 12]);
+
+      // Update the password in the database
+      $preparedStmt = $db->prepare("UPDATE User SET password = :newPassword WHERE userID = :userID");
+      $preparedStmt->bindParam(':newPassword', $hashedPassword, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+      $result = $preparedStmt->execute();
+
+      if ($result) {
+          return true;
+          //return array("success" => true, "message" => "Password changed successfully for userID: $userID");
+      } else {
+          return false;
+          //return array("success" => false, "message" => "Failed to change password for userID: $userID");
+      }
+    }
   
 
 
