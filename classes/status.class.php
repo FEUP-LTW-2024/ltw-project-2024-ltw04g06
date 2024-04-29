@@ -21,29 +21,14 @@
       if(!$status){
         throw new Exception("Status not found with ID: $statusID");
         return null;
-    }
-    return new Status(
-      $status['statusID'],
-      $status['date'],
-      $status['name']
-    );
+      }
+      return new Status(
+        $status['statusID'],
+        $status['date'],
+        $status['name']
+      );
     }
 
-    static function getStatusByName(PDO $db, int $name) {
-      $preparedStmt = $db->prepare( 'SELECT * FROM Status WHERE name = ?');
-      $preparedStmt->execute(array($name));
-      $status = $preparedStmt->fetch();
-
-      if(!$status){
-        throw new Exception("Status not found with name: $name");
-        return null;
-    }
-    return new Status(
-      $status['statusID'],
-      $status['date'],
-      $status['name']
-    );
-    }
 
 
     static function addStatus(PDO $db, string $name) {

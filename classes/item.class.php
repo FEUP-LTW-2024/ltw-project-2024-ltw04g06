@@ -39,7 +39,7 @@ require_once(__DIR__ . '/status.class.php');
       $item = $preparedStmt->fetch();
       
       if (!$item) {
-        throw new Exception("User not found with ID: $itemID");
+        throw new Exception("Item not found with ID: $itemID");
         return null;
     }
       return new Item(
@@ -55,6 +55,23 @@ require_once(__DIR__ . '/status.class.php');
         $item['description'],
         $item['images'],
       );
+    }
+
+    static function getUserItems(PDO $db, int $sellerID) {
+      $preparedStmt = $db->prepare( 'SELECT itemID FROM Item WHERE sellerID = ?');
+      $preparedStmt->execute(array($sellerID));
+      $items = array();
+
+      while ($itemID = $preparedStmt->fetch(PDO::FETCH_ASSOC)) {
+				$ID = $itemID['itemID'];
+				$item = Item::getItem($db, $ID);
+				$items[] = $item;
+			}
+      if (empty($items)) {
+				throw new Exception("Wishlist not found with ID: $wishlistID");
+				return null;
+			}
+			return $items;
     }
 
     static function getFilteredItems(PDO $db) { // adicionar nos parametros os filtros

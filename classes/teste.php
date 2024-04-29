@@ -5,6 +5,7 @@ require_once(__DIR__ . '/user.class.php');
 require_once(__DIR__ . '/item.class.php');
 require_once(__DIR__ . '/message.class.php');
 require_once(__DIR__ . '/wishlist.class.php');
+require_once(__DIR__ . '/status.class.php');
   $db = getDatabaseConnection();
 
 
@@ -129,6 +130,7 @@ $items = User::getUserWishlist($db, 1);
   echo "Item ID: " . $item->itemID . "<br>";
 }*/
 
+/*
 $msgs = Message::getUserMessages($db,2,1);
   foreach($msgs as $msg) {
     echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
@@ -140,6 +142,14 @@ if($messageID!= false){"ADDED MESSAGE <br>";}
 $msgs = Message::getUserMessages($db,2,1);
   foreach($msgs as $msg) {
     echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
+  }*/
+
+
+  $items = Item::getUserItems($db, 2);
+  foreach($items as $item) {
+    $statusID = $item->statusID;
+    $status = Status::getStatus($db, $statusID);
+    echo "Item Status: " . $status->name . "<br>";
   }
 
 ?>

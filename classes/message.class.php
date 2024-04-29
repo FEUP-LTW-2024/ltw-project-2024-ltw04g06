@@ -18,6 +18,25 @@ declare(strict_types = 1);
       $this->time = $time;
     }
 
+    static function getMessage(PDO $db, int $messageID) {
+      $preparedStmt = $db->prepare( 'SELECT * FROM Message WHERE messageID = ?');
+      $preparedStmt->execute(array($messageID));
+      $message = $preparedStmt->fetch();
+
+      if (!$message) {
+        throw new Exception("Message not found with ID: $messageID");
+        return null;
+    }
+      return new Message(
+        $message['messageID'],
+        $message['senderID'],
+        $message['recipientID'],
+        $message['content'],
+        $message['time'],
+      );
+
+    }
+
 
     /*Gives array of users that a certain user has messages with*/ 
     static function getUserMessageContacts(PDO $db, int $userID) { 
