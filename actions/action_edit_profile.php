@@ -1,7 +1,6 @@
 <?php
 	require_once(__DIR__ . '/../classes/session.class.php');
 	require_once(__DIR__ . '/../database/connectdb.php');
-	require_once(__DIR__ . '/../classes/message.class.php');
     require_once(__DIR__ . '/../classes/user.class.php');
 
 
@@ -26,8 +25,8 @@
     header('Location: /../pages/settings.php');
     }
     else{
-        $session->addMessage('error', 'Wrong username/email or password!');
-		header('Location: /../pages/signIn.php');
+        $session->addMessage('error', 'Did not edit profile settings!');
+		header('Location: /../pages/settings.php');
     }
 
 	?>

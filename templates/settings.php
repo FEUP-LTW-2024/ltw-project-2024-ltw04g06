@@ -37,9 +37,9 @@
     <div class="account-setting">
     <form action="/../actions/action_edit_account.php" method="post">
             <label for="Username">Username</label>
-            <input type="text" name="username" value="OlderValue"><br><br>
+            <input type="text" name="username" value="<?php echo htmlspecialchars($user->username); ?>"><br><br>
             <label for="Email">Email</label>
-            <input name="email" ><br><br>
+            <input type="text" name="email" value="<?php echo htmlspecialchars($user->email); ?>"><br><br>
             <button type="submit">Apply Changes</button>
         </form>
     </div>
