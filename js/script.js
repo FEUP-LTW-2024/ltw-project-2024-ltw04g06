@@ -22,6 +22,30 @@ const elementToToggle = document.getElementById('elementToToggle');
             xhr.send();
         });
     });
+    const links = document.querySelectorAll('.selectSetting a');
+
+    links.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            links.forEach(function(link) {
+                link.style.color = "black"; 
+            });
+            this.style.color = "#cc4545"; 
+            event.preventDefault();
+            const settingType = this.id;
+            loadSetting(settingType);
+        });
+    });
+
+    function loadSetting(settingType) {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector('.container').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "/../actions/load_setting.php?type=" + settingType, true);
+        xhttp.send();
+    }
     
 });
 

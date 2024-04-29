@@ -24,7 +24,7 @@
 
     if($messageID!= false){
         echo '<div class="fr">
-        <img src='.$sender->profilePicture.'alt="">
+        <img src='.$sender->profilePicture.'>
         <span>'.$sender->username.'</span>
         <div class="time"> Que horas serao </div>
          </div>
