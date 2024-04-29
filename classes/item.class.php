@@ -106,17 +106,9 @@ require_once(__DIR__ . '/status.class.php');
 
       if (!$user) {
         throw new Exception("Seller not found for itemID: $itemID");
-    }
-      return new User(
-        $user['userID'],
-        $user['username'],
-        $user['password'],
-        $user['name'],
-        $user['email'],
-        $user['role'],
-        $user['profilePicture'],
-        $user['wishlistID'],
-      );
+        return false;
+      }
+      return  User::getUser($db, $user['userID']);;
     }
 
         
@@ -132,10 +124,10 @@ require_once(__DIR__ . '/status.class.php');
       $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
       if ($preparedStmt->execute()) {
         return true;
-    } else {
-        return false;
+      } else {
+          return false;
+      }
     }
-  }
 
 
     static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $images)  {

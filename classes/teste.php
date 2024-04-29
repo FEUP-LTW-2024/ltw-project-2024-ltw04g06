@@ -144,12 +144,50 @@ $msgs = Message::getUserMessages($db,2,1);
     echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
   }*/
 
-
+/*
   $items = Item::getUserItems($db, 2);
   foreach($items as $item) {
     $statusID = $item->statusID;
     $status = Status::getStatus($db, $statusID);
     echo "Item Status: " . $status->name . "<br>";
   }
+
+  $edited = User::editName($db, 1, "Joaquim_doe");
+  if($edited){
+    $user = User::getUser($db, 1);
+    echo "Edited Name! ". $user->name . "<br>";
+  }
+  else echo "DIDNT edit name. <br>";
+
+  $edited = User::editAboutMe($db, 1, "Afinal sou o joao_doe!");
+  if($edited){
+    $user = User::getUser($db, 1);
+    echo "Edited AboutMe! ". $user->aboutMe . "<br>";
+  }
+  else echo "DIDNT edit aboutMe. <br>";
+
+  $edited = User::editUsername($db, 1, "john_doe");
+  if($edited){
+    $user = User::getUser($db, 1);
+    echo "Edited Username! ". $user->username . "<br>";
+  }
+    else echo "DIDNT edit Username. <br>";
+
+
+  $edited = User::editEmail($db, 1, "john_doe@gmail.com");
+  if($edited){
+    $user = User::getUser($db, 1);
+    echo "Edited email! ". $user->email . "<br>";
+  }
+    else echo "DIDNT edit email. <br>";
+*/
+  $edited = User::editPassword($db, 1, "adeus123","adeus123", "adeus123");
+  if($edited){
+    $user = User::getUser($db, 1);
+    echo "Edited password! ". $user->password . "<br>";
+  }
+    else echo "DIDNT edit password. <br>";
+
+
 
 ?>

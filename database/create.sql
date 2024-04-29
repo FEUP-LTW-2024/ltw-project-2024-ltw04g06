@@ -41,6 +41,9 @@ CREATE TABLE User (
     email VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
     profilePicture TEXT,
+    aboutMe TEXT,
+    address TEXT,
+    phoneNumber INT,
     wishlistID INT NOT NULL,
     FOREIGN KEY (wishlistID) REFERENCES Wishlist(wishlistID) ON UPDATE CASCADE ON DELETE SET NULL
 );
@@ -82,7 +85,7 @@ CREATE TABLE ShippingForm (
     itemID INT,
     sellerID INT,
     buyerID INT,
-    address TEXT,
+    description TEXT,
     date TEXT,
     FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (sellerID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL,
