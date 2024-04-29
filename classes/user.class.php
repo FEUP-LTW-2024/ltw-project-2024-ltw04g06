@@ -11,10 +11,13 @@ require_once(__DIR__ . '/wishlist.class.php');
     public string $email;
     public string $role;
     public string $profilePicture;
+    public string $aboutMe;
+    public string $address;
+    public int $phoneNumber;
     public int $wishlistID;
 
 
-    public function __construct(int $userID, string $username, string $password, string $name, string $email, string $role, string $profilePicture, int $wishlistID) {
+    public function __construct(int $userID, string $username, string $password, string $name, string $email, string $role, string $profilePicture,  string $aboutMe,  string $address, int $phoneNumber, int $wishlistID) {
       $this->userID = $userID;
       $this->username = $username;
       $this->password = $password;
@@ -22,6 +25,9 @@ require_once(__DIR__ . '/wishlist.class.php');
       $this->email = $email;
       $this->role = $role;
       $this->profilePicture = $profilePicture;
+      $this->aboutMe = $aboutMe;
+      $this->address = $address;
+      $this->phoneNumber = $phoneNumber;
       $this->wishlistID = $wishlistID;
     }
 
@@ -46,6 +52,9 @@ require_once(__DIR__ . '/wishlist.class.php');
         $user['email'],
         $user['role'],
         $user['profilePicture'],
+        $user['aboutMe'],
+        $user['address'],
+        $user['phoneNumber'],
         $user['wishlistID'],
       );
     }
@@ -68,6 +77,9 @@ require_once(__DIR__ . '/wishlist.class.php');
         $user['email'],
         $user['role'],
         $user['profilePicture'],
+        $user['aboutMe'],
+        $user['address'],
+        $user['phoneNumber'],
         $user['wishlistID'],
       );
     }
@@ -112,16 +124,7 @@ require_once(__DIR__ . '/wishlist.class.php');
       $user = $preparedStmt->fetch();
 
       if($user !== false && password_verify($password, $user['password'])) {
-        return new User(
-          $user['userID'],
-          $user['username'],
-          $user['password'],
-          $user['name'],
-          $user['email'],
-          $user['role'],
-          $user['profilePicture'],
-          $user['wishlistID'],
-        );
+        return User::getUser($db, $user['userID']);
       }
       else {
           return false;
@@ -146,8 +149,8 @@ require_once(__DIR__ . '/wishlist.class.php');
 
       $wishlistID = $db->lastInsertId();
       
-      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, wishlistID) VALUES ( ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]), '', $email, 'User', 'images/profilePictures/default', $wishlistID]);
+      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]), '', $email, 'User', 'images/profilePictures/default','','',0, $wishlistID]);
       $userID = $db->lastInsertId();
 
   

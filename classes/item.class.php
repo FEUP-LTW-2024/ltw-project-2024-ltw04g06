@@ -106,17 +106,9 @@ require_once(__DIR__ . '/status.class.php');
 
       if (!$user) {
         throw new Exception("Seller not found for itemID: $itemID");
-    }
-      return new User(
-        $user['userID'],
-        $user['username'],
-        $user['password'],
-        $user['name'],
-        $user['email'],
-        $user['role'],
-        $user['profilePicture'],
-        $user['wishlistID'],
-      );
+        return false;
+      }
+      return  User::getUser($db, $user['userID']);;
     }
 
         

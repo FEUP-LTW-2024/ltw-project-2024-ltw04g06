@@ -144,12 +144,13 @@ $msgs = Message::getUserMessages($db,2,1);
     echo " SenderID: ".$msg->senderID." RecipientID: ".$msg->recipientID." ->" . $msg ->content. "<br>";
   }*/
 
-
+/*
   $items = Item::getUserItems($db, 2);
   foreach($items as $item) {
     $statusID = $item->statusID;
     $status = Status::getStatus($db, $statusID);
     echo "Item Status: " . $status->name . "<br>";
   }
+*/
 
 ?>

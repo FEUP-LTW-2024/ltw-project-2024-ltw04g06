@@ -1,10 +1,10 @@
 
-INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, wishlistID)
+INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID)
 VALUES 
 
-    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg', 1),
-    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg', 2),
-    (3, 'Toze', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg', 2);
+    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg','sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1),
+    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2),
+    (3, 'Toze', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou o Toze!', 'rua dos alecrins, 8005-332,Portugal',910000019, 2);
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 
@@ -17,10 +17,10 @@ VALUES
     (2,'Vintage Plushies', 1, 2, 'Lacoste', NULL, 0, 1, '  Hello! I am selling 5 vintage plushies from 1914 very good, very good condition, very good shape, very good price.', 2000.00, 'images/plushies_0.png,images/plushies_1.png,images/plushies_2.png', 1),
     (3,'', 2, 2, 'Brand C', 'Model Z', 3, 3, 'Description of item 3', 300.00, 'image_url_7,image_url_8,image_url_9', 2);
 
-INSERT OR IGNORE INTO ShippingForm (shippingFormID, itemID, sellerID, buyerID, address, date)
+INSERT OR IGNORE INTO ShippingForm (shippingFormID, itemID, sellerID, buyerID, description, date)
 VALUES 
-    (1, 1, 1, 2, '123 Main St, City, Country', '2022-04-18'),
-    (2, 2, 1, 2, '456 Elm St, City, Country', '2022-04-19');
+    (1, 1, 1, 2, 'very good item. very fragile! transport carefully.', '2022-04-18'),
+    (2, 2, 1, 2, 'not fragile. FedEx. estimated arrival : 2025-04-19', '2022-04-19');
 
 INSERT OR IGNORE INTO Message (messageID, senderID, recipientID, content, time)
 VALUES 
