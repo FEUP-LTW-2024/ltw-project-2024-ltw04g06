@@ -139,7 +139,23 @@ require_once(__DIR__ . '/status.class.php');
   
       return $itemID;
     }
+
+    static function removeItem(PDO $db, int $itemID) {
+      $item = self::getItem($db, $itemID);
+      if($item == false) return false;
+      $preparedStmt = $db->prepare("DELETE FROM Item WHERE itemID = ?");
+      $preparedStmt->execute([$itemID]);
+  
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
   }
+
+
 
   
 

@@ -180,14 +180,18 @@ $msgs = Message::getUserMessages($db,2,1);
     echo "Edited email! ". $user->email . "<br>";
   }
     else echo "DIDNT edit email. <br>";
-*/
+
   $edited = User::editPassword($db, 1, "adeus123","adeus123", "adeus123");
   if($edited){
     $user = User::getUser($db, 1);
     echo "Edited password! ". $user->password . "<br>";
   }
     else echo "DIDNT edit password. <br>";
+*/
 
 
+$removeItem = Item::removeItem($db, 1);
+if($removeItem) echo "Item Removed <br>";
+else echo "Item wasnt removed";
 
 ?>
