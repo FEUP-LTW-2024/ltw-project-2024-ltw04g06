@@ -8,8 +8,6 @@
 	$db = getDatabaseConnection();
     $session = new Session();
 
-    
-    // Check if the user is logged in ( para já como nao temos conexao com o sign in e msgs isto vai ficar comentado)
     if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;
