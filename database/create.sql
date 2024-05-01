@@ -13,23 +13,23 @@ DROP TABLE IF EXISTS Size;
 DROP TABLE IF EXISTS Condition;
 
 CREATE TABLE Status (
-    statusID INT PRIMARY KEY,
+    statusID INTEGER PRIMARY KEY AUTOINCREMENT,
     date TEXT,
     name VARCHAR(255)
 );
 
 CREATE TABLE Category (
-    categoryID INT PRIMARY KEY,
+    categoryID INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255)
 );
 
 CREATE TABLE Size (
-    sizeID INT PRIMARY KEY,
+    sizeID INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255)
 );
 
 CREATE TABLE Condition (
-    conditionID INT PRIMARY KEY,
+    conditionID INTEGER PRIMARY KEY AUTOINCREMENT,
     usage VARCHAR(255)
 );
 
@@ -41,6 +41,9 @@ CREATE TABLE User (
     email VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
     profilePicture TEXT,
+    aboutMe TEXT,
+    address TEXT,
+    phoneNumber INT,
     wishlistID INT NOT NULL,
     FOREIGN KEY (wishlistID) REFERENCES Wishlist(wishlistID) ON UPDATE CASCADE ON DELETE SET NULL
 );
@@ -50,7 +53,7 @@ CREATE TABLE Wishlist (
 );
 
 CREATE TABLE Item (
-    itemID INT PRIMARY KEY,
+    itemID INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255) NOT NULL,
     sellerID INT NOT NULL,
     categoryID INT NOT NULL,
@@ -78,11 +81,11 @@ CREATE TABLE WishlistItem (
 );
 
 CREATE TABLE ShippingForm (
-    shippingFormID INT PRIMARY KEY,
+    shippingFormID INTEGER PRIMARY KEY AUTOINCREMENT,
     itemID INT,
     sellerID INT,
     buyerID INT,
-    address TEXT,
+    description TEXT,
     date TEXT,
     FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY (sellerID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE SET NULL,
@@ -98,7 +101,7 @@ CREATE TABLE UserShippingForm (
 );
 
 CREATE TABLE Message (
-    messageID INT PRIMARY KEY,
+    messageID INTEGER PRIMARY KEY AUTOINCREMENT,
     senderID INT,
     recipientID INT,
     content TEXT,

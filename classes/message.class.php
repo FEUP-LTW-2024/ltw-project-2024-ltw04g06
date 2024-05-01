@@ -18,6 +18,25 @@ declare(strict_types = 1);
       $this->time = $time;
     }
 
+    static function getMessage(PDO $db, int $messageID) {
+      $preparedStmt = $db->prepare( 'SELECT * FROM Message WHERE messageID = ?');
+      $preparedStmt->execute(array($messageID));
+      $message = $preparedStmt->fetch();
+
+      if (!$message) {
+        throw new Exception("Message not found with ID: $messageID");
+        return null;
+    }
+      return new Message(
+        $message['messageID'],
+        $message['senderID'],
+        $message['recipientID'],
+        $message['content'],
+        $message['time'],
+      );
+
+    }
+
 
     /*Gives array of users that a certain user has messages with*/ 
     static function getUserMessageContacts(PDO $db, int $userID) { 
@@ -53,9 +72,46 @@ declare(strict_types = 1);
       }
       if (empty($msgs)) {
         throw new Exception('No messages found between the users.');
+      }
+        return $msgs;
     }
-      return $msgs;
-  }
+
+    static function addToMessage(PDO $db, int $senderID, int $recipientID, string $content){ 
+      $timeZone = new DateTimeZone('Europe/Lisbon');
+      $dateTime = new DateTime('now', $timeZone);
+      $time = $dateTime->format('Y-m-d H:i:s');
+      
+      $preparedStmt = $db->prepare("INSERT INTO Message( senderID, recipientID, content, time ) VALUES ( ?, ?, ?, ?)");
+      if(!$preparedStmt->execute([$senderID, $recipientID, $content, $time])) {
+        return false;
+      }
+      $messageID = $db->lastInsertId();
+
+      return $messageID;
+    }
+
+
+    static function addMessage(PDO $db, int $senderID, int $recipientID, string $content){ // VERIFICAR O QUE PASSA AQUI NO CONTENT
+      $messageID = self::addToMessage($db, $senderID, $recipientID, $content);
+
+      $preparedStmt = $db->prepare("INSERT INTO MessageUser(messageID, userID) VALUES (?, ?)");
+      if (!$preparedStmt->execute([$messageID, $senderID])) {
+          return false;
+      }
+      
+      $preparedStmt = $db->prepare("INSERT INTO MessageUser(messageID, userID) VALUES (?, ?)");
+      if (!$preparedStmt->execute([$messageID, $recipientID])) {
+          return false;
+      }
+
+      return $messageID;
+    }
+
+
+
+
+
+
 }
 
 

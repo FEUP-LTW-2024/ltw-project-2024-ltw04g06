@@ -9,8 +9,8 @@ class Session {
     }
 
     public function __construct() {
-      //session_set_cookie_params(60*60*12, '/');
-      session_set_cookie_params(10, '/');
+      session_set_cookie_params(60*60*12, '/');
+      //session_set_cookie_params(10, '/');
 
         session_start();
 
@@ -34,7 +34,7 @@ class Session {
         return isset($_SESSION['ID']) ? $_SESSION['ID'] : null;    
       }
 
-      public function setId(int $id) {
+      public function setID(int $id) {
         $_SESSION['ID'] = $id;
       }
 

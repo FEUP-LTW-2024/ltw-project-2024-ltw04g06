@@ -22,15 +22,14 @@ body{
             display: flex;
             flex-direction: row;
             img{
-                margin: 1em;
                 border-radius: 50%;
                 width: 2em;
             }
         }
         .foto{
-            height: 10em;
+            height: 13em;
         }
-        h4{
+        .price{
             color: #2E6963;
         }
     }
