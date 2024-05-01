@@ -8,7 +8,7 @@
 <?php } ?>
 
 <?php function sellItemForm(){ ?>
-<form action="itemActive.php" method="post">
+ <form action="/../actions/action_add_item.php" method="post">
     <div class="form">
         <div class="left-column">
             <div class="title">
