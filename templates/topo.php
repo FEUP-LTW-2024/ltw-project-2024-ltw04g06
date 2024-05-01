@@ -18,7 +18,7 @@
             </div>
             <h3><i class="fa-regular fa-bell"></i></h3> 
             <h3><a href="/../pages/message.php"><i class="fa-regular fa-envelope"></i></a></h3> 
-            <h3><i class="fa-regular fa-heart"></i></h3>
+            <h3><a href="/../pages/wishlist.php"><i class="fa-regular fa-heart"></i></h3>
             <button class="carrinho"><i class="fa-solid fa-cart-shopping"></i></button>
             <h3><a href="">Sell an item</a></h3>
             <div class="avatar">
