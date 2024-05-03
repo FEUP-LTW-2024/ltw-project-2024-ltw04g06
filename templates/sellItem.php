@@ -1,13 +1,14 @@
 <?php function displaySellItem(){ ?>
     <head>
         <link rel="stylesheet" href="/../css/sellItem.css">
+        <script src="/../js/sellItem.js"></script>
     </head>
     <main>
          <p>Sell an item</p>
 <?php } ?>
 
 <?php function sellItemForm(){ ?>
-<form action="itemActive.php" method="post">
+ <form action="/../actions/action_add_item.php" method="post">
     <div class="form">
         <div class="left-column">
             <div class="title">
@@ -18,7 +19,8 @@
                 <div class="quadrado">
                     Load photo
                 </div>
-                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto">
+                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="exibirImagem(this)">
+                <img id="imagemExibida" src="#" alt="Minha Imagem" style="display: none;">
             </label>                
         </div>
         <div class="right-column">

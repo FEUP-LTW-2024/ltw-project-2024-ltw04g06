@@ -83,6 +83,10 @@ input[type="text"] {
     margin-bottom: 10px;
 }
 
+.brand input, .model input{
+    border: 1px solid #D19F9D;
+}
+
 .title input{
     padding-right: 30px; /*size of box*/
 }
@@ -119,11 +123,11 @@ label[for="description"] + input {
 .size2 label {
     display: inline-block; 
     cursor: pointer; 
-    color: var(--bordeaux);
+    color: #D19F9D;
 }
 
 .size2 label:active{
-    color:#000;
+    color:var(--bordeaux);
     background-color: var(--backgroundColor);
 }
 
