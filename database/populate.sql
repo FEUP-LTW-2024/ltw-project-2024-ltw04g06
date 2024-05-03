@@ -13,8 +13,8 @@ VALUES
 
 INSERT OR IGNORE INTO Item (itemID,name, sellerID, categoryID, brand, model, sizeID, conditionID, description, price, images, statusID)
 VALUES 
-    (1,'Used Unicorn Shirt', 1, 1, 'Gucci', NULL, 6, 3, 'Cool shirt! :D', 9999999.99, 'images/unicorn_dab_shirt.png', 1),
-    (2,'Vintage Plushies', 1, 2, 'Lacoste', NULL, 0, 1, '  Hello! I am selling 5 vintage plushies from 1914 very good, very good condition, very good shape, very good price.', 2000.00, 'images/plushies_0.png,images/plushies_1.png,images/plushies_2.png', 1),
+    (1,'Used Unicorn Shirt', 1, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 'images/unicorn_dab_shirt.png', 1),
+    (2,'Vintage Plushies', 1, 2, 'Lacoste', '', 0, 1, '  Hello! I am selling 5 vintage plushies from 1914 very good, very good condition, very good shape, very good price.', 2000.00, 'images/plushies_0.png,images/plushies_1.png,images/plushies_2.png', 1),
     (3,'', 2, 2, 'Brand C', 'Model Z', 3, 3, 'Description of item 3', 300.00, 'image_url_7,image_url_8,image_url_9', 2);
 
 INSERT OR IGNORE INTO ShippingForm (shippingFormID, itemID, sellerID, buyerID, description, date)

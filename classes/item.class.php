@@ -19,7 +19,7 @@ require_once(__DIR__ . '/status.class.php');
     public string $description;
     public string $images;
 
-    public function __construct(int $itemID,string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, int $statusID, float $price, string $brand, string $description, string $images) {
+    public function __construct(int $itemID,string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, int $statusID, float $price, string $brand, string $model, string $description, string $images) {
       $this->itemID = $itemID;
       $this->name = $name;
       $this->sellerID = $sellerID;
@@ -29,6 +29,7 @@ require_once(__DIR__ . '/status.class.php');
       $this->statusID = $statusID;
       $this->price = $price;
       $this->brand = $brand;
+      $this->model = $model;
       $this->description = $description;
       $this->images = $images;
     }
@@ -52,6 +53,7 @@ require_once(__DIR__ . '/status.class.php');
         $item['statusID'],
         $item['price'],
         $item['brand'],
+        $item['model'],
         $item['description'],
         $item['images'],
       );
@@ -68,7 +70,7 @@ require_once(__DIR__ . '/status.class.php');
 				$items[] = $item;
 			}
       if (empty($items)) {
-				throw new Exception("Wishlist not found with ID: $wishlistID");
+				//throw new Exception("Wishlist not found with ID: $wishlistID");
 				return null;
 			}
 			return $items;
@@ -89,6 +91,7 @@ require_once(__DIR__ . '/status.class.php');
           $item['statusID'],
           $item['price'],
           $item['brand'],
+          $item['model'],
           $item['description'],
           $item['images'],
         );

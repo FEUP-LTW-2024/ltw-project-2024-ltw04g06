@@ -46,6 +46,19 @@ const elementToToggle = document.getElementById('elementToToggle');
         xhttp.open("GET", "/../actions/load_setting.php?type=" + settingType, true);
         xhttp.send();
     }
+    document.getElementById('condition').addEventListener('change', ()=>{
+        var selectedCondition = document.getElementById('condition').value;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    document.getElementById('prodShow').innerHTML = xhr.responseText;
+                }
+            }
+        };
+        xhr.open('GET', '/../actions/action_activeOrSold.php?condition=' + selectedCondition, true);
+        xhr.send();
+    })
     
 });
 
