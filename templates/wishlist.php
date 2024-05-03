@@ -1,90 +1,45 @@
-<?php function displaySellItem(){ ?>
+<?php function createWishlist(){ ?>
     <head>
-        <link rel="stylesheet" href="/../css/sellItem.css">
-        <script src="/../js/sellItem.js"></script>
+        <link rel="stylesheet" href="/../css/wishlist.css">
     </head>
     <main>
-         <p>Sell an item</p>
+         <p>Wishlist</p>
 <?php } ?>
 
-<?php function sellItemForm(){ ?>
- <form action="/../actions/action_add_item.php" method="post">
-    <div class="form">
-        <div class="left-column">
-            <div class="title">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+<?php function wishlistDisplay(){ ?>
+    <body>
+        <div class="images">
+            <div class="image">
+                <img src="/../images/leetcode.png" alt="Imagem 1">
             </div>
-            <label for="foto" class="foto-label">
-                <div class="quadrado">
-                    Load photo
-                </div>
-                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="exibirImagem(this)">
-                <img id="imagemExibida" src="#" alt="Minha Imagem" style="display: none;">
-            </label>                
-        </div>
-        <div class="right-column">
-            <div class="description">
-                <label for="description">Description</label>
-                <input type="text" name="description">
+            <div class="image">
+                <img src="/../images/leetcode.png" alt="Imagem 2">
             </div>
-            <div class="brand">
-                <label for="brand">Brand</label>
-                <input type="text" name="brand">
+            <div class="image">
+                <img src="/../images/plushies_0.png" alt="Imagem 3">
             </div>
-            <div class="model">
-                <label for="model">Model</label>
-                <input type="text" name="model">
+
+            <div class="image">
+                <img src="/../images/profilePictures/pp1.jpg" alt="Imagem 4">
             </div>
-            <div class="size">
-                <label for="size">Size</label>
-                <div class="size2">
-                <label for="xs">
-                    <input type="radio" id="xs" name="sizes" value="XS"> XS 
-                </label> 
-                <label for="s">
-                    <input type="radio" id="s" name="sizes" value="S"> S 
-                </label> 
-                <label for="m">
-                    <input type="radio" id="m" name="sizes" value="M"> M 
-                </label>
-                <label for="l">
-                    <input type="radio" id="l" name="sizes" value="L"> L 
-                </label>
-                <label for="xl">
-                    <input type="radio" id="xl" name="sizes" value="XL"> XL 
-                </label>
-                <label for="xxl">
-                    <input type="radio" id="xxl" name="sizes" value="XXL"> XXL 
-                </label>
-                </div>
+            <div class="image">
+                <img src="/../images/plushies_1.png" alt="Imagem 5">
             </div>
-            <div class="condition">
-                <label for="condition">Condition</label>
-                <select name="condition">
-                    <option value="not used">Not used</option>
-                    <option value="barely used" selected>Barely used</option>
-                    <option value="used">Used</option>
-                    <option value="very used">Very used</option>
-                </select>
+            <div class="image">
+                <img src="/../images/plushies_2.png" alt="Imagem 6">
             </div>
-            <div class="category">
-                <label for="category">Category</label>
-                <select name="category">
-                    <option value="clothes">Clothes</option>
-                    <option value="acessories">Acessories</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="toys">Toys</option>
-                </select>
+    
+            <div class="image">
+                <img src="/../images/plushies_0.png" alt="Imagem 7">
             </div>
-            <div class="price">
-                <label for="price">Price</label>
-                <input type="text" name="price">
+            <div class="image">
+                <img src="/../images/plushies_1.png" alt="Imagem 8">
+            </div>
+            <div class="image">
+                <img src="/../images/plushies_0.png" alt="Imagem 9">
             </div>
         </div>
-    </div>        
-    <input type="submit" class="submitButton" value="Continue">
-    </form>
+    </body>
+    </html>    
 </main>
 <?php } ?>

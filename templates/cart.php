@@ -4,7 +4,7 @@
         <script src="/../js/sellItem.js"></script>
     </head>
     <main>
-         <p>Sell an item</p>
+         <p>Cart</p>
 <?php } ?>
 
 <?php function sellItemForm(){ ?>
