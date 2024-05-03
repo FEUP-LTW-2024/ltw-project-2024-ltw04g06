@@ -1,15 +1,22 @@
 
-INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID)
+INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID,shoppingCartID)
 VALUES 
 
-    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg','sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1),
-    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2),
-    (3, 'Toze', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou o Toze!', 'rua dos alecrins, 8005-332,Portugal',910000019, 2);
+    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg','sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1, 1),
+    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2, 2),
+    (3, 'Toze', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou o Toze!', 'rua dos alecrins, 8005-332,Portugal',910000019, 3, 3);
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 
     (1),
-    (2);
+    (2),
+    (3);
+
+INSERT OR IGNORE INTO ShoppingCart (shoppingCartID)
+VALUES 
+    (1),
+    (2),
+    (3);
 
 INSERT OR IGNORE INTO Item (itemID,name, sellerID, categoryID, brand, model, sizeID, conditionID, description, price, images, statusID)
 VALUES 
@@ -73,7 +80,14 @@ INSERT OR IGNORE INTO WishlistItem (wishlistID, itemID)
 VALUES 
     (1, 1),
     (1, 2),
-    (2, 3);
+    (2, 3),
+    (3, 3);
+
+INSERT OR IGNORE INTO ShoppingCartItem (shoppingCartID, itemID)
+VALUES 
+    (1, 1),
+    (2, 2),
+    (3, 3);
 
 INSERT OR IGNORE INTO UserShippingForm (userID, shippingFormID)
  VALUES 

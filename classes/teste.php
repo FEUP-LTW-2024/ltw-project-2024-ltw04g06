@@ -191,10 +191,37 @@ $msgs = Message::getUserMessages($db,2,1);
 $removeItem = Item::removeItem($db, 1);
 if($removeItem) echo "Item Removed <br>";
 else echo "Item wasnt removed";
-*/
+
 
 $removeUser = User::removeUser($db,2);
 if($removeUser) echo "Removed <br>";
-else echo "Not Removed";
+else echo "Not Removed";*/
+
+
+
+
+$items = User::getUserShoppingCart($db, 1);
+foreach($items as $item) {
+  echo "Item ID: " . $item->name . "<br>";
+}
+
+$itemID = User::addItemUserShoppingCart($db,1,3);
+if($itemID!= false){echo "ADD SUCCESSFUL <br>";}
+
+$items = User::getUserShoppingCart($db, 1);
+foreach($items as $item) {
+  echo "Item ID: " . $item->itemID . "<br>";
+}
+
+
+$items = User::remItemUserShoppingCart($db, 1, 3);
+if($items){echo "REMOVE SUCCESSFUL <br>";}
+
+$items = User::getUserShoppingCart($db, 1);
+foreach($items as $item) {
+  echo "Item ID: " . $item->itemID . "<br>";
+}
+
+
 
 ?>

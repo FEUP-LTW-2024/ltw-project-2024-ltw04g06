@@ -45,12 +45,18 @@ CREATE TABLE User (
     address TEXT,
     phoneNumber INT,
     wishlistID INT NOT NULL,
+    shoppingCartID INT NOT NULL,
     FOREIGN KEY (wishlistID) REFERENCES Wishlist(wishlistID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 CREATE TABLE Wishlist (
     wishlistID INTEGER PRIMARY KEY AUTOINCREMENT
 );
+
+CREATE TABLE ShoppingCart (
+    shoppingCartID INTEGER PRIMARY KEY AUTOINCREMENT
+);
+
 
 CREATE TABLE Item (
     itemID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -77,6 +83,14 @@ CREATE TABLE WishlistItem (
     itemID INT,
     PRIMARY KEY (wishlistID, itemID),
     FOREIGN KEY (wishlistID) REFERENCES wishlist(wishlistID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE ShoppingCartItem (
+    shoppingCartID INT,
+    itemID INT,
+    PRIMARY KEY (shoppingCartID, itemID),
+    FOREIGN KEY (shoppingCartID) REFERENCES ShoppingCart(shoppingCartID) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -126,6 +140,12 @@ BEGIN
     DELETE FROM WishlistItem WHERE itemID = OLD.itemID;
 END;
 
+CREATE TRIGGER delete_from_shoppingCartItem
+AFTER DELETE ON Item
+FOR EACH ROW
+BEGIN
+    DELETE FROM ShoppingCartItem WHERE itemID = OLD.itemID;
+END;
 
 
 -- Triggers for user deletion
@@ -134,6 +154,12 @@ AFTER DELETE ON User
 FOR EACH ROW
 BEGIN
     DELETE FROM Wishlist WHERE wishlistID = OLD.wishlistID;
+END;
+CREATE TRIGGER delete_from_shoppingCart
+AFTER DELETE ON User
+FOR EACH ROW
+BEGIN
+    DELETE FROM ShoppingCart WHERE shoppingCartID = OLD.shoppingCartID;
 END;
 
 CREATE TRIGGER delete_from_shippingform_user

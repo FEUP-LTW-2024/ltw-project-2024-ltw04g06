@@ -2,6 +2,7 @@
 
 declare(strict_types = 1);
 require_once(__DIR__ . '/wishlist.class.php');
+require_once(__DIR__ . '/shoppingCart.class.php');
 
   class User {
     public int $userID;
@@ -15,9 +16,10 @@ require_once(__DIR__ . '/wishlist.class.php');
     public string $address;
     public int $phoneNumber;
     public int $wishlistID;
+    public int $shoppingCartID;
 
 
-    public function __construct(int $userID, string $username, string $password, string $name, string $email, string $role, string $profilePicture,  string $aboutMe,  string $address, int $phoneNumber, int $wishlistID) {
+    public function __construct(int $userID, string $username, string $password, string $name, string $email, string $role, string $profilePicture,  string $aboutMe,  string $address, int $phoneNumber, int $wishlistID, int $shoppingCartID) {
       $this->userID = $userID;
       $this->username = $username;
       $this->password = $password;
@@ -29,6 +31,8 @@ require_once(__DIR__ . '/wishlist.class.php');
       $this->address = $address;
       $this->phoneNumber = $phoneNumber;
       $this->wishlistID = $wishlistID;
+      $this->shoppingCartID = $shoppingCartID;
+
     }
 
 
@@ -56,6 +60,7 @@ require_once(__DIR__ . '/wishlist.class.php');
         $user['address'],
         $user['phoneNumber'],
         $user['wishlistID'],
+        $user['shoppingCartID'],
       );
     }
 
@@ -81,6 +86,7 @@ require_once(__DIR__ . '/wishlist.class.php');
         $user['address'],
         $user['phoneNumber'],
         $user['wishlistID'],
+        $user['shoppingCartID'],
       );
     }
 
@@ -92,6 +98,16 @@ require_once(__DIR__ . '/wishlist.class.php');
       }
       return null;
     }
+
+    static function getUserShoppingCart(PDO $db, int $userID) {
+      $user = self::getUser($db, $userID);
+      if($user!= null){
+        $shoppingCart = ShoppingCart::getShoppingCartItems($db, $user->shoppingCartID);
+        return $shoppingCart;
+      }
+      return null;
+    }
+
 
 
 
@@ -141,6 +157,14 @@ require_once(__DIR__ . '/wishlist.class.php');
     }
 
 
+    static function addItemUserShoppingCart(PDO $db, int $userID, int $itemID) {
+      $user = self::getUser($db, $userID);
+      $shoppingCartID = $user->shoppingCartID;
+      return ShoppingCart::addItemToShoppingCart($db, $shoppingCartID, $itemID);
+    }
+
+
+
     static function addUser (PDO $db, string $username, string $email, string $password)  {
       if(self::existingUser($db, $username) or self::existingUser($db, $email)) { return false; }
 
@@ -148,9 +172,14 @@ require_once(__DIR__ . '/wishlist.class.php');
       $preparedStmt->execute();
 
       $wishlistID = $db->lastInsertId();
+
+      $preparedStmt = $db->prepare("INSERT INTO ShoppingCart (shoppingCartID) VALUES (NULL)");
+      $preparedStmt->execute();
+
+      $shoppingCartID = $db->lastInsertId();
       
-      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]), '', $email, 'User', 'images/profilePictures/default','','',0, $wishlistID]);
+      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID, shoppingCartID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]), '', $email, 'User', 'images/profilePictures/default','','',0, $wishlistID, $shoppingCartID]);
       $userID = $db->lastInsertId();
 
   
@@ -280,16 +309,21 @@ require_once(__DIR__ . '/wishlist.class.php');
       }
   }
   
-
-
-
-
     static function remItemUserWishlist(PDO $db, int $userID, int $itemID) {
       $user = self::getUser($db, $userID);
       $wishlistID = $user->wishlistID;
       return Wishlist::remItemFromWishlist($db, $wishlistID, $itemID);
     }
+
+
+    static function remItemUserShoppingCart(PDO $db, int $userID, int $itemID) {
+      $user = self::getUser($db, $userID);
+      $shoppingCartID = $user->shoppingCartID;
+      return ShoppingCart::remItemFromShoppingCart($db, $shoppingCartID, $itemID);
+    }
   }
   
+
+
 
 ?>
