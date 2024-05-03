@@ -199,7 +199,7 @@ else echo "Not Removed";*/
 
 
 
-
+/*
 $items = User::getUserShoppingCart($db, 1);
 foreach($items as $item) {
   echo "Item ID: " . $item->name . "<br>";
@@ -221,6 +221,12 @@ $items = User::getUserShoppingCart($db, 1);
 foreach($items as $item) {
   echo "Item ID: " . $item->itemID . "<br>";
 }
+
+*/
+
+
+$status = Item::getItemStatus($db, 3);
+echo "STATUS: ". $status. "<br>";
 
 
 

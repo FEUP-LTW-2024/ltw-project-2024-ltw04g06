@@ -111,7 +111,17 @@ require_once(__DIR__ . '/status.class.php');
         throw new Exception("Seller not found for itemID: $itemID");
         return false;
       }
-      return  User::getUser($db, $user['userID']);;
+      return  User::getUser($db, $user['userID']);
+    }
+
+    static function getItemStatus(PDO $db, int $itemID){
+      $item = Item::getItem($db, $itemID);
+      $status = Status::getStatus($db, $item->statusID);
+      if(!$status) {
+        throw new Exception("Status not found for itemID: $itemID");
+        return false;
+      }
+      return $status->name;
     }
 
         
