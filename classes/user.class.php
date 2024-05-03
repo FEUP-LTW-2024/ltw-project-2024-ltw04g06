@@ -264,6 +264,26 @@ require_once(__DIR__ . '/wishlist.class.php');
 
     /*--Remove--*/
 
+    static function removeUser(PDO $db, int $userID) {
+      $user = self::getUser($db,$userID);
+      if (!self::existingUser($db, $user->username)) {
+          return false;
+      }
+  
+      $preparedStmt = $db->prepare("DELETE FROM User WHERE userID = ?");
+      $preparedStmt->execute([$userID]);
+  
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+  }
+  
+
+
+
+
     static function remItemUserWishlist(PDO $db, int $userID, int $itemID) {
       $user = self::getUser($db, $userID);
       $wishlistID = $user->wishlistID;
