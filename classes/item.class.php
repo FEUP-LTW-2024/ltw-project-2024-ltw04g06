@@ -68,7 +68,7 @@ require_once(__DIR__ . '/status.class.php');
 				$items[] = $item;
 			}
       if (empty($items)) {
-				throw new Exception("Wishlist not found with ID: $wishlistID");
+				//throw new Exception("Wishlist not found with ID: $wishlistID");
 				return null;
 			}
 			return $items;
