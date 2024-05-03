@@ -8,7 +8,7 @@
 
 <?php function wishlistDisplay(){ ?>
     <body>
-        <div class="images">
+        <div class="all-images">
             <div class="image">
                 <img src="/../images/leetcode.png" alt="Imagem 1">
             </div>
