@@ -76,28 +76,53 @@ require_once(__DIR__ . '/status.class.php');
 			return $items;
     }
 
-    static function getFilteredItems(PDO $db) { // adicionar nos parametros os filtros
-      $preparedStmt = $db->prepare( 'SELECT * FROM Item');
-      $preparedStmt->execute();
+    static function getFilteredItems(PDO $db, $categoryID, $conditionID, $minPrice, $maxPrice) {
+      $query = 'SELECT * FROM Item WHERE 1 = 1';
+      $params = [];
+
+  
+      if ($categoryID !== null) {
+          $query .= ' AND categoryID = ?';
+          $params[] = $categoryID;
+      }
+  
+      if ($conditionID !== null) {
+          $query .= ' AND conditionID = ?';
+          $params[] = $conditionID;
+      }
+  
+      if ($minPrice !== null) {
+          $query .= ' AND price > ?';
+          $params[] = $minPrice;
+      }
+      
+      if ($maxPrice !== null) {
+          $query .= ' AND price < ?';
+          $params[] = $maxPrice;
+      }
+  
+      $preparedStmt = $db->prepare($query);
+      $preparedStmt->execute($params);
       $items = array();
-      while ($item = $preparedStmt->fetch()){
-        $items[] = new Item (
-          $item['itemID'],
-          $item['name'],
-          $item['sellerID'],
-          $item['categoryID'],
-          $item['sizeID'],
-          $item['conditionID'],
-          $item['statusID'],
-          $item['price'],
-          $item['brand'],
-          $item['model'],
-          $item['description'],
-          $item['images'],
-        );
+      while ($item = $preparedStmt->fetch()) {
+          $items[] = new Item(
+              $item['itemID'],
+              $item['name'],
+              $item['sellerID'],
+              $item['categoryID'],
+              $item['sizeID'],
+              $item['conditionID'],
+              $item['statusID'],
+              $item['price'],
+              $item['brand'],
+              $item['model'],
+              $item['description'],
+              $item['images']
+          );
       }
       return $items;
-    }
+  }
+  
 
 
     static function getItemSeller(PDO $db, int $itemID) {
