@@ -222,13 +222,20 @@ foreach($items as $item) {
   echo "Item ID: " . $item->itemID . "<br>";
 }
 
-*/
+
 
 
 $status = Item::getItemStatus($db, 3);
 echo "STATUS: ". $status. "<br>";
 
 $items = Item::getFilteredItems($db, 1, 3, 0, 99999999.99);
+foreach($items as $item) {
+  echo "Item ID: " . $item->itemID . "<br>";
+}
+
+*/
+
+$items = Item::getItemsByName($db, 'used');
 foreach($items as $item) {
   echo "Item ID: " . $item->itemID . "<br>";
 }
