@@ -3,7 +3,7 @@ main{
     --bordeaux: #800000; 
 }
 
-p{
+p.title{
     width: 200px;
     color: var(--bordeaux);
     font-size: 30px;

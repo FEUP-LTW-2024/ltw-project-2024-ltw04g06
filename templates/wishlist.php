@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="/../css/wishlist.css">
     </head>
     <main>
-         <p>Wishlist</p>
+         <p class=title>Wishlist</p>
 <?php } ?>
 
 <?php function wishlistDisplay($wishlistItems) { ?>
@@ -22,4 +22,12 @@
     </body>
 </html>   
 </main>
+<?php } ?>
+
+<?php function emptyWishlist(){ ?>
+    <body>
+        <p class="empty">Your list is empty</p>
+    </body>
+</html>   
+</main>  
 <?php } ?>

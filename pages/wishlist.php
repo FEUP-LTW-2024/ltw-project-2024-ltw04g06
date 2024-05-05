@@ -12,5 +12,8 @@
     createWishlist();
     $wishlistID=1;
     $wishlistItems=Wishlist::getWishlistItems($db, $wishlistID);
+    if(empty($wishlistItems)){
+        emptyWishlist();
+    }
     wishlistDisplay($wishlistItems);
 ?>
