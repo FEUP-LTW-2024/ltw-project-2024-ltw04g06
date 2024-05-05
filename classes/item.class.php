@@ -167,9 +167,4 @@ require_once(__DIR__ . '/status.class.php');
     }
 
   }
-
-
-
-  
-
 ?>
