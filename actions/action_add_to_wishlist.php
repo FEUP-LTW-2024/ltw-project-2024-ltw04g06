@@ -33,3 +33,4 @@
     else {
         echo "Invalid request.";
     }
+?>

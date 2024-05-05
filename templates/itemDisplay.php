@@ -20,7 +20,8 @@
             
             <form action="/../actions/action_add_to_wishlist.php" method="post">
             <input type="hidden" name="itemIDD" value="<?=$item->itemID?>">
-            <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
+            <p><?=$item->name?>
+            <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button></p>
             </form>
             
             <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i></h4>

@@ -34,3 +34,11 @@ body{
         }
     }
 }
+
+button.wishlist {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    cursor: pointer;
+}
