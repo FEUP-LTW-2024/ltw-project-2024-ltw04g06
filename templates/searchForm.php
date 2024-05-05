@@ -10,6 +10,9 @@
     <form action="/../pages/home.php" method="post">
         <div class="category">
             <h3>Category</h3>
+                
+                <input type="radio" id="none" name="category" value="NULL" checked>
+                <label for="none" id="none-label">No Filter</label>
 
                 <input type="radio" id="clothing" name="category" value="Clothing"> 
                 <label for="clothing">Clothing</label>
@@ -41,8 +44,9 @@
             <label>Min: <input type="number" name="min"></label>
             <br>
             <label>Max: <input type="number" name="max"></label>
+            <br>
+            <button type="submit">Search</button>
         </div>
-        <button type="submit">P</button>
     </form>
 </div>
 <?php } ?>

@@ -83,7 +83,7 @@ require_once(__DIR__ . '/status.class.php');
       $params = [];
 
   
-      if ($category != NULL ) {
+      if ($category != NULL && $category != "NULL") {
           $query .= ' AND Category.name = ?';
           $params[] = $category;
       }
