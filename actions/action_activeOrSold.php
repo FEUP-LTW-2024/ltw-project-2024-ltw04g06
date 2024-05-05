@@ -17,6 +17,8 @@ echo '<div class="mais">+</div>';
 echo '</a>';
 
 foreach ($Items as $item) {
+    $status = Item::getItemStatus($db, $item->itemID);
+    if ($status !=  $selectedCondition) continue;
     echo '<div class="product">';
     echo '<img class="foto" src="' . $item->images . '" alt="">';
     echo '<p>' . $selectedCondition . '</p>';

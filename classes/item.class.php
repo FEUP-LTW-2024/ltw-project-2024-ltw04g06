@@ -76,28 +76,54 @@ require_once(__DIR__ . '/status.class.php');
 			return $items;
     }
 
-    static function getFilteredItems(PDO $db) { // adicionar nos parametros os filtros
-      $preparedStmt = $db->prepare( 'SELECT * FROM Item');
-      $preparedStmt->execute();
+    static function getFilteredItems(PDO $db, $category, $condition, $minPrice, $maxPrice) {
+      $query = 'SELECT * FROM Item join Category on Item.categoryID = Category.categoryID
+      join Condition on Item.conditionID = Condition.conditionID
+       WHERE 1 = 1';
+      $params = [];
+
+  
+      if ($category != NULL ) {
+          $query .= ' AND Category.name = ?';
+          $params[] = $category;
+      }
+  
+      if ($condition != NULL && $condition != "NULL") {
+          $query .= ' AND Condition.usage = ?';
+          $params[] = $condition;
+      }
+  
+      if ($minPrice != NULL) {
+          $query .= ' AND price > ?';
+          $params[] = $minPrice;
+      }
+      
+      if ($maxPrice != NULL) {
+          $query .= ' AND price < ?';
+          $params[] = $maxPrice;
+      }
+  
+      $preparedStmt = $db->prepare($query);
+      $preparedStmt->execute($params);
       $items = array();
-      while ($item = $preparedStmt->fetch()){
-        $items[] = new Item (
-          $item['itemID'],
-          $item['name'],
-          $item['sellerID'],
-          $item['categoryID'],
-          $item['sizeID'],
-          $item['conditionID'],
-          $item['statusID'],
-          $item['price'],
-          $item['brand'],
-          $item['model'],
-          $item['description'],
-          $item['images'],
-        );
+      while ($item = $preparedStmt->fetch()) {
+          $items[] = new Item(
+              $item['itemID'],
+              $item['name'],
+              $item['sellerID'],
+              $item['categoryID'],
+              $item['sizeID'],
+              $item['conditionID'],
+              $item['statusID'],
+              $item['price'],
+              $item['brand'],
+              $item['model'],
+              $item['description'],
+              $item['images']
+          );
       }
       return $items;
-    }
+  }
 
 
     static function getItemSeller(PDO $db, int $itemID) {
@@ -111,7 +137,17 @@ require_once(__DIR__ . '/status.class.php');
         throw new Exception("Seller not found for itemID: $itemID");
         return false;
       }
-      return  User::getUser($db, $user['userID']);;
+      return  User::getUser($db, $user['userID']);
+    }
+
+    static function getItemStatus(PDO $db, int $itemID){
+      $item = Item::getItem($db, $itemID);
+      $status = Status::getStatus($db, $item->statusID);
+      if(!$status) {
+        throw new Exception("Status not found for itemID: $itemID");
+        return false;
+      }
+      return $status->name;
     }
 
         

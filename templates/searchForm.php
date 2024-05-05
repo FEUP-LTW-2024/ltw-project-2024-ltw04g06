@@ -7,13 +7,14 @@
     <header>
         <h3>Filter by:</h3>
     </header>
-    <form action="">
+    <form action="/../pages/home.php" method="post">
         <div class="category">
             <h3>Category</h3>
-                <input type="radio" id="clothing" name="category" value="Clothing">
+
+                <input type="radio" id="clothing" name="category" value="Clothing"> 
                 <label for="clothing">Clothing</label>
                 
-                <input type="radio" id="accessories" name="category" value="Accessories">
+                <input type="radio" id="accessories" name="category" value='Accessories'>
                 <label for="accessories">Accessories</label>
                 
                 <input type="radio" id="electronics" name="category" value="Electronics">
@@ -28,9 +29,10 @@
         <div class="condicion">
             <h3>Condition</h3>
             <select name="condition">
+                <option value="NULL" selected>No filter</option>
                 <option value="not used">Not used</option>
-                <option value="barely used" selected>Barely used</option>
-                <option value="used">Used</option>
+                <option value="barely used">Barely used</option>
+                <option value='Used'>Used</option>
                 <option value="very used">Very used</option>
             </select>
         </div>
@@ -39,8 +41,8 @@
             <label>Min: <input type="number" name="min"></label>
             <br>
             <label>Max: <input type="number" name="max"></label>
-            
         </div>
+        <button type="submit">P</button>
     </form>
 </div>
 <?php } ?>
