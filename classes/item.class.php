@@ -58,6 +58,18 @@ require_once(__DIR__ . '/status.class.php');
         $item['images'],
       );
     }
+    static function getItemsByName(PDO $db, string $searchString) {
+      $preparedStmt = $db->prepare("SELECT * FROM Item WHERE name LIKE ?");
+      $preparedStmt->execute(["$searchString%"]);
+      $items = [];
+  
+      while ($item = $preparedStmt->fetch()) {
+          $items[] = self::getItem($db, $item['itemID']);
+      }
+  
+      return $items;
+  }
+  
 
     static function getUserItems(PDO $db, int $sellerID) {
       $preparedStmt = $db->prepare( 'SELECT itemID FROM Item WHERE sellerID = ?');
@@ -66,11 +78,10 @@ require_once(__DIR__ . '/status.class.php');
 
       while ($itemID = $preparedStmt->fetch(PDO::FETCH_ASSOC)) {
 				$ID = $itemID['itemID'];
-				$item = Item::getItem($db, $ID);
+				$item = self::getItem($db, $ID);
 				$items[] = $item;
 			}
       if (empty($items)) {
-				//throw new Exception("Wishlist not found with ID: $wishlistID");
 				return null;
 			}
 			return $items;
@@ -108,20 +119,7 @@ require_once(__DIR__ . '/status.class.php');
       $preparedStmt->execute($params);
       $items = array();
       while ($item = $preparedStmt->fetch()) {
-          $items[] = new Item(
-              $item['itemID'],
-              $item['name'],
-              $item['sellerID'],
-              $item['categoryID'],
-              $item['sizeID'],
-              $item['conditionID'],
-              $item['statusID'],
-              $item['price'],
-              $item['brand'],
-              $item['model'],
-              $item['description'],
-              $item['images']
-          );
+          $items[] = self::getItem($db, $item['itemID']);
       }
       return $items;
   }
