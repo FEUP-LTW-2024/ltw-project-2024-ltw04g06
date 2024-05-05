@@ -21,7 +21,6 @@ declare(strict_types = 1);
 			}
 		
 			if (empty($items)) {
-				throw new Exception("Wishlist not found with ID: $wishlistID");
 				return null;
 			}
 			return $items;
