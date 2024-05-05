@@ -99,6 +99,7 @@ require_once(__DIR__ . '/status.class.php');
       }
       
       if ($maxPrice != NULL) {
+
           $query .= ' AND price < ?';
           $params[] = $maxPrice;
       }
@@ -124,7 +125,6 @@ require_once(__DIR__ . '/status.class.php');
       }
       return $items;
   }
-
 
     static function getItemSeller(PDO $db, int $itemID) {
       $preparedStmt = $db->prepare('SELECT User.* FROM Item JOIN User ON Item.sellerID = User.userID
