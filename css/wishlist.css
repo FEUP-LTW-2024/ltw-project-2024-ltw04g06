@@ -29,3 +29,40 @@ p.title{
    /* width: 300 px;
     height: 300px;*/
 }
+
+p.empty{
+    font-size: 20px;
+    margin-left: 6.3em;
+    margin-bottom: 3em;
+}
+
+.home{
+    padding: 10px 20px;
+    background-color: #800000; 
+    color: #fff; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer; 
+    margin-left: 30%;
+}
+
+.home:hover, .remove:hover{
+    background-color: #5a0000;
+}
+
+a {
+    text-align: center; 
+}
+
+.remove{
+    padding: 5px 15px;
+    background-color: #800000; 
+    color: #fff; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer; 
+}

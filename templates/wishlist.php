@@ -11,7 +11,8 @@
         <div class="all-images">
             <?php foreach ($wishlistItems as $itemm) { ?>
                 <div class="image">
-                    <img src="<?php echo $itemm->images; ?>" alt="<?php echo $itemm->name; ?>">
+                    <img class=image src=<?='/../' . $itemm->images?> alt="<?php echo $itemm->name; ?>">
+                    <p><?=$itemm->name?></p>
                     <form action="/../actions/action_remove_from_wishlist.php" method="post">
                         <input type="hidden" name="itemIDDD" value="<?php echo $itemm->itemID; ?>">
                         <button type="submit" class="remove">Remove</button>
@@ -26,7 +27,8 @@
 
 <?php function emptyWishlist(){ ?>
     <body>
-        <p class="empty">Your list is empty</p>
+        <p class="empty">Your list is still empty :(</p>
+        <a href="home.php" class="home">Add items to wishlist</a>
     </body>
 </html>   
 </main>  
