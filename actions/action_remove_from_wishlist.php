@@ -20,18 +20,26 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(!Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
             echo "Item is not in the wishlist.";
+            $session->addMessage('error', 'Item is not in the wishlist.');
+            header('Location: /../pages/wishlist.php');
         } 
         else {
             if (Wishlist::remItemFromWishlist($db, $wishlistID, $itemID)) {
                 echo "Item removed from wishlist.";
+                $session->addMessage('success', 'Item removed from wishlist successful!');
+                header('Location: /../pages/wishlist.php');
             } 
             else {
                 echo "Failed to remove item from wishlist.";
+                $session->addMessage('error', 'Failed to remove item from wishlist.');
+                header('Location: /../pages/wishlist.php');
             }
         }
     } 
     else {
         echo "Invalid request.";
+        $session->addMessage('error', 'Invalid request.');
+        header('Location: /../pages/wishlist.php');
     }
 
 ?>
