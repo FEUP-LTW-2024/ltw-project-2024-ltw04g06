@@ -16,14 +16,18 @@
     $itemID=$_POST['itemIDD'];
     $wishlistID=1;
 
-    echo $_POST['itemIDD'];
+    /*echo $_POST['itemIDD'];*/
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
-            echo "Item is already in the wishlist.";
+           echo "Item is already in the wishlist.";
+           $session->addMessage('error', 'Item is already in the wishlist.');
+           header('Location: /../pages/home.php');
         } 
         else {
             if (Wishlist::addItemToWishlist($db, $wishlistID, $itemID)) {
-                echo "Item added to wishlist.";
+               echo "Item added to wishlist.";
+               $session->addMessage('success', 'Item added to wishlist successful!');
+               header('Location: /../pages/home.php');
             } 
             else {
                 echo "Failed to add item to wishlist.";
