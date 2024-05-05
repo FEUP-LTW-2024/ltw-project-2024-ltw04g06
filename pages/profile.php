@@ -17,5 +17,5 @@
 
     topo();
     profileEditDescript($user);
-    myItemsAnalytics($items);
+    myItemsAnalytics($db, $items);
 ?>

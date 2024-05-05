@@ -30,6 +30,17 @@
                 }
             }
         }
+        .price{
+            input{
+                width: 5em;
+            }
+            button{
+                background: var(--beige);
+                border: 1px solid var(--bordeaux);
+                border-radius: 5px;
+                height: 2em;
+            }
+        }
     }
     
 }

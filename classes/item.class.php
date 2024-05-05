@@ -76,27 +76,30 @@ require_once(__DIR__ . '/status.class.php');
 			return $items;
     }
 
-    static function getFilteredItems(PDO $db, $categoryID, $conditionID, $minPrice, $maxPrice) {
-      $query = 'SELECT * FROM Item WHERE 1 = 1';
+    static function getFilteredItems(PDO $db, $category, $condition, $minPrice, $maxPrice) {
+      $query = 'SELECT * FROM Item join Category on Item.categoryID = Category.categoryID
+      join Condition on Item.conditionID = Condition.conditionID
+       WHERE 1 = 1';
       $params = [];
 
   
-      if ($categoryID !== null) {
-          $query .= ' AND categoryID = ?';
-          $params[] = $categoryID;
+      if ($category != NULL && $category != "NULL") {
+          $query .= ' AND Category.name = ?';
+          $params[] = $category;
       }
   
-      if ($conditionID !== null) {
-          $query .= ' AND conditionID = ?';
-          $params[] = $conditionID;
+      if ($condition != NULL && $condition != "NULL") {
+          $query .= ' AND Condition.usage = ?';
+          $params[] = $condition;
       }
   
-      if ($minPrice !== null) {
+      if ($minPrice != NULL) {
           $query .= ' AND price > ?';
           $params[] = $minPrice;
       }
       
-      if ($maxPrice !== null) {
+      if ($maxPrice != NULL) {
+
           $query .= ' AND price < ?';
           $params[] = $maxPrice;
       }
@@ -122,8 +125,6 @@ require_once(__DIR__ . '/status.class.php');
       }
       return $items;
   }
-  
-
 
     static function getItemSeller(PDO $db, int $itemID) {
       $preparedStmt = $db->prepare('SELECT User.* FROM Item JOIN User ON Item.sellerID = User.userID

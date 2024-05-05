@@ -15,7 +15,7 @@
             <button>Edit profile</button>
         </div>
 <?php } ?>
-<?php function myItemsAnalytics($items){
+<?php function myItemsAnalytics($db, $items){
     ?>
     <div class="choice">
             <button><h3>My items</h3></button>
@@ -25,7 +25,7 @@
             <div class="condition">
                 <select id="condition" name="condition">
                     <option value="Sold">Sold</option>
-                    <option value="Active" selected>Active</option>
+                    <option value="Available" selected>Available</option>
                 </select>
             </div>
             <div id = "prodShow" class="products">
@@ -34,7 +34,8 @@
                 </a>
                     <?php 
                         foreach($items as $item){ 
-                            //Php condition for active
+                            $status = Item::getItemStatus($db, $item->itemID);
+                            if ($status != "Available") continue;
                             ?>
                             <div class="product" >
                                 <img class="foto" src=<?=$item->images?>alt="">
