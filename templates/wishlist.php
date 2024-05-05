@@ -6,15 +6,15 @@
          <p>Wishlist</p>
 <?php } ?>
 
-<?php function wishlistDisplay(){ ?>
+<?php function wishlistDisplay($wishlistItems) { ?>
     <body>
         <div class="all-images">
-            <?php for ($i = 1; $i <= 9; $i++) { ?>
+            <?php foreach ($wishlistItems as $itemm) { ?>
                 <div class="image">
-                    <img src="/../images/plushies_<?php echo $i % 3; ?>.png" alt="Imagem <?php echo $i; ?>">
+                    <img src="<?php echo $itemm->images; ?>" alt="<?php echo $itemm->name; ?>">
                     <form action="/../actions/action_remove_from_wishlist.php" method="post">
-                        <input type="hidden" name="itemIDDD" value="<?php echo $i; ?>"> 
-                        <button type="submit" class="remove-btn">Remove</button>
+                        <input type="hidden" name="itemIDDD" value="<?php echo $itemm->itemID; ?>">
+                        <button type="submit" class="remove">Remove</button>
                     </form>
                 </div>
             <?php } ?>
