@@ -43,7 +43,7 @@ const elementToToggle = document.getElementById('elementToToggle');
                 document.querySelector('.container').innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "/../actions/load_setting.php?type=" + settingType, true);
+        xhttp.open("GET", "/../actions/action_load_setting.php?type=" + settingType, true);
         xhttp.send();
     }
     document.getElementById('condition').addEventListener('change', ()=>{
@@ -56,7 +56,7 @@ const elementToToggle = document.getElementById('elementToToggle');
                 }
             }
         };
-        xhr.open('GET', '/../actions/action_activeOrSold.php?condition=' + selectedCondition, true);
+        xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition, true);
         xhr.send();
     })
     
