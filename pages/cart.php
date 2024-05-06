@@ -4,6 +4,6 @@
     require_once(__DIR__ . '/../templates/topo.php');
 
     topo();
-    displaySellItem();
-    sellItemForm();
+    createCart();
+    cartDisplay();
 ?>
