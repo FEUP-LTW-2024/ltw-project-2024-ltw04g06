@@ -64,32 +64,6 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       );
     }
 
-    
-    static function getUserByUsername(PDO $db, string $username) {
-      $preparedStmt = $db->prepare( 'SELECT * FROM User WHERE username = ?');
-      $preparedStmt->execute(array($username));
-      $user = $preparedStmt->fetch();
-      
-      if (!$user) {
-        throw new Exception("User not found with username: $username");
-        return false;
-    }
-      return new User(
-        $user['userID'],
-        $user['username'],
-        $user['password'],
-        $user['name'],
-        $user['email'],
-        $user['role'],
-        $user['profilePicture'],
-        $user['aboutMe'],
-        $user['address'],
-        $user['phoneNumber'],
-        $user['wishlistID'],
-        $user['shoppingCartID'],
-      );
-    }
-
     static function getUserWishlist(PDO $db, int $userID) {
       $user = self::getUser($db, $userID);
       if($user!= null){
@@ -205,6 +179,7 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       }
     }
 
+
     static function editAboutMe(PDO $db, int $userID, string $newAboutMe) {
       $user = self::getUser($db, $userID);
       if($user->aboutMe == $newAboutMe) return false;
@@ -214,9 +189,11 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       $preparedStmt->execute();
   
       if ($preparedStmt->rowCount() > 0) {
-          return array("success" => true, "message" => "About Me updated successfully for userID: $userID");
+        return true;
+         // return array("success" => true, "message" => "About Me updated successfully for userID: $userID");
       } else {
-          return array("success" => false, "message" => "Failed to update About Me for userID: $userID");
+        return false;
+         // return array("success" => false, "message" => "Failed to update About Me for userID: $userID");
       }
     }
 
@@ -284,6 +261,39 @@ require_once(__DIR__ . '/shoppingCart.class.php');
           //return array("success" => false, "message" => "Failed to change password for userID: $userID");
       }
     }
+
+
+    static function editPhoneNumber(PDO $db, int $userID, string $newPhoneNumber) {
+      $user = self::getUser($db, $userID);
+      if ($user->phoneNumber == $newPhoneNumber) {
+          return false;
+      }
+      $preparedStmt = $db->prepare("UPDATE User SET phoneNumber = :newPhoneNumber WHERE userID = :userID");
+      $preparedStmt->bindParam(':newPhoneNumber', $newPhoneNumber, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+      if ($preparedStmt->execute()) {
+          return true;
+      } else {
+          return false;
+      }
+    }
+
+    
+    static function editAddress(PDO $db, int $userID, string $newAddress) {
+      $user = self::getUser($db, $userID);
+      if ($user->address == $newAddress) {
+          return false;
+      }
+      $preparedStmt = $db->prepare("UPDATE User SET address = :newAddress WHERE userID = :userID");
+      $preparedStmt->bindParam(':newAddress', $newAddress, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+      if ($preparedStmt->execute()) {
+          return true;
+      } else {
+          return false;
+      }
+    }
+  
   
 
 

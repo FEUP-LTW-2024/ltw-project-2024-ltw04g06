@@ -149,22 +149,31 @@ require_once(__DIR__ . '/status.class.php');
     }
 
         
-    static function editItemStatus (PDO $db, int $itemID, string $name) : bool {
+    static function editItemStatus(PDO $db, int $itemID, string $name): bool {
       $item = self::getItem($db, $itemID);
       $itemStatus = Status::getStatus($db, $item->statusID);
-
-      if($itemStatus->name == $name){
-        return false;}
+  
+      if ($itemStatus->name == $name) {
+          return false;
+      }
+  
       $statusID = Status::addStatus($db, $name);
       $preparedStmt = $db->prepare("UPDATE Item SET statusID = :statusID WHERE itemID = :itemID");
       $preparedStmt->bindParam(':statusID', $statusID, PDO::PARAM_INT);
       $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
-      if ($preparedStmt->execute()) {
-        return true;
+      $preparedStmt->execute();
+  
+      if ($preparedStmt->rowCount() > 0) {
+          if ($name == "Sold") {
+              $currentTime = date('Y-m-d H:i:s');
+              ShippingForm::createShippingForm($db, $itemID, $item->sellerID, $item->buyerID, $item->description, $currentTime);
+          }
+          return true;
       } else {
           return false;
       }
-    }
+  }
+  
 
 
     static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $images)  {
