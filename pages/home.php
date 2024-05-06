@@ -15,6 +15,11 @@
     $condition = $_POST["condition"];
     $minPrice = $_POST["min"];
     $maxPrice = $_POST["max"];
+  }else if($_SERVER["REQUEST_METHOD"] == "GET"){
+    $category = $_GET["category"];
+    $condition = NULL;
+    $minPrice = NULL;
+    $maxPrice = NULL;
   }else{
     $category = NULL;
     $condition = NULL;
@@ -24,6 +29,8 @@
   
   topo();
   anuncio();
-  $items = Item::getFilteredItems($db, $category, $condition, $minPrice, $maxPrice);
+  if (isset($_POST["word"])) $items = Item::getItemsByName($db, $_POST["word"]);
+  else $items = Item::getFilteredItems($db, $category, $condition, $minPrice, $maxPrice);
   itemDisplay($items, $db);
 ?>
+

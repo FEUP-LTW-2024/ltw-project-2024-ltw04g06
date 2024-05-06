@@ -12,7 +12,7 @@
                 <h3>About me : </h3>
                 <h4><?= $user->aboutMe?></h4>
             </div>
-            <button>Edit profile</button>
+            <button ><a href="/pages/settings.php">Edit profile</a></button>
         </div>
 <?php } ?>
 <?php function myItemsAnalytics($db, $items){
