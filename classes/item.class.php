@@ -178,12 +178,8 @@ require_once(__DIR__ . '/status.class.php');
 
     static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $images)  {
       $statusID = Status::addStatus($db,"Available");
-
       $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, images ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $images]);
-      $itemID = $db->lastInsertId();
-  
-      return $itemID;
     }
 
     static function removeItem(PDO $db, int $itemID) {

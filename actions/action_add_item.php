@@ -32,9 +32,10 @@
             $description !== false && $price !== false && $images !== false) {
             try {
                 echo "Item added.";
-                $itemID = Item::addItem($db, $name, $sellerID, $categoryID, $sizeID, $conditionID, $brand, $model, $description, $price, $images);
+                Item::addItem($db, $name, $sellerID, $categoryID, $sizeID, $conditionID, $brand, $model, $description, $price, $images);
                 $session->addMessage('success', 'O item foi adicionado com sucesso!');
-                header('Location: /../pages/sellItem.php?id=' . $itemID);
+                header('Location: /../pages/home.php');
+                
                 exit;
             } catch (Exception $e) {
                 $session->addMessage('error', 'Erro ao adicionar o item: ' . $e->getMessage());

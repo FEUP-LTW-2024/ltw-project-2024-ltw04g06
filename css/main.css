@@ -41,13 +41,19 @@ body{
             width: 15%;
             color: var(--beige);
         }
-        input{
+        form{
+          display: flex;
+          flex-direction: row;
             width: 80%;
-            outline: none;
+            input{
+              width: 100%;
+              height: 100%;
+            }
+            .pesquisa{
+              background: var(--bordeaux);
+          }
         }
-        .pesquisa{
-            background: var(--bordeaux);
-        }
+        
     }
     .carrinho{
         height: 2em;

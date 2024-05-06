@@ -13,8 +13,9 @@
                 <div id="elementToToggle" class="hidden">
                     <?php searchForm() ?>
                 </div>
-                <input type="text">
-                <button class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form action="/../pages/home.php" method="post"><input name="word" type="text">
+                    <button type="submit" class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
             </div>
             <h3><i class="fa-regular fa-bell"></i></h3> 
             <h3><a href="/../pages/message.php"><i class="fa-regular fa-envelope"></i></a></h3> 
@@ -36,11 +37,11 @@
         </div>
         <div class="types">
             <ul>
-                <li><a href="">Clothing</a></li>
-                <li><a href="">Acessories</a></li>
-                <li><a href="">Eletronics</a></li>
-                <li><a href="">Furniture</a></li>
-                <li><a href="">Toys</a></li>
+                <li><a href="/../pages/home.php?category=Clothing">Clothing</a></li>
+                <li><a href="/../pages/home.php?category=Accessories">Accessories</a></li>
+                <li><a href="/../pages/home.php?category=Eletronics">Eletronics</a></li>
+                <li><a href="/../pages/home.php?category=Furniture">Furniture</a></li>
+                <li><a href="/../pages/home.php?category=Toys">Toys</a></li>
             </ul>
         </div>
     </div>

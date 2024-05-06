@@ -13,7 +13,7 @@ main{
         flex-direction: row;
         img{
             border-radius: 50%;
-            max-width: 10em;
+            max-width: 15em;
             margin-right: 2em;
         }
         .text{
@@ -23,7 +23,6 @@ main{
         }
         button{
             background: var(--bordeaux);
-            color: white;
             border-radius: 10px;
             height: 3em;
             width: 7em;
@@ -32,6 +31,7 @@ main{
             align-self: center;
             font-size: larger;
             cursor: pointer;
+            a{color: white;}
         }
     }
    .choice{
