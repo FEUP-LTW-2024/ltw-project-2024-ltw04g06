@@ -28,7 +28,7 @@
         }
         else{
             $session->addMessage('error', 'Did not edit shipping Form settings!');
-            header('Location: /../pages/shippingForm.php');
+            header('Location: /../pages/settings.php');
         }
 
 
