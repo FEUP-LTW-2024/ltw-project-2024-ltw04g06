@@ -13,8 +13,11 @@
         exit;
     }
 
+    $userID = $session->getID();
+
     $itemID=$_POST['itemIDD'];
-    $wishlistID=1;
+    $user = User::getUser($db, $userID);
+    $shoppingCartID = $user -> shoppingCartID;
 
     /*echo $_POST['itemIDD'];*/
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
