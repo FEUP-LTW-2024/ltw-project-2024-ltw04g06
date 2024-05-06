@@ -6,6 +6,8 @@ require_once(__DIR__ . '/item.class.php');
 require_once(__DIR__ . '/message.class.php');
 require_once(__DIR__ . '/wishlist.class.php');
 require_once(__DIR__ . '/status.class.php');
+require_once(__DIR__ . '/shippingForm.class.php');
+
   $db = getDatabaseConnection();
 
 
@@ -233,10 +235,24 @@ foreach($items as $item) {
   echo "Item ID: " . $item->itemID . "<br>";
 }
 
-*/
-
 $items = Item::getItemsByName($db, 'used');
 foreach($items as $item) {
   echo "Item ID: " . $item->itemID . "<br>";
 }
+
+$shippingForm = ShippingForm::getShippingFormByItemID($db, 2);
+  echo "ShippForm: ". $shippingForm->description . "<br>";
+
+$shippingForm = ShippingForm::editDescription($db, 2, "new description");
+
+$shippingForm = ShippingForm::getShippingFormByItemID($db, 2);
+  echo "ShippForm: ". $shippingForm->description . "<br>";
+
+  */
+  $user = User::getUser($db, 2);
+  echo "user pn:" . $user -> address. "<br>";
+  $user = User::editAddress($db, 2, "rua da tua mae 666");
+  $user = User::getUser($db, 2);
+  echo "user pn:" . $user -> address. "<br>";
 ?>
+

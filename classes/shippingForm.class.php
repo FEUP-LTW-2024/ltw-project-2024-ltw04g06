@@ -3,12 +3,12 @@
 declare(strict_types = 1);
 
   class ShippingForm {
-    private int $shippingFormID;
-    private int $itemID;
-    private int $sellerID;
-    private int $buyerID;
-    private string $description;
-    private string $date;
+    public int $shippingFormID;
+    public int $itemID;
+    public int $sellerID;
+    public int $buyerID;
+    public string $description;
+    public string $date;
 
 
     public function __construct(int $shippingFormID, int $itemID, int $sellerID, int $buyerID, string $description, string $date) {
@@ -50,11 +50,11 @@ declare(strict_types = 1);
         return null;
     }
 
-    return getShippingForm($db, $shippingForm['shippingFormID']);
+    return self::getShippingForm($db, $shippingForm['shippingFormID']);
   }
 
     /*--Edit--*/
-    
+
   static function editDescription(PDO $db, int $shippingFormID, string $newDescription) {
     $shippingForm = self::getShippingForm($db, $shippingFormID);
     if ($shippingForm->description == $newDescription) {
