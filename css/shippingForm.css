@@ -1,0 +1,48 @@
+body{
+    --backgroundColor: #f8e7e7;
+    --beige: #D19F9D;
+    --bordeaux: #800000;
+    --borderLine: #E2D0BC;
+    margin: 0;
+}
+
+.shipping{
+    background: var(--beige);
+    border: none;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 3em auto;  
+    padding: 2em;
+    h2{
+        color: #821582;
+        border-bottom: 1px solid white;
+    }
+    h2:hover{
+        
+        color: black;
+    }
+    form >*{align-self: center;
+        margin: 1em;
+    }
+    form label{
+        color: var(--bordeaux);
+        margin: 2em;
+    }
+    form input{
+        border: 1px solid var(--beige);
+        border-radius: 5px;
+        width: 50%;
+        height: 5%;
+    }
+    form input[type="submit"] {
+        background-color: var(--bordeaux);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 10em;
+    }
+    form input[type="submit"]:hover {
+        background-color: burlywood;
+    }
+}
