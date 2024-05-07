@@ -29,7 +29,7 @@
             <br>
             <h2><i class="fa-solid fa-money-check-dollar"></i> Payment</h2>
             <p>  > Choose one of the methodes to pay </p>
-            <label for="address">MbWay</label>
+            <label for="MbWay">MbWay</label>
             <input type="text" id="MbWay" name="MbWay" placeholder="Enter your number for Mbway Payment">
             <br>
             <label for="bank">Bank Account</label>
