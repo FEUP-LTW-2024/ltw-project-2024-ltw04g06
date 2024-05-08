@@ -6,24 +6,34 @@
          <p class=title>Cart</p>
 <?php } ?>
 
-<?php function cartDisplay(){ ?>
-    <ul class="items" id="items">
-        <li>Item 1- 10,00€</li>
-        <li>Item 2- 23,00€</li>
-        <li>Item 3- 5,50€</li>
-    </ul>
-    <div class="total">
-        <strong>Total:</strong> <span id="total">0,00€</span>
-    </div>
-    <button class="buy">Buy all</button>
-</div>
-</body>
+<?php function cartDisplay($cartItems){ ?>
+    <body>
+        <div class="all-images">
+            <?php foreach ($cartItems as $item) { ?>
+                <div class="image">
+                    <?php
+                    $imageUrls = explode(',', $item->images);
+                    $imageSrc = $imageUrls[0];
+                    ?>
+                    <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                   
+                    <p class=item-name><?=$item->name?></p>
+                    <form action="/../actions/action_rem_from_shopCart.php" method="post">
+                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                        <button type="submit" class="remove">Remove</button>
+                    </form>
+                </div>
+            <?php } ?>
+        </div>
+    </body>
+</html>   
+</main>
 <?php } ?>
 
 <?php function emptyCart(){ ?>
     <body>
         <p class="empty">Your list is still empty :(</p>
-        <a href="home.php" class="home">Add items to wishlist</a>
+        <a href="home.php" class="home">Add items to cart</a>
     </body>
 </html>   
 </main>  
