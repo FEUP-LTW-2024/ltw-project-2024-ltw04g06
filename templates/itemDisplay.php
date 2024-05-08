@@ -16,7 +16,9 @@
                 <img src=<?= '/../' . $user->profilePicture?> alt="">
                 <p><?=$user->username?></p>
             </header>
+            <a href="/../pages/itemActive.php?itemID=<?=$item->itemID?>">
             <img class="foto" src=<?='/../' . $item->images?> alt="">
+            </a>
             
             <form action="/../actions/action_add_to_wishlist.php" method="post">
             <input type="hidden" name="itemIDD" value="<?=$item->itemID?>">
