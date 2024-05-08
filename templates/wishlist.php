@@ -9,12 +9,12 @@
 <?php function wishlistDisplay($wishlistItems) { ?>
     <body>
         <div class="all-images">
-            <?php foreach ($wishlistItems as $itemm) { ?>
+            <?php foreach ($wishlistItems as $item) { ?>
                 <div class="image">
-                    <img class=image src=<?='/../' . $itemm->images?> alt="">
-                    <p class=item-name><?=$itemm->name?></p>
+                    <img class=image src=<?='/../' . $item->images?> alt="">
+                    <p class=item-name><?=$item->name?></p>
                     <form action="/../actions/action_rem_from_wishlist.php" method="post">
-                        <input type="hidden" name="itemIDDD" value="<?php echo $itemm->itemID; ?>">
+                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                         <button type="submit" class="remove">Remove</button>
                     </form>
                 </div>

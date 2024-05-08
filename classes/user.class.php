@@ -64,6 +64,8 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       );
     }
 
+
+
     static function getUserWishlist(PDO $db, int $userID) {
       $user = self::getUser($db, $userID);
       if($user!= null){
