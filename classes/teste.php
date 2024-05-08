@@ -255,19 +255,14 @@ $shippingForm = ShippingForm::getShippingFormByItemID($db, 2);
   $user = User::getUser($db, 2);
   echo "user pn:" . $user -> address. "<br>";
 */
-$item = Item::getItem($db, 2);
-
-$imageUrls = explode(',', $item->images);
-                $imageSrc = $imageUrls[0];
-                echo $imageSrc ;
 
 
+$user  = User::getUser($db, 1);
+echo $user ->role ."<br>";  
+$editRole = User::editRole($db,1, "User");   
 
-
-$users  = User::getAllUsers($db);
-foreach($users as $user){
-  echo $user->userID . "<br>";
-}                
+$user  = User::getUser($db, 1);
+echo $user ->role ."<br>";         
 ?>
 
 
