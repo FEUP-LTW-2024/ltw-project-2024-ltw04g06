@@ -29,10 +29,10 @@
                     <ul>
                         <li><a href="/../pages/profile.php">Profile</a></li>
                         <li><a href="/../pages/settings.php">Settings</a></li>
-                        <li><a href="">Log out</a></li>
+                        <li><a href="/../actions/action_logout.php">Log out</a></li>
                     </ul>
                 </div>
-                <img src="">
+                <img src="/../images/profilePictures/pp2.jpg">
             </div>
         </div>
         <div class="types">
