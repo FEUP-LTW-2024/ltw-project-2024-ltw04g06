@@ -64,6 +64,16 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       );
     }
 
+    static function getAllUsers(PDO $db) {
+      $preparedStmt = $db->prepare( 'SELECT * FROM User');
+      $preparedStmt->execute();
+     $users = array();
+      while($user = $preparedStmt->fetch()){
+        $users[] = self::getUser($db, $user ['userID']);
+      }
+    return $users;
+    }
+
 
 
     static function getUserWishlist(PDO $db, int $userID) {
