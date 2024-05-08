@@ -11,7 +11,7 @@
             <div class="title">
                 <p> <?= $item->name ?> </p>
                 <form action="/../actions/action_add_to_wishlist.php" method="post">
-                    <input type="hidden" name="itemIDD" value="<?=$item->itemID?>">
+                    <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                     <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                 </form>
             </div>
@@ -45,7 +45,9 @@
             </div>
         </div>
     </div>   
-    <button class="submitButton" onclick="window.location.href = '/../actions/action_add_to_shopCart.php'">Buy</button>     
+    <form action="/../actions/action_add_to_shopCart.php" method="post">
+                    <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                    <button type="submit" class="submitButton">Add to cart</button>
 </main>
 <?php } ?>
 

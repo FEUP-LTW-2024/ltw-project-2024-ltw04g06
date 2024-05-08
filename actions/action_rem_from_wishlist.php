@@ -13,10 +13,12 @@
         exit;
     }
 
-    $itemID=$_POST['itemIDDD'];
-    $wishlistID=1;
+    $userID = $session->getID();
 
-    echo $_POST['itemIDDD'];
+    $itemID=$_POST['itemID'];
+    $wishlistID = 1;
+
+    echo $_POST['itemID'];
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(!Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
             echo "Item is not in the wishlist.";

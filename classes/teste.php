@@ -260,5 +260,15 @@ $item = Item::getItem($db, 2);
 $imageUrls = explode(',', $item->images);
                 $imageSrc = $imageUrls[0];
                 echo $imageSrc ;
+
+
+
+
+$users  = User::getAllUsers($db);
+foreach($users as $user){
+  echo $user->userID . "<br>";
+}                
 ?>
+
+
 
