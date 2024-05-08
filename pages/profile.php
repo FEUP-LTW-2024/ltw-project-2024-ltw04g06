@@ -10,7 +10,7 @@
     $db = getDatabaseConnection();
     $session = new Session();
 
-    $userID = 1;
+    $userID = $session->getID();
     $user = User::getUser($db,$userID);
 
     $items = Item::getUserItems($db, $userID);
