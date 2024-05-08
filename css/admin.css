@@ -1,0 +1,43 @@
+body{
+    --backgroundColor: #f8e7e7;
+    --beige: #D19F9D;
+    --bordeaux: #800000;
+    --borderLine: #E2D0BC;
+    margin: 0;
+}
+.admin{
+    background: var(--beige);
+    border: none;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 3em auto;  
+    padding: 2em;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    .user{
+        display: flex;
+        flex-direction: column;
+        margin: 1em;
+        img{
+            width: 10em;
+            height: 12em;
+            cursor: pointer;
+        }
+        button{
+            background-color: var(--borderLine);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 10em;
+            height: 3em;
+            
+        }
+        button:hover{background-color: var(--bordeaux);}
+        >*{align-self: center;
+            padding: 0;
+            margin: .5em;
+        }
+    }
+}
