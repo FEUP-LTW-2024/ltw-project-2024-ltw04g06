@@ -11,7 +11,12 @@
         <div class="all-images">
             <?php foreach ($wishlistItems as $item) { ?>
                 <div class="image">
-                    <img class=image src=<?='/../' . $item->images?> alt="">
+                    <?php
+                    $imageUrls = explode(',', $item->images);
+                    $imageSrc = $imageUrls[0];
+                    ?>
+                    <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                   
                     <p class=item-name><?=$item->name?></p>
                     <form action="/../actions/action_rem_from_wishlist.php" method="post">
                         <input type="hidden" name="itemID" value="<?=$item->itemID?>">

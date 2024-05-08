@@ -3,21 +3,20 @@
         <link rel="stylesheet" href="/../css/itemActive.css">
     </head>
     <main>
+      <script src="itemActive.js"></script>
+        <button class="submitButton">Sold</button>
+        <button class="submitButton" onclick="window.location.href = '/../pages/sellItem.php'">Edit item</button>
 <?php } ?>
 
-<?php function itemActiveForm($item){ ?>
+<?php function itemActiveForm(){ ?>
     <div class="form">
         <div class="left-column">
             <div class="title">
-                <p> <?= $item->name ?> </p>
-                <form action="/../actions/action_add_to_wishlist.php" method="post">
-                    <input type="hidden" name="itemID" value="<?=$item->itemID?>">
-                    <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
-                </form>
+                Title <?php echo htmlspecialchars($_POST['title']); ?>
             </div>
             <label for="foto" class="foto-label">
                 <div class="quadrado">
-                    <img src=<?='/../' . $item->images?> alt="<?= $item->name ?>">
+                    Photo <?php echo htmlspecialchars($_POST['foto']); ?>
                 </div>
             </label>                
         </div>
@@ -44,20 +43,6 @@
                 Price <?php echo htmlspecialchars($_POST['price']); ?>
             </div>
         </div>
-    </div>   
-    <form action="/../actions/action_add_to_shopCart.php" method="post">
-                    <input type="hidden" name="itemID" value="<?=$item->itemID?>">
-                    <button type="submit" class="submitButton">Add to cart</button>
+    </div>        
 </main>
-<?php } ?>
-
-<?php function ola($item) { ?>
-    <div class="item">
-        <h1><?= $item->name ?></h1>
-        <p><strong>Preço:</strong> R$ <?= number_format($item->price, 2, ',', '.') ?></p>
-        <p><strong>Marca:</strong> <?= $item->brand ?></p>
-            <p><strong>Modelo:</strong> <?= $item->model ?></p>
-            <p><strong>Descrição:</strong> <?= $item->description ?></p>
-            <img src=<?='/../' . $item->images?> alt="<?= $item->name ?>">
-    </div>
 <?php } ?>
