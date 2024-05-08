@@ -208,7 +208,8 @@ require_once(__DIR__ . '/shoppingCart.class.php');
          // return array("success" => false, "message" => "Failed to update About Me for userID: $userID");
       }
     }
-     static function editRole(PDO $db, int $userID, string $newRole) {
+
+    static function editRole(PDO $db, int $userID, string $newRole) {
       $user = self::getUser($db,$userID);
       if($user->role == $newRole) return false;
   
