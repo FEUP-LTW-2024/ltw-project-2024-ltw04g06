@@ -20,7 +20,7 @@
                 $imageUrls = explode(',', $item->images);
                 $imageSrc = $imageUrls[0];
             ?>
-            <a href="/../pages/itemActive.php?itemID=<?=$item->itemID?>">
+            <a href="/../pages/viewItem.php?itemID=<?=$item->itemID?>">
             <img class="foto" src=<?='/../' . $imageSrc?> alt="">
             
             <form action="/../actions/action_add_to_wishlist.php" method="post">
