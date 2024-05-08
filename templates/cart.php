@@ -9,7 +9,9 @@
 <?php function cartDisplay($cartItems){ ?>
     <body>
         <div class="all-images">
-            <?php foreach ($cartItems as $item) { ?>
+            <?php $totalPrice = 0;
+            foreach ($cartItems as $item) { 
+                $totalPrice += $item->price;?>
                 <div class="image">
                     <?php
                     $imageUrls = explode(',', $item->images);
@@ -18,6 +20,7 @@
                     <img class="foto" src=<?='/../' . $imageSrc?> alt="">
                    
                     <p class=item-name><?=$item->name?></p>
+                    <p class="item-price"><?= number_format($item->price, 2, ',', '.') ?>€</p>
                     <form action="/../actions/action_rem_from_shopCart.php" method="post">
                         <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                         <button type="submit" class="remove">Remove</button>
@@ -25,6 +28,8 @@
                 </div>
             <?php } ?>
         </div>
+        <p class="total">Total: <?= number_format($totalPrice, 2, ',', '.') ?>€</p>
+        <button class="buy">Buy all</button>
     </body>
 </html>   
 </main>

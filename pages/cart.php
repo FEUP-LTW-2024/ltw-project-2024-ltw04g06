@@ -21,7 +21,7 @@
     $itemID=$_POST['itemID'];
     $user = User::getUser($db, $userID);
     $shoppingCartID = $user -> shoppingCartID;
-    $cartItems=Wishlist::getWishlistItems($db, $shoppingCartID);
+    $cartItems=ShoppingCart::getShoppingCartItems($db, $shoppingCartID);
     if(empty($cartItems)){
         emptyCart();
     }
