@@ -17,7 +17,7 @@
 
     $itemID=$_POST['itemIDD'];
     $user = User::getUser($db, $userID);
-    $shoppingCartID = $user -> shoppingCartID;
+    $wishlistID = 1;
 
     /*echo $_POST['itemIDD'];*/
     if($_SERVER['REQUEST_METHOD'] === 'POST') {

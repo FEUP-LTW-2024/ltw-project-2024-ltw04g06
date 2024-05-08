@@ -8,20 +8,17 @@
 
     $db = getDatabaseConnection();
     topo();
-
+    displayItemActive();
     $itemID = $_GET['itemID'];
-    echo $itemID;
     if (isset($_GET['itemID'])) {
         $itemID = $_GET['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
-            ola($item);
+            itemActiveForm($item);
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
     } else {
        echo "Item ID not available.";
     }
-  //  displayItemActive();
-  //  itemActiveForm();
 ?>
