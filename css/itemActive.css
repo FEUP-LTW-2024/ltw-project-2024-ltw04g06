@@ -8,10 +8,9 @@ main{
 }
 
 p{
-    width: 200px;
+    width: 250px;
     color: var(--bordeaux);
     font-size: 30px;
-    margin-left: 4.1em;
 }
 
 label{
@@ -122,17 +121,17 @@ label[for="description"] + input {
     color: var(--bordeaux);
 }
 
-.quadrado {
-    width: 170px;
-    height: 200px;
-    background-color: var(--backgroundColor);
-    border-radius: 10px;
-    border-style: dotted;
-    border-color: #800000;
-    border-width: 2px;
-    margin-left: 48px;
-    text-align: center;
-    color: var(--bordeaux);
+.quadrado img {
+    width: 300px;
+    height: 300px; /* Se quiser manter a proporção, pode remover esta linha */
+}
+
+button.wishlist {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .foto-input {

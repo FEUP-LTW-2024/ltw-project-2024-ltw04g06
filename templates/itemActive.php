@@ -3,20 +3,21 @@
         <link rel="stylesheet" href="/../css/itemActive.css">
     </head>
     <main>
-      <script src="itemActive.js"></script>
-        <button class="submitButton">Sold</button>
-        <button class="submitButton" onclick="window.location.href = '/../pages/sellItem.php'">Edit item</button>
 <?php } ?>
 
-<?php function itemActiveForm(){ ?>
+<?php function itemActiveForm($item){ ?>
     <div class="form">
         <div class="left-column">
             <div class="title">
-                Title <?php echo htmlspecialchars($_POST['title']); ?>
+                <p> <?= $item->name ?> </p>
+                <form action="/../actions/action_add_to_wishlist.php" method="post">
+                    <input type="hidden" name="itemIDD" value="<?=$item->itemID?>">
+                    <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                </form>
             </div>
             <label for="foto" class="foto-label">
                 <div class="quadrado">
-                    Photo <?php echo htmlspecialchars($_POST['foto']); ?>
+                    <img src=<?='/../' . $item->images?> alt="<?= $item->name ?>">
                 </div>
             </label>                
         </div>
@@ -43,6 +44,18 @@
                 Price <?php echo htmlspecialchars($_POST['price']); ?>
             </div>
         </div>
-    </div>        
+    </div>   
+    <button class="submitButton" onclick="window.location.href = '/../actions/action_add_to_shopCart.php'">Buy</button>     
 </main>
+<?php } ?>
+
+<?php function ola($item) { ?>
+    <div class="item">
+        <h1><?= $item->name ?></h1>
+        <p><strong>Preço:</strong> R$ <?= number_format($item->price, 2, ',', '.') ?></p>
+        <p><strong>Marca:</strong> <?= $item->brand ?></p>
+            <p><strong>Modelo:</strong> <?= $item->model ?></p>
+            <p><strong>Descrição:</strong> <?= $item->description ?></p>
+            <img src=<?='/../' . $item->images?> alt="<?= $item->name ?>">
+    </div>
 <?php } ?>

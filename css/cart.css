@@ -1,0 +1,43 @@
+main{
+    --backgroundColor: #f8e7e7;
+    --bordeaux: #800000; 
+}
+
+p.title{
+    width: 200px;
+    color: var(--bordeaux);
+    font-size: 30px;
+    margin-left: 4.1em;
+}
+
+.items{
+    list-style: none;
+    padding: 0;
+}
+
+.items li{
+    margin-bottom: 5px;
+    margin-left: 10%;
+}
+
+.total{
+    margin-top: 20px;
+    margin-left: 70%;
+}
+
+.buy{
+    display: block;
+    padding: 8px 70px;
+    margin-top: 50px;
+    background-color: #800000;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 40%;
+}
+
+.buy:hover{
+    background-color: #5a0000;
+}
