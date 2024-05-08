@@ -68,7 +68,6 @@ body{
         flex-direction: row;
         img{
             border-radius: 50%;
-            width: 2em;
             border: .15em solid var(--beige);
         }
         .options-arrow {

@@ -4,7 +4,7 @@
 </head>
 <main class="admin"> 
     <?php foreach($users as $user){   
-        //if ($user->role == 'Admin') continue;
+        if ($user->role == 'Admin') continue;
     ?>
         <div class="user">
             <h2><?= $user->name ?></h2>

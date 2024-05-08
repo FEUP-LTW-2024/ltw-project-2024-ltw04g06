@@ -15,11 +15,13 @@
             <button ><a href="/pages/settings.php">Edit profile</a></button>
         </div>
 <?php } ?>
-<?php function myItemsAnalytics($db, $items){
+<?php function myItemsAnalytics($db, $items, $isAdmin){
     ?>
     <div class="choice">
             <button><h3>My items</h3></button>
-            <button><h3>Analytics</h3></button>
+            <?php if ($isAdmin) { ?>
+                <a href="/../pages/admin.php"><button><h3>Admin</h3></button></a>
+            <?php } ?>
         </div>
         <div class="myItems">
             <div class="condition">
