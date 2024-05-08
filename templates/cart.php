@@ -19,3 +19,12 @@
 </div>
 </body>
 <?php } ?>
+
+<?php function emptyCart(){ ?>
+    <body>
+        <p class="empty">Your list is still empty :(</p>
+        <a href="home.php" class="home">Add items to wishlist</a>
+    </body>
+</html>   
+</main>  
+<?php } ?>
