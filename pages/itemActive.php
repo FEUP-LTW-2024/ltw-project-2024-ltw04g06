@@ -15,16 +15,7 @@
         $itemID = $_GET['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
-            ?>
-            <div class="item">
-                <h1><?= $item->name ?></h1>
-                <p><strong>Preço:</strong> R$ <?= number_format($item->price, 2, ',', '.') ?></p>
-                <p><strong>Marca:</strong> <?= $item->brand ?></p>
-                <p><strong>Modelo:</strong> <?= $item->model ?></p>
-                <p><strong>Descrição:</strong> <?= $item->description ?></p>
-                <img src=<?='/../' . $item->images?> alt="<?= $item->name ?>">
-            </div>
-            <?php
+            ola($item);
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
