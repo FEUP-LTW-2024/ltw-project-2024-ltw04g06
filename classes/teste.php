@@ -248,11 +248,17 @@ $shippingForm = ShippingForm::editDescription($db, 2, "new description");
 $shippingForm = ShippingForm::getShippingFormByItemID($db, 2);
   echo "ShippForm: ". $shippingForm->description . "<br>";
 
-  */
+  
   $user = User::getUser($db, 2);
   echo "user pn:" . $user -> address. "<br>";
   $user = User::editAddress($db, 2, "rua da tua mae 666");
   $user = User::getUser($db, 2);
   echo "user pn:" . $user -> address. "<br>";
+*/
+$item = Item::getItem($db, 2);
+
+$imageUrls = explode(',', $item->images);
+                $imageSrc = $imageUrls[0];
+                echo $imageSrc ;
 ?>
 

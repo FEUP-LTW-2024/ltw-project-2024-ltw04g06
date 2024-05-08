@@ -4,7 +4,7 @@
 </head>
 <main>
     <div class="info">
-            <img src="/../images/leetcode.png" alt="">
+            <img src= <?= '/../' . $user->profilePicture?> alt="">
             <div class="text">
                 <h2><?= $user->username?></h2>
                 <h4><?= $user->name?></h4>
@@ -38,7 +38,11 @@
                             if ($status != "Available") continue;
                             ?>
                             <div class="product" >
-                                <img class="foto" src=<?=$item->images?>alt="">
+                            <?php
+                                $imageUrls = explode(',', $item->images);
+                                $imageSrc = $imageUrls[0];
+                            ?>
+                                  <img class="foto" src=<?='/../' . $imageSrc?> alt="">
                                 <p><?=$item->name?></i></p>
                                 <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>
                             </div>
