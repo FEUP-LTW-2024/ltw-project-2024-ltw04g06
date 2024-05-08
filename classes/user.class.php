@@ -208,6 +208,22 @@ require_once(__DIR__ . '/shoppingCart.class.php');
          // return array("success" => false, "message" => "Failed to update About Me for userID: $userID");
       }
     }
+    static function editRole(PDO $db, int $userID, string $newRole) {
+      $user = self::getUser($db,$userID);
+      if($user->role == $newRole) return false;
+  
+      $preparedStmt = $db->prepare("UPDATE User SET role = :newRole WHERE userID = :userID");
+      $preparedStmt->bindParam(':newRole', $newRole, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      if ($preparedStmt->execute()) {
+        return true;
+        //return array("success" => true, "message" => "Username changed successfully for userID: $userID");
+      } else {
+          return false;
+          //return array("success" => false, "message" => "Failed to change username for userID: $userID");
+        }
+    }
 
 
     static function editUsername(PDO $db, int $userID, string $newUsername) {
