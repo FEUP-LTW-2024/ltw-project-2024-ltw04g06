@@ -19,7 +19,7 @@
     <div class="profile-setting">
         <form action="/../actions/action_edit_profile.php" method="post">
             <div class="img">
-                <img src="/../images/profilePictures/pp1.jpg" alt="">
+                <img src=<?='/../' . $user->profilePicture?> alt="">
                 <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button>
             </div>
             <label for="Name">Name</label>
@@ -44,6 +44,7 @@
         </form>
     </div>
     <div class="account-setting">
+    <form action="/../actions/action_rem_account.php" method="post">
         <h2>Account desactivation</h2>
         <p>Your account will be deleted and can <span>NOT</span> be recovered</p>
         <button>Delete account</button>
