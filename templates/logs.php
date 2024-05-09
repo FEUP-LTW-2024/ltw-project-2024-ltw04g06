@@ -8,11 +8,18 @@
         <h1>Random name/logo</h1>
 <?php } ?>
 
-<?php function signInBox(){ ?>
+<?php function signInBox($session){ ?>
     <div class="box">
             <header>
                 Log in
             </header>
+            <?php 
+                if ($session->getMessages()) {
+                    foreach ($session->getMessages() as $msg) {
+                        echo '<div class="message ' . $msg['type'] . '">' . $msg['text'] . '</div>';
+                    }
+                }
+                ?>
             <form action="/../actions/action_signIn.php" method = "post">
                 <label for=""><i class="fa-regular fa-user"></i></label>
                 <input type="text" name = "userField" placeholder="Email or username"><br>

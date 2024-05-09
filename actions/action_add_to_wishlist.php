@@ -19,7 +19,6 @@
     $user = User::getUser($db, $userID);
     $wishlistID = $user->wishlistID;
 
-    /*echo $_POST['itemIDD'];*/
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
            echo "Item is already in the wishlist.";
