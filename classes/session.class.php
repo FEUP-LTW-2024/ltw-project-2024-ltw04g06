@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/../database/validate_input.php');
 
 class Session {
     private array $msgs;
