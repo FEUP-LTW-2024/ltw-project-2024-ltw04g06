@@ -42,6 +42,7 @@
                                 $imageUrls = explode(',', $item->images);
                                 $imageSrc = $imageUrls[0];
                             ?>
+                                  <a href="/../pages/itemActive.php?itemID=<?=$item->itemID?>">
                                   <img class="foto" src=<?='/../' . $imageSrc?> alt="">
                                 <p><?=$item->name?></i></p>
                                 <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>

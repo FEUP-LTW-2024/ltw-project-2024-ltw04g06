@@ -6,16 +6,40 @@
          <p class=title>Cart</p>
 <?php } ?>
 
-<?php function cartDisplay(){ ?>
-    <ul class="items" id="items">
-        <li>Item 1- 10,00€</li>
-        <li>Item 2- 23,00€</li>
-        <li>Item 3- 5,50€</li>
-    </ul>
-    <div class="total">
-        <strong>Total:</strong> <span id="total">0,00€</span>
-    </div>
-    <button class="buy">Buy all</button>
-</div>
-</body>
+<?php function cartDisplay($cartItems){ ?>
+    <body>
+        <div class="all-images">
+            <?php $totalPrice = 0;
+            foreach ($cartItems as $item) { 
+                $totalPrice += $item->price;?>
+                <div class="image">
+                    <?php
+                    $imageUrls = explode(',', $item->images);
+                    $imageSrc = $imageUrls[0];
+                    ?>
+                    <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                   
+                    <p class=item-name><?=$item->name?></p>
+                    <p class="item-price"><?= number_format($item->price, 2, ',', '.') ?>€</p>
+                    <form action="/../actions/action_rem_from_shopCart.php" method="post">
+                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                        <button type="submit" class="remove">Remove</button>
+                    </form>
+                </div>
+            <?php } ?>
+        </div>
+        <p class="total">Total: <?= number_format($totalPrice, 2, ',', '.') ?>€</p>
+        <button class="buy">Buy all</button>
+    </body>
+</html>   
+</main>
+<?php } ?>
+
+<?php function emptyCart(){ ?>
+    <body>
+        <p class="empty">Your list is still empty :(</p>
+        <a href="home.php" class="home">Add items to cart</a>
+    </body>
+</html>   
+</main>  
 <?php } ?>
