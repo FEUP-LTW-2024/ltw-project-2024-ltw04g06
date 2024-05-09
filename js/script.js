@@ -56,7 +56,7 @@ const elementToToggle = document.getElementById('elementToToggle');
                 }
             }
         };
-        xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition, true);
+        xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition , true);
         xhr.send();
     })
     

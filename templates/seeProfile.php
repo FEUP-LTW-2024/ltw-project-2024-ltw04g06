@@ -1,4 +1,4 @@
-<?php function profileEditDescript(User $user){?>
+<?php function SeeProfile(User $user){?>
 <head>
     <link rel="stylesheet" href="/../css/profile.css">
 </head>
@@ -12,16 +12,12 @@
                 <h3>About me : </h3>
                 <h4><?= $user->aboutMe?></h4>
             </div>
-            <button ><a href="/pages/settings.php">Edit profile</a></button>
         </div>
 <?php } ?>
-<?php function myItemsAnalytics($db, $items, $isAdmin){
+<?php function myItemsAnalytics($db, $items){
     ?>
     <div class="choice">
-            <button><h3>My items</h3></button>
-            <?php if ($isAdmin) { ?>
-                <a href="/../pages/admin.php"><button><h3>Admin</h3></button></a>
-            <?php } ?>
+            <button><h3>Items</h3></button>
         </div>
         <div class="myItems">
             <div class="condition">
@@ -31,9 +27,6 @@
                 </select>
             </div>
             <div id = "prodShow" class="products">
-                <a class="addProduct" href="/../pages/sellItem.php">
-                    <div class="mais">+</div>
-                </a>
                     <?php 
                         foreach($items as $item){ 
                             $status = Item::getItemStatus($db, $item->itemID);
@@ -44,7 +37,6 @@
                                 $imageUrls = explode(',', $item->images);
                                 $imageSrc = $imageUrls[0];
                             ?>
-                                  <a href="/../pages/itemActive.php?itemID=<?=$item->itemID?>">
                                   <img class="foto" src=<?='/../' . $imageSrc?> alt="">
                                 <p><?=$item->name?></i></p>
                                 <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>

@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__ . '/../templates/profile.php');
+    require_once(__DIR__ . '/../templates/seeProfile.php');
     require_once(__DIR__ . '/../templates/topo.php');
     require_once(__DIR__ . '/../templates/searchForm.php');
     require_once(__DIR__ . '/../database/connectdb.php');
@@ -10,12 +10,10 @@
     $db = getDatabaseConnection();
     $session = new Session();
 
-    $userID = $session->getID();
-    $user = User::getUser($db,$userID);
+    $userID = $_POST['userId'];
+    User::removeUser($db, $userID);
 
-    $items = Item::getUserItems($db, $userID);
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit;
 
-    topo();
-    profileEditDescript($user);
-    myItemsAnalytics($db, $items, $user->role == 'Admin');
 ?>
