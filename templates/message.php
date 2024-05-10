@@ -69,7 +69,7 @@
                 <form  id="messageForm" class="typing-area" method="post">
                     <input type="text" class="writerID" name="senderID" value="<?= $userID1 ?>" hidden>
                     <input type="text" class="receiverID" name="recipientID" value="<?= $userID2 ?>" hidden>
-                    <input type="text" name="content" class="input-field" id="messageContent" placeholder="Message..." autocomplete="off">
+                    <textarea name="content"class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
                     <button type="button" class="send_message"><i class="fab fa-telegram-plane"></i></button>
                 </form>
             </div>        
