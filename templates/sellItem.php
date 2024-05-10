@@ -19,9 +19,10 @@
                 <div id="quadrado" class="quadrado">
                     Load photo
                 </div>
-                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)">
+                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)" multiple>
                 <img id="imagemExibida" src="#" alt="Minha Imagem" style="display: none;">
-            </label>                
+            </label> 
+            <div id="imagensExibidas"></div>       
         </div>
         <div class="right-column">
             <div class="description">

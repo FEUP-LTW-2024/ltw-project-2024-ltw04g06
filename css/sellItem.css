@@ -183,9 +183,9 @@ label[for="description"] + input {
 }
 
 #imagemExibida {
-    max-width: 200px; /* Garante que a imagem não ultrapasse o contêiner */
-    max-height: 200px; /* Garante que a imagem não ultrapasse o contêiner */
-    display: block; /* Garante que a imagem seja exibida como bloco */
-    margin: auto; /* Centraliza a imagem horizontalmente dentro do contêiner */
-    border-radius: 8px; /* Define um raio de borda para suavizar as bordas da imagem */
+    width: 200px; 
+    height: 200px; 
+    display: block; 
+    margin: auto; 
+    border-radius: 8px; 
 }
