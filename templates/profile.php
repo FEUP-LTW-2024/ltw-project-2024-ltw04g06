@@ -5,6 +5,7 @@
 <main>
     <div class="info">
             <img src= <?= '/../' . $user->profilePicture?> alt="">
+            <div class="hidden" id="userID"><?= $user->userID?></div>
             <div class="text">
                 <h2><?= $user->username?></h2>
                 <h4><?= $user->name?></h4>
