@@ -11,7 +11,10 @@
         <h2>Messages</h2>
         <form method="get" class="pessoas" id="contactForm">
         <?php
-        foreach ($contacts as $contact) { 
+        if ($contacts == null){?>
+            <h4>You have no messages</h4>
+        <?php }?>
+        <?php foreach ($contacts as $contact) { 
     ?>
     <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
     <label for="<?=$contact->username ?>" class="pessoa">
@@ -22,7 +25,7 @@
      }?>
      </form>
     </div> 
-    <div class="mensagem">
+    <div class="mensagem hidden">
 
      </div>
 <?php } ?>
