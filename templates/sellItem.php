@@ -16,10 +16,10 @@
                 <input type="text" id="title" name="title">
             </div>
             <label for="foto" class="foto-label">
-                <div class="quadrado">
+                <div id="quadrado" class="quadrado">
                     Load photo
                 </div>
-                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="exibirImagem(this)">
+                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)">
                 <img id="imagemExibida" src="#" alt="Minha Imagem" style="display: none;">
             </label>                
         </div>
