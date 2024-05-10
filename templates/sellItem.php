@@ -31,13 +31,19 @@
             <div class="brand">
                 <label for="brand">Brand</label>
                 <input type="text" name="brand">
-            </div>
-            <div class="model">
-                <label for="model">Model</label>
-                <input type="text" name="model">
+        
+                <label class="model-label" for="model">Model</label>
+                <input class="model-input" type="text" name="model">
             </div>
             <div class="size">
-                <label for="size">Size</label>
+                <label class="condition-label" for="condition">Condition</label>
+                <select class="condition" name="condition">
+                    <option value="not used">Not used</option>
+                    <option value="barely used" selected>Barely used</option>
+                    <option value="used">Used</option>
+                    <option value="very used">Very used</option>
+                </select>
+                <label class="size-label" for="size">Size</label>
                 <div class="size2">
                 <label for="xs">
                     <input type="radio" id="xs" name="sizes" value="XS"> XS 
@@ -59,15 +65,6 @@
                 </label>
                 </div>
             </div>
-            <div class="condition">
-                <label for="condition">Condition</label>
-                <select name="condition">
-                    <option value="not used">Not used</option>
-                    <option value="barely used" selected>Barely used</option>
-                    <option value="used">Used</option>
-                    <option value="very used">Very used</option>
-                </select>
-            </div>
             <div class="category">
                 <label for="category">Category</label>
                 <select name="category">
@@ -77,10 +74,9 @@
                     <option value="furniture">Furniture</option>
                     <option value="toys">Toys</option>
                 </select>
-            </div>
-            <div class="price">
-                <label for="price">Price</label>
-                <input type="text" name="price">
+            
+                <label class="price-label" for="price">Price</label>
+                <input class="price-input" type="text" name="price">
             </div>
         </div>
     </div>        

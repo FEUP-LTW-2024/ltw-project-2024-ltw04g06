@@ -75,15 +75,14 @@ input[type="text"] {
 }
 
 .title input, .description input,
-.brand input, .model input, .size input, 
-.condition input, .category input, .price input {
+.brand input, .category input, .price input {
     border: 1px solid var(--bordeaux);
     border-radius: 2px;
     margin: 0;
     margin-bottom: 10px;
 }
 
-.brand input, .model input{
+.brand input{
     border: 1px solid #D19F9D;
 }
 
@@ -91,14 +90,14 @@ input[type="text"] {
     padding-right: 30px; /*size of box*/
 }
 
-.condition select {
+.condition {
     border: 1px solid var(--bordeaux);
     border-radius: 2px;
     margin: 0;  
     margin-bottom: 10px; 
     background-color: #fff; 
     color: #000; 
-    padding-right: 30px;
+    padding-right: 3.6em;
 }
 
 .category select {
@@ -108,12 +107,12 @@ input[type="text"] {
     margin-bottom: 10px; 
     background-color: #fff; 
     color: #000; 
-    padding-right: 30px;
+    padding-right: 4.5em;
 }
 
 label[for="description"] + input {
-    padding-bottom: 5em;
-    padding-right: 10em;
+    padding-bottom: 7em;
+    padding-right: 20em;
 }
 
 .size input[type="radio"] {
@@ -153,12 +152,32 @@ label[for="description"] + input {
     color: white;
     border-radius: 10em;
     padding: .5em 4em;
-    align-items: center;
     border: 3px solid var(--bordeaux);
-    margin-left: 30em;
+    margin-left: 50em;
+    margin-top: 2.5em;
 }
 .submitButton:hover{
     background: var(--backgroundColor);
     color: var(--bordeaux);
     border: 3px solid var(--bordeaux);    
+}
+
+.price-label{
+    margin-left: 3.4em;
+}
+
+.size-label{
+    margin-left: 3.3em;
+}
+
+.model-label{
+    margin-left: 3.1em;
+}
+
+.model-input{
+    padding-right: 2em;
+}
+
+.price-input{
+    padding-right: 2.6em;
 }
