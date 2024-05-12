@@ -13,11 +13,11 @@
     $db = getDatabaseConnection();
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
-   $receiverID = -1;
+    $receiverID = -1;
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $receiverID = $_POST['receiverID'];
-  }
+   if ($_SERVER["REQUEST_METHOD"] == "POST"){
+     $receiverID = $_POST['receiverID'];
+   }
 
   $userID = $session->getID();
   topo($user);

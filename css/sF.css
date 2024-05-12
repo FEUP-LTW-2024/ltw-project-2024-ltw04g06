@@ -10,7 +10,6 @@
     position: fixed;
     z-index: 999;
     top: 3em;
-    left: 19.2em;
     form{
         margin: 1em;
         display: flex;
@@ -18,11 +17,11 @@
         > *{
             display: flex;
             flex-direction: column;
-            margin-right: 5em;
+            margin-right: 3em;
             select{
                 border: 1px solid var(--beige); 
-                padding: 5px; 
-                width: 120px;
+                padding: 5%; 
+                width: 100%;
                 outline: none;
                 color: #800000;
                 option{
@@ -63,4 +62,42 @@
     border: 1px solid var(--beige); 
     padding: 5px; 
     width: 5em;
+}
+@media (max-width: 70em){
+    #overlayForm{
+        font-size: smaller;
+        form {
+            margin: 1em;
+            flex-wrap: wrap;
+        }
+        
+        form > * {
+            flex: 1 1 50%;
+            margin-right: 1em;
+        }
+        
+        select {
+            padding: 5px;
+            width: 100%;
+            outline: none;
+            color: #800000;
+        }
+        
+        .price {
+            input {
+                width: 100%;
+                max-width: 5em; 
+            }
+        
+            button {
+                background: var(--beige);
+                border: 1px solid var(--bordeaux);
+                border-radius: 5px;
+                height: 2em;
+                width: 100%; 
+                max-width: 10em; 
+            }
+        }
+        
+    }
 }

@@ -14,7 +14,8 @@
                 <div id="elementToToggle" class="hidden">
                     <?php searchForm() ?>
                 </div>
-                <form action="/../pages/home.php" method="post"><input name="word" type="text">
+                <form action="/../pages/home.php" method="post">
+                    <input name="word" type="text">
                     <button type="submit" class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
