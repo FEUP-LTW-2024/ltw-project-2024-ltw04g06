@@ -11,8 +11,13 @@
 
   $db = getDatabaseConnection();
   $session = new Session();
+  $receiverID = -1;
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $receiverID = $_POST['receiverID'];
+  }
 
   $userID = $session->getID();
   topo();
-  sideBar($db, $userID);
+  sideBar($db, $userID, $receiverID);
   ?>
