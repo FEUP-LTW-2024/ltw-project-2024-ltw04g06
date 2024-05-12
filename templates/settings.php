@@ -20,7 +20,9 @@
         <form action="/../actions/action_edit_profile.php" method="post">
             <div class="img">
                 <img src="/../images/profilePictures/pp1.jpg" alt="">
-                <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button>
+                <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
+                <label for="imageUrl">Image_Url </label>
+                <input type="text" name="imageUrl" value="<?php echo htmlspecialchars($user->profilePicture); ?>">
             </div>
             <label for="Name">Name</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($user->name); ?>"><br><br>
@@ -44,6 +46,7 @@
         </form>
     </div>
     <div class="account-setting">
+    <form action="/../actions/action_rem_account.php" method="post">
         <h2>Account desactivation</h2>
         <p>Your account will be deleted and can <span>NOT</span> be recovered</p>
         <button>Delete account</button>

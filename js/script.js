@@ -8,12 +8,15 @@ const elementToToggle = document.getElementById('elementToToggle');
     });
 
     document.querySelectorAll('.radio-btn').forEach(function(radio) {
+        Give();
+        scrollDown();
         radio.addEventListener('click', function() {
             var selectedUserID = this.value;
             var xhr = new XMLHttpRequest();
             xhr.open('GET', '/../templates/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
+                    document.querySelector('.mensagem').style.display = 'block';
                     document.querySelector('.mensagem').innerHTML = xhr.responseText;
                     scrollDown();
                     Give();
@@ -56,7 +59,9 @@ const elementToToggle = document.getElementById('elementToToggle');
                 }
             }
         };
-        xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition , true);
+        xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition + 
+        '&userID=' + parseInt(document.getElementById('userID').innerText), true);
+
         xhr.send();
     })
     
@@ -68,8 +73,17 @@ function scrollDown(){
 }
 
 function Give(){
-    document.querySelector('.send_message').addEventListener('click', function() {
-        var formData = new FormData(document.getElementById('messageForm'));
+    document.querySelector('.send_message').addEventListener('click', MessageAdd);
+    document.getElementById('messageContent').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            MessageAdd();
+        }
+    });
+}
+function MessageAdd(){
+    var formData = new FormData(document.getElementById('messageForm'));
+    var mensagem = formData.get('content');
+    if (mensagem.trim() === '') return;
         document.getElementById('messageContent').value = '';
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/../actions/action_message.php', true);
@@ -82,7 +96,6 @@ function Give(){
             }
         };
         xhr.send(formData); 
-    });
 }
 
 

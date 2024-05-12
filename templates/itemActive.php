@@ -16,7 +16,11 @@
             </div>
             <label for="foto" class="foto-label">
                 <div class="quadrado">
-                    Photo <?php echo htmlspecialchars($_POST['foto']); ?>
+                <?php
+                $imageUrls = explode(',', $item->images);
+                $imageSrc = $imageUrls[0];
+            ?>
+                    <img src=<?='/../' . $imageSrc?> alt="<?= $item->name ?>">
                 </div>
             </label>                
         </div>

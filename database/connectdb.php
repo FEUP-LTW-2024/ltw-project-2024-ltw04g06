@@ -15,7 +15,7 @@ function getDatabaseConnection() : PDO {
 }
 
 function isDatabasePopulated(PDO $db) : bool {
-    $stmt = $db->query("SELECT userID FROM User WHERE userID = 1");
+    $stmt = $db->query("SELECT ConditionID FROM Condition WHERE conditionID = 1");
     $result = $stmt->fetch();
     return ($result !== false);
 }
