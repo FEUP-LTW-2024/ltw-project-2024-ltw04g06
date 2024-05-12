@@ -15,7 +15,7 @@
 
     $items = Item::getUserItems($db, $userID);
 
-    topo();
+    topo($user);
     profileEditDescript($user);
     myItemsAnalytics($db, $items, $user->role == 'Admin');
 ?>

@@ -33,6 +33,12 @@ main{
             cursor: pointer;
             a{color: white;}
         }
+        .msgbutton{
+            cursor: pointer;
+        }
+        .msgbutton:hover{
+            color: var(--beige);
+        }
     }
    .choice{
         padding-bottom: 2px;

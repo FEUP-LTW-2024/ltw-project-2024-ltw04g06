@@ -12,6 +12,11 @@
                 <h4><?= $user->email?></h4>
                 <h3>About me : </h3>
                 <h4><?= $user->aboutMe?></h4>
+                <form id="OpenMessage" action="/../pages/message.php" method="post">
+                    <input type="hidden" name="receiverID" value="<?= $user->userID ?>">
+                </form>
+                <h3 class = "msgbutton" onclick="document.getElementById('OpenMessage').submit();" >Message me <i class="fa-regular fa-envelope"></i></h3>
+
             </div>
         </div>
 <?php } ?>

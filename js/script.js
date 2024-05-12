@@ -8,6 +8,8 @@ const elementToToggle = document.getElementById('elementToToggle');
     });
 
     document.querySelectorAll('.radio-btn').forEach(function(radio) {
+        Give();
+        scrollDown();
         radio.addEventListener('click', function() {
             var selectedUserID = this.value;
             var xhr = new XMLHttpRequest();

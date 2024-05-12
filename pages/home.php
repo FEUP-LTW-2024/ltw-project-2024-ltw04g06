@@ -5,10 +5,8 @@
     require_once(__DIR__ . '/../templates/anuncio.php');
     require_once(__DIR__ . '/../templates/itemDisplay.php');
     require_once(__DIR__ . '/../classes/item.class.php');
+    require_once(__DIR__ . '/../classes/user.class.php');
     require_once(__DIR__ . '/../classes/session.class.php');
-    
-  $session = new Session();
-  $db = getDatabaseConnection();
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category = $_POST["category"];
@@ -27,7 +25,11 @@
     $maxPrice = NULL;
   }
   
-  topo();
+  $session = new Session();
+  $db = getDatabaseConnection();
+  $userID = $session->getID();
+  $user = User::getUser($db, $userID);
+  topo($user);
   anuncio();
   if (isset($_POST["word"])) $items = Item::getItemsByName($db, $_POST["word"]);
   else $items = Item::getFilteredItems($db, $category, $condition, $minPrice, $maxPrice);
