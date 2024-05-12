@@ -10,12 +10,20 @@
     $db = getDatabaseConnection();
     $session = new Session();
 
+    $userIDD = $session->getID();
+    $userD = User::getUser($db,$userIDD);
+
     $userID = $_POST['userId'];
     $user = User::getUser($db,$userID);
 
+    if ($userIDD == $userID) {
+        header('Location: profile.php');
+        exit(); 
+    }
+
     $items = Item::getUserItems($db, $userID);
 
-    topo();
+    topo($userD);
     SeeProfile($user);
     myItemsAnalytics($db, $items);
 ?>

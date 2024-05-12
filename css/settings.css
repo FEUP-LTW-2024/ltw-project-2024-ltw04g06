@@ -37,18 +37,20 @@ button{
             display: flex;
             flex-direction: row;
             >*{align-self: center;}
+            input{
+                margin-right: 1em;
+            }
             img{
                 border-radius: 50%;
                 max-width: 8em;
-                margin: 2em 5em;
+                margin: 2em;
             }
             button{
                 border: 2px solid var(--bordeaux);
                 border-radius: 15px;
                 margin: 2em;
-                margin-left: auto;
                 width: 10em;
-                height: 2em;
+                height: auto;
                 font-size: larger;
                 cursor: pointer;
                 background: white;
