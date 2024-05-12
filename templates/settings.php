@@ -46,6 +46,7 @@
         </form>
     </div>
     <div class="account-setting">
+    <form action="/../actions/action_rem_account.php" method="post">
         <h2>Account desactivation</h2>
         <p>Your account will be deleted and can <span>NOT</span> be recovered</p>
         <button>Delete account</button>
