@@ -2,9 +2,9 @@
 INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID,shoppingCartID)
 VALUES 
 
-    (1, 'john_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg','sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1, 1),
-    (2, 'jane_doe', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2, 2),
-    (3, 'Toze', '$2y$10$S/rltAJpIzCkpGvpHEqMYuOAVJJg5HOvs4xha5tT8O78er8X2jt4q', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou o Toze!', 'rua dos alecrins, 8005-332,Portugal',910000019, 3, 3);
+    (1, 'john_doe', '$2y$12$NASz60qmC5EAA4h3M600MuASJS/MSR6u/RQxw84wqgubP.WI3WQGa', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/pp2.jpg','sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1, 1), /*john_doe1*/
+    (2, 'jane_doe', '$2y$12$xHXoLY8wiUABnGk.31CSR.zcH7w.g5YxNwmwqdK8w/Z3Rs9jFAY8S', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2, 2),/*jane_doe1*/
+    (3, 'Toze', '$2y$12$6J33f9haGmoQgUzn5InhwuZb5K7Iq9yogx5nGddwwoDGkmUhZDucm', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/pp1.jpg','sou o Toze!', 'rua dos alecrins, 8005-332,Portugal',910000019, 3, 3);/*Toze_pt1*/
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
 VALUES 

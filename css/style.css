@@ -37,6 +37,8 @@ h1{
             color: #d19f9d;
         }
     }
+    
+
     header{
         color: #800000;
         margin: 1em auto;
@@ -45,6 +47,13 @@ h1{
         font-family:Georgia, 'Times New Roman', Times, serif;
     }
 }
+.message {
+    color: red; /* Change text color to red */
+
+   
+}
+
+
 h5{
     grid-column: 2;
     text-align: center;

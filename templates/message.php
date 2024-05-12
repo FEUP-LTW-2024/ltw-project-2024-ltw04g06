@@ -1,6 +1,6 @@
 
 <?php 
-    function sideBar(PDO $db, int $userID){ 
+    function sideBar(PDO $db, int $userID, int $receiverID){ 
     $contacts = Message::getUserMessageContacts($db, $userID);
     ?>
 <head>
@@ -11,7 +11,20 @@
         <h2>Messages</h2>
         <form method="get" class="pessoas" id="contactForm">
         <?php
-        foreach ($contacts as $contact) { 
+        if ($contacts == null && $receiverID == -1){?>
+            <h4>You have no messages</h4>
+        <?php }
+        if ($receiverID != -1){
+            $contact = User::getUser($db, $receiverID);
+            ?>
+            <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
+            <label for="<?=$contact->username ?>" class="pessoa">
+            <img src="<?=$contact->profilePicture?>" alt="">
+            <p><?=$contact->username ?></p>
+            </label> 
+        <?php }?>
+        <?php foreach ($contacts as $contact) { 
+            if ($contact->userID == $receiverID) continue;
     ?>
     <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
     <label for="<?=$contact->username ?>" class="pessoa">
@@ -22,20 +35,25 @@
      }?>
      </form>
     </div> 
-    <div class="mensagem">
-
-     </div>
-<?php } ?>
+    <?php
+        if ($receiverID != -1){?>
+            <div class="mensagem">
+                <?php messageBox($userID, $receiverID);?>
+            </div>
+         <?php }else{?>
+            <div class="mensagem hidden">
+        
+            </div>
+    <?php }}?>
 
 
 <?php 
     require_once(__DIR__ . '/../database/connectdb.php');
     require_once(__DIR__ . '/../classes/message.class.php');
     require_once(__DIR__ . '/../classes/user.class.php');
-    function  messageBox(int $userID2){ 
+    function  messageBox(int $userID1, int $userID2){ 
         $db = getDatabaseConnection();
         $user2 = User::getUser($db, $userID2);
-        $userID1 = 1;
         $msgs = Message::getUserMessages($db, $userID1, $userID2);
     ?>
 <head>
@@ -66,7 +84,7 @@
                 <form  id="messageForm" class="typing-area" method="post">
                     <input type="text" class="writerID" name="senderID" value="<?= $userID1 ?>" hidden>
                     <input type="text" class="receiverID" name="recipientID" value="<?= $userID2 ?>" hidden>
-                    <input type="text" name="content" class="input-field" id="messageContent" placeholder="Message..." autocomplete="off">
+                    <textarea name="content"class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
                     <button type="button" class="send_message"><i class="fab fa-telegram-plane"></i></button>
                 </form>
             </div>        

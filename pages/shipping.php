@@ -8,10 +8,13 @@
     require_once(__DIR__ . '/../classes/item.class.php');
     require_once(__DIR__ . '/../classes/session.class.php');
     
-  $session = new Session();
-  $db = getDatabaseConnection();
+    $db = getDatabaseConnection();
+    $session = new Session();
 
-  topo();
+    $userID = $session->getID();
+    $user = User::getUser($db,$userID);
+
+  topo($user);
   shippingForm();
 
 ?>

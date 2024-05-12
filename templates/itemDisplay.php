@@ -12,7 +12,10 @@
         $user = Item::getItemSeller($db, $item->itemID);
         ?>
         <div class="product">
-            <header>
+            <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                <input type="hidden" name="userId" value="<?= $user->userID ?>">
+            </form>
+            <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
                 <img src=<?= '/../' . $user->profilePicture?> alt="">
                 <p><?=$user->username?></p>
             </header>
@@ -20,13 +23,15 @@
                 $imageUrls = explode(',', $item->images);
                 $imageSrc = $imageUrls[0];
             ?>
-            <a href="/../pages/viewItem.php?itemID=<?=$item->itemID?>">
-            <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+            <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+                <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+            </form>
+            <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
             
             <form action="/../actions/action_add_to_wishlist.php" method="post">
             <input type="hidden" name="itemID" value="<?=$item->itemID?>">
             <p><?=$item->name?>
-            <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button></p>
+            <button type="submit" class="wishlist"><i class="fa-regular fa-heart red"></i></button></p>
             </form>
             
             <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i></h4>

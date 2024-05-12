@@ -16,10 +16,11 @@
     }
 
     $userID = $session->getID();
-    topo();
+    $user = User::getUser($db, $userID);
+    topo($user);
     createWishlist();
     $itemID=$_POST['itemID'];
-    $user = User::getUser($db, $userID);
+    
     $wishlistID = $user->wishlistID;
     $wishlistItems=Wishlist::getWishlistItems($db, $wishlistID);
     if(empty($wishlistItems)){

@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__ . '/../templates/message.php');
+require_once(__DIR__ . '/../classes/session.class.php');
 
-    $userID = $_GET['userID'];
-    json_encode(messageBox($userID));
+    $session = new Session();
+    $receiverID = $_GET['userID'];
+    $userID = $session->getID();
+    json_encode(messageBox($userID, $receiverID));
 ?>

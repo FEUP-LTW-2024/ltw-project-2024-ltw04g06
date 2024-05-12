@@ -133,6 +133,13 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       }
     }
 
+    static function existItemUserWish (PDO $db, int $userID, int $itemID) {                  //----------temos de filtrar as coisas que recebemos nesta string antes de chegar aqui. ver pp de segurança ex: slide28---------//
+      $user = self::getUser($db, $userID);
+      $wishlistID = $user->wishlistID;
+      $existItemInWishlist = Wishlist::existItemInWishlist($db, $wishlistID, $itemID);
+      return $existItemInWishlist;
+    }
+
     
     /*--Add--*/
 
@@ -165,18 +172,16 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       $shoppingCartID = $db->lastInsertId();
       
       $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID, shoppingCartID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]), '', $email, 'User', 'images/profilePictures/default','','',0, $wishlistID, $shoppingCartID]);
+      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]), '', $email, 'User', 'images/profilePictures/default','','',0, $wishlistID, $shoppingCartID]);
       $userID = $db->lastInsertId();
 
-  
-      echo "User added successfully with userID: $userID";
       return $userID;
     }
 
 
     /*--Edit--*/
 
-    static function editName(PDO $db, int $userID, string $newName) {
+    static function editName(PDO $db, int $userID, string $newName) : bool {
       $user = self::getUser($db, $userID);
       if($user->name == $newName) return false;
       $preparedStmt = $db->prepare("UPDATE User SET name = :newName WHERE userID = :userID");
@@ -192,7 +197,7 @@ require_once(__DIR__ . '/shoppingCart.class.php');
     }
 
 
-    static function editAboutMe(PDO $db, int $userID, string $newAboutMe) {
+    static function editAboutMe(PDO $db, int $userID, string $newAboutMe) : bool {
       $user = self::getUser($db, $userID);
       if($user->aboutMe == $newAboutMe) return false;
       $preparedStmt = $db->prepare("UPDATE User SET aboutMe = :newAboutMe WHERE userID = :userID");
@@ -202,14 +207,12 @@ require_once(__DIR__ . '/shoppingCart.class.php');
   
       if ($preparedStmt->rowCount() > 0) {
         return true;
-         // return array("success" => true, "message" => "About Me updated successfully for userID: $userID");
       } else {
         return false;
-         // return array("success" => false, "message" => "Failed to update About Me for userID: $userID");
       }
     }
 
-    static function editRole(PDO $db, int $userID, string $newRole) {
+    static function editRole(PDO $db, int $userID, string $newRole) : bool {
       $user = self::getUser($db,$userID);
       if($user->role == $newRole) return false;
   
@@ -219,19 +222,16 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       $preparedStmt->execute();
       if ($preparedStmt->execute()) {
         return true;
-        //return array("success" => true, "message" => "Username changed successfully for userID: $userID");
       } else {
           return false;
-          //return array("success" => false, "message" => "Failed to change username for userID: $userID");
         }
     }
 
 
-    static function editUsername(PDO $db, int $userID, string $newUsername) {
+    static function editUsername(PDO $db, int $userID, string $newUsername) : bool {
       if (self::existingUser($db, $newUsername)) {
           echo "Username already exists. Please choose a different one.";
           return false;
-          //return array("success" => false, "message" => "Username already exists. Please choose a different one.");      
         }
   
       $preparedStmt = $db->prepare("UPDATE User SET username = :newUsername WHERE userID = :userID");
@@ -240,43 +240,37 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       $preparedStmt->execute();
       if ($preparedStmt->execute()) {
         return true;
-        //return array("success" => true, "message" => "Username changed successfully for userID: $userID");
       } else {
           return false;
-          //return array("success" => false, "message" => "Failed to change username for userID: $userID");
         }
     }
 
 
 
-    static function editEmail(PDO $db, int $userID, string $newEmail) {
+    static function editEmail(PDO $db, int $userID, string $newEmail) : bool {
       if (self::existingUser($db, $newEmail)) {
           return false;
-          //return array("success" => false, "message" => "Email already exists. Please choose a different one.");
       }
   
       $preparedStmt = $db->prepare("UPDATE User SET email = :newEmail WHERE userID = :userID");
       $preparedStmt->bindParam(':newEmail', $newEmail, PDO::PARAM_STR);
       $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
-      $result = $preparedStmt->execute(); // Executing the prepared statement
+      $result = $preparedStmt->execute(); 
   
       if ($result) {
           return true;
-          //return array("success" => true, "message" => "Email changed successfully for userID: $userID");
       } else {
           return false;
-          //return array("success" => false, "message" => "Failed to change email for userID: $userID");
       }
     }
 
-    static function editPassword(PDO $db, int $userID,string $currentPass, string $newPass, string $confirmNewPass) {
+    static function editPassword(PDO $db, int $userID,string $currentPass, string $newPass, string $confirmNewPass) : bool {
       $user = self::getUser($db,$userID);
       if(self::verifyUserPass($db,$user->username, $currentPass) == false){ echo "Wrong current pass";return false;}
       if($newPass != $confirmNewPass || $currentPass == $newPass ) return false;
       
       $hashedPassword = password_hash($newPass, PASSWORD_DEFAULT, ['cost' => 12]);
 
-      // Update the password in the database
       $preparedStmt = $db->prepare("UPDATE User SET password = :newPassword WHERE userID = :userID");
       $preparedStmt->bindParam(':newPassword', $hashedPassword, PDO::PARAM_STR);
       $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
@@ -284,15 +278,13 @@ require_once(__DIR__ . '/shoppingCart.class.php');
 
       if ($result) {
           return true;
-          //return array("success" => true, "message" => "Password changed successfully for userID: $userID");
       } else {
           return false;
-          //return array("success" => false, "message" => "Failed to change password for userID: $userID");
       }
     }
 
 
-    static function editPhoneNumber(PDO $db, int $userID, string $newPhoneNumber) {
+    static function editPhoneNumber(PDO $db, int $userID, string $newPhoneNumber) :bool {
       $user = self::getUser($db, $userID);
       if ($user->phoneNumber == $newPhoneNumber) {
           return false;
@@ -308,7 +300,7 @@ require_once(__DIR__ . '/shoppingCart.class.php');
     }
 
     
-    static function editAddress(PDO $db, int $userID, string $newAddress) {
+    static function editAddress(PDO $db, int $userID, string $newAddress) :bool {
       $user = self::getUser($db, $userID);
       if ($user->address == $newAddress) {
           return false;
@@ -325,14 +317,9 @@ require_once(__DIR__ . '/shoppingCart.class.php');
   
   
 
-
-  
-
-
-
     /*--Remove--*/
 
-    static function removeUser(PDO $db, int $userID) {
+    static function removeUser(PDO $db, int $userID) :bool {
       $user = self::getUser($db,$userID);
       if (!self::existingUser($db, $user->username)) {
           return false;
