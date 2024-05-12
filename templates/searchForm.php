@@ -29,7 +29,7 @@
                 <input type="radio" id="toys" name="category" value="Toys">
                 <label for="toys">Toys</label>
         </div>
-        <div class="condicion">
+        <div class="condition">
             <h3>Condition</h3>
             <select name="condition">
                 <option value="NULL" selected>No filter</option>

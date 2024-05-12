@@ -3,8 +3,8 @@
   declare(strict_types = 1);
 
 	class Category {
-    private int $categoryID;
-    private string $name;
+    public int $categoryID;
+    public string $name;
 
     public function __construct(int $categoryID, string $name) {
       $this->categoryID = $categoryID;
@@ -26,6 +26,18 @@
           $category['name']
       );
     }
+
+    static function getAllCategories(PDO $db) {
+      $preparedStmt = $db->prepare('SELECT * FROM Category');
+      $preparedStmt->execute();
+      $categories = [];
+  
+      while ($category = $preparedStmt->fetch()) {
+          $categories[] = self::getCategory($db, $category['categoryID']);
+      }
+      return $categories;
+    }
+
 
     static function addCategory(PDO $db, int $categoryID, string $name){
       $preparedStmt = $db->prepare("INSERT INTO Category (categoryID, name) VALUES(?, ?)");
