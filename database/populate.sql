@@ -22,7 +22,10 @@ INSERT OR IGNORE INTO Item (itemID,name, sellerID, categoryID, brand, model, siz
 VALUES 
     (1,'Used Unicorn Shirt', 1, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 'images/unicorn_dab_shirt.png', 1),
     (2,'Vintage Plushies', 1, 2, 'Lacoste', '', 0, 1, '  Hello! I am selling 5 vintage plushies from 1914 very good, very good condition, very good shape, very good price.', 2000.00, 'images/plushies_0.png,images/plushies_1.png,images/plushies_2.png', 1),
-    (3,'Colegas de turma', 3, 5, 'Chineses', 'Falhados', 1, 4, 'Colegas de Turma muito usados', 0.01, 'images/ola.png,images/ola1.png,images/ola2.png', 1);
+    (3,'Colegas de turma', 3, 5, 'Chineses', 'Falhados', 1, 4, 'Colegas de Turma muito usados', 0.01, 'images/ola.png,images/ola1.png,images/ola2.png', 1),
+    (4,'Used Unicorn Shirt2', 2, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 'images/unicorn_dab_shirt.png', 1);
+
+    
 
 INSERT OR IGNORE INTO ShippingForm (shippingFormID, itemID, sellerID, buyerID, description, date)
 VALUES 

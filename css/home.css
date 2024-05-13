@@ -4,27 +4,73 @@ body{
     --bordeaux: #800000;
     --borderLine: #E2D0BC;
 }
+.biggest-sellers {
+    color: var(--bordeaux);
+    margin: 2em 2em 1em 4em;
+    font-weight: bold;
+    font-size:x-large;   
+}
 .anuncios{
     width: 90%;
     height: 15em;
-    margin: 3em auto;
+    margin: 1em auto 3em auto;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 7px;
     background: var(--backgroundColor);
+    display: flex; /* Add display flex to the container */
+    flex-direction: row; 
 
+    
     header {
         width: 100%;
         cursor: pointer;
-        display: flex;
+        align-self: center;
+        display: flex; /* Add display flex to the container */
+        flex-direction: row; 
+        flex-wrap: wrap;
+    
         margin-bottom: 1em;
         img{
+            flex-wrap: wrap;
             border-radius: 50%;
-            width: 2em;
-            height: 2em;
+            border: .15em solid var(--bordeaux);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+
+            width: 6em;
+            height: 6em;
             align-self: center;
             margin: 0 1em ;
         }
+        img:hover{
+            width: 8em;
+            height: 8em;
+            background: var(--bordeaux);
+            color: white;
+            transition: all 0.3s ease-out;
+            border-radius: 50%;
+    
+        }
+        .username{
+            font-weight: bold;
+            font-size: large; /* or use other values like normal, lighter, etc. */
+
+        }
+        .user-info {
+            display: none; /* Initially hide the user information */
+            position: absolute; /* Position it relative to the header */
+            top: 100%; /* Place it below the header */
+            left: 0; /* Align it with the left edge of the header */
+            background-color: white;
+            padding: 0.5em;
+            border: 1px solid var(--borderLine);
+            border-radius: 5px;
+        }
+        
+        .user-info.hidden {
+            display: none; /* Hide the user information when the hidden class is applied */
+        }
     }
+    
 }
 .products{
     display: flex;

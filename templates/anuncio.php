@@ -6,6 +6,7 @@ require_once(__DIR__ . '/../classes/user.class.php');
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <main>
+<h3 class="biggest-sellers">Our Biggest Sellers</h3>
 <div class="anuncios">
 <?php
 $users = User::getTopSellers($db);
@@ -16,9 +17,22 @@ $users = User::getTopSellers($db);
     </form>
     <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
         <img src=<?= '/../' . $user->profilePicture?> alt="">
-        <p><?=$user->username?></p>
-    </header>
+        <p class="username"><?= $user->username ?></p>    </header>
+        <div class="user-info hidden"><?= $user->email ?></div>
+        
     <?php } ?> 
 </div>
 </main>
+<script>
+    function showUserInfo(email) {
+        const userInfo = document.querySelector('.user-info');
+        userInfo.textContent = email;
+        userInfo.classList.remove('hidden');
+    }
+
+    function hideUserInfo() {
+        const userInfo = document.querySelector('.user-info');
+        userInfo.classList.add('hidden');
+    }
+</script>
 <?php } ?>
