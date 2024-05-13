@@ -1,20 +1,21 @@
-<?php function displayItemActive(){ ?>
+<?php function displayItemSold(){ ?>
     <head>
-        <link rel="stylesheet" href="/../css/itemActive.css">
+        <link rel="stylesheet" href="/../css/itemSold.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
     <main>
 <?php } ?>
 
-<?php function itemActiveForm($item, $db){ ?>
+<?php function itemSoldForm($item, $db){ ?>
     <div class="form">
         <div class="left-column">
            <div class="products">
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <header>
-                    <form action="/../pages/itemSold.php" method="post">
+                    <form action="/../pages/itemActive.php" method="post">
                         <input type="hidden" name="itemID" value="<?=$item->itemID?>">
-                        <button type="submit" class="submitButton">Sold</button>
+                        <button type="submit" class="submitButton">Active</button>
                     </form>
                 </header>
             
@@ -41,7 +42,7 @@
         </div>
         <div class="right-column">
             <form action="" method="post">
-                <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>
+                <button type="submit" class="edit"> <i class="fas fa-pencil-alt"></i>Edit item</button>
             </form>
             <div class="description">
                 <p><label class="description"><strong>Description: </strong> <?= $item->description ?></p></label>
@@ -64,5 +65,9 @@
                 </div>
         </div>
     </div>   
+    <form action="/../actions/action_edit_shippingForm.php" method="post">
+        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+        <button type="submit" class="print">Print Ship Form</button>
+    </form>
 </main>
 <?php } ?>
