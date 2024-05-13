@@ -1,3 +1,4 @@
+
 <?php function topo(User $user){ ?>
 <head>
     <link rel="stylesheet" href="../css/topo.css">
@@ -38,13 +39,17 @@
             </div>
         </div>
         <div class="types">
-            <ul>
-                <li><a href="/../pages/home.php?category=Clothing">Clothing</a></li>
-                <li><a href="/../pages/home.php?category=Accessories">Accessories</a></li>
-                <li><a href="/../pages/home.php?category=Eletronics">Eletronics</a></li>
-                <li><a href="/../pages/home.php?category=Furniture">Furniture</a></li>
-                <li><a href="/../pages/home.php?category=Toys">Toys</a></li>
-            </ul>
+            <?php
+                require_once(__DIR__ . '/../classes/category.class.php');
+                require_once(__DIR__ . '/../database/connectdb.php');
+                $db = getDatabaseConnection();
+                $categories = Category::getAllCategories($db);
+                echo '<ul>';
+                foreach ($categories as $category) {
+                    echo '<li><a href="/../pages/home.php?category=' . $category->name . '">' . $category->name . '</a></li>';
+                }
+                echo '</ul>';
+            ?>
         </div>
     </div>
     
