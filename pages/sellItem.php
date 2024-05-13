@@ -10,6 +10,7 @@
     $db = getDatabaseConnection();
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
+    topo($user);
     displaySellItem();
     sellItemForm();
 ?>
