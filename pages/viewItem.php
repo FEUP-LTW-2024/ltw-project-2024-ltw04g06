@@ -18,7 +18,7 @@
         $itemID = $_POST['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
-            viewItemForm($item);
+            viewItemForm($item, $db);
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
