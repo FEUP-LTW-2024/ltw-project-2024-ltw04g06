@@ -10,6 +10,9 @@ body{
     display: flex;
     flex-direction: row;
 }
+#elementToToggle{
+  width: 50em;
+}
 .topo .firstRow{
     padding:0;
     margin: 1em;
@@ -33,9 +36,6 @@ body{
             padding: 0;
             border: none;
             flex-grow: 1;
-        }
-        #elementToToggle{
-          
         }
         .all{
             background: var(--backgroundColor);
@@ -188,6 +188,9 @@ a{
 
 
   @media (max-width: 50em){
+    #elementToToggle{
+      width: 10em;
+    }
     .topo .firstRow{
       margin: 1em 0;
       font-size: smaller;

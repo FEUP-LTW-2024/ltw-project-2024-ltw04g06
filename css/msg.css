@@ -4,127 +4,150 @@ body{
     --bordeaux: #800000;
     --borderLine: #E2D0BC;
 }
-main{
-    display: flex;
-    flex-direction: row;
-}
-img{
-    border-radius: 50%;
-    width: 2em;
-    border: .15em solid var(--beige);
-    
-}
-.sideBar{
-    margin: 1%;
-    width: 20%;
-    max-height: 400px;
-    h2{
-       color: var(--bordeaux); 
-    }
-}
-.pessoas{
-    display: flex;
-    flex-direction: column;
-}
-.pessoas .pessoa{
-    display: flex;
-    flex-direction: row;
-    border-radius: 15px;
-    border: none;
-    margin-bottom: 1em;
-    cursor: pointer;
-    > *{
-        align-self: center;
-        margin: .2em;
-    }
-}
-.pessoas .pessoa:hover {
-    background-color: var(--backgroundColor);
-}
-.radio-btn{
-    display: none;
-}
-.radio-btn:checked + .pessoa {
-    background: var(--beige);
-}
-.mensagem{
-    width: 60%;
-    margin: 2em;
-    border: 1.5px solid var(--borderLine);
-    border-radius: 10px;
-    .pessoa{
-        border-bottom: 1.5px solid var(--borderLine);
+@media (max-width: 500em){
+    main{
         display: flex;
         flex-direction: row;
-        button{
-            background: white;
-            border: none;
-            align-self: center;
-            margin-left: auto;
-        }
-        > *{
-            align-self: center;
-            margin: .5em;
+    }
+    img{
+        border-radius: 50%;
+        width: 2em;
+        border: .15em solid var(--beige);
+        
+    }
+    .sideBar{
+        margin: 1%;
+        width: 20%;
+        max-height: 400px;
+        h2{
+           color: var(--bordeaux); 
         }
     }
-    .caixa{
-        height: 400px;
-        overflow-y: auto;
-        margin: 1em;
-        position: relative;
-        .msg{
-            max-width: 90%;
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 1em;
-            margin-left: 7%;
-            font-size: small;
-            word-wrap: break-word;
+    .pessoas{
+        display: flex;
+        flex-direction: column;
+    }
+    .pessoas .pessoa{
+        display: flex;
+        flex-direction: row;
+        border-radius: 15px;
+        border: none;
+        margin-bottom: 1em;
+        cursor: pointer;
+        > *{
+            align-self: center;
+            margin: .2em;
         }
-        .fr{
+    }
+    .pessoas .pessoa:hover {
+        background-color: var(--backgroundColor);
+    }
+    .radio-btn{
+        display: none;
+    }
+    .radio-btn:checked + .pessoa {
+        background: var(--beige);
+    }
+    .mensagem{
+        width: 60%;
+        margin: 2em auto;
+        
+        border: 1.5px solid var(--borderLine);
+        border-radius: 10px;
+        .pessoa{
+            border-bottom: 1.5px solid var(--borderLine);
             display: flex;
             flex-direction: row;
+            button{
+                background: white;
+                border: none;
+                align-self: center;
+                margin-left: auto;
+            }
             > *{
                 align-self: center;
                 margin: .5em;
             }
-            .time{
-                font-size: .5em;
-                color: gray;
+        }
+        .caixa{
+            height: 400px;
+            overflow-y: auto;
+            margin: 1em;
+            position: relative;
+            .msg{
+                max-width: 90%;
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 1em;
+                margin-left: 7%;
+                font-size: small;
+                word-wrap: break-word;
             }
+            .fr{
+                display: flex;
+                flex-direction: row;
+                > *{
+                    align-self: center;
+                    margin: .5em;
+                }
+                .time{
+                    font-size: .5em;
+                    color: gray;
+                }
+            }
+            
+        }
+    }
+    .typing-area{
+        display: flex;
+      }
+      .input-field{
+        display: flex;
+        flex-direction: row;
+      }
+      .typing-area textarea{
+        background: var(--backgroundColor);
+        width: 95%;
+        min-height: 2em;
+        font-size: 16px;
+        outline: none;
+        border: none;
+        &::placeholder{
+            color: #d19f9d;
         }
         
-    }
+      }
+      .typing-area button{
+        background: var(--backgroundColor);
+        color: #8d6363;
+        width: 55px;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .typing-area button:hover{
+        color: black;
+      }
 }
-.typing-area{
-    display: flex;
-  }
-  .input-field{
-    display: flex;
-    flex-direction: row;
-  }
-  .typing-area textarea{
-    background: var(--backgroundColor);
-    width: 95%;
-    min-height: 2em;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    &::placeholder{
-        color: #d19f9d;
+
+  @media (max-width: 70em){
+    img{
+        border-radius: 50%;
+        width: 1em;
+        border: .15em solid var(--beige);
+        
     }
-    
-  }
-  .typing-area button{
-    background: var(--backgroundColor);
-    color: #8d6363;
-    width: 55px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .typing-area button:hover{
-    color: black;
+    .sideBar{
+        margin: 1%;
+        width: 10%;
+        max-height: 400px;
+        h2{
+           color: var(--bordeaux); 
+        }
+        .pessoas .pessoa{
+            font-size: smaller;
+        }
+    }
   }
