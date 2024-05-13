@@ -30,7 +30,7 @@
   $userID = $session->getID();
   $user = User::getUser($db, $userID);
   topo($user);
-  anuncio();
+  anuncio($db);
   if (isset($_POST["word"])) $items = Item::getItemsByName($db, $_POST["word"]);
   else $items = Item::getFilteredItems($db, $category, $condition, $minPrice, $maxPrice);
   itemDisplay($items, $db, $userID);

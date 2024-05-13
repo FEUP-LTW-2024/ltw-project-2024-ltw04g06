@@ -73,6 +73,26 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       }
     return $users;
     }
+    
+    static function getTopSellers(PDO $db) {
+      $preparedStmt = $db->prepare("SELECT sellerID FROM Item");
+  
+  $preparedStmt->execute();
+  $sellerIDs = array();
+  
+  while ($row = $preparedStmt->fetch()) {
+      $sellerIDs[] = $row['sellerID'];
+  }
+  $sellerIDCounts = array_count_values($sellerIDs);
+  arsort($sellerIDCounts);
+  $top3SellerIDs = array_slice(array_keys($sellerIDCounts), 0, 3);
+  $users = array();
+  foreach( $top3SellerIDs  as $sellerID) {
+    $users[] = self::getUser($db, $sellerID);
+  }
+  return $users;
+}
+  
 
 
 

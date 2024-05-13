@@ -11,6 +11,20 @@ body{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 7px;
     background: var(--backgroundColor);
+
+    header {
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: 1em;
+        img{
+            border-radius: 50%;
+            width: 2em;
+            height: 2em;
+            align-self: center;
+            margin: 0 1em ;
+        }
+    }
 }
 .products{
     display: flex;

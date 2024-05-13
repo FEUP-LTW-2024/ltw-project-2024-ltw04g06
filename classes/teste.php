@@ -277,6 +277,13 @@ foreach ($categories as $category) {
     echo 'category ' . $category->name . '<br>';
 }
 
+$users = User::getTopSellers($db);
+foreach ($users as $user) {
+  echo 'user ' . $user->name . '<br>';
+}
+
+
+
 
 ?>
 
