@@ -76,5 +76,6 @@
     <form action="/../actions/action_add_to_shopCart.php" method="post">
                     <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                     <button type="submit" class="submitButton">Buy</button>
+    </form>
 </main>
 <?php } ?>

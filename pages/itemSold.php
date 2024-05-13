@@ -1,5 +1,5 @@
 <?php 
-    require_once(__DIR__ . '/../templates/itemActive.php');
+    require_once(__DIR__ . '/../templates/itemSold.php');
     require_once(__DIR__ . '/../templates/searchForm.php');
     require_once(__DIR__ . '/../templates/topo.php');
     require_once(__DIR__ . '/../database/connectdb.php');
@@ -12,13 +12,13 @@
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
     topo($user);
-    displayItemActive();
+    displayItemSold();
 
    
         $itemID = 1;
         try {
             $item = Item::getItem($db, $itemID);
-            itemActiveForm($item, $db);
+            itemSoldForm($item, $db);
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
