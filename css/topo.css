@@ -16,8 +16,9 @@ body{
     h3 a{
       color: black;
     }
-    > *{
+    >*{
         margin: .5em;
+        align-self: center;
     }
     .barra{
         display: flex;
@@ -75,9 +76,11 @@ body{
         height: 2em;
         display: flex;
         flex-direction: row;
-        img{
+        .profilePic{
             border-radius: 50%;
             border: .15em solid var(--beige);
+            max-width: 10em;
+            max-height: 10em;
         }
         .options-arrow {
             color: var(--beige);

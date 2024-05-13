@@ -34,7 +34,7 @@
                         <li><a href="/../actions/action_logout.php">Log out</a></li>
                     </ul>
                 </div>
-                <img src="<?=$user->profilePicture?>">
+                <img class="profilePic" src="<?=$user->profilePicture?>">
             </div>
         </div>
         <div class="types">
