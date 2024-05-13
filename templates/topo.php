@@ -14,7 +14,8 @@
                 <div id="elementToToggle" class="hidden">
                     <?php searchForm() ?>
                 </div>
-                <form action="/../pages/home.php" method="post"><input name="word" type="text">
+                <form action="/../pages/home.php" method="post">
+                    <input name="word" type="text">
                     <button type="submit" class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
@@ -33,7 +34,7 @@
                         <li><a href="/../actions/action_logout.php">Log out</a></li>
                     </ul>
                 </div>
-                <img src="<?=$user->profilePicture?>">
+                <img class="profilePic" src="<?=$user->profilePicture?>">
             </div>
         </div>
         <div class="types">

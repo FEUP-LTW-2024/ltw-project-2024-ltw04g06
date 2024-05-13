@@ -27,7 +27,7 @@
             <label for="Name">Name</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($user->name); ?>"><br><br>
             <label for="AboutMe">About me</label>
-            <input type="text" name="aboutMe"  value="<?php echo htmlspecialchars($user->aboutMe); ?>"><br><br>
+            <input type="text" name="aboutMe"  value="<?php echo htmlspecialchars($user->aboutMe); ?>">
             <button type="submit">Apply Changes</button>
         </form>
     </div>
@@ -63,7 +63,7 @@
             <label for="NewPassword">New Password</label>
             <input type="password" name="newPassword"><br><br>
             <label for="ConfirmPassword">Confirm Password</label>
-            <input type="password" name="confirmNewPassword"><br><br>
+            <input type="password" name="confirmNewPassword">
             <button type="submit">Apply Changes</button>
         </form>
     </div>

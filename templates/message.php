@@ -17,7 +17,7 @@
         if ($receiverID != -1){
             $contact = User::getUser($db, $receiverID);
             ?>
-            <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
+            <input checked type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
             <label for="<?=$contact->username ?>" class="pessoa">
             <img src="<?=$contact->profilePicture?>" alt="">
             <p><?=$contact->username ?></p>
