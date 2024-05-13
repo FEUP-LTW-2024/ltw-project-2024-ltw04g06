@@ -26,5 +26,5 @@
     if(empty($wishlistItems)){
         emptyWishlist();
     }
-    wishlistDisplay($wishlistItems);
+    wishlistDisplay($wishlistItems, $db);
 ?>

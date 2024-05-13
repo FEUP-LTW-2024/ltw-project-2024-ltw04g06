@@ -6,22 +6,35 @@
          <p class=title>Wishlist</p>
 <?php } ?>
 
-<?php function wishlistDisplay($wishlistItems) { ?>
+<?php function wishlistDisplay($wishlistItems, $db) { ?>
     <body>
-        <div class="all-images">
-            <?php foreach ($wishlistItems as $item) { ?>
+        <div class="products">
+            <?php foreach ($wishlistItems as $item) { 
+                $user = Item::getItemSeller($db, $item->itemID);?>
+                <div class="product">
+                <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                    <input type="hidden" name="userId" value="<?= $user->userID ?>">
+                </form>
+                <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
+                    <img src=<?= '/../' . $user->profilePicture?> alt="">
+                    <p><?=$user->username?></p>
+                </header>
                 <div class="image">
                     <?php
                     $imageUrls = explode(',', $item->images);
                     $imageSrc = $imageUrls[0];
                     ?>
-                    <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                    <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                    </form>
+                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
                    
                     <p class=item-name><?=$item->name?></p>
                     <form action="/../actions/action_rem_from_wishlist.php" method="post">
                         <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                         <button type="submit" class="remove">Remove</button>
                     </form>
+                </div>
                 </div>
             <?php } ?>
         </div>

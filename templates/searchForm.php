@@ -61,9 +61,9 @@
         
         <div class="price">
             <h3>Price</h3>
-            <label>Min: <input type="number" name="min"></label>
+            <label>Min: </label><input type="number" name="min">
             <br>
-            <label>Max: <input type="number" name="max"></label>
+            <label>Max: </label><input type="number" name="max">
             <br>
             <button type="submit">Search</button>
         </div>

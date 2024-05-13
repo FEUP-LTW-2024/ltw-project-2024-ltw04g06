@@ -4,117 +4,139 @@ body{
     --borderLine: #E2D0BC;
     --beige: #D19F9D;
 }
-main{
-    display: flex;
-    flex-direction: column;
-    .info{
-        margin: 2em 6em;
+@media (max-width: 500em){
+    main{
         display: flex;
-        flex-direction: row;
-        img{
-            border-radius: 50%;
-            max-width: 15em;
-            margin-right: 2em;
-        }
-        .text{
-            h4{
-                color: var(--bordeaux);
-            }
-        }
-        button{
-            background: var(--bordeaux);
-            border-radius: 10px;
-            height: 3em;
-            width: 7em;
-            margin-left: auto;
-            border: none;
-            align-self: center;
-            font-size: larger;
-            cursor: pointer;
-            a{color: white;}
-        }
-        .msgbutton{
-            cursor: pointer;
-        }
-        .msgbutton:hover{
-            color: var(--beige);
-        }
-    }
-   .choice{
-        padding-bottom: 2px;
-        margin: 0em 2em;
-        border-bottom: 1px solid var(--bordeaux);
-        button{
-            cursor: pointer;
-            width: 10%;
-            border: none;
-            border-radius: 1.5em;
-            background: var(--backgroundColor);
-            h3{
-                color: #800000;
-            }
-        }
-   }
-   .myItems{
-        margin: .5em 2em;
-        .condition select{
-            border: 2px solid var(--beige);
-            border-radius: 3px;
-            color: var(--beige);
-            width: 8em;
-            height: 2em;
-        }
-        .condition select:focus {
-            outline: none;
-        }
-   }
-}
-
-.products{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 2em 5em;
-    .product{
-        margin-right: 2em;
-        margin-bottom: 2em;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-        header {
+        flex-direction: column;
+        .info{
+            margin: 2em 6em;
             display: flex;
             flex-direction: row;
             img{
-                margin: 1em;
                 border-radius: 50%;
-                width: 2em;
+                max-width: 15em;
+                max-height: 15em;
+                margin-right: 2em;
+            }
+            .text{
+                h4{
+                    color: var(--bordeaux);
+                }
+            }
+            button{
+                background: var(--bordeaux);
+                border-radius: 10px;
+                height: 3em;
+                width: 7em;
+                margin-left: auto;
+                border: none;
+                align-self: center;
+                font-size: larger;
+                cursor: pointer;
+                a{color: white;}
+            }
+            .msgbutton{
+                cursor: pointer;
+            }
+            .msgbutton:hover{
+                color: var(--beige);
             }
         }
-        .foto{
-            height: 13em;
-        }
-        .price{
-            color: #2E6963;
-        }
+       .choice{
+            padding-bottom: 2px;
+            margin: 0em 2em;
+            border-bottom: 1px solid var(--bordeaux);
+            button{
+                cursor: pointer;
+                width: 10%;
+                border: none;
+                border-radius: 1.5em;
+                background: var(--backgroundColor);
+                h3{
+                    color: #800000;
+                }
+            }
+       }
+       .myItems{
+            margin: .5em 2em;
+            .condition select{
+                border: 2px solid var(--beige);
+                border-radius: 3px;
+                color: var(--beige);
+                width: 8em;
+                height: 2em;
+            }
+            .condition select:focus {
+                outline: none;
+            }
+       }
     }
-    .addProduct{
-        background: var(--backgroundColor);
-        height: 13em;
-        width: 12em;
-        border: 2px dashed var(--bordeaux);
-        margin-right: 2em;
-        margin-bottom: 2em;
+    
+    .products{
         display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer; /* Altera o cursor para um ponteiro ao passar por cima */
-        position: relative;
-        border-radius: 10px;
-        .mais {
-            font-size: 2em;
-            color: var(--beige);
-            position: absolute; /* Define uma posição absoluta para o símbolo "+" */
-            top: 50%; /* Ajusta a posição vertical para o centro */
-            left: 50%; /* Ajusta a posição horizontal para o centro */
-            transform: translate(-50%, -50%); /* Move o símbolo "+" para o centro */
-          }
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 2em 5em;
+        .product{
+            margin-right: 2em;
+            margin-bottom: 2em;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+            header {
+                display: flex;
+                flex-direction: row;
+                img{
+                    margin: 1em;
+                    border-radius: 50%;
+                    width: 2em;
+                }
+            }
+            .foto{
+                height: 13em;
+            }
+            .price{
+                color: #2E6963;
+            }
+        }
+        .addProduct{
+            background: var(--backgroundColor);
+            height: 13em;
+            width: 12em;
+            border: 2px dashed var(--bordeaux);
+            margin-right: 2em;
+            margin-bottom: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer; 
+            position: relative;
+            border-radius: 10px;
+            .mais {
+                font-size: 2em;
+                color: var(--beige);
+                position: absolute;
+                top: 50%; 
+                left: 50%; 
+                transform: translate(-50%, -50%); 
+              }
+        }
     }
+}
+
+@media (max-width: 50em){
+    main{
+        .info{
+            margin: 2em 2em;
+            img{
+                max-width: 5em;
+                max-height: 5em;
+                margin-right: 2em;
+            }
+        }
+        .choice{
+            button h3{
+                font-size: smaller;
+            }    
+        }
+    }
+    
 }
