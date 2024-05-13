@@ -176,3 +176,14 @@ button.wishlist {
     background-color: #800000; 
     color: #fff;
 }
+
+.mini-images {
+    display: flex;
+}
+
+.mini-images img {
+    width: 40px;
+    max-height: 2px;
+    margin-right: 10px; 
+    margin-top: 5px;
+}

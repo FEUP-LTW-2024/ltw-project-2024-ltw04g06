@@ -30,12 +30,20 @@
                     <?php
                     $imageUrls = explode(',', $item->images);
                     $imageSrc = $imageUrls[0];
+                    $imageSrc1 = $imageUrls[1];
+                    $imageSrc2 = $imageUrls[2];
+                    $imageSrc3 = $imageUrls[3];
                     ?>
                     <form id="viewItem<?= $item->itemID ?>" action="" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                     </form>
                     <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
-                </div>   
+                    <div class="mini-images">
+                       <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc1?> alt="">
+                       <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc2?> alt="">
+                       <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc3?> alt="">
+                    </div>
+                    </div>   
             </label> 
                </div>
            </div>               
