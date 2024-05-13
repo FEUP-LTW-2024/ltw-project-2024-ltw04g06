@@ -18,7 +18,7 @@ label{
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
-input[type="text"] {
+.title-input, .description-input, .brand-input, .model-input, .price-input{
     border: 1px solid var(--bordeaux);
     border-radius: 2px; 
     margin: .75em;
