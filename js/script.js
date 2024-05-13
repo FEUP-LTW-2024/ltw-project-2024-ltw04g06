@@ -7,7 +7,23 @@ const elementToToggle = document.getElementById('elementToToggle');
         else elementToToggle.style.display = 'none';
     });
 
+    
+
     document.querySelectorAll('.radio-btn').forEach(function(radio) {
+        if (radio.checked) {
+            var selectedUserID = radio.value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/../templates/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.querySelector('.mensagem').style.display = 'block';
+                    document.querySelector('.mensagem').innerHTML = xhr.responseText;
+                    scrollDown();
+                    Give();
+                }
+            };
+            xhr.send();
+        }
         radio.addEventListener('click', function() {
             var selectedUserID = this.value;
             var xhr = new XMLHttpRequest();

@@ -1,3 +1,10 @@
+<?php
+    require_once(__DIR__ . '/../classes/category.class.php');
+    require_once(__DIR__ . '/../classes/condition.class.php');
+    require_once(__DIR__ . '/../classes/size.class.php');
+    require_once(__DIR__ . '/../database/connectdb.php');
+    $db = getDatabaseConnection();
+?>
 
 <?php function searchForm(){ ?>
 <head>
@@ -8,45 +15,60 @@
         <h3>Filter by:</h3>
     </header>
     <form action="/../pages/home.php" method="post">
-        <div class="category">
-            <h3>Category</h3>
-                
-                <input type="radio" id="none" name="category" value="NULL" checked>
-                <label for="none" id="none-label">No Filter</label>
+            <div class="category">
+                <h3>Category</h3>
+                    <?php
+                        $db = getDatabaseConnection();
+                        $categories = Category::getAllCategories($db);
+                        echo ' <select name="category">';
+                        echo '<option value="NULL" selected>No filter</option>';
+                        foreach ($categories as $category) {
+                            echo '<option value= "' . $category->name . '">' . $category->name . '</option>';
+                        }
+                        echo '</select>';
+                    ?>
 
-                <input type="radio" id="clothing" name="category" value="Clothing"> 
-                <label for="clothing">Clothing</label>
-                
-                <input type="radio" id="accessories" name="category" value='Accessories'>
-                <label for="accessories">Accessories</label>
-                
-                <input type="radio" id="electronics" name="category" value="Electronics">
-                <label for="electronics">Electronics</label>
-                
-                <input type="radio" id="furniture" name="category" value="Furniture">
-                <label for="furniture">Furniture</label>
-                
-                <input type="radio" id="toys" name="category" value="Toys">
-                <label for="toys">Toys</label>
-        </div>
-        <div class="condicion">
-            <h3>Condition</h3>
-            <select name="condition">
-                <option value="NULL" selected>No filter</option>
-                <option value="not used">Not used</option>
-                <option value="barely used">Barely used</option>
-                <option value='Used'>Used</option>
-                <option value="very used">Very used</option>
-            </select>
-        </div>
+                </div>
+
+                <div class="condition">
+                    <h3>Condition</h3>
+                    <?php
+                        $db = getDatabaseConnection();
+                        $conditions = Condition::getAllConditions($db);
+                        echo ' <select name="condition">';
+                        echo '<option value="NULL" selected>No filter</option>';
+                        foreach ($conditions as $condition) {
+                            echo '<option value= "' . $condition->usage . '">' . $condition->usage . '</option>';
+                        }
+                        echo '</select>';
+                    ?>
+                </div>
+
+ 
+        <div class="size">
+                <h3>Size</h3>
+                <?php
+                    $db = getDatabaseConnection();
+                    $sizes = Size::getAllSizes($db);
+                    echo '<select name="size">';
+                    echo '<option value="NULL" selected>No filter</option>';
+                    foreach ($sizes as $size) {
+                        echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
+                    }
+                    echo '</select>';
+                ?>
+            </div>
+        
         <div class="price">
             <h3>Price</h3>
-            <label>Min: <input type="number" name="min"></label>
+            <label>Min: </label><input type="number" name="min">
             <br>
-            <label>Max: <input type="number" name="max"></label>
+            <label>Max: </label><input type="number" name="max">
             <br>
             <button type="submit">Search</button>
-        </div>
+        </div>   
+            
     </form>
+
 </div>
 <?php } ?>

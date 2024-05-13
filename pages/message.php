@@ -9,10 +9,17 @@
     require_once(__DIR__ . '/../classes/message.class.php');
     require_once(__DIR__ . '/../classes/session.class.php');
 
-  $db = getDatabaseConnection();
-  $session = new Session();
+    $session = new Session();
+    $db = getDatabaseConnection();
+    $userID = $session->getID();
+    $user = User::getUser($db, $userID);
+    $receiverID = -1;
+
+   if ($_SERVER["REQUEST_METHOD"] == "POST"){
+     $receiverID = $_POST['receiverID'];
+   }
 
   $userID = $session->getID();
-  topo();
-  sideBar($db, $userID);
+  topo($user);
+  sideBar($db, $userID, $receiverID);
   ?>

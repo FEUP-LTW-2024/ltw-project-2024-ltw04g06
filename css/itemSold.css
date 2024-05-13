@@ -33,19 +33,17 @@ button.wishlist {
 }
 
 .submitButton{
-    background: var(--bordeaux);
+    background: #2E6963;
     color: white;
-    border-radius: 10em;
-    padding: .5em 4em;
-    align-items: center;
-    border: 3px solid var(--bordeaux);
-    margin-left: 50em;
-    margin-bottom: 4em;
+    border-radius: 1em;
+    padding: 1px 30px;
+    border: 3px solid #2E6963;
+    margin-top: 1em;
 }
 .submitButton:hover{
-    background: var(--backgroundColor);
-    color: var(--bordeaux);
-    border: 3px solid var(--bordeaux);    
+    background: white;
+    color: #2E6963;
+    border: 3px solid #2E6963;    
 }
 
 .products{
@@ -63,14 +61,6 @@ button.wishlist {
         height: 25em;
         >*{align-self: center;}
         header {
-            width: 100%;
-            cursor: pointer;
-            display: flex;
-            flex-direction: row;
-            border-bottom: 1px solid black;
-            border-top: 1px solid black;
-            background: var(--beige);
-            margin-bottom: 1em;
             img{
                 border-radius: 50%;
                 width: 2em;
@@ -78,11 +68,6 @@ button.wishlist {
                 align-self: center;
                 margin: 0 1em ;
             }
-        }
-        header:hover{
-            background: var(--bordeaux);
-            color: white;
-            transition: all 0.3s ease-out;
         }
         .foto{
             max-height: 13em;
@@ -143,7 +128,7 @@ button.wishlist {
 }
 
 .description {
-    margin-top: 6em;
+    margin-top: 4em;
     margin-bottom: 5em;
     max-width: 45em;
 }
@@ -160,30 +145,41 @@ button.wishlist {
     margin-bottom: 2.5em;
 }
 
-.message {
-    padding: 5px 15px;
+.edit {
+    padding: 5px 40px;
     background-color: transparent;
     color: #800000; 
     border: 2px solid #800000; 
-    border-radius: 20px; 
+    border-radius: 10px; 
     font-size: 14px;
     cursor: pointer;
-    margin-left: 40em;
+    margin-left: 35em;
     margin-top: 40px;
 }
 
-.message:hover {
+.edit:hover {
     background-color: #800000; 
     color: #fff;
 }
 
-.mini-images {
-    display: flex;
+.print{
+    background: var(--bordeaux);
+    color: white;
+    border-radius: 5px;
+    padding: .5em 10px;
+    align-items: center;
+    border: 3px solid var(--bordeaux);
+    margin-left: 30em;
+    margin-bottom: 4em;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.print:hover{
+    background: var(--backgroundColor);
+    color: var(--bordeaux);
+    border: 3px solid var(--bordeaux);    
 }
 
-.mini-images img {
-    width: 40px;
-    max-height: 2px;
-    margin-right: 10px; 
-    margin-top: 5px;
+.edit i{
+    margin-right: 10px;
 }

@@ -87,9 +87,10 @@ require_once(__DIR__ . '/status.class.php');
 			return $items;
     }
 
-    static function getFilteredItems(PDO $db, $category, $condition, $minPrice, $maxPrice) {
+    static function getFilteredItems(PDO $db, $category, $condition, $minPrice, $size, $maxPrice) {
       $query = 'SELECT * FROM Item join Category on Item.categoryID = Category.categoryID
       join Condition on Item.conditionID = Condition.conditionID
+      join Size on Item.sizeID = Size.sizeID
        WHERE 1 = 1';
       $params = [];
 
@@ -103,6 +104,11 @@ require_once(__DIR__ . '/status.class.php');
           $query .= ' AND Condition.usage = ?';
           $params[] = $condition;
       }
+
+      if ($size != NULL && $size != "NULL") {
+        $query .= ' AND size.name = ?';
+        $params[] = $size;
+    }
   
       if ($minPrice != NULL) {
           $query .= ' AND price > ?';

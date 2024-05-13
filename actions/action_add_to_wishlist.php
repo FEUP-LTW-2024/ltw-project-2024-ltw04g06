@@ -21,8 +21,7 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
-           echo "Item is already in the wishlist.";
-           $session->addMessage('error', 'Item is already in the wishlist.');
+           Wishlist::remItemFromWishlist($db, $wishlistID, $itemID);
            header('Location: /../pages/home.php');
         } 
         else {

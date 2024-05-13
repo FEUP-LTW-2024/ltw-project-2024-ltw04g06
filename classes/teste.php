@@ -7,6 +7,9 @@ require_once(__DIR__ . '/message.class.php');
 require_once(__DIR__ . '/wishlist.class.php');
 require_once(__DIR__ . '/status.class.php');
 require_once(__DIR__ . '/shippingForm.class.php');
+require_once(__DIR__ . '/condition.class.php');
+require_once(__DIR__ . '/category.class.php');
+
 
   $db = getDatabaseConnection();
 
@@ -256,13 +259,32 @@ $shippingForm = ShippingForm::getShippingFormByItemID($db, 2);
   echo "user pn:" . $user -> address. "<br>";
 */
 
-
+/*
 $user  = User::getUser($db, 1);
 echo $user ->role ."<br>";  
 $editRole = User::editRole($db,1, "User");   
 
 $user  = User::getUser($db, 1);
-echo $user ->role ."<br>";         
+echo $user ->role ."<br>";    
+*/
+$conditions = Condition::getAllConditions($db);
+                foreach ($conditions as $condition) {
+                    echo 'condition' .$condition->name . '<br>';
+                }
+
+                $categories = Category::getAllCategories($db);
+foreach ($categories as $category) {
+    echo 'category ' . $category->name . '<br>';
+}
+
+$users = User::getTopSellers($db);
+foreach ($users as $user) {
+  echo 'user ' . $user->name . '<br>';
+}
+
+
+
+
 ?>
 
 

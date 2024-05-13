@@ -3,14 +3,45 @@
 declare(strict_types = 1);
 
 class Condition {
-	private int $conditionID;
-	private string $usage;
+    public int $conditionID;
+    public string $usage;
 
+    public function __construct(int $conditionID, string $usage) {
+        $this->conditionID = $conditionID;
+        $this->usage = $usage;
+    }
 
-	public function __construct(int $conditionID, string $usage) {
-		$this->conditionID = $conditionID;
-		$this->usage = $usage;
-	}
+    static function getCondition(PDO $db, int $conditionID): ?Condition {
+        $preparedStmt = $db->prepare('SELECT * FROM Condition WHERE conditionID = ?');
+        $preparedStmt->execute([$conditionID]);
+        $conditionData = $preparedStmt->fetch();
+
+        if (!$conditionData) {
+            throw new Exception("Condition not found with ID: $conditionID");
+            return null;
+        }
+
+        return new Condition(
+            $conditionData['conditionID'],
+            $conditionData['usage']
+        );
+    }
+
+    static function getAllConditions(PDO $db) {
+        $preparedStmt = $db->prepare('SELECT * FROM Condition');
+        $preparedStmt->execute();
+        $conditions = [];
+    
+        while ($condition = $preparedStmt->fetch()) {
+            $conditions[] = self::getCondition($db, $condition['conditionID']);
+        }
+        return $conditions;
+      }
+
+    static function addCondition(PDO $db, int $conditionID, string $usage) {
+        $preparedStmt = $db->prepare("INSERT INTO Condition (conditionID, usage) VALUES(?, ?)");
+        $preparedStmt->execute([$conditionID, $usage]);
+    }
 }
 
 ?>

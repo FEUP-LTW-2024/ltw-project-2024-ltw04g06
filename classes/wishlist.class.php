@@ -27,7 +27,7 @@ declare(strict_types = 1);
 		}
 		
 
-		static function existItemInWishlist (PDO $db, int $wishlistID, int $itemID) : bool{
+		static function existItemInWishlist (PDO $db, int $wishlistID, int $itemID) : bool {
 			$items = self::getWishlistItems($db, $wishlistID);
 			foreach($items as $item) {
 				if($item->itemID == $itemID) return true;

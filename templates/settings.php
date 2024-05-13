@@ -19,13 +19,15 @@
     <div class="profile-setting">
         <form action="/../actions/action_edit_profile.php" method="post">
             <div class="img">
-                <img src="/../images/profilePictures/pp1.jpg" alt="">
-                <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button>
+                <img src="<?=$user->profilePicture?>" alt="">
+                <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
+                <label for="imageUrl">Image_Url </label>
+                <input type="text" name="imageUrl" value="<?php echo htmlspecialchars($user->profilePicture); ?>">
             </div>
             <label for="Name">Name</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($user->name); ?>"><br><br>
             <label for="AboutMe">About me</label>
-            <input type="text" name="aboutMe"  value="<?php echo htmlspecialchars($user->aboutMe); ?>"><br><br>
+            <input type="text" name="aboutMe"  value="<?php echo htmlspecialchars($user->aboutMe); ?>">
             <button type="submit">Apply Changes</button>
         </form>
     </div>
@@ -44,6 +46,7 @@
         </form>
     </div>
     <div class="account-setting">
+    <form action="/../actions/action_rem_account.php" method="post">
         <h2>Account desactivation</h2>
         <p>Your account will be deleted and can <span>NOT</span> be recovered</p>
         <button>Delete account</button>
@@ -60,7 +63,7 @@
             <label for="NewPassword">New Password</label>
             <input type="password" name="newPassword"><br><br>
             <label for="ConfirmPassword">Confirm Password</label>
-            <input type="password" name="confirmNewPassword"><br><br>
+            <input type="password" name="confirmNewPassword">
             <button type="submit">Apply Changes</button>
         </form>
     </div>

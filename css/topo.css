@@ -5,25 +5,29 @@ body{
     --borderLine: #E2D0BC;
     margin: 0;
 }
-.topo > *{
+@media (max-width: 500em){
+  .topo > *{
     display: flex;
     flex-direction: row;
 }
+#elementToToggle{
+  width: 50em;
+}
 .topo .firstRow{
     padding:0;
-    margin-left: 20%;
-    margin-bottom: 1em;
-    margin-top: 1em;
+    margin: 1em;
     h3 a{
       color: black;
     }
-    > *{
-        margin: auto;
+    >*{
+        margin: .5em;
+        align-self: center;
     }
     .barra{
         display: flex;
         width: 60%;
         height: 2em;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
         border: .15em solid var(--beige);
         border-radius: 5px;
         margin: 0;
@@ -36,10 +40,13 @@ body{
         }
         .all{
             background: var(--backgroundColor);
-            border: .15em solid var(--beige);
+            border: .10em solid var(--beige);
             border-radius: 2px;
             width: 15%;
             color: var(--beige);
+            padding: 0;
+            margin: 0;
+            outline: none;
         }
         form{
           display: flex;
@@ -48,6 +55,10 @@ body{
             input{
               width: 100%;
               height: 100%;
+              outline: none;
+            }
+            input:focus{
+              outline: none;
             }
             .pesquisa{
               background: var(--bordeaux);
@@ -66,9 +77,11 @@ body{
         height: 2em;
         display: flex;
         flex-direction: row;
-        img{
+        .profilePic{
             border-radius: 50%;
             border: .15em solid var(--beige);
+            max-width: 10em;
+            max-height: 10em;
         }
         .options-arrow {
             color: var(--beige);
@@ -153,6 +166,8 @@ a{
   #menu ul {
     margin: 0;
     padding: 0;
+    position: relative; 
+    z-index: 9999;
   }
   
   #menu li {
@@ -169,4 +184,26 @@ a{
   }
   .hidden{
     display: none;
+  }
+}
+
+
+  @media (max-width: 50em){
+    #elementToToggle{
+      width: 10em;
+    }
+    .topo .firstRow{
+      margin: 1em 0;
+      font-size: smaller;
+      >*{
+        margin: .3em;
+      }
+      .all{
+        font-size: 0
+      }
+      .all .fa-caret-down {
+        font-size: 16px;
+    }
+    }
+    
   }
