@@ -12,15 +12,15 @@
     form{
         margin: 1em;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         > *{
             display: flex;
             flex-direction: column;
-            margin-right: 2em;
+            margin: auto;
             select{
                 border: 1px solid var(--beige);
                 padding: 5%; 
-                width: 120%;
                 outline: none;
                 color: #800000;
                 option{
