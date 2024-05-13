@@ -6,7 +6,7 @@ function validUsername($username) {
 }
 
 function validName($name) {
-    return preg_match ("/^[a-zA-Z0-9]+$/", $name);
+    return preg_match("/^[a-zA-Z\s]+$/", $name);
 }
 
 function validPassword($password) {
