@@ -10,6 +10,8 @@
     <div class="products">
     <?php foreach ($items as $item) {
         $user = Item::getItemSeller($db, $item->itemID);
+        $status = Item::getItemStatus($db, $item->itemID);
+        if ($status != "Available") continue;
         ?>
         <div class="product">
             <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">

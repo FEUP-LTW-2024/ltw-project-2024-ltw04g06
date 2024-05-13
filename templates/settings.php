@@ -19,7 +19,7 @@
     <div class="profile-setting">
         <form action="/../actions/action_edit_profile.php" method="post">
             <div class="img">
-                <img src="/../images/profilePictures/pp1.jpg" alt="">
+                <img src="<?=$user->profilePicture?>" alt="">
                 <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
                 <label for="imageUrl">Image_Url </label>
                 <input type="text" name="imageUrl" value="<?php echo htmlspecialchars($user->profilePicture); ?>">

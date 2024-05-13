@@ -27,6 +27,7 @@ body{
         display: flex;
         width: 60%;
         height: 2em;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
         border: .15em solid var(--beige);
         border-radius: 5px;
         margin: 0;
@@ -39,7 +40,7 @@ body{
         }
         .all{
             background: var(--backgroundColor);
-            border: .15em solid var(--beige);
+            border: .10em solid var(--beige);
             border-radius: 2px;
             width: 15%;
             color: var(--beige);
