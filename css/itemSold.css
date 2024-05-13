@@ -33,17 +33,17 @@ button.wishlist {
 }
 
 .submitButton{
-    background: var(--bordeaux);
+    background: #2E6963;
     color: white;
     border-radius: 1em;
     padding: 1px 30px;
-    border: 3px solid var(--bordeaux);
+    border: 3px solid #2E6963;
     margin-top: 1em;
 }
 .submitButton:hover{
-    background: var(--backgroundColor);
-    color: var(--bordeaux);
-    border: 3px solid var(--bordeaux);    
+    background: white;
+    color: #2E6963;
+    border: 3px solid #2E6963;    
 }
 
 .products{
@@ -160,6 +160,24 @@ button.wishlist {
 .edit:hover {
     background-color: #800000; 
     color: #fff;
+}
+
+.print{
+    background: var(--bordeaux);
+    color: white;
+    border-radius: 5px;
+    padding: .5em 10px;
+    align-items: center;
+    border: 3px solid var(--bordeaux);
+    margin-left: 30em;
+    margin-bottom: 4em;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.print:hover{
+    background: var(--backgroundColor);
+    color: var(--bordeaux);
+    border: 3px solid var(--bordeaux);    
 }
 
 .edit i{
