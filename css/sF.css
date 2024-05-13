@@ -6,10 +6,9 @@
     background: white;
     border: .1em solid var(--beige);
     padding: .5em;
-    max-width: 35%;
-    position: fixed;
+    max-width: 100%;
+    position: relative;
     z-index: 999;
-    top: 3em;
     form{
         margin: 1em;
         display: flex;

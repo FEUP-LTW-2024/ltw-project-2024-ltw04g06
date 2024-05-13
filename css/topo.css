@@ -33,6 +33,9 @@ body{
             border: none;
             flex-grow: 1;
         }
+        #elementToToggle{
+          
+        }
         .all{
             background: var(--backgroundColor);
             border: .15em solid var(--beige);
