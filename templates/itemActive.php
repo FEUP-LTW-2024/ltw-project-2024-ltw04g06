@@ -46,6 +46,22 @@
             <div class="price">
                 Price <?php echo htmlspecialchars($_POST['price']); ?>
             </div>
+           
+                <div class="brand-model">
+                    <p><label class="brand"><strong>Brand: </strong><?= $item->brand ?></label>
+
+                    <label class="model"><strong>Model:</strong> <?= $item->model ?></label></p>
+                </div>
+                <div class="condition-size">
+                    <p><label class="condition"><strong>Condition: </strong><?= $item->conditionID ?></label>
+
+                    <label class="size"><strong>Size:</strong> <?= $item->sizeID ?></label></p>
+                </div>
+                <div class="category-price">
+                    <p><label class="category"><strong>Category:</strong> <?= $item->categoryID ?></label>
+
+                    <label class="price"><strong>Price:</strong> <?= number_format($item->price, 2, ',', '.') ?>€</label></p>
+                </div>
         </div>
     </div>        
 </main>
