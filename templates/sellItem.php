@@ -13,7 +13,7 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+                <input class="title-input" type="text" id="title" name="title">
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
@@ -27,11 +27,11 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">Description</label>
-                <input type="text" name="description">
+                <input class="description-input" type="text" name="description">
             </div>
             <div class="brand">
                 <label for="brand">Brand</label>
-                <input type="text" name="brand">
+                <input class="brand-input" type="text" name="brand">
         
                 <label class="model-label" for="model">Model</label>
                 <input class="model-input" type="text" name="model">
