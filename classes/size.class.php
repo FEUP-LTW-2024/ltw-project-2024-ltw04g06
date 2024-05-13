@@ -27,6 +27,17 @@ class Size {
         );
     }
 
+    static function getAllSizes(PDO $db) {
+        $preparedStmt = $db->prepare('SELECT * FROM Size');
+        $preparedStmt->execute();
+        $sizes = [];
+    
+        while ($size = $preparedStmt->fetch()) {
+            $sizes[] = self::getSize($db, $size['sizeID']);
+        }
+        return $sizes;
+    }
+
     static function addSize(PDO $db, int $sizeID, string $name) {
         $preparedStmt = $db->prepare("INSERT INTO Size (sizeID, name) VALUES(?, ?)");
         $preparedStmt->execute([$sizeID, $name]);

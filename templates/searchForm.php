@@ -46,13 +46,16 @@
             </div>
             <div class="size">
                 <h3>Size</h3>
-                <select name="size">
-                    <option value="NULL" selected>No filter</option>
-                    <option value="not used">Not used</option>
-                    <option value="barely used">Barely used</option>
-                    <option value='Used'>Used</option>
-                    <option value="very used">Very used</option>
-                </select>
+                <?php
+                    $db = getDatabaseConnection();
+                    $sizes = Size::getAllSizes($db);
+                    echo '<select name="size">';
+                    echo '<option value="NULL" selected>No filter</option>';
+                    foreach ($sizes as $size) {
+                        echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
+                    }
+                    echo '</select>';
+                ?>
             </div>
         </div> 
         
