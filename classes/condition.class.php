@@ -27,6 +27,17 @@ class Condition {
         );
     }
 
+    static function getAllConditions(PDO $db) {
+        $preparedStmt = $db->prepare('SELECT * FROM Condition');
+        $preparedStmt->execute();
+        $conditions = [];
+    
+        while ($condition = $preparedStmt->fetch()) {
+            $conditions[] = self::getCondition($db, $condition['conditionID']);
+        }
+        return $conditions;
+      }
+
     static function addCondition(PDO $db, int $conditionID, string $usage) {
         $preparedStmt = $db->prepare("INSERT INTO Condition (conditionID, usage) VALUES(?, ?)");
         $preparedStmt->execute([$conditionID, $usage]);

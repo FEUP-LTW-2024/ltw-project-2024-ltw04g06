@@ -14,13 +14,14 @@
     form{
         margin: 1em;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         > *{
             display: flex;
             flex-direction: column;
-            margin-right: 5em;
+            margin-right: 10em;
             select{
-                border: 1px solid var(--beige); 
+                border: 1px solid var(--beige);
+                margin-right: 5px; 
                 padding: 5px; 
                 width: 120px;
                 outline: none;
@@ -30,35 +31,35 @@
                 }
             }
         }
-        .price{
-            input{
-                width: 5em;
+        .row {
+            display: flex;
+            flex-direction: row;
+            > *{
+                margin-right: 4em;
             }
-            button{
-                background: var(--beige);
-                border: 1px solid var(--bordeaux);
-                border-radius: 5px;
+        }
+
+        .price{
+            flex-direction: column;
+            margin: 5px;
+            input{
+                margin-left: 2px;
+                width: 5em;
                 height: 2em;
             }
+            
+        }
+        button{
+            background: var(--beige);
+            border: 1px solid var(--bordeaux);
+            border-radius: 5px;
+            margin-top: 20px;
+            height: 2em;
         }
     }
     
 }
-.category input[type="radio"] {
-    display: none;
-}
 
-.category input[type="radio"] + label {
-    display: inline-block;
-    cursor: pointer;
-    padding: 5px 10px;
-    margin-right: 10px;
-    color: var(--bordeaux);
-}
-
-.category input[type="radio"]:checked + label {
-    background-color: var(--backgroundColor);
-}
 .price input[type="number"]{
     border: 1px solid var(--beige); 
     padding: 5px; 
