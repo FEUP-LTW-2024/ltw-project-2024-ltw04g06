@@ -3,50 +3,66 @@
         <link rel="stylesheet" href="/../css/itemActive.css">
     </head>
     <main>
-      <script src="itemActive.js"></script>
-        <button class="submitButton">Sold</button>
-        <button class="submitButton" onclick="window.location.href = '/../pages/sellItem.php'">Edit item</button>
 <?php } ?>
 
-<?php function itemActiveForm(){ ?>
+<?php function itemActiveForm($item, $db){ ?>
     <div class="form">
         <div class="left-column">
-            <div class="title">
-                Title <?php echo htmlspecialchars($_POST['title']); ?>
-            </div>
-            <label for="foto" class="foto-label">
-                <div class="quadrado">
-                <?php
-                $imageUrls = explode(',', $item->images);
-                $imageSrc = $imageUrls[0];
-            ?>
-                    <img src=<?='/../' . $imageSrc?> alt="<?= $item->name ?>">
-                </div>
-            </label>                
+           <div class="products">
+            <?php $user = Item::getItemSeller($db, $item->itemID);?>
+                <div class="product">
+                <header>
+                    <form action="/../pages/itemSold.php" method="post">
+                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                        <button type="submit" class="submitButton">Sold</button>
+                    </form>
+                </header>
+            
+                    <p class="item-name"><?= $item->name ?></p>
+                    <form action="/../actions/action_add_to_wishlist.php" method="post">
+                        <input type="hidden" name="itemID" value="<?= $item->itemID ?>">
+                        <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                    </form>
+          
+                <label for="foto" class="foto-label">
+                <div class="image">
+                    <?php
+                    $imageUrls = explode(',', $item->images);
+                    $imageSrc = $imageUrls[0];
+                    ?>
+                    <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
+                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                    </form>
+                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
+                    </div>   
+            </label> 
+               </div>
+           </div>               
         </div>
         <div class="right-column">
+            <form action="" method="post">
+                <button type="submit" class="edit">Edit item</button>
+            </form>
             <div class="description">
-                Description <?php echo htmlspecialchars($_POST['description']); ?>
+                <p><label class="description"><strong>Description: </strong> <?= $item->description ?></p></label>
             </div>
-            <div class="brand">
-                Brand <?php echo htmlspecialchars($_POST['brand']); ?>
-            </div>
-            <div class="model">
-                Model <?php echo htmlspecialchars($_POST['model']); ?>
-            </div>
-            <div class="size">
-                Size <?php echo htmlspecialchars($_POST['sizes']); ?>
-            </div>
-            <div class="condition">
-                Condition <?php echo htmlspecialchars($_POST['condition']); ?>
-            </div>
-            <div class="category">
-                Category <?php echo htmlspecialchars($_POST['category']); ?>
-            </div>
-            <div class="price">
-                Price <?php echo htmlspecialchars($_POST['price']); ?>
-            </div>
+           
+                <div class="brand-model">
+                    <p><label class="brand"><strong>Brand: </strong><?= $item->brand ?></label>
+
+                    <label class="model"><strong>Model:</strong> <?= $item->model ?></label></p>
+                </div>
+                <div class="condition-size">
+                    <p><label class="condition"><strong>Condition: </strong><?= $item->condition ?></label>
+
+                    <label class="size"><strong>Size:</strong> <?= $item->size ?></label></p>
+                </div>
+                <div class="category-price">
+                    <p><label class="category"><strong>Category:</strong> <?= $item->category ?></label>
+
+                    <label class="price"><strong>Price:</strong> <?= number_format($item->price, 2, ',', '.') ?>€</label></p>
+                </div>
         </div>
-    </div>        
+    </div>   
 </main>
 <?php } ?>
