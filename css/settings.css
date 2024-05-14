@@ -78,6 +78,9 @@ body{
                 color: white;
                 box-shadow: 0em .2em .2em rgb(61, 58, 58);
             }
+            .message {
+                color: red; 
+            }
         }
         .container{
             width: 100%;

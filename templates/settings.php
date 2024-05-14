@@ -1,4 +1,4 @@
-<?php function displaySettings($user){?>
+<?php function displaySettings($user,$session){?>
     <head>
         <link rel="stylesheet" href="/../css/settings.css">
     </head>
@@ -11,11 +11,11 @@
             <a id="l"><h2>Language</h2></a>
         </aside>
         <div class="container">
-            <?php  ProfileSettins($user)?>
+            <?php  ProfileSettins($user,$session)?>
         </div>
 
     <?php } ?>
-<?php function ProfileSettins($user){?>
+<?php function ProfileSettins($user,$session){?>
     <div class="profile-setting">
         <form action="/../actions/action_edit_profile.php" method="post">
             <div class="img">
@@ -28,6 +28,9 @@
             <input type="text" name="name" value="<?php echo htmlspecialchars($user->name); ?>"><br><br>
             <label for="AboutMe">About me</label>
             <input type="text" name="aboutMe"  value="<?php echo htmlspecialchars($user->aboutMe); ?>">
+            <?php 
+                    $session->displayMessages();
+                ?>
             <button type="submit">Apply Changes</button>
         </form>
     </div>
@@ -35,7 +38,7 @@
             </main>
 <?php } ?>
 
-<?php function AccountSettings($user){?>
+<?php function AccountSettings($user,$session){?>
     <div class="account-setting">
     <form action="/../actions/action_edit_account.php" method="post">
             <label for="Username">Username</label>
@@ -55,7 +58,7 @@
 
     </main>
 <?php } ?>
-<?php function SecuritySettings($user){?>
+<?php function SecuritySettings($user,$session){?>
     <div class="security-setting">
     <form action="/../actions/action_edit_security.php" method="post">
             <label for="CurrentPassword">Current Password</label>
@@ -64,6 +67,9 @@
             <input type="password" name="newPassword"><br><br>
             <label for="ConfirmPassword">Confirm Password</label>
             <input type="password" name="confirmNewPassword">
+            <?php 
+                    $session->displayMessages();
+                ?>
             <button type="submit">Apply Changes</button>
         </form>
     </div>

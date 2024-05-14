@@ -14,6 +14,6 @@
     $user = User::getUser($db,$userID);
 
     topo($user);
-    displaySettings($user);
+    displaySettings($user, $session);
 
 ?>

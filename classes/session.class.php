@@ -55,5 +55,22 @@ class Session {
       public function getMessages() {
         return $this->msgs;
       }
+
+      public function displayMessages() {
+        if ($this->getMessages()) {
+          foreach ($this->getMessages() as $msg) {
+            echo '<div class="message ' . $msg['type'] . '">' . $msg['text'] . '</div>';
+          }
+        }
+      }
+
+      public function findMsgWithType($type) {
+        if ($this->getMessages()) {
+          foreach ($this->getMessages() as $msg) {
+            if($msg['type'] == $type) return $msg;
+          }
+        }
+        return null;
+      }
 }
 ?>

@@ -2,11 +2,11 @@
 
 
 function validUsername($username) {
-    return preg_match ("/^[a-zA-Z0-9.-_]+$/", $username);
+    return preg_match ("/^[a-zA-Z0-9.-_]{1,}$/", $username);
 }
 
 function validName($name) {
-    return preg_match ("/^[a-zA-Z0-9]+$/", $name);
+    return preg_match("/^[a-zA-Z\s]+$/", $name);
 }
 
 function validPassword($password) {
@@ -14,7 +14,7 @@ function validPassword($password) {
 }
 
 function validEmail($email) {
-    return preg_match("/^[a-zA-Z0-9.@-_]+$/", $email);
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
 }
 
 
