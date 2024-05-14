@@ -28,6 +28,8 @@
         
 
     <?php } ?>
+
+    <hr>
             
 </main>
 <div class="change">
@@ -69,20 +71,21 @@
         <div class="size">
                 <h3>Size</h3>
                 <form action="">
-                <?php
-                    $db = getDatabaseConnection();
-                    $sizes = Size::getAllSizes($db);
-                    echo '<select name="size">';
-                    echo '<option value="NULL" selected>No filter</option>';
-                    foreach ($sizes as $size) {
-                        echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
-                    }
-                    echo '</select>';
-                ?>
-                <button type="submit">Delete</button>
-                    </form>
+                    <?php
+                        $db = getDatabaseConnection();
+                        $sizes = Size::getAllSizes($db);
+                        echo '<select name="size">';
+                        echo '<option value="NULL" selected>No filter</option>';
+                        foreach ($sizes as $size) {
+                            echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
+                        }
+                        echo '</select>';
+                    ?>
+                    <button type="submit">Delete</button>
+                </form>
             </div> 
-    </form>
+    </div>
+    <div class="addition">
             <form action="">
                     <select name="type" id="">
                         <option value="category">Category</option>
@@ -92,5 +95,5 @@
                     <input type="text" name="texto" id="">
                     <button type="submit">ADD</button>
             </form>
-            </div>
+        </div>
 <?php } ?>
