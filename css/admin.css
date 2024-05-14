@@ -5,42 +5,76 @@ body{
     --borderLine: #E2D0BC;
     margin: 0;
 }
+.admin-options{
+    color:var(--bordeaux);
+    margin: auto 7em;
+}
 .admin{
-    background: var(--beige);
+    background: var(--backgroundColor);
     border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
+    height: 25em;
     max-width: 70%;
+    max-height: 70%;
     margin: 3em auto;  
     padding: 2em;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    .user{
-        display: flex;
-        flex-direction: column;
-        margin: 1em;
+
+    .user {
+        width: 100%;
+        cursor: pointer;
+        align-self: center;
+        display: flex; 
+        flex-direction: column; 
+
+        .username {
+            align-self: center;
+        }
+
         img{
-            width: 10em;
-            height: 12em;
-            cursor: pointer;
+            border-radius: 50%;
+            border: .15em solid var(--bordeaux);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+
+            width: 6em;
+            height: 6em;
+            align-self: center;
+
         }
-        button{
-            background-color: var(--borderLine);
+        img:hover{
+            width: 8em;
+            height: 8em;
+            background: var(--bordeaux);
             color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 10em;
-            height: 3em;
-            
+            transition: all 0.3s ease-out;
+            border-radius: 50%;
+    
         }
-        button:hover{background-color: var(--bordeaux);}
-        >*{align-self: center;
-            padding: 0;
-            margin: .5em;
-        }
+
+        
     }
-}
+    button{
+        background-color: var(--beige);
+        align-self: center;
+
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 10em;
+        height: 3em;
+        
+    }
+    button:hover{background-color: var(--bordeaux);}
+    >*{align-self: center;
+        padding: 0;
+        margin: .5em;
+    }
+    }
+
 .change{
     margin-left: 10%;
     display: flex;

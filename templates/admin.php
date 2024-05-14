@@ -2,18 +2,20 @@
 <head>
     <link rel="stylesheet" href="../css/admin.css">
 </head>
+<div class="admin-options">
+        <h1>Admin Options</h1>
+    </div>
+
 <main class="admin"> 
     <?php foreach($users as $user){   
         if ($user->role == 'Admin') continue;
     ?>
         <div class="user">
-            <h2><?= $user->name ?></h2>
-            <h4><?= $user->phoneNumber ?></h4>
+<h2 class="username"><?= $user->username ?></h2>
             <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post">
                 <input type="hidden" name="userId" value="<?= $user->userID ?>">
             </form>
             <img onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();" src="<?=  User::getUserPic($db, $user->userID) ?>" alt="">
-            <h2><?= $user->role ?></h2>
             <form id="adminForm<?= $user->userID ?>" action="/../actions/action_add_admin.php" method="post">
                 <input type="hidden" name="userId" value="<?= $user->userID ?>">
             </form>
