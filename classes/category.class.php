@@ -26,14 +26,16 @@
           $category['name']
       );
     }
+
     static function getCategoryByName(PDO $db, string $newCategory) {
       $preparedStmt = $db->prepare('SELECT * FROM Category WHERE name = ?');
       $preparedStmt->execute(array($newCategory));
       $category = $preparedStmt->fetch();
   
       if (!$category) {
-          throw new Exception("Category not found with name: $newCategory");
-          return null;
+        echo "Category not found with name: $newCategory";
+          //throw new Exception("Category not found with name: $newCategory");
+         // return null;
       }
   
       return self::getCategory($db, $category['categoryID']);

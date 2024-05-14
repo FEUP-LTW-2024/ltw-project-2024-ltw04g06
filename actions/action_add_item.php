@@ -3,6 +3,9 @@
     require_once(__DIR__ . '/../database/connectdb.php');
     require_once(__DIR__ . '/../classes/session.class.php');
     require_once(__DIR__ . '/../classes/user.class.php');
+    require_once(__DIR__ . '/../classes/condition.class.php');
+    require_once(__DIR__ . '/../classes/size.class.php');
+    require_once(__DIR__ . '/../classes/category.class.php');
 
     $db = getDatabaseConnection();
 
@@ -12,11 +15,12 @@
         exit;
     }
 
+
     $name = $_POST['title'];
     $sellerID = $session->getID();
-    $categoryID = $_POST['category'];
-    $sizeID = $_POST['sizes'];
-    $conditionID = $_POST['condition'];
+    $categoryName = $_POST['category'];
+    $sizeName = $_POST['sizes'];
+    $conditionName = $_POST['condition'];
     $brand = $_POST['brand'];
     $model = $_POST['model'];
     $description = $_POST['description'];
@@ -24,28 +28,39 @@
     $images = $_POST['foto'];
 
     //brand, size e model não são campos obrigatórios
-    if (!empty($name) && !empty($categoryID) && !empty($conditionID)
+    if (!empty($name) && !empty($categoryName) && !empty($conditionName)
     && !empty($description) && !empty($price) && !empty($images)) {
         echo "Formulário.";
-        if ($name !== false && $sellerID !== false && $categoryID !== false && $sizeID !== false &&
-            $conditionID !== false && $brand !== false && $model !== false &&
+        if ($name !== false && $sellerID !== false && $categoryName !== false && $sizeName !== false &&
+            $conditionName !== false && $brand !== false && $model !== false &&
             $description !== false && $price !== false && $images !== false) {
             try {
-                echo "Item added.";
-                Item::addItem($db, $name, $sellerID, $categoryID, $sizeID, $conditionID, $brand, $model, $description, $price, $images);
+                /*echo "Item added.";
+                echo $categoryName;*/
+                $category = Category::getCategoryByName($db, $categoryName);
+                /*echo "apos getCategory";*/
+                $condition = Condition::getConditionByName($db, $conditionName);
+                /*echo "apos getCondition";*/
+                $size = Size::getSizeByName($db, $sizeName); 
+                /*echo "apos getSize";
+                echo "antes do add item";*/
+                Item::addItem($db, $name, $sellerID, $category->categoryID, $size->sizeID, $condition->conditionID, $brand, $model, $description, $price, $images);
                 $session->addMessage('success', 'O item foi adicionado com sucesso!');
                 header('Location: /../pages/home.php');
                 
                 exit;
+                echo "sucesso";
             } catch (Exception $e) {
-                $session->addMessage('error', 'Erro ao adicionar o item: ' . $e->getMessage());
+                /*$session->addMessage('error', 'Erro ao adicionar o item: ' . $e->getMessage());
                 header('Location: /../pages/sellItem.php');
-                exit;
+                exit;*/
+                echo "erro.";
             }
         } else {
-            $session->addMessage('error', 'Todos os campos do formulário devem ser preenchidos corretamente!');
+            /*$session->addMessage('error', 'Todos os campos do formulário devem ser preenchidos corretamente!');
             header('Location: /../pages/sellItem.php');
-            exit;
+            exit;*/
+            echo "Por , preencha todos os campos obrigatórios do formulário.";
         }
     }
     else{
