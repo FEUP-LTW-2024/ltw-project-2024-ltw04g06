@@ -17,7 +17,7 @@
             
                     <p class="item-name"><?= $item->name ?></p>
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
-                        <input type="hidden" name="itemID" value="<?= $item->itemID ?>">
+                        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                         <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                     </form>
           
@@ -28,7 +28,7 @@
                     $imageSrc = $imageUrls[0];
                     ?>
                     <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
-                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
                     <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
                     </div>   

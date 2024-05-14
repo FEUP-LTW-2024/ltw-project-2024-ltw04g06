@@ -13,7 +13,7 @@ $users = User::getTopSellers($db);
  foreach ($users as $user) {
         ?>
     <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
-        <input type="hidden" name="userId" value="<?= $user->userID ?>">
+        <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
     </form>
     <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
         <img src=<?= '/../' . $user->profilePicture?> alt="">

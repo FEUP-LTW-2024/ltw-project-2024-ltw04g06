@@ -12,7 +12,7 @@
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
-                    <input type="hidden" name="userId" value="<?= $user->userID ?>">
+                    <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>
                 <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
                     <img src=<?= '/../' . $user->profilePicture?> alt="">
@@ -21,7 +21,7 @@
             
                     <p class="item-name"><?= $item->name ?></p>
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
-                        <input type="hidden" name="itemID" value="<?= $item->itemID ?>">
+                        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                         <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                     </form>
           
@@ -35,7 +35,7 @@
                     $imageSrc3 = $imageUrls[3];
                     ?>
                     <form id="viewItem<?= $item->itemID ?>" action="" method="post" class="hidden">
-                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
                     <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
                     <div class="mini-images">
@@ -87,7 +87,7 @@
         </div>
     </div>   
     <form action="/../actions/action_add_to_shopCart.php" method="post">
-                    <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                    <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     <button type="submit" class="submitButton">Buy</button>
     </form>
 </main>

@@ -23,7 +23,7 @@
                         echo ' <select name="category">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($categories as $category) {
-                            echo '<option value= "' . $category->name . '">' . $category->name . '</option>';
+                            echo '<option value= "' . htmlspecialchars($category->name) . '">' . htmlspecialchars($category->name) . '</option>';
                         }
                         echo '</select>';
                     ?>
@@ -38,7 +38,7 @@
                         echo ' <select name="condition">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($conditions as $condition) {
-                            echo '<option value= "' . $condition->usage . '">' . $condition->usage . '</option>';
+                            echo '<option value= "' .  htmlspecialchars($condition->usage) . '">' .  htmlspecialchars($condition->usage) . '</option>';
                         }
                         echo '</select>';
                     ?>
@@ -53,7 +53,7 @@
                     echo '<select name="size">';
                     echo '<option value="NULL" selected>No filter</option>';
                     foreach ($sizes as $size) {
-                        echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
+                        echo '<option value= "' . htmlspecialchars($size->name) . '">' .htmlspecialchars($size->name) . '</option>';
                     }
                     echo '</select>';
                 ?>
