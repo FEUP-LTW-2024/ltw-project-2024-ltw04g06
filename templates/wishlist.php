@@ -16,18 +16,14 @@
                     <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>
                 <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
-                    <img src=<?= '/../' . $user->profilePicture?> alt="">
+                    <img src=<?= User::getUserPic($db, $user->userID)?> alt="">
                     <p><?=$user->username?></p>
                 </header>
                 <div class="image">
-                    <?php
-                    $imageUrls = explode(',', $item->images);
-                    $imageSrc = $imageUrls[0];
-                    ?>
                     <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
-                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
+                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
                    
                     <p class=item-name><?=$item->name?></p>
                     <form action="/../actions/action_rem_from_wishlist.php" method="post">

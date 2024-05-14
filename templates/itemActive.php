@@ -12,7 +12,7 @@
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <header>
-                    <button onclick="window.location.href='/../pages/itemSold.php?itemID=<?=$item->itemID?>'" class="submitButton">Sold</button>
+                    <button onclick="window.location.href='/../pages/itemSold.php?itemID=<?=$item->itemID?>'" class="submitButton">Active</button>
                 </header>
             
                     <p class="item-name"><?= $item->name ?></p>
@@ -23,14 +23,10 @@
           
                 <label for="foto" class="foto-label">
                 <div class="image">
-                    <?php
-                    $imageUrls = explode(',', $item->images);
-                    $imageSrc = $imageUrls[0];
-                    ?>
                     <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
-                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
+                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
                     </div>   
             </label> 
                </div>

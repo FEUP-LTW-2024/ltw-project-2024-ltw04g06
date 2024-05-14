@@ -16,7 +16,7 @@ $users = User::getTopSellers($db);
         <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
     </form>
     <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
-        <img src=<?= '/../' . $user->profilePicture?> alt="">
+        <img src=<?=  User::getUserPic($db, $user->userID)?> alt="">
         <p class="username"><?= $user->username ?></p>    </header>
         <div class="user-info hidden"><?= $user->email ?></div>
         

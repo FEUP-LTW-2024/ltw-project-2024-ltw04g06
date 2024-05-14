@@ -17,6 +17,7 @@ body{
                 max-width: 15em;
                 max-height: 15em;
                 margin-right: 2em;
+                
             }
             .text{
                 h4{
@@ -92,6 +93,7 @@ body{
             }
             .foto{
                 height: 13em;
+                cursor: pointer;
             }
             .price{
                 color: #2E6963;

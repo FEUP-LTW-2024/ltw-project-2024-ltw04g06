@@ -6,18 +6,14 @@
          <p class=title>Cart</p>
 <?php } ?>
 
-<?php function cartDisplay($cartItems){ ?>
+<?php function cartDisplay(PDO $db, $cartItems){ ?>
     <body>
         <div class="all-images">
             <?php $totalPrice = 0;
             foreach ($cartItems as $item) { 
                 $totalPrice += $item->price;?>
                 <div class="image">
-                    <?php
-                    $imageUrls = explode(',', $item->images);
-                    $imageSrc = $imageUrls[0];
-                    ?>
-                    <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                    <img class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
                    
                     <p class=item-name><?=$item->name?></p>
                     <p class="item-price"><?= number_format($item->price, 2, ',', '.') ?>€</p>

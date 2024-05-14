@@ -21,11 +21,14 @@ if(isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], "pages/pr
 
 foreach ($Items as $item) {
     $status = Item::getItemStatus($db, $item->itemID);
-    $imageUrls = explode(',', $item->images);
-    $imageSrc = $imageUrls[0];
     if ($status !=  $selectedCondition) continue;
+    $isItemActive = $status == 'Active';
+    $filePath = $isItemActive ? '/../pages/itemActive.php' : '/../pages/itemSold.php';
     echo '<div class="product">';
-    echo '<img class="foto" src="/../' .  $imageSrc . '" alt="">';
+    echo '<form id="itemActive' . $item->itemID . '" action="'.$filePath.'" method="post" class="hidden">';
+    echo '    <input type="hidden" name="itemID" value="' . $item->itemID . '">';
+    echo '</form>';
+    echo '<img onclick="document.getElementById(\'itemActive' . $item->itemID . '\').submit();" class="foto" src="' . Item::getImagePic($db, $item->imageID) . '" alt="">';
     echo '<p>' . $selectedCondition . '</p>';
     echo '<h4 class="price">' . $item->price . '<i class="fa-solid fa-euro-sign"></i> ' . $item->sizeID . '</h4>';
     echo '</div>';

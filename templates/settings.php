@@ -1,4 +1,4 @@
-<?php function displaySettings($user,$session){?>
+<?php function displaySettings(PDO $bd, $user,$session){?>
     <head>
         <link rel="stylesheet" href="/../css/settings.css">
     </head>
@@ -10,15 +10,15 @@
             <a id="ss"><h2>Security_settings</h2></a>
         </aside>
         <div class="container">
-            <?php  ProfileSettins($user,$session)?>
+            <?php  ProfileSettins($bd, $user,$session)?>
         </div>
 
     <?php } ?>
-<?php function ProfileSettins($user,$session){?>
+<?php function ProfileSettins(PDO $db, $user,$session){?>
     <div class="profile-setting">
         <form action="/../actions/action_edit_profile.php" method="post">
             <div class="img">
-                <img src="<?=$user->profilePicture?>" alt="">
+                <img src="<?=User::getUserPic($db, $user->userID)?>" alt="">
                 <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
             </div>
             <label for="Name">Name</label>

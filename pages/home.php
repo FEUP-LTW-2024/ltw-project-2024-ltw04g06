@@ -7,6 +7,7 @@
     require_once(__DIR__ . '/../classes/item.class.php');
     require_once(__DIR__ . '/../classes/user.class.php');
     require_once(__DIR__ . '/../classes/session.class.php');
+    
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category = $_POST["category"];
@@ -32,7 +33,7 @@
   $db = getDatabaseConnection();
   $userID = $session->getID();
   $user = User::getUser($db, $userID);
-  topo($user);
+  topo($db, $user);
   anuncio($db);
   if (isset($_POST["word"])) $items = Item::getItemsByName($db, $_POST["word"]);
   else $items = Item::getFilteredItems($db, $category, $condition, $minPrice, $size, $maxPrice);

@@ -19,7 +19,7 @@
             ?>
             <input checked type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?php echo htmlspecialchars($contact->userID); ?>">
             <label for="<?=$contact->username ?>" class="pessoa">
-            <img src="<?=$contact->profilePicture?>" alt="">
+            <img src="<?=User::getUserPic($db, $contact->userID)?>" alt="">
             <p><?=$contact->username ?></p>
             </label> 
         <?php }?>
@@ -28,7 +28,7 @@
     ?>
     <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?php echo htmlspecialchars($contact->userID); ?>">
     <label for="<?=$contact->username ?>" class="pessoa">
-        <img src="<?=$contact->profilePicture?>" alt="">
+        <img src="<?=User::getUserPic($db, $contact->userID)?>" alt="">
         <p><?=$contact->username ?></p>
     </label> 
     <?php 
@@ -38,7 +38,7 @@
     <?php
         if ($receiverID != -1){?>
             <div class="mensagem">
-                <?php messageBox($userID, $receiverID);?>
+                <?php messageBox($db, $userID, $receiverID);?>
             </div>
          <?php }else{?>
             <div class="mensagem hidden">
@@ -51,7 +51,7 @@
     require_once(__DIR__ . '/../database/connectdb.php');
     require_once(__DIR__ . '/../classes/message.class.php');
     require_once(__DIR__ . '/../classes/user.class.php');
-    function  messageBox(int $userID1, int $userID2){ 
+    function  messageBox(PDO $bd, int $userID1, int $userID2){ 
         $db = getDatabaseConnection();
         $user2 = User::getUser($db, $userID2);
         $msgs = Message::getUserMessages($db, $userID1, $userID2);
@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="../css/msg.css">
 </head>
             <div class="pessoa">
-                <img src=" <?=$user2->profilePicture?> ">
+                <img src=" <?=User::getUserPic($db, $user2->userID)?> ">
                 <span><?=$user2->username?></span>
                 <button><i class="fa-regular fa-trash-can"></i></button>
             </div>
@@ -70,7 +70,7 @@
                 $messageUser = User::getUser($db, $m->senderID);
                 ?>
                     <div class="fr">
-                        <img src="<?= $messageUser->profilePicture ?>" alt="">
+                        <img src="<?= User::getUserPic($db, $messageUser->userID) ?>" alt="">
                         <span><?=$messageUser->username?></span>
                         <div class="time"><?=$m->time?></div>
                     </div>

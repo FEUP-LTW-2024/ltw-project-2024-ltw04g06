@@ -11,9 +11,9 @@
     $db = getDatabaseConnection();
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
-    topo($user);
-    displayItemActive();
-    $itemID = $_GET['itemID'];
+    $itemID = $_POST['itemID'];
+    topo($db, $user);
+    displayItemActive();    
         try {
             $item = Item::getItem($db, $itemID);
             itemActiveForm($item, $db);

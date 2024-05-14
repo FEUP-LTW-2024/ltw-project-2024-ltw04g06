@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 require_once(__DIR__ . '/status.class.php');
+require_once(__DIR__ . '/image.class.php');
 
 
   class Item {
@@ -17,9 +18,9 @@ require_once(__DIR__ . '/status.class.php');
     public string $brand;
     public string $model;
     public string $description;
-    public string $images;
+    public int $imageID;
 
-    public function __construct(int $itemID,string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, int $statusID, float $price, string $brand, string $model, string $description, string $images) {
+    public function __construct(int $itemID,string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, int $statusID, float $price, string $brand, string $model, string $description, int $imageID) {
       $this->itemID = $itemID;
       $this->name = $name;
       $this->sellerID = $sellerID;
@@ -31,7 +32,7 @@ require_once(__DIR__ . '/status.class.php');
       $this->brand = $brand;
       $this->model = $model;
       $this->description = $description;
-      $this->images = $images;
+      $this->imageID = $imageID;
     }
 
     static function getItem(PDO $db, int $itemID) {
@@ -55,7 +56,7 @@ require_once(__DIR__ . '/status.class.php');
         $item['brand'],
         $item['model'],
         $item['description'],
-        $item['images'],
+        $item['imageID'],
       );
     }
     static function getItemsByName(PDO $db, string $searchString) {
@@ -68,6 +69,14 @@ require_once(__DIR__ . '/status.class.php');
       }
   
       return $items;
+  }
+  static function getImagePic(PDO $db, int $imageID) {
+    $item = Item::getItem($db, $imageID);
+    if($item!= null){
+      $image = Image::getImage($db, $item->imageID);
+      return $image;
+    }
+    return null;
   }
   
 
@@ -172,7 +181,7 @@ require_once(__DIR__ . '/status.class.php');
       if ($preparedStmt->rowCount() > 0) {
           if ($name == "Sold") {
               $currentTime = date('Y-m-d H:i:s');
-              ShippingForm::createShippingForm($db, $itemID, $item->sellerID, $item->buyerID, $item->description, $currentTime);
+              //ShippingForm::createShippingForm($db, $itemID, $item->sellerID, $item->buyerID, $item->description, $currentTime);
           }
           return true;
       } else {
@@ -182,10 +191,10 @@ require_once(__DIR__ . '/status.class.php');
   
 
 
-    static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $images)  {
+    static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $imageID)  {
       $statusID = Status::addStatus($db,"Available");
-      $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, images ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $images]);
+      $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, imageID ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $imageID]);
     }
 
     static function removeItem(PDO $db, int $itemID) {

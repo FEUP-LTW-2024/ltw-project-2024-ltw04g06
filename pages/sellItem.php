@@ -10,7 +10,7 @@
     $db = getDatabaseConnection();
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
-    topo($user);
+    topo($db, $user);
     displaySellItem();
     sellItemForm();
 ?>
