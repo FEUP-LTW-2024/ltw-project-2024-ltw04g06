@@ -26,6 +26,18 @@
           $category['name']
       );
     }
+    static function getCategoryByName(PDO $db, string $newCategory) {
+      $preparedStmt = $db->prepare('SELECT * FROM Category WHERE name = ?');
+      $preparedStmt->execute(array($newCategory));
+      $category = $preparedStmt->fetch();
+  
+      if (!$category) {
+          throw new Exception("Category not found with name: $newCategory");
+          return null;
+      }
+  
+      return self::getCategory($db, $category['categoryID']);
+    }
 
     static function getAllCategories(PDO $db) {
       $preparedStmt = $db->prepare('SELECT * FROM Category');
@@ -38,13 +50,21 @@
       return $categories;
     }
 
+    static function existingCategory (PDO $db, string $newCategory) : bool{
+			$category = self::getCategoryByName($db, $newCategory);
+			if(!$category) return false;
+      else return true;
+		}
+
 
     static function addCategory(PDO $db, int $categoryID, string $name){
+      if(!self::existingCategory($db, $name)){
       $preparedStmt = $db->prepare("INSERT INTO Category (categoryID, name) VALUES(?, ?)");
       $preparedStmt -> execute([$categoryID, $name]);
+      return true;
     }
-
-
+    return false;
 	}
+}
 
 ?>
