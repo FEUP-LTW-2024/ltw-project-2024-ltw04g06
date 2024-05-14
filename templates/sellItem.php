@@ -39,10 +39,10 @@
             <div class="size">
                 <label class="condition-label" for="condition">Condition</label>
                 <select class="condition" name="condition">
-                    <option value="not used">Not used</option>
-                    <option value="barely used" selected>Barely used</option>
-                    <option value="used">Used</option>
-                    <option value="very used">Very used</option>
+                    <option value="Not used">Not used</option>
+                    <option value="Barely used" selected>Barely used</option>
+                    <option value="Used">Used</option>
+                    <option value="Very used">Very used</option>
                 </select>
                 <label class="size-label" for="size">Size</label>
                 <div class="size2">
@@ -69,10 +69,10 @@
             <div class="category">
                 <label for="category">Category</label>
                 <select name="category">
-                    <option value="clothes">Clothes</option>
-                    <option value="acessories">Acessories</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="furniture">Furniture</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Accessories">Acessories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Furniture">Furniture</option>
                     <option value="toys">Toys</option>
                 </select>
             
