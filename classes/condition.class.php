@@ -58,10 +58,10 @@ class Condition {
         else return true;
     }
 
-    static function addCondition(PDO $db, int $conditionID, string $usage) {
-        if(!self:existingCondition($db,$usage)){
-        $preparedStmt = $db->prepare("INSERT INTO Condition (conditionID, usage) VALUES(?, ?)");
-        $preparedStmt->execute([$conditionID, $usage]);
+    static function addCondition(PDO $db, string $usage) {
+        if(!self::existingCondition($db,$usage)){
+        $preparedStmt = $db->prepare("INSERT INTO Condition (usage) VALUES(?)");
+        $preparedStmt->execute([$usage]);
         return true;
         }
         return false;

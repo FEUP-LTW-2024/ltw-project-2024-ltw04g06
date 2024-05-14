@@ -266,7 +266,7 @@ $editRole = User::editRole($db,1, "User");
 
 $user  = User::getUser($db, 1);
 echo $user ->role ."<br>";    
-*/
+
 $conditions = Condition::getAllConditions($db);
                 foreach ($conditions as $condition) {
                     echo 'condition' .$condition->name . '<br>';
@@ -281,7 +281,7 @@ $users = User::getTopSellers($db);
 foreach ($users as $user) {
   echo 'user ' . $user->name . '<br>';
 }
-
+*/
 
 
 

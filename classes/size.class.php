@@ -26,6 +26,18 @@ class Size {
             $sizeData['name']
         );
     }
+    static function getSizeByName(PDO $db, string $newSize) {
+        $preparedStmt = $db->prepare('SELECT * FROM Size WHERE name = ?');
+        $preparedStmt->execute(array($newSize));
+        $size = $preparedStmt->fetch();
+    
+        if (!$size) {
+            throw new Exception("Size not found with name: $newSize");
+            return null;
+        }
+    
+        return self::getSize($db, $size['sizeID']);
+      }
 
     static function getAllSizes(PDO $db) {
         $preparedStmt = $db->prepare('SELECT * FROM Size');
@@ -37,11 +49,20 @@ class Size {
         }
         return $sizes;
     }
-
-    static function addSize(PDO $db, int $sizeID, string $name) {
-        $preparedStmt = $db->prepare("INSERT INTO Size (sizeID, name) VALUES(?, ?)");
-        $preparedStmt->execute([$sizeID, $name]);
+    static function existingSize (PDO $db, string $newSize) : bool{
+        $size = self::getSizeByName($db, $newSize);
+        if(!$size) return false;
+        else return true;
     }
+
+    static function addSize(PDO $db, string $name) {
+        if(!self::existingSize($db, $name)){
+        $preparedStmt = $db->prepare("INSERT INTO Size ( name) VALUES( ?)");
+        $preparedStmt->execute([ $name]);
+        return true;
+    }
+    return false;
+}
 }
 
 ?>

@@ -57,10 +57,10 @@
 		}
 
 
-    static function addCategory(PDO $db, int $categoryID, string $name){
+    static function addCategory(PDO $db, string $name){
       if(!self::existingCategory($db, $name)){
-      $preparedStmt = $db->prepare("INSERT INTO Category (categoryID, name) VALUES(?, ?)");
-      $preparedStmt -> execute([$categoryID, $name]);
+      $preparedStmt = $db->prepare("INSERT INTO Category (name) VALUES( ?)");
+      $preparedStmt -> execute([$name]);
       return true;
     }
     return false;
