@@ -81,6 +81,9 @@ body{
             .message {
                 color: red; 
             }
+            .message.success{
+                color: green; 
+            }
         }
         .container{
             width: 100%;

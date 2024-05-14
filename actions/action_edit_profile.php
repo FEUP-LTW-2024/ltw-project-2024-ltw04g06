@@ -16,21 +16,23 @@
 
     $name = $_POST['name'];
 	$aboutMe = $_POST['aboutMe'];
-    if(validName($name)){
+    if(validName($name) && validAboutMe($aboutMe)){
     $editName = User::editName($db, $userID, $name);
     $editAboutMe = User::editAboutMe($db,$userID,$aboutMe);
         if($editName || $editAboutMe){
-       // $session->addMessage('success', 'Edit profile successful!');
+       $session->addMessage('success', 'Edit profile successful!');
         header('Location: /../pages/settings.php');
         }
-        else{
-            $session->addMessage('error', 'Did not edit profile settings!');
-            header('Location: /../pages/settings.php');
-        }
+    header('Location: /../pages/settings.php');
+
     }
     else{
+        if(!validName($name)){
         $session->addMessage('error', 'invalid name!');
-            header('Location: /../pages/settings.php');
-    }
+            header('Location: /../pages/settings.php');}
+        if(!validAboutMe($aboutMe)){
+            $session->addMessage('error', 'About me as a maximum of 70 characters!');
+            header('Location: /../pages/settings.php');}
+        }
 
 	?>

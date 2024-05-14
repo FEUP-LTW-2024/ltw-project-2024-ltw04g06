@@ -8,7 +8,6 @@
             <a id="ps"><h2>Profile_settings</h2></a>
             <a id="as"><h2>Account_settings</h2></a>
             <a id="ss"><h2>Security_settings</h2></a>
-            <a id="l"><h2>Language</h2></a>
         </aside>
         <div class="container">
             <?php  ProfileSettins($user,$session)?>
@@ -21,8 +20,6 @@
             <div class="img">
                 <img src="<?=$user->profilePicture?>" alt="">
                 <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
-                <label for="imageUrl">Image_Url </label>
-                <input type="text" name="imageUrl" value="<?php echo htmlspecialchars($user->profilePicture); ?>">
             </div>
             <label for="Name">Name</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($user->name); ?>"><br><br>
@@ -75,7 +72,4 @@
     </div>
 
 </main>
-<?php } ?>
-<?php function Languages(){?>
-    
 <?php } ?>
