@@ -18,7 +18,7 @@
                     <p class=item-name><?=$item->name?></p>
                     <p class="item-price"><?= number_format($item->price, 2, ',', '.') ?>€</p>
                     <form action="/../actions/action_rem_from_shopCart.php" method="post">
-                        <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                         <button type="submit" class="remove">Remove</button>
                     </form>
                 </div>

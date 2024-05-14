@@ -17,5 +17,8 @@ function validEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
 }
 
+function validAboutMe($aboutMe) {
+    return preg_match("/^.{0,70}$/", $aboutMe);
+}
 
 ?>

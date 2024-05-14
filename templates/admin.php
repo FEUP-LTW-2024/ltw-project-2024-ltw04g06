@@ -13,15 +13,15 @@
         <div class="user">
 <h2 class="username"><?= $user->username ?></h2>
             <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post">
-                <input type="hidden" name="userId" value="<?= $user->userID ?>">
+                <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <img onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();" src="<?=  User::getUserPic($db, $user->userID) ?>" alt="">
             <form id="adminForm<?= $user->userID ?>" action="/../actions/action_add_admin.php" method="post">
-                <input type="hidden" name="userId" value="<?= $user->userID ?>">
+                <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <button onclick="document.getElementById('adminForm<?= $user->userID ?>').submit();">Convert to admin</button>
             <form id="DeleteForm<?= $user->userID ?>" action="/../actions/action_delete_account.php" method="post">
-                <input type="hidden" name="userId" value="<?= $user->userID ?>">
+                <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <button onclick="document.getElementById('DeleteForm<?= $user->userID ?>').submit();">Delete account</button>
         </div>

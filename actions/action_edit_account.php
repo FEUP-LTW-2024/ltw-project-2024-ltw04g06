@@ -16,7 +16,7 @@
 
     $username = $_POST['username'];
 	$email = $_POST['email'];
-
+    if(validUsername($username) && validEmail($email)){
     $editUsername = User::editUsername($db, $userID, $username);
     $editEmail = User::editemail($db, $userID, $email);
 
@@ -24,10 +24,17 @@
         $session->addMessage('success', 'Edit account successful!');
         header('Location: /../pages/settings.php');
         }
-        else{
-            $session->addMessage('error', 'Did not edit account settings!');
+    header('Location: /../pages/settings.php');
+    }
+    else{
+        if(!validUsername($username)){
+            $session->addMessage('error','Only letters, digits and . - _ are allowed.');
             header('Location: /../pages/settings.php');
         }
-
+        if(!validEmail($email)){
+            $session->addMessage('error','invalid email.');
+            header('Location: /../pages/settings.php');
+        }
+    }
 
 ?>
