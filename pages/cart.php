@@ -26,5 +26,5 @@
     if(empty($cartItems)){
         emptyCart();
     }
-    cartDisplay($cartItems);
+    cartDisplay($cartItems, $db);
 ?>
