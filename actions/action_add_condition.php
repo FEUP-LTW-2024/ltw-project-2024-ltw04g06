@@ -1,7 +1,7 @@
 <?php
     require_once(__DIR__ . '/../database/connectdb.php');
     require_once(__DIR__ . '/../classes/session.class.php');
-    require_once(__DIR__ . '/../classes/category.class.php');
+    require_once(__DIR__ . '/../classes/condition.class.php');
 
     $db = getDatabaseConnection();
     $session = new Session();
@@ -11,15 +11,15 @@
         exit;
     }
 
-    $newCategory = $_POST['newCategory'];
+    $newCondition = $_POST['newCondition'];
 
-    if(Category::existingCategory($db, $newCategory)){
-        $session->addMessage('error', 'Category already exists!');
+    if(Condition::existingCondition($db, $newCondition)){
+        $session->addMessage('error', 'Condition already exists!');
         header('Location: /../pages/home.php');
     }
     else{
-    $category = Category::addCategory($db, $newCategory);
-    $session->addMessage('success', 'Category added!');
+    $condition = Condition::addCondition($db, $newCondition);
+    $session->addMessage('success', 'Condition added!');
             header('Location: /../pages/home.php');
         }
 

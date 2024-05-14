@@ -27,6 +27,20 @@ class Condition {
         );
     }
 
+    static function getConditionByName(PDO $db, string $newCondition) {
+        $preparedStmt = $db->prepare('SELECT * FROM Condition WHERE usage = ?');
+        $preparedStmt->execute(array($newCondition));
+        $condition = $preparedStmt->fetch();
+    
+        if (!$condition) {
+            throw new Exception("Condition not found with name: $newCondition");
+            return null;
+        }
+    
+        return self::getCondition($db, $condition['conditionID']);
+      }
+
+
     static function getAllConditions(PDO $db) {
         $preparedStmt = $db->prepare('SELECT * FROM Condition');
         $preparedStmt->execute();
@@ -38,9 +52,19 @@ class Condition {
         return $conditions;
       }
 
+    static function existingCondition (PDO $db, string $newCondition) : bool{
+        $condition = self::getConditionByName($db, $newCondition);
+        if(!$condition) return false;
+        else return true;
+    }
+
     static function addCondition(PDO $db, int $conditionID, string $usage) {
+        if(!self:existingCondition($db,$usage)){
         $preparedStmt = $db->prepare("INSERT INTO Condition (conditionID, usage) VALUES(?, ?)");
         $preparedStmt->execute([$conditionID, $usage]);
+        return true;
+        }
+        return false;
     }
 }
 
