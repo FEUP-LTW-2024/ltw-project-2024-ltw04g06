@@ -1,13 +1,13 @@
 
-INSERT OR IGNORE INTO User (userID, username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID,shoppingCartID)
+INSERT OR IGNORE INTO User (userID, username, password, name, email, role, imageID, aboutMe, address, phoneNumber, wishlistID,shoppingCartID)
 VALUES 
 
-    (1, 'john_doe', '$2y$12$NASz60qmC5EAA4h3M600MuASJS/MSR6u/RQxw84wqgubP.WI3WQGa', 'John Doe', 'john@example.com', 'Admin', '/../images/profilePictures/john_pp.jpg','sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1, 1), /*john_doe1*/
-    (2, 'jane_doe', '$2y$12$xHXoLY8wiUABnGk.31CSR.zcH7w.g5YxNwmwqdK8w/Z3Rs9jFAY8S', 'Jane Doe', 'jane@example.com', 'User',  '/../images/profilePictures/jane_pp.jpg','sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2, 2),/*jane_doe1*/
-    (3, 'Toze', '$2y$12$6J33f9haGmoQgUzn5InhwuZb5K7Iq9yogx5nGddwwoDGkmUhZDucm', 'Toze', 'jane2@example.com', 'User',  '/../images/profilePictures/toze_pp.jpg','sou o Toze!', 'rua dos alecrins, 8005-332,Portugal',910000019, 3, 3),/*Toze_pt1*/
-    (4,'alice_wonderland', '$2y$12$ycs1DsuXiyEr500G1y6ig.fFs/yqYNZW7EEvsoMN70ewY0U4xnlbW', 'Alice Wonderland', 'alice@example.com', 'User', '/../images/profilePictures/alice_pp.jpg', 'I love adventures!', '123 Wonderland St, Wonderland', 123456789, 4, 4),/*alice_wonder1*/
-    (5,'bob_builder', '$2y$12$saf6Zn3d/2boBnFCm93a8.7UFyx01afZuNBBN8RpjKOYlbbPUUTl.', 'Bob Builder', 'bob@example.com', 'User', '/../images/profilePictures/bob_pp.jpg', 'Can we fix it? Yes, we can!', '456 Construction Ave, Builderland', 987654321, 5, 5),/*bob_builder1*/
-    (6,'charlie_chaplin', '$2y$12$SAFuJkl4jLcX60eq3U/uQusWxaxi7PvNncPZOVGjKnXiwhkrqcDp2', 'Charlie Chaplin', 'charlie@example.com', 'User', '/../images/profilePictures/charlie_pp.jpg', 'Silent but deadly funny!', '789 Comedy Rd, Chaplinville', 246810975, 6, 6);/*charlie_chaplin1*/
+    (1, 'john_doe', '$2y$12$NASz60qmC5EAA4h3M600MuASJS/MSR6u/RQxw84wqgubP.WI3WQGa', 'John Doe', 'john@example.com', 'Admin', 22,'sou o john_doe!', 'rua das bolachas ,4760-666,Portugal',910532024, 1, 1), /*john_doe1*/
+    (2, 'jane_doe', '$2y$12$xHXoLY8wiUABnGk.31CSR.zcH7w.g5YxNwmwqdK8w/Z3Rs9jFAY8S', 'Jane Doe', 'jane@example.com', 'User',  23,'sou a jane_doe!', 'rua dos donuts, 1234-567,Portugal',919191919, 2, 2),/*jane_doe1*/
+    (3, 'Toze', '$2y$12$6J33f9haGmoQgUzn5InhwuZb5K7Iq9yogx5nGddwwoDGkmUhZDucm', 'Toze', 'jane2@example.com', 'User', 24, 'Silent but deadly funny!', 'rua dos alecrins, 8005-332,Portugal',910000019, 3, 3),/*Toze_pt1*/
+    (4,'alice_wonderland', '$2y$12$ycs1DsuXiyEr500G1y6ig.fFs/yqYNZW7EEvsoMN70ewY0U4xnlbW', 'Alice Wonderland', 'alice@example.com', 'User', 25, 'I love adventures!', '123 Wonderland St, Wonderland', 123456789, 4, 4),/*alice_wonder1*/
+    (5,'bob_builder', '$2y$12$saf6Zn3d/2boBnFCm93a8.7UFyx01afZuNBBN8RpjKOYlbbPUUTl.', 'Bob Builder', 'bob@example.com', 'User', 26, 'Can we fix it? Yes, we can!', '456 Construction Ave, Builderland', 987654321, 5, 5),/*bob_builder1*/
+    (6,'charlie_chaplin', '$2y$12$SAFuJkl4jLcX60eq3U/uQusWxaxi7PvNncPZOVGjKnXiwhkrqcDp2', 'Charlie Chaplin', 'charlie@example.com', 'User', 27, 'Silent but deadly funny!', '789 Comedy Rd, Chaplinville', 246810975, 6, 6);/*charlie_chaplin1*/
 
 
 INSERT OR IGNORE INTO Wishlist (wishlistID)
@@ -17,7 +17,7 @@ VALUES
     (3),
     (4),
     (5),
-    (6);
+    (6);                                                           
 
 INSERT OR IGNORE INTO ShoppingCart (shoppingCartID)
 VALUES 
@@ -28,29 +28,29 @@ VALUES
     (5),
     (6);
 
-INSERT OR IGNORE INTO Item (itemID,name, sellerID, categoryID, brand, model, sizeID, conditionID, description, price, images, statusID)
+INSERT OR IGNORE INTO Item (itemID,name, sellerID, categoryID, brand, model, sizeID, conditionID, description, price, imageID, statusID)
 VALUES 
-    (1,'Used Unicorn Shirt', 1, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 'images/items/unicorn_dab_shirt.png', 1),
-    (2,'Vintage Plushies', 1, 2, 'Lacoste', '', 0, 1, '  Hello! I am selling 5 vintage plushies from 1914 very good, very good condition, very good shape, very good price.', 2000.00, 'images/items/plushies_0.png,images/items/plushies_1.png,images/items/plushies_2.png', 1),
-    (3,'Used Unicorn Shirt2', 2, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 'images/items/unicorn_dab_shirt.png', 2),
-    (4,'Fancy Dress', 4, 1, 'Dior', '', 4, 1, 'Perfect for any party!', 499.99, 'images/items/fancy_dress.png', 1),
-    (5,'Wooden table', 5, 4, 'BobsBuilds', '', 0, 2, 'Classic table for the BEST builders!', 99.99, 'images/items/wooden_table.png', 1),
-    (6,'iPhone X', 1, 3, 'Apple', 'iPhone X', 0, 3, 'Slightly used, good condition.', 599.99, 'images/items/iphone_x.png', 1),
-    (7,'Lego Millennium Falcon', 2, 5, 'Lego', 'Star Wars', 0, 1, 'Build your own Star Wars adventure!', 799.99, 'images/items/millenium_falcon.png', 1),
-    (8,'Leather Jacket', 4, 1, 'Versace', '', 3, 2, 'Stylish and durable.', 299.99, 'images/items/leather_jacket.png', 1),
-    (9,'Beatifull bow', 4, 2, 'Zara', '', 0, 3, '  Hello! I am  selling my beatifull bow.', 20.00, 'images/items/bow.png', 1),
-    (10,'Vintage Watch', 2, 2, 'Rolex', 'Submariner', 0, 2, 'Classic vintage timepiece.', 4999.99, 'images/items/vintage_watch.png', 1),
-    (11,'PlayStation 5', 1, 3, 'Sony', 'PS5', 0, 1, 'Brand new in box.', 599.99, 'images/items/ps5.png', 1),
-    (12,'Antique Chair', 5, 4, 'Victorian', '', 0, 3, 'Beautifully crafted antique chair.', 299.99, 'images/items/antique_chair.png', 1),
-    (13,'Designer Handbag', 4, 2, 'Louis Vuitton', '', 0, 1, 'Luxurious designer handbag.', 999.99, 'images/items/designer_handbag.png', 1),
-    (14,'Gaming PC', 3, 3, 'Custom Build', '', 0, 1, 'Powerful gaming rig.', 1499.99, 'images/items/gaming_pc.png', 1),
-    (15,'Smartwatch', 2, 3, 'Apple', 'Watch Series 6', 0, 2, 'Stay connected with this smartwatch.', 399.99, 'images/items/smartwatch.png', 2),
-    (16,'Vintage Vinyl Records', 5, 5, 'Various', '', 0, 2, 'Collection of classic vinyl records.', 99.99, 'images/items/vinyl_records.png', 1),
-    (17,'Designer Sunglasses', 4, 2, 'Ray-Ban', '', 0, 1, 'Stylish sunglasses for any occasion.', 149.99, 'images/items/sunglasses.png', 2),
-    (18,'Digital Camera', 3, 3, 'Canon', 'EOS Rebel T7', 0, 1, 'Capture your memories with this camera.', 599.99, 'images/items/digital_camera.png', 1),
-    (19,'Electric Guitar', 6, 5, 'Fender', 'Stratocaster', 0, 2, 'Rock out with this electric guitar.', 799.99, 'images/items/electric_guitar.png', 1),
-    (20,'Collectible Action Figures', 1, 2, 'Hasbro', '', 0, 1, 'Rare collectible action figures set.', 299.99, 'images/items/action_figures.png', 2),
-    (21,'Smart Home Security Camera', 1, 3, 'Ring', 'Doorbell Pro', 0, 1, 'Monitor your home with this smart security camera.', 199.99, 'images/items/security_camera.png', 2);
+    (1,'Used Unicorn Shirt', 1, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 1, 1),
+    (2,'Vintage Plushies', 1, 2, 'Lacoste', '', 0, 1, '  Hello! I am selling 5 vintage plushies from 1914 very good, very good condition, very good shape, very good price.', 2000.00, 2, 1),
+    (3,'Used Unicorn Shirt2', 2, 1, 'Gucci', '', 6, 3, 'Cool shirt! :D', 9999999.99, 3, 2),
+    (4,'Fancy Dress', 4, 1, 'Dior', '', 4, 1, 'Perfect for any party!', 499.99, 4, 1),
+    (5,'Wooden table', 5, 4, 'BobsBuilds', '', 0, 2, 'Classic table for the BEST builders!', 99.99, 5, 1),
+    (6,'iPhone X', 1, 3, 'Apple', 'iPhone X', 0, 3, 'Slightly used, good condition.', 599.99, 6, 1),
+    (7,'Lego Millennium Falcon', 2, 5, 'Lego', 'Star Wars', 0, 1, 'Build your own Star Wars adventure!', 799.99, 7, 1),
+    (8,'Leather Jacket', 4, 1, 'Versace', '', 3, 2, 'Stylish and durable.', 299.99, 8, 1),
+    (9,'Beatifull bow', 4, 2, 'Zara', '', 0, 3, '  Hello! I am  selling my beatifull bow.', 20.00, 9, 1),
+    (10,'Vintage Watch', 2, 2, 'Rolex', 'Submariner', 0, 2, 'Classic vintage timepiece.', 4999.99, 10, 1),
+    (11,'PlayStation 5', 1, 3, 'Sony', 'PS5', 0, 1, 'Brand new in box.', 599.99, 11, 1),
+    (12,'Antique Chair', 5, 4, 'Victorian', '', 0, 3, 'Beautifully crafted antique chair.', 299.99, 12, 1),
+    (13,'Designer Handbag', 4, 2, 'Louis Vuitton', '', 0, 1, 'Luxurious designer handbag.', 999.99, 13, 1),
+    (14,'Gaming PC', 3, 3, 'Custom Build', '', 0, 1, 'Powerful gaming rig.', 1499.99, 14, 1),
+    (15,'Smartwatch', 2, 3, 'Apple', 'Watch Series 6', 0, 2, 'Stay connected with this smartwatch.', 399.99, 15, 2),
+    (16,'Vintage Vinyl Records', 5, 5, 'Various', '', 0, 2, 'Collection of classic vinyl records.', 99.99, 16, 1),
+    (17,'Designer Sunglasses', 4, 2, 'Ray-Ban', '', 0, 1, 'Stylish sunglasses for any occasion.', 149.99, 17, 2),
+    (18,'Digital Camera', 3, 3, 'Canon', 'EOS Rebel T7', 0, 1, 'Capture your memories with this camera.', 599.99, 18, 1),
+    (19,'Electric Guitar', 6, 5, 'Fender', 'Stratocaster', 0, 2, 'Rock out with this electric guitar.', 799.99, 19, 1),
+    (20,'Collectible Action Figures', 1, 2, 'Hasbro', '', 0, 1, 'Rare collectible action figures set.', 299.99, 20, 2),
+    (21,'Smart Home Security Camera', 1, 3, 'Ring', 'Doorbell Pro', 0, 1, 'Monitor your home with this smart security camera.', 199.99, 21, 2);
 
 
     
@@ -244,3 +244,33 @@ INSERT OR IGNORE INTO MessageUser (messageID, userID)
     (30, 1), -- Message 30 sent by John Doe
     (30, 5); -- Message 30 recieved by Bob Builder
 
+INSERT OR IGNORE INTO Image (link, imageID)
+    VALUES
+    ('/../images/items/unicorn_dab_shirt.png', 1),
+    ('/../images/items/plushies_0.png', 2),
+    ('/../images/items/unicorn_dab_shirt.png', 3),
+    ('/../images/items/fancy_dress.png', 4),
+    ('/../images/items/wooden_table.png', 5),
+    ('/../images/items/iphone_x.png', 6),
+    ('/../images/items/millenium_falcon.png', 7),
+    ('/../images/items/leather_jacket.png', 8),
+    ('/../images/items/bow.png', 9),
+    ('/../images/items/vintage_watch.png', 10),
+    ('/../images/items/ps5.png', 11),
+    ('/../images/items/antique_chair.png', 12),
+    ('/../images/items/designer_handbag.png', 13),
+    ('/../images/items/gaming_pc.png', 14),
+    ('/../images/items/smartwatch.png', 15),
+    ('/../images/items/vinyl_records.png', 16),
+    ('/../images/items/sunglasses.png', 17),
+    ('/../images/items/digital_camera.png', 18),
+    ('/../images/items/electric_guitar.png', 19),
+    ('/../images/items/action_figures.png', 20),
+    ('/../images/items/security_camera.png', 21),
+    ('/../images/profilePictures/john_pp.jpg', 22),
+    ('/../images/profilePictures/jane_pp.jpg', 23),
+    ('/../images/profilePictures/toze_pp.jpg', 24),
+    ('/../images/profilePictures/alice_pp.jpg', 25),
+    ('/../images/profilePictures/bob_pp.jpg', 26),
+    ('/../images/profilePictures/charlie_pp.jpg', 27);
+    

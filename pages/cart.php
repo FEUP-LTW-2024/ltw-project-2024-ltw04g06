@@ -17,7 +17,7 @@
         exit;
     }
 
-    topo($user);
+    topo($db, $user);
     createCart();
     $itemID=$_POST['itemID'];
     $user = User::getUser($db, $userID);
@@ -26,5 +26,5 @@
     if(empty($cartItems)){
         emptyCart();
     }
-    cartDisplay($cartItems);
+    cartDisplay($db, $cartItems);
 ?>

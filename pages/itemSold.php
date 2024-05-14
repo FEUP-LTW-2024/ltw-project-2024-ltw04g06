@@ -11,9 +11,9 @@
     $db = getDatabaseConnection();
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
-    topo($user);
+    topo($db, $user);
     displayItemSold();
-    $itemID = $_GET['itemID'];
+    $itemID = $_POST['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
             itemSoldForm($item, $db);

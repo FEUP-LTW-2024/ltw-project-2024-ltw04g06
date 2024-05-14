@@ -23,7 +23,7 @@
 
     if($messageID!= false){
         echo '<div class="fr">
-        <img src='.$sender->profilePicture.'>
+        <img src='.User::getUserPic($db, $sender->userID).'>
         <span>'.$sender->username.'</span>
         <div class="time"> '.$message->time.' </div>
          </div>

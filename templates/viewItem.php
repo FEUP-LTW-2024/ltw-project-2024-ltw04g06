@@ -15,7 +15,7 @@
                     <input type="hidden" name="userId" value="<?= $user->userID ?>">
                 </form>
                 <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
-                    <img src=<?= '/../' . $user->profilePicture?> alt="">
+                    <img src=<?= User::getUserPic($db, $user->userID)?> alt="">
                     <p><?=$user->username?></p>
                 </header>
             

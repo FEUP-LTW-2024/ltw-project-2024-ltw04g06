@@ -13,7 +13,7 @@
     $db = getDatabaseConnection();
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
-    topo($user);
-    showUsers(User::getAllUsers($db));
+    topo($db, $user);
+    showUsers($db, $userID, User::getAllUsers($db));
 
 ?>
