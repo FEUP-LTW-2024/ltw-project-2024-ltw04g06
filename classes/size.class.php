@@ -60,9 +60,20 @@ class Size {
         $preparedStmt = $db->prepare("INSERT INTO Size ( name) VALUES( ?)");
         $preparedStmt->execute([ $name]);
         return true;
+        }
+        return false;
     }
-    return false;
-}
+
+    static function remSize(PDO $db, string $sizeName){
+        $existingSize = (self::existingSize($db, $sizeName));
+    
+        if($existingSize == false) { return false; }
+    
+        $preparedStmt = $db->prepare("DELETE FROM Size WHERE name = ? ");
+        $preparedStmt->execute([$sizeName]);
+      
+        return true; 
+      }
 }
 
 ?>

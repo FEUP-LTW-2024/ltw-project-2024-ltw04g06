@@ -66,6 +66,17 @@ class Condition {
         }
         return false;
     }
+
+    static function remCondition(PDO $db, string $conditionName){
+        $existingCond = (self::existingCondition($db, $conditionName));
+    
+        if($existingCond == false) { return false; }
+    
+        $preparedStmt = $db->prepare("DELETE FROM Condition WHERE usage = ? ");
+        $preparedStmt->execute([$conditionName]);
+      
+        return true; 
+      }
 }
 
 ?>

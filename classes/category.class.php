@@ -65,6 +65,18 @@
     }
     return false;
 	}
+
+
+  static function remCategory(PDO $db, string $categoryName){
+    $existingCat = (self::existingCategory($db, $categoryName));
+
+    if($existingCat == false) { return false; }
+
+    $preparedStmt = $db->prepare("DELETE FROM Category WHERE name = ? ");
+    $preparedStmt->execute([$categoryName]);
+  
+    return true; 
+  }
 }
 
 ?>
