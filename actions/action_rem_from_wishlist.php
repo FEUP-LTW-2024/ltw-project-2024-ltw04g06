@@ -1,4 +1,5 @@
 <?php
+
     require_once(__DIR__ . '/../classes/item.class.php');
     require_once(__DIR__ . '/../database/connectdb.php');
     require_once(__DIR__ . '/../classes/session.class.php');
@@ -16,28 +17,28 @@
     $userID = $session->getID();
 
     $itemID=$_POST['itemID'];
-    $wishlistID = $user->wishlistID;
+    $wishlistID = $userID->wishlistID;
 
-    echo $_POST['itemID'];
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($wishlistID!==null){
+    echo $_POST['itemID'];}
+    echo $wishlistID;
+   
         if(!Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
             $session->addMessage('error', 'Item is not in the wishlist.');
             header('Location: /../pages/wishlist.php');
+            echo "item not in wishlist";
         } 
         else {
             if (Wishlist::remItemFromWishlist($db, $wishlistID, $itemID)) {
                 $session->addMessage('success', 'Item removed from wishlist successful!');
                 header('Location: /../pages/wishlist.php');
+                echo "item in wishlist removed";
             } 
             else {
                 $session->addMessage('error', 'Failed to remove item from wishlist.');
                 header('Location: /../pages/wishlist.php');
+                echo "item in wishlist but not removed";
             }
         }
-    } 
-    else {
-        $session->addMessage('error', 'Invalid request.');
-        header('Location: /../pages/wishlist.php');
-    }
-
+    
 ?>
