@@ -24,14 +24,10 @@
           
                 <label for="foto" class="foto-label">
                 <div class="image">
-                    <?php
-                    $imageUrls = explode(',', $item->images);
-                    $imageSrc = $imageUrls[0];
-                    ?>
                     <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                     </form>
-                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
+                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
                     </div>   
             </label> 
                </div>

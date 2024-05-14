@@ -1,10 +1,10 @@
-<?php function profileEditDescript(User $user){?>
+<?php function profileEditDescript(PDO $db,User $user){?>
 <head>
     <link rel="stylesheet" href="/../css/profile.css">
 </head>
 <main>
     <div class="info">
-            <img src= <?= '/../' . $user->profilePicture?> alt="">
+            <img src= <?= User::getUserPic($db, $user->userID)?> alt="">
             <div class="hidden" id="userID"><?= $user->userID?></div>
             <div class="text">
                 <h2><?= $user->username?></h2>
@@ -41,12 +41,10 @@
                             if ($status != "Available") continue;
                             ?>
                             <div class="product" >
-                            <?php
-                                $imageUrls = explode(',', $item->images);
-                                $imageSrc = $imageUrls[0];
-                            ?>
-                                  <a href="/../pages/itemActive.php?itemID=<?=$item->itemID?>">
-                                  <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                                  <form action="/../pages/itemActive.php" method="post" class="hidden" id="itemActive<?= $item->itemID ?>" >
+                                    <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                                    </form>
+                                  <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
                                 <p><?=$item->name?></i></p>
                                 <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>
                             </div>
@@ -56,4 +54,4 @@
             </div>
         </div>
     </main>
-<?php } ?>
+<?php } ?>  

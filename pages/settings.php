@@ -13,7 +13,7 @@
     $userID = $session->getID();
     $user = User::getUser($db,$userID);
 
-    topo($user);
-    displaySettings($user, $session);
+    topo($db, $user);
+    displaySettings($db, $user, $session);
 
 ?>

@@ -23,7 +23,7 @@
 
     $items = Item::getUserItems($db, $userID);
 
-    topo($userD);
-    SeeProfile($user);
+    topo($db, $userD);
+    SeeProfile($db, $user);
     myItemsAnalytics($db, $items);
 ?>

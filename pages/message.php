@@ -20,6 +20,6 @@
    }
 
   $userID = $session->getID();
-  topo($user);
+  topo($db, $user);
   sideBar($db, $userID, $receiverID);
   ?>

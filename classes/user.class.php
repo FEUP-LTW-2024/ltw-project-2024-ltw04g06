@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 require_once(__DIR__ . '/wishlist.class.php');
 require_once(__DIR__ . '/shoppingCart.class.php');
+require_once(__DIR__ . '/image.class.php');
 
   class User {
     public int $userID;
@@ -11,7 +12,7 @@ require_once(__DIR__ . '/shoppingCart.class.php');
     public string $name;
     public string $email;
     public string $role;
-    public string $profilePicture;
+    public int $imageID;
     public string $aboutMe;
     public string $address;
     public int $phoneNumber;
@@ -19,14 +20,14 @@ require_once(__DIR__ . '/shoppingCart.class.php');
     public int $shoppingCartID;
 
 
-    public function __construct(int $userID, string $username, string $password, string $name, string $email, string $role, string $profilePicture,  string $aboutMe,  string $address, int $phoneNumber, int $wishlistID, int $shoppingCartID) {
+    public function __construct(int $userID, string $username, string $password, string $name, string $email, string $role, int $imageID,  string $aboutMe,  string $address, int $phoneNumber, int $wishlistID, int $shoppingCartID) {
       $this->userID = $userID;
       $this->username = $username;
       $this->password = $password;
       $this->name = $name;
       $this->email = $email;
       $this->role = $role;
-      $this->profilePicture = $profilePicture;
+      $this->imageID = $imageID;
       $this->aboutMe = $aboutMe;
       $this->address = $address;
       $this->phoneNumber = $phoneNumber;
@@ -55,7 +56,7 @@ require_once(__DIR__ . '/shoppingCart.class.php');
         $user['name'],
         $user['email'],
         $user['role'],
-        $user['profilePicture'],
+        $user['imageID'],
         $user['aboutMe'],
         $user['address'],
         $user['phoneNumber'],
@@ -101,6 +102,15 @@ require_once(__DIR__ . '/shoppingCart.class.php');
       if($user!= null){
         $wishlist = Wishlist::getWishlistItems($db, $user->wishlistID);
         return $wishlist;
+      }
+      return null;
+    }
+
+    static function getUserPic(PDO $db, int $userID) {
+      $user = User::getUser($db, $userID);
+      if($user!= null){
+        $image = Image::getImage($db, $user->imageID);
+        return $image;
       }
       return null;
     }
@@ -191,7 +201,7 @@ require_once(__DIR__ . '/shoppingCart.class.php');
 
       $shoppingCartID = $db->lastInsertId();
       
-      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, profilePicture, aboutMe, address, phoneNumber, wishlistID, shoppingCartID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, imageID, aboutMe, address, phoneNumber, wishlistID, shoppingCartID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]), '', $email, 'User', 'images/profilePictures/default.jpg','','',0, $wishlistID, $shoppingCartID]);
       $userID = $db->lastInsertId();
 

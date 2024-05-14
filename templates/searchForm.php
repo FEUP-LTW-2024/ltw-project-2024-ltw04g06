@@ -27,7 +27,6 @@
                         }
                         echo '</select>';
                     ?>
-
                 </div>
 
                 <div class="condition">
@@ -42,7 +41,7 @@
                         }
                         echo '</select>';
                     ?>
-                </div>
+                </div>  
 
  
         <div class="size">
@@ -68,7 +67,6 @@
             <button type="submit">Search</button>
         </div>   
             
-    </form>
 
 </div>
 <?php } ?>

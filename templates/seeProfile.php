@@ -1,10 +1,10 @@
-<?php function SeeProfile(User $user){?>
+<?php function SeeProfile(PDO $db, User $user){?>
 <head>
     <link rel="stylesheet" href="/../css/profile.css">
 </head>
 <main>
     <div class="info">
-            <img src= <?= '/../' . $user->profilePicture?> alt="">
+            <img src= <?= User::getUserPic($db, $user->userID)?> alt="">
             <div class="hidden" id="userID"><?= $user->userID?></div>
             <div class="text">
                 <h2><?= $user->username?></h2>
@@ -36,14 +36,9 @@
                     <?php 
                         foreach($items as $item){ 
                             $status = Item::getItemStatus($db, $item->itemID);
-                            if ($status != "Available") continue;
                             ?>
                             <div class="product" >
-                            <?php
-                                $imageUrls = explode(',', $item->images);
-                                $imageSrc = $imageUrls[0];
-                            ?>
-                                  <img class="foto" src=<?='/../' . $imageSrc?> alt="">
+                                  <img class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
                                 <p><?=$item->name?></i></p>
                                 <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>
                             </div>
