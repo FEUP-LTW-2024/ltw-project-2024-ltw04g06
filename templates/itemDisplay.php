@@ -15,19 +15,19 @@
         ?>
         <div class="product">
             <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
-                <input type="hidden" name="userId" value="<?= $user->userID ?>">
+                <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
                 <img src=<?= User::getUserPic($db, $userID)?> alt="">
                 <p><?=$user->username?></p>
             </header>
             <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
-                <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+                <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
             </form>
             <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
             
             <form action="/../actions/action_add_to_wishlist.php" method="post">
-            <input type="hidden" name="itemID" value="<?=$item->itemID?>">
+            <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
             <p><?=$item->name?>
             <button type="submit" class="wishlist"><i class="fa-regular fa-heart <?php echo User::existItemUserWish($db, $userID, $item->itemID) ? 'red' : ''?>"></i></button></p>
             </form>

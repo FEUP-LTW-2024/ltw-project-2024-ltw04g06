@@ -17,7 +17,7 @@
         if ($receiverID != -1){
             $contact = User::getUser($db, $receiverID);
             ?>
-            <input checked type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
+            <input checked type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?php echo htmlspecialchars($contact->userID); ?>">
             <label for="<?=$contact->username ?>" class="pessoa">
             <img src="<?=User::getUserPic($db, $contact->userID)?>" alt="">
             <p><?=$contact->username ?></p>
@@ -26,7 +26,7 @@
         <?php foreach ($contacts as $contact) { 
             if ($contact->userID == $receiverID) continue;
     ?>
-    <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?=$contact->userID?>">
+    <input type="radio" id="<?=$contact->username ?>" name="userID" class="radio-btn" value="<?php echo htmlspecialchars($contact->userID); ?>">
     <label for="<?=$contact->username ?>" class="pessoa">
         <img src="<?=User::getUserPic($db, $contact->userID)?>" alt="">
         <p><?=$contact->username ?></p>
@@ -82,8 +82,8 @@
                 </div>
            
                 <form  id="messageForm" class="typing-area" method="post">
-                    <input type="text" class="writerID" name="senderID" value="<?= $userID1 ?>" hidden>
-                    <input type="text" class="receiverID" name="recipientID" value="<?= $userID2 ?>" hidden>
+                    <input type="text" class="writerID" name="senderID" value="<?php echo htmlspecialchars($userID1); ?>" hidden>
+                    <input type="text" class="receiverID" name="recipientID" value="<?php echo htmlspecialchars($userID2); ?>" hidden>
                     <textarea name="content"class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
                     <button type="button" class="send_message"><i class="fab fa-telegram-plane"></i></button>
                 </form>

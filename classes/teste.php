@@ -282,7 +282,8 @@ foreach ($users as $user) {
   echo 'user ' . $user->name . '<br>';
 }
 */
-
+$category = Category::getCategoryByName($db, "Clothing");
+echo $category->categoryID;
 
 
 ?>

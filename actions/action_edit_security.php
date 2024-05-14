@@ -24,13 +24,13 @@
         $session->addMessage('success', 'Edit security successful!');
         header('Location: /../pages/settings.php');
         }
-        else{
-            $session->addMessage('error', 'Did not edit security settings!');
-            header('Location: /../pages/settings.php');
-        }
+    header('Location: /../pages/settings.php');
+
     }
     else{
-        if($newPass!=$confirmNewPass) $session->addMessage('error', 'Confirm new password must match new password!');
+        if(validPassword($currentPass) && ($newPass!=$confirmNewPass)) {
+            $session->addMessage('error', 'Confirm new password must match new password!');
+            header('Location: /../pages/settings.php');}
         elseif(!validPassword($newPass)){
             $session->addMessage('passwordError', 'Must be longer than 7 chars and contain at least a letter and a digit.');
             header('Location: /../pages/settings.php');}

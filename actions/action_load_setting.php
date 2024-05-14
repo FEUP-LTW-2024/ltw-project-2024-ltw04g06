@@ -22,10 +22,6 @@ switch ($type) {
     case 'ss':
         SecuritySettings($user,$session);
         break;
-    case 'l':
-        Languages();
-        break;
-    default:
-        echo "Tipo de configuração inválido.";
+        default:
 }
 ?>

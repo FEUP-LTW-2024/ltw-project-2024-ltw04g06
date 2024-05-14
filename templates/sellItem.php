@@ -1,4 +1,10 @@
-<?php function displaySellItem(){ ?>
+<?php
+    require_once(__DIR__ . '/../classes/category.class.php');
+    require_once(__DIR__ . '/../classes/condition.class.php');
+    require_once(__DIR__ . '/../classes/size.class.php');
+    require_once(__DIR__ . '/../database/connectdb.php');
+    $db = getDatabaseConnection();
+ function displaySellItem(){ ?>
     <head>
         <link rel="stylesheet" href="/../css/sellItem.css">
         <script src="/../js/sellItem.js"></script>
@@ -39,41 +45,43 @@
             <div class="size">
                 <label class="condition-label" for="condition">Condition</label>
                 <select class="condition" name="condition">
-                    <option value="Not used">Not used</option>
-                    <option value="Barely used" selected>Barely used</option>
-                    <option value="Used">Used</option>
-                    <option value="Very used">Very used</option>
+                <?php
+                        $db = getDatabaseConnection();
+                        $conditions = Condition::getAllConditions($db);
+                        echo '<option value="NULL" selected>Not selected</option>';
+                        foreach ($conditions as $condition) {
+                            echo '<option value= "' .  htmlspecialchars($condition->usage) . '">' .  htmlspecialchars($condition->usage) . '</option>';
+                        }
+                    ?>
                 </select>
                 <label class="size-label" for="size">Size</label>
                 <div class="size2">
-                <label for="xs">
-                    <input type="radio" id="xs" name="sizes" value="XS"> XS 
-                </label> 
-                <label for="s">
-                    <input type="radio" id="s" name="sizes" value="S"> S 
-                </label> 
-                <label for="m">
-                    <input type="radio" id="m" name="sizes" value="M"> M 
-                </label>
-                <label for="l">
-                    <input type="radio" id="l" name="sizes" value="L"> L 
-                </label>
-                <label for="xl">
-                    <input type="radio" id="xl" name="sizes" value="XL"> XL 
-                </label>
-                <label for="xxl">
-                    <input type="radio" id="xxl" name="sizes" value="XXL"> XXL 
-                </label>
+                <?php
+                    $db = getDatabaseConnection();
+                    $sizes = Size::getAllSizes($db);
+                    foreach ($sizes as $size) {
+                        echo '<label for='.htmlspecialchars($size->name) . '>';
+                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="sizes" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
+                        echo '</label> ';
+                    }
+                    echo '</select>';
+                ?>
+
+ 
                 </div>
             </div>
             <div class="category">
                 <label for="category">Category</label>
                 <select name="category">
-                    <option value="Clothing">Clothing</option>
-                    <option value="Accessories">Acessories</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="toys">Toys</option>
+                <?php
+                        $db = getDatabaseConnection();
+                        $categories = Category::getAllCategories($db);
+                        echo '<option value="NULL" selected>Not selected</option>';
+                        foreach ($categories as $category) {
+                            echo '<option value= "' . htmlspecialchars($category->name) . '">' .htmlspecialchars($category->name) . '</option>';
+                        }
+                    ?>
+
                 </select>
             
                 <label class="price-label" for="price">Price</label>

@@ -10,18 +10,37 @@ class Session {
     }
 
     public function __construct() {
-      session_set_cookie_params(60*60*12, '/');
-      //session_set_cookie_params(10, '/');
-
-        session_start();
-
-        if (!isset($_SESSION['csrf'])) {
+      session_set_cookie_params(3600, '/'); // it will log off after 1 hour of inactivity
+      session_start();
+  
+      if (!isset($_SESSION['csrf'])) {
           $_SESSION['csrf'] = self::generate_random_token();
-        }
-
-        $this->msgs = isset($_SESSION['msgs']) ? $_SESSION['msgs'] : array();
-        unset($_SESSION['msgs']);
       }
+  
+      $this->msgs = isset($_SESSION['msgs']) ? $_SESSION['msgs'] : array();
+      unset($_SESSION['msgs']);
+  
+      if (isset($_SESSION['last_activity'])) {
+          $this->checkActivity();
+      } else {
+          $_SESSION['last_activity'] = time();
+      }
+  }
+  
+  private function checkActivity() {
+      $currentTime = time();
+  
+      $lastActivityTime = $_SESSION['last_activity'];
+      $timeDifference = $currentTime - $lastActivityTime;
+  
+      if ($timeDifference > 3600) {
+          header('Location: /../pages/signIn.php');
+          $this->logout();
+      } else {
+          $_SESSION['last_activity'] = $currentTime;
+      }
+  }
+  
 
       public function getName() {
         return isset($_SESSION['name']) ? $_SESSION['name'] : null;
