@@ -14,13 +14,13 @@ $type = $_GET['type'];
 
 switch ($type) {
     case 'ps':
-        ProfileSettins($user);
+        ProfileSettins($user,$session);
         break;
     case 'as':
-        AccountSettings($user);
+        AccountSettings($user,$session);
         break;
     case 'ss':
-        SecuritySettings($user);
+        SecuritySettings($user,$session);
         break;
     case 'l':
         Languages();

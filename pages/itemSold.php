@@ -13,9 +13,7 @@
     $user = User::getUser($db, $userID);
     topo($user);
     displayItemSold();
-
-   
-        $itemID = 1;
+    $itemID = $_GET['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
             itemSoldForm($item, $db);
