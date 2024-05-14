@@ -51,12 +51,26 @@
                     <label class="model"><strong>Model:</strong> <?= $item->model ?></label></p>
                 </div>
                 <div class="condition-size">
-                    <p><label class="condition"><strong>Condition: </strong><?= $item->conditionID ?></label>
+                    <p><?php
+                        require_once(__DIR__ . '/../classes/condition.class.php');
+                        require_once(__DIR__ . '/../classes/size.class.php');
+                        require_once(__DIR__ . '/../database/connectdb.php');
+                        $db = getDatabaseConnection();
+                        $condition = Condition::getCondition($db, $item->conditionID);
+                        $size = Size::getSize($db, $item->sizeID);
+                    ?>
+                    <label class="condition"><strong>Condition: </strong><?= $condition->usage ?></label>
 
-                    <label class="size"><strong>Size:</strong> <?= $item->sizeID ?></label></p>
+                    <label class="size"><strong>Size:</strong> <?= $size->name ?></label></p>
                 </div>
                 <div class="category-price">
-                    <p><label class="category"><strong>Category:</strong> <?= $item->categoryID ?></label>
+                    <p><?php
+                        require_once(__DIR__ . '/../classes/category.class.php');
+                        require_once(__DIR__ . '/../database/connectdb.php');
+                        $db = getDatabaseConnection();
+                        $category = Category::getCategory($db, $item->categoryID);
+                    ?>
+                    <label class="category"><strong>Category:</strong> <?= $category->name ?></label>
 
                     <label class="price"><strong>Price:</strong> <?= number_format($item->price, 2, ',', '.') ?>€</label></p>
                 </div>
