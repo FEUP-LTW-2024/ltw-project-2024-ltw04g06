@@ -13,20 +13,18 @@
             <header>
                 Log in
             </header>
-            <?php 
-                if ($session->getMessages()) {
-                    foreach ($session->getMessages() as $msg) {
-                        echo '<div class="message ' . $msg['type'] . '">' . $msg['text'] . '</div>';
-                    }
-                }
-                ?>
+        
             <form action="/../actions/action_signIn.php" method = "post">
                 <label for=""><i class="fa-regular fa-user"></i></label>
                 <input type="text" name = "userField" placeholder="Email or username"><br>
                 <label for=""><i class="fa-solid fa-lock"></i></label>
                 <input type="password" name = "password" placeholder="Password"><br>
+                <?php 
+                    $session->displayMessages();
+                ?>
                 <input type="submit" class="submitButton" value="Continue">
             </form>
+            
         </div>
         <h5>New to website?</h5>
         <div class="box">
@@ -35,18 +33,42 @@
     </main>  
 <?php } ?>
 
-<?php function signUpBox(){ ?>
+<?php function signUpBox($session){ ?>
+    <?php
+    $usernameError = $session->findMsgWithType('usernameError');
+    $emailError = $session->findMsgWithType('emailError');
+    $passwordError = $session->findMsgWithType('passwordError');
+    $existAccError = $session->findMsgWithType('error');
+    
+    ?>
     <div class="box">
             <header>
                 Sign up
             </header>
+            <?php
+                if($existAccError) {
+                    echo '<div class="message ' . 'existAccError'. '">' . $existAccError['text'] . '</div>';
+                }
+            ?>
             <form action="/../actions/action_signUp.php" method = "post">
                 <label for=""><i class="fa-regular fa-user"></i></label>
                 <input type="text" name = "username" placeholder="Username"><br>
+                <?php if($usernameError){
+                    echo '<div class="message ' . 'usernameError'. '">' . $usernameError['text'] . '</div>';
+                }
+                ?>
                 <label for=""><i class="fa-regular fa-envelope"></i></label>
                 <input type="email" name = "email" placeholder="Email"><br>
+                <?php if($emailError){
+                    echo '<div class="message ' . 'emailError'. '">' . $emailError['text'] . '</div>';
+                }
+                ?>
                 <label for=""><i class="fa-solid fa-lock"></i></label>
                 <input type="password" name = "password" placeholder="Password"><br>
+                <?php if($passwordError){
+                    echo '<div class="message ' . 'passwordError'. '">' . $passwordError['text'] . '</div>';
+                }
+                ?>
                 <input type="submit" class="submitButton" value="Continue">
             </form>
         </div>

@@ -9,7 +9,19 @@
 	$username = $_POST['username'];
 	$email = $_POST['email'];
     $password = $_POST['password'];
-
+	if(!validUsername($username)) {
+		$session->addMessage('usernameError', 'Only letters, digits and . - _ are allowed.');
+		header('Location: /../pages/signUp.php');
+	}
+	if(!validEmail($email)) {
+		$session->addMessage('emailError', 'invalid email.');
+		header('Location: /../pages/signUp.php');
+	}
+	if(!validPassword($password)) {
+		$session->addMessage('passwordError', 'Must be longer than 7 chars and contain at least a letter and a digit.');
+		header('Location: /../pages/signUp.php');
+	}
+	else{
 	$addedUserID = User::addUser($db, $username, $email, $password);
 	if($addedUserID!=false) {
 		$user = User::getUser($db, $addedUserID);
@@ -21,5 +33,6 @@
     $session->addMessage('error', 'An account already exists with that username or email!');
 		header('Location: /../pages/signUp.php');
   }
+}
 
 ?>
