@@ -72,8 +72,7 @@ require_once(__DIR__ . '/image.class.php');
   
       return $items;
   }
-  static function getImagePic(PDO $db, int $imageID) {
-    $item = Item::getItem($db, $imageID);
+  static function getImagePic(PDO $db, Item $item) {
     if($item!= null){
       $image = Image::getImage($db, $item->imageID);
       return $image;
@@ -165,16 +164,16 @@ require_once(__DIR__ . '/image.class.php');
       return $status->name;
     }
 
-
     /*--Add--*/
+
     static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $imageID)  {
       $statusID = Status::addStatus($db,"Available");
       $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, imageID ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $imageID]);
-    }
+    }    
 
     /*--Edit--*/
-
+        
     static function editItemStatus(PDO $db, int $itemID, string $name): bool {
       $item = self::getItem($db, $itemID);
       $itemStatus = Status::getStatus($db, $item->statusID);
@@ -198,8 +197,8 @@ require_once(__DIR__ . '/image.class.php');
       } else {
           return false;
       }
-    }
-
+  }
+    
     static function editName(PDO $db, Item $item, string $newName) : bool {
       $itemID = $item->itemID;
       if($item->name == $newName) return false;
@@ -337,7 +336,7 @@ require_once(__DIR__ . '/image.class.php');
 
 
     /*--Remove--*/
-
+    
     static function removeItem(PDO $db, int $itemID) {
       $item = self::getItem($db, $itemID);
       if($item == false) return false;
