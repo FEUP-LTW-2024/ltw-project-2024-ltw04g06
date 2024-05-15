@@ -6,7 +6,7 @@
     <main>
 <?php } ?>
 
-<?php function itemSoldForm($item, $db){ ?>
+<?php function itemSoldForm(Item $item, PDO $db, int $userID){ ?>
     <div class="form">
         <div class="left-column">
            <div class="products">
@@ -70,14 +70,7 @@
         </div>
     </div>
     <?php 
-          $db = getDatabaseConnection();
-          $session = new Session();
-          if (!$session->isLoggedIn()) {
-              header('Location: /../pages/signIn.php');
-              exit;
-          }
-          $userID = $session->getID();
-        if ($item->$sellerID ==  $userID){?>
+        if ($item->sellerID == $userID){?>
             <form action="/../actions/action_edit_shippingForm.php" method="post">
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                 <button type="submit" class="print">Print Ship Form</button>

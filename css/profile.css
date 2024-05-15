@@ -14,8 +14,8 @@ body{
             flex-direction: row;
             img{
                 border-radius: 50%;
-                max-width: 15em;
-                max-height: 15em;
+                width: 15em;
+                height: 15em;
                 margin-right: 2em;
                 
             }
