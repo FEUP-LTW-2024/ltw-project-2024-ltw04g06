@@ -33,8 +33,9 @@
            </div>               
         </div>
         <div class="right-column">
-            <form action="/../pages/editItem.php" method="post">
-                <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>
+            <form action="/../pages/editItem.php" method="get" >
+            <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+            <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>            
             </form>
             <div class="description">
                 <p><label class="description"><strong>Description: </strong> <?= $item->description ?></p></label>

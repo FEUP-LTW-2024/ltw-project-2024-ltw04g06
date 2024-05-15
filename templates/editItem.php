@@ -5,7 +5,7 @@
     require_once(__DIR__ . '/../classes/size.class.php');
     require_once(__DIR__ . '/../database/connectdb.php');
     $db = getDatabaseConnection();
- function displayEditItem(){ ?>
+ function displayEditItem($item){ ?>
     <head>
         <link rel="stylesheet" href="/../css/sellItem.css">
         <script src="/../js/sellItem.js"></script>
@@ -15,13 +15,15 @@
          <p class="edit"><i class="fas fa-pencil-alt"></i> Write only on the parameters you want to change.</p>
 <?php } ?>
 
-<?php function editItemForm(){ ?>
- <form action="/../actions/action_add_item.php" method="post"  enctype="multipart/form-data">
+<?php function editItemForm($item){ ?>
+    <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data">
+
+ <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
     <div class="form">
         <div class="left-column">
             <div class="title">
                 <label for="title">New title</label>
-                <input class="title-input" type="text" id="title" name="title">
+                <input class="title-input" type="text" id="title" name="newName">
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
@@ -35,18 +37,18 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">New description</label>
-                <input class="description-input" type="text" name="description">
+                <input class="description-input" type="text" name="newDescription" >
             </div>
             <div class="brand">
                 <label for="brand">New brand</label>
-                <input class="brand-input" type="text" name="brand">
+                <input class="brand-input" type="text" name="newBrand">
         
                 <label class="model-label" for="model">New model</label>
-                <input class="model-input" type="text" name="model">
+                <input class="model-input" type="text" name="newModel">
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">New condition</label>
-                <select class="condition" name="condition">
+                <select class="condition" name="newConditionName">
                 <?php
                         $db = getDatabaseConnection();
                         $conditions = Condition::getAllConditions($db);
@@ -63,7 +65,7 @@
                     $sizes = Size::getAllSizes($db);
                     foreach ($sizes as $size) {
                         echo '<label for='.htmlspecialchars($size->name) . '>';
-                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="sizes" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
+                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="newSizeName" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
                         echo '</label> ';
                     }
                     echo '</select>';
@@ -74,7 +76,7 @@
             </div>
             <div class="category">
                 <label for="category">New category</label>
-                <select name="category">
+                <select name="newCategoryName">
                 <?php
                         $db = getDatabaseConnection();
                         $categories = Category::getAllCategories($db);
@@ -87,7 +89,7 @@
                 </select>
             
                 <label class="price-label" for="price">New price</label>
-                <input class="price-input" type="text" name="price">
+                <input class="price-input" type="text" name="newPrice">
             </div>
         </div>
     </div>        
