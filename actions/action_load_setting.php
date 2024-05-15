@@ -14,7 +14,7 @@ $type = $_GET['type'];
 
 switch ($type) {
     case 'ps':
-        ProfileSettins($user,$session);
+        ProfileSettins($db, $user,$session);
         break;
     case 'as':
         AccountSettings($user,$session);

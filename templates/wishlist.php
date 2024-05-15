@@ -23,7 +23,7 @@
                     <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
-                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
+                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                    
                     <p class=item-name><?=$item->name?></p>
                     <form action="/../actions/action_rem_from_wishlist.php" method="post">

@@ -27,20 +27,24 @@
         </div>
         <div class="myItems">
             <div class="condition">
-                <select id="condition" name="condition">
+                <select id="conditionSeeP" name="condition">
                     <option value="Sold">Sold</option>
                     <option value="Available" selected>Available</option>
                 </select>
             </div>
-            <div id = "prodShow" class="products">
+            <div id = "prodShowSeeP" class="products">
                     <?php 
                         foreach($items as $item){ 
                             $status = Item::getItemStatus($db, $item->itemID);
+                            if ($status != "Available") continue;
                             ?>
                             <div class="product" >
-                                  <img class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
+                                    <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+                                        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+                                     </form>
+                                  <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                                 <p><?=$item->name?></i></p>
-                                <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>
+                                <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i></h4>
                             </div>
                         <?php
                         }

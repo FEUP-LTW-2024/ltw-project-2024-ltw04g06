@@ -226,6 +226,21 @@ require_once(__DIR__ . '/image.class.php');
       }
     }
 
+    static function editImage(PDO $db, int $userID, int $imageID) : bool {
+      $user = self::getUser($db, $userID);
+      if($user->imageID == $imageID) return false;
+      $preparedStmt = $db->prepare("UPDATE User SET imageID = :newImageID WHERE userID = :userID");
+      $preparedStmt->bindParam(':newImageID', $imageID, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
 
     static function editAboutMe(PDO $db, int $userID, string $newAboutMe) : bool {
       $user = self::getUser($db, $userID);

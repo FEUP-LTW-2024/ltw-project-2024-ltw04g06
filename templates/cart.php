@@ -13,7 +13,7 @@
             foreach ($cartItems as $item) { 
                 $totalPrice += $item->price;?>
                 <div class="image">
-                    <img class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
+                    <img class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                    
                     <p class=item-name><?=$item->name?></p>
                     <p class="item-price"><?= number_format($item->price, 2, ',', '.') ?>€</p>

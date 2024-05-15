@@ -70,8 +70,7 @@ require_once(__DIR__ . '/image.class.php');
   
       return $items;
   }
-  static function getImagePic(PDO $db, int $imageID) {
-    $item = Item::getItem($db, $imageID);
+  static function getImagePic(PDO $db, Item $item) {
     if($item!= null){
       $image = Image::getImage($db, $item->imageID);
       return $image;
