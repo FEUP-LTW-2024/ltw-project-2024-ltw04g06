@@ -17,18 +17,18 @@
 
     if(!Condition::existingCondition($db, $conditionName)){
         $session->addMessage('error', 'Condition doesnt exist.');
-            header('Location: /../pages/home.php'); 
+            header('Location: /../pages/admin.php'); 
     }
     else{
-        $items = Item::getFilteredItems($db, NULL, $condition, NULL, NULL, NULL);
+        $items = Item::getFilteredItems($db, NULL, $condition->usage, NULL, NULL, NULL);
         if(empty($items)){
             Condition::remCondition($db, $conditionName);
             $session->addMessage('success', 'Condition removed!');
-                header('Location: /../pages/home.php'); 
+                header('Location: /../pages/admin.php'); 
         }
         else{
             $session->addMessage('error', 'There are items in this condition. Cant remove it!');
-                header('Location: /../pages/home.php'); 
+                header('Location: /../pages/admin.php'); 
         }
 
     }

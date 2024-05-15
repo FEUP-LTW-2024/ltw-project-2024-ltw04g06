@@ -32,7 +32,6 @@ class Size {
         $size = $preparedStmt->fetch();
     
         if (!$size) {
-            throw new Exception("Size not found with name: $newSize");
             return null;
         }
     

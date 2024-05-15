@@ -33,9 +33,7 @@
       $category = $preparedStmt->fetch();
   
       if (!$category) {
-        echo "Category not found with name: $newCategory";
-          //throw new Exception("Category not found with name: $newCategory");
-         // return null;
+        return null;
       }
   
       return self::getCategory($db, $category['categoryID']);

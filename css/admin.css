@@ -5,51 +5,131 @@ body{
     --borderLine: #E2D0BC;
     margin: 0;
 }
+.admin-options{
+    color:var(--bordeaux);
+    margin: auto 7em;
+}
 .admin{
-    background: var(--beige);
+    background: var(--backgroundColor);
     border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
+    height: 25em;
     max-width: 70%;
+    max-height: 70%;
     margin: 3em auto;  
     padding: 2em;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    .user{
-        display: flex;
-        flex-direction: column;
-        margin: 1em;
+
+
+    .user {
+        width: 100%;
+        cursor: pointer;
+        align-self: center;
+        display: flex; 
+        flex-direction: column; 
+
+        .username {
+            align-self: center;
+        }
+
         img{
-            width: 10em;
-            height: 12em;
-            cursor: pointer;
+            border-radius: 50%;
+            border: .15em solid var(--bordeaux);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+
+            width: 6em;
+            height: 6em;
+            align-self: center;
+
         }
-        button{
-            background-color: var(--borderLine);
+        img:hover{
+            width: 8em;
+            height: 8em;
+            background: var(--bordeaux);
             color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 10em;
-            height: 3em;
-            
+            transition: all 0.3s ease-out;
+            border-radius: 50%;
+    
         }
-        button:hover{background-color: var(--bordeaux);}
-        >*{align-self: center;
-            padding: 0;
-            margin: .5em;
-        }
+
+        
     }
-}
-.change{
-    margin-left: 10%;
-    display: flex;
-    flex-direction: row;
-    >*{
-        margin: 5%;
+    button{
+        background-color: var(--beige);
+        align-self: center;
+
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 10em;
+        height: 3em;
+        
     }
-    form{
+    button:hover{background-color: var(--bordeaux);}
+    >*{align-self: center;
+        padding: 0;
+        margin: .5em;
+    }
+
+    }
+
+    .change-type{
+        margin: auto 5%;
+        color:#800000;
+        border-top: 1px solid #800000;
+    }
+    .addition,
+    .change {
+        margin: auto 5%;
+        display: flex;
+        max-width: 100%;
+        max-height: 20%;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+
+    .addition > *,
+    .change > * {
+        margin: 1% 10% 5% 10%;
+    }
+    
+    .addition form,
+    .change form {
         display: flex;
         flex-direction: row;
     }
-}
+
+    .addition h3,
+    .change h3 {
+        color: var(--bordeaux);
+        margin-bottom: 0.5em;
+    }
+    
+    .addition select,
+    .change select {
+        padding: 0.5em;
+        border: 1px solid var(--borderLine);
+        border-radius: 5px;
+        margin-right: 1em;
+    }
+    
+    .addition button,
+    .change button {
+        background-color: var(--beige);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0.5em 1em;
+    }
+    
+    .addition button:hover,
+    .change button:hover {
+        background-color: var(--bordeaux);
+    }
+

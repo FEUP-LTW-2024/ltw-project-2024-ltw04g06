@@ -2,18 +2,20 @@
 <head>
     <link rel="stylesheet" href="../css/admin.css">
 </head>
+<div class="admin-options">
+        <h1>Admin Options</h1>
+    </div>
+
 <main class="admin"> 
     <?php foreach($users as $user){   
         if ($user->role == 'Admin') continue;
     ?>
         <div class="user">
-            <h2><?= $user->name ?></h2>
-            <h4><?= $user->phoneNumber ?></h4>
+<h2 class="username"><?= $user->username ?></h2>
             <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post">
                 <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <img onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();" src="<?=  User::getUserPic($db, $user->userID) ?>" alt="">
-            <h2><?= $user->role ?></h2>
             <form id="adminForm<?= $user->userID ?>" action="/../actions/action_add_admin.php" method="post">
                 <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
@@ -26,69 +28,90 @@
         
 
     <?php } ?>
+
             
 </main>
+<div class="change-type"><h1>Delete</h1></div>
+
 <div class="change">
             <div class="category">
                 <h3>Category</h3>
-                <form action="">
+                <form action="/../actions/action_rem_category.php" method="post">
                     <?php
                         $db = getDatabaseConnection();
                         $categories = Category::getAllCategories($db);
-                        echo ' <select name="category">';
-                        echo '<option value="NULL" selected>No filter</option>';
+                        echo ' <select name="categoryName">';
+                        echo '<option value="NULL" selected>Not selected</option>';
                         foreach ($categories as $category) {
                             echo '<option value= "' . $category->name . '">' . $category->name . '</option>';
                         }
                         echo '</select>';
                     ?>
-                    <button type="submit">Delete</button>
+                    <button type="submit">DELETE</button>
                 </form>
-                </div>
+            </div>
                 
                 <div class="condition">
                     <h3>Condition</h3>
-                    <form action="">
+                    <form action="/../actions/action_rem_condition.php" method="post">
                     <?php
                         $db = getDatabaseConnection();
                         $conditions = Condition::getAllConditions($db);
-                        echo ' <select name="condition">';
+                        echo ' <select name="conditionName">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($conditions as $condition) {
                             echo '<option value= "' . $condition->usage . '">' . $condition->usage . '</option>';
                         }
                         echo '</select>';
                     ?>
-                     <button type="submit">Delete</button>
+                     <button type="submit">DELETE</button>
                     </form>
                 </div>  
 
  
         <div class="size">
                 <h3>Size</h3>
-                <form action="">
-                <?php
-                    $db = getDatabaseConnection();
-                    $sizes = Size::getAllSizes($db);
-                    echo '<select name="size">';
-                    echo '<option value="NULL" selected>No filter</option>';
-                    foreach ($sizes as $size) {
-                        echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
-                    }
-                    echo '</select>';
-                ?>
-                <button type="submit">Delete</button>
-                    </form>
+                <form action="/../actions/action_rem_size.php" method="post">
+                    <?php
+                        $db = getDatabaseConnection();
+                        $sizes = Size::getAllSizes($db);
+                        echo '<select name="sizeName">';
+                        echo '<option value="NULL" selected>No filter</option>';
+                        foreach ($sizes as $size) {
+                            echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
+                        }
+                        echo '</select>';
+                    ?>
+                    <button type="submit">DELETE</button>
+                </form>
             </div> 
-    </form>
-            <form action="">
-                    <select name="type" id="">
-                        <option value="category">Category</option>
-                        <option value="condition">Condition</option>
-                        <option value="size">Size</option>
-                    </select>
-                    <input type="text" name="texto" id="">
-                    <button type="submit">ADD</button>
+    </div>
+
+    <div class="change-type"><h1>Add</h1></div>
+
+    <div class="addition">
+        <div class="category">
+            <h3>Category</h3>
+            <form action="/../actions/action_add_category.php" method="post">
+                <input type="text" name="newCategory" id="newCategory">
+                <button type="submit">ADD</button>
             </form>
             </div>
+            <div class="condition">
+                <h3>Condition</h3>
+                <form action="/../actions/action_add_condition.php" method="post">
+                    <input type="text" name="newCondition" id="newCondition">
+                    <button type="submit">ADD</button>
+            </form>
+                </div>
+                <div class="size">
+                <h3>Size</h3>
+                <form action="/../actions/action_add_size.php" method="post">
+                <input type="text" name="newSize" id="newSize">
+                <button type="submit">ADD</button>
+            </form>
+            </div>   
+                
+    </div>
+    
 <?php } ?>

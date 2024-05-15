@@ -15,12 +15,12 @@
 
     if(Size::existingSize($db, $newSize)){
         $session->addMessage('error', 'Size already exists!');
-        header('Location: /../pages/home.php');
+        header('Location: /../pages/admin.php');
     }
     else{
     $size = Size::addSize($db, $newSize);
     $session->addMessage('success', 'Size added!');
-            header('Location: /../pages/home.php');
+            header('Location: /../pages/admin.php');
         }
 
 ?>

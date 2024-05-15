@@ -33,7 +33,6 @@ class Condition {
         $condition = $preparedStmt->fetch();
     
         if (!$condition) {
-            throw new Exception("Condition not found with name: $newCondition");
             return null;
         }
     

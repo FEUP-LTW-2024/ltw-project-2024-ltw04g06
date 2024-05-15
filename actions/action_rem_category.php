@@ -17,18 +17,18 @@
 
     if(!Category::existingCategory($db, $categoryName)){
         $session->addMessage('error', 'Category doesnt exist.');
-            header('Location: /../pages/home.php'); 
+            header('Location: /../pages/admin.php'); 
     }
     else{
-        $items = Item::getFilteredItems($db, $category, NULL, NULL, NULL, NULL);
+        $items = Item::getFilteredItems($db, $category->categoryID, NULL, NULL, NULL, NULL);
         if(empty($items)){
             Category::remCategory($db, $categoryName);
             $session->addMessage('success', 'Category removed!');
-                header('Location: /../pages/home.php'); 
+                header('Location: /../pages/admin.php'); 
         }
         else{
             $session->addMessage('error', 'There are items in this category. Cant remove it!');
-                header('Location: /../pages/home.php'); 
+                header('Location: /../pages/admin.php'); 
         }
 
     }

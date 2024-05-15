@@ -15,12 +15,12 @@
 
     if(Category::existingCategory($db, $newCategory)){
         $session->addMessage('error', 'Category already exists!');
-        header('Location: /../pages/home.php');
+        header('Location: /../pages/admin.php');
     }
     else{
     $category = Category::addCategory($db, $newCategory);
     $session->addMessage('success', 'Category added!');
-            header('Location: /../pages/home.php');
+            header('Location: /../pages/admin.php');
         }
 
 ?>
