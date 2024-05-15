@@ -12,23 +12,17 @@ $db = getDatabaseConnection();
 $user = User::getUser($db,$userID);
 $Items = Item::getUserItems($db, $userID);
 
-if($selectedCondition == 'Available'){
-    echo '<a class="addProduct" href="/../pages/sellItem.php">';
-    echo '<div class="mais">+</div>';
-    echo '</a>';
-}
-
 
 foreach ($Items as $item) {
     $status = Item::getItemStatus($db, $item->itemID);
     if ($status !=  $selectedCondition) continue;
-    $filePath = $status == 'Available' ? '/../pages/itemActive.php' : '/../pages/itemSold.php';
+    $filePath = $status == 'Available' ? '/../pages/ViewItem.php' : '/../pages/itemSold.php';
     echo '<div class="product">';
     echo '<form id="itemActive' . $item->itemID . '" action="'.$filePath.'" method="post" class="hidden">';
     echo '    <input type="hidden" name="itemID" value="' . $item->itemID . '">';
     echo '</form>';
     echo '<img onclick="document.getElementById(\'itemActive' . $item->itemID . '\').submit();" class="foto" src="' . Item::getImagePic($db, $item) . '" alt="">';
-    echo '<p>' . $item->name . '</p>';
+    echo '<p>' .  $item->name . '</p>';
     echo '<h4 class="price">' . $item->price . '<i class="fa-solid fa-euro-sign"></i></h4>';
     echo '</div>';
 }

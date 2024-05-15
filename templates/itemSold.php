@@ -27,16 +27,13 @@
                     <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
-                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
+                    <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                     </div>   
             </label> 
                </div>
            </div>               
         </div>
         <div class="right-column">
-            <form action="" method="post">
-                <button type="submit" class="edit"> <i class="fas fa-pencil-alt"></i>Edit item</button>
-            </form>
             <div class="description">
                 <p><label class="description"><strong>Description: </strong> <?= $item->description ?></p></label>
             </div>
@@ -71,10 +68,20 @@
                     <label class="price"><strong>Price:</strong> <?= number_format($item->price, 2, ',', '.') ?>€</label></p>
                 </div>
         </div>
-    </div>   
-    <form action="/../actions/action_edit_shippingForm.php" method="post">
-        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
-        <button type="submit" class="print">Print Ship Form</button>
-    </form>
+    </div>
+    <?php 
+          $db = getDatabaseConnection();
+          $session = new Session();
+          if (!$session->isLoggedIn()) {
+              header('Location: /../pages/signIn.php');
+              exit;
+          }
+          $userID = $session->getID();
+        if ($item->$sellerID ==  $userID){?>
+            <form action="/../actions/action_edit_shippingForm.php" method="post">
+                <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+                <button type="submit" class="print">Print Ship Form</button>
+            </form>
+        <?php }?>
 </main>
 <?php } ?>

@@ -44,9 +44,9 @@
                                   <form action="/../pages/itemActive.php" method="post" class="hidden" id="itemActive<?= $item->itemID ?>" >
                                     <input type="hidden" name="itemID" value="<?=$item->itemID?>">
                                     </form>
-                                  <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item->imageID)?> alt="">
+                                  <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                                 <p><?=$item->name?></i></p>
-                                <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i> <?=$item->sizeID?></h4>
+                                <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i></h4>
                             </div>
                         <?php
                         }

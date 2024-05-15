@@ -27,22 +27,10 @@
           
                 <label for="foto" class="foto-label">
                 <div class="image">
-                    <?php
-                    $imageUrls = explode(',', $item->images);
-                    $imageSrc = $imageUrls[0];
-                    $imageSrc1 = $imageUrls[1];
-                    $imageSrc2 = $imageUrls[2];
-                    $imageSrc3 = $imageUrls[3];
-                    ?>
                     <form id="viewItem<?= $item->itemID ?>" action="" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
-                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc?> alt="">
-                    <div class="mini-images">
-                       <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc1?> alt="">
-                       <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc2?> alt="">
-                       <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?='/../' . $imageSrc3?> alt="">
-                    </div>
+                    <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                     </div>   
             </label> 
                </div>

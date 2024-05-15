@@ -1,3 +1,4 @@
+
 <?php
     require_once(__DIR__ . '/../classes/category.class.php');
     require_once(__DIR__ . '/../classes/condition.class.php');
@@ -14,7 +15,7 @@
 <?php } ?>
 
 <?php function sellItemForm(){ ?>
- <form action="/../actions/action_add_item.php" method="post">
+ <form action="/../actions/action_add_item.php" method="post"  enctype="multipart/form-data">
     <div class="form">
         <div class="left-column">
             <div class="title">
