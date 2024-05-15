@@ -27,20 +27,20 @@
     //$newImageID = $_POST['itemID']; // nao sei como é que isto funciona Costinha
 
     $item = Item::getItem($db, $itemID);
-    $category = Category::getCategoryByName($db, $newCategoryName);
-    $condition = Condition::getConditionByName($db, $newConditionName);
-    $size = Size::getSizeByName($db, $newSizeName);
+    if($newCategoryName!= null)$category = Category::getCategoryByName($db, $newCategoryName);
+    if($newConditionName!= null)$condition = Condition::getConditionByName($db, $newConditionName);
+    if($newSizeName!= null)$size = Size::getSizeByName($db, $newSizeName);
 
     if(true){//validar brand model price description name
-        $editName = Item::editName($db, $item, $newName);
-        $editCategory = Item::editCategory($db, $item, $category->categoryID);
-        $editCondition = Item::editCondition($db, $item, $condition->conditionID);
-        $editSize = Item::editSize($db, $item,$size->sizeID);
-        $editPrice = Item::editPrice($db, $item,$newPrice);
-        $editBrand = Item::editBrand($db, $item, $newBrand);
-        $editModel = Item::editModel($db, $item, $newModel);
-        $editDescription = Item::editDescription($db, $item, $newDescription);
-        //$editImage = Item::editImage($db, $item, $newImageID);
+        if($newName!= null) $editName = Item::editName($db, $item, $newName);
+        if($category!= null)$editCategory = Item::editCategory($db, $item, $category->categoryID);
+        if($condition!= null)$editCondition = Item::editCondition($db, $item, $condition->conditionID);
+        if($size!= null)$editSize = Item::editSize($db, $item,$size->sizeID);
+        if($newPrice!= null)$editPrice = Item::editPrice($db, $item,$newPrice);
+        if($newBrand!= null)$editBrand = Item::editBrand($db, $item, $newBrand);
+        if($newModel!= null)$editModel = Item::editModel($db, $item, $newModel);
+        if($newDescription!= null)$editDescription = Item::editDescription($db, $item, $newDescription);
+        //if($newImageID!= null)$editImage = Item::editImage($db, $item, $newImageID);
         if($editName || $editCategory || $editCondition || $editSize || $editPrice
         || $editBrand || $editModel || $editDescription 
         //|| $editImage
