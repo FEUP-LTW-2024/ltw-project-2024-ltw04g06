@@ -80,8 +80,8 @@ body{
         .profilePic{
             border-radius: 50%;
             border: .15em solid var(--beige);
-            max-width: 10em;
-            max-height: 10em;
+            width: 2em;
+            height: 2em;
         }
         .options-arrow {
             color: var(--beige);

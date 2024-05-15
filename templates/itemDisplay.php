@@ -18,10 +18,11 @@
                 <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
-                <img src=<?= User::getUserPic($db, $userID)?> alt="">
+                <img src=<?= User::getUserPic($db, $item->sellerID)?> alt="">
                 <p><?=$user->username?></p>
             </header>
-            <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+            <?php $page = $item->sellerID == $userID ? '/../pages/itemActive.php' : '/../pages/viewItem.php'?>
+            <form id="viewItem<?= $item->itemID ?>" action="<?= $page?>" method="post" class="hidden">
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
             </form>
             <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
