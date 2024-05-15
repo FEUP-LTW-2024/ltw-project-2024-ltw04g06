@@ -7,6 +7,9 @@
     $db = getDatabaseConnection();
 
     $session = new Session();
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        header('Location: /../pages/signIn.php');
+      }
     if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;

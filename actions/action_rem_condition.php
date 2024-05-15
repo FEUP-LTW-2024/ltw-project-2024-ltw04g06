@@ -11,6 +11,9 @@
         header('Location: /../pages/signIn.php');
         exit;
     }
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        header('Location: /../pages/signIn.php');// MANDAR PARA PAGINA 404
+      }
 
     $conditionName = $_POST['conditionName'];
     $condition = Condition::getConditionByName($db, $conditionName);
