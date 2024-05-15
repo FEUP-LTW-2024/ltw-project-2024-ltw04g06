@@ -13,23 +13,25 @@
         exit;
     }
 
-    $itemID = $_POST['itemIDDD'];
+    $userID = $session->getID();
+    $user = User::getUser($db, $userID);
+
+    $itemID = $_POST['itemID'];
     $shoppingCartID = $user->shoppingCartID; 
 
-    echo $_POST['itemIDDD'];
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if(!ShoppingCart::existItemInCart($db, $shoppingCartID, $itemID)){
+        if(!ShoppingCart::existItemInShoppingCart($db, $shoppingCartID, $itemID)){
             $session->addMessage('error', 'Item is not in the shopping cart.');
-            header('Location: /../pages/shoppingCart.php'); 
+            header('Location: /../pages/cart.php'); 
         } 
         else {
-            if (ShoppingCart::remItemFromCart($db, $shoppingCartID, $itemID)) {
+            if (ShoppingCart::remItemFromShoppingCart($db, $shoppingCartID, $itemID)) {
                 $session->addMessage('success', 'Item removed from shopping cart successful!');
-                header('Location: /../pages/shoppingCart.php'); 
+                header('Location: /../pages/cart.php'); 
             } 
             else {
                 $session->addMessage('error', 'Failed to remove item from shopping cart.');
-                header('Location: /../pages/shoppingCart.php'); 
+                header('Location: /../pages/cart.php'); 
             }
         }
     } 

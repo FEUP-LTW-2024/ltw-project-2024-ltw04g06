@@ -15,9 +15,10 @@
     }
 
     $userID = $session->getID();
-
+    $user = User::getUser($db, $userID);
+    
     $itemID=$_POST['itemID'];
-    $wishlistID = $userID->wishlistID;
+    $wishlistID = $user->wishlistID;
 
     if($wishlistID!==null){
     echo $_POST['itemID'];}
