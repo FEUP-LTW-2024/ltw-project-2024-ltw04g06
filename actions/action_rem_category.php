@@ -11,6 +11,9 @@
         header('Location: /../pages/signIn.php');
         exit;
     }
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        header('Location: /../pages/signIn.php');// MANDAR PARA PAGINA 404
+      }
 
     $categoryName = $_POST['categoryName'];
     $category = Category::getCategoryByName($db, $categoryName);
@@ -20,7 +23,7 @@
             header('Location: /../pages/admin.php'); 
     }
     else{
-        $items = Item::getFilteredItems($db, $category->categoryID, NULL, NULL, NULL, NULL);
+        $items = Item::getFilteredItems($db, $category->name, NULL, NULL, NULL, NULL);
         if(empty($items)){
             Category::remCategory($db, $categoryName);
             $session->addMessage('success', 'Category removed!');

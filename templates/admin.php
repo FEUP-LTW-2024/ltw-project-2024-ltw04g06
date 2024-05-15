@@ -37,13 +37,14 @@
             <div class="category">
                 <h3>Category</h3>
                 <form action="/../actions/action_rem_category.php" method="post">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <?php
                         $db = getDatabaseConnection();
                         $categories = Category::getAllCategories($db);
                         echo ' <select name="categoryName">';
                         echo '<option value="NULL" selected>Not selected</option>';
                         foreach ($categories as $category) {
-                            echo '<option value= "' . $category->name . '">' . $category->name . '</option>';
+                            echo '<option value= "' . htmlspecialchars($category->name) . '">' . htmlspecialchars($category->name) . '</option>';
                         }
                         echo '</select>';
                     ?>
@@ -54,13 +55,15 @@
                 <div class="condition">
                     <h3>Condition</h3>
                     <form action="/../actions/action_rem_condition.php" method="post">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                     <?php
                         $db = getDatabaseConnection();
                         $conditions = Condition::getAllConditions($db);
                         echo ' <select name="conditionName">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($conditions as $condition) {
-                            echo '<option value= "' . $condition->usage . '">' . $condition->usage . '</option>';
+                            echo '<option value= "' .htmlspecialchars($condition->usage) . '">' . htmlspecialchars($condition->usage) . '</option>';
                         }
                         echo '</select>';
                     ?>
@@ -72,13 +75,14 @@
         <div class="size">
                 <h3>Size</h3>
                 <form action="/../actions/action_rem_size.php" method="post">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <?php
                         $db = getDatabaseConnection();
                         $sizes = Size::getAllSizes($db);
                         echo '<select name="sizeName">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($sizes as $size) {
-                            echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
+                            echo '<option value= "' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name) . '</option>';
                         }
                         echo '</select>';
                     ?>
@@ -94,12 +98,15 @@
             <h3>Category</h3>
             <form action="/../actions/action_add_category.php" method="post">
                 <input type="text" name="newCategory" id="newCategory">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                 <button type="submit">ADD</button>
             </form>
             </div>
             <div class="condition">
                 <h3>Condition</h3>
                 <form action="/../actions/action_add_condition.php" method="post">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="text" name="newCondition" id="newCondition">
                     <button type="submit">ADD</button>
             </form>
@@ -107,6 +114,7 @@
                 <div class="size">
                 <h3>Size</h3>
                 <form action="/../actions/action_add_size.php" method="post">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="text" name="newSize" id="newSize">
                 <button type="submit">ADD</button>
             </form>

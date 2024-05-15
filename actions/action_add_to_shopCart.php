@@ -29,7 +29,7 @@
      else {
         if (ShoppingCart::addItemToShoppingCart($db, $shoppingCartID, $itemID)) {
             $session->addMessage('success', 'Item added to shopping Cart successful!');
-            header('Location: /../pages/shoppingCart.php');
+            header('Location: /../pages/cart.php');
         } 
         else {
             echo "Failed to add item to shopping Cart.";
