@@ -13,12 +13,19 @@
     }
 
     $userID = $session->getID();
-
     $name = $_POST['name'];
 	$aboutMe = $_POST['aboutMe'];
+    Image::addImage($db, "/../images/profilePictures/$userID.jpg");
+
+    $id = $db->lastInsertId();
+    $originalFileName =  __DIR__ . "/../images/profilePictures/$userID.jpg";
+  
+    move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
+    $imageID = $id;
     if(validName($name) && validAboutMe($aboutMe)){
-    $editName = User::editName($db, $userID, $name);
-    $editAboutMe = User::editAboutMe($db,$userID,$aboutMe);
+        $editName = User::editName($db, $userID, $name);
+        $editAboutMe = User::editAboutMe($db,$userID,$aboutMe);
+        $Image = User::editImage($db, $userID, $id);
         if($editName || $editAboutMe){
        $session->addMessage('success', 'Edit profile successful!');
         header('Location: /../pages/settings.php');

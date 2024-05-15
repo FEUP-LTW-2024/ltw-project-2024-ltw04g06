@@ -16,9 +16,10 @@
     <?php } ?>
 <?php function ProfileSettins(PDO $db, $user,$session){?>
     <div class="profile-setting">
-        <form action="/../actions/action_edit_profile.php" method="post">
+        <form action="/../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
             <div class="img">
-                <img src="<?=User::getUserPic($db, $user->userID)?>" alt="">
+                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)" multiple>
+                <img id="imagemExibida" src="<?=User::getUserPic($db, $user->userID)?>" alt="Minha Imagem" style="display: none;">
                 <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
             </div>
             <label for="Name">Name</label>

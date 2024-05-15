@@ -63,22 +63,43 @@ const elementToToggle = document.getElementById('elementToToggle');
         xhttp.open("GET", "/../actions/action_load_setting.php?type=" + settingType, true);
         xhttp.send();
     }
-    document.getElementById('condition').addEventListener('change', ()=>{
-        var selectedCondition = document.getElementById('condition').value;
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    document.getElementById('prodShow').innerHTML = xhr.responseText;
+    var c = document.getElementById('condition');
+    if (c != null){
+        document.getElementById('condition').addEventListener('change', ()=>{
+            var selectedCondition = document.getElementById('condition').value;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById('prodShow').innerHTML = xhr.responseText;
+                    }
                 }
-            }
-        };
-        xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition + 
-        '&userID=' + parseInt(document.getElementById('userID').innerText), true);
-
-        xhr.send();
-    })
+            };
+            xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition + 
+            '&userID=' + parseInt(document.getElementById('userID').innerText), true);
     
+            xhr.send();
+        })
+    }
+    var c = document.getElementById('conditionSeeP');
+    if (c != null){
+        document.getElementById('conditionSeeP').addEventListener('change', ()=>{
+            var selectedCondition = document.getElementById('conditionSeeP').value;
+            console.log(selectedCondition);
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById('prodShowSeeP').innerHTML = xhr.responseText;
+                    }
+                }
+            };
+            xhr.open('GET', '/../actions/action_active_or_sold_seeP.php?condition=' + selectedCondition + 
+            '&userID=' + parseInt(document.getElementById('userID').innerText), true);
+    
+            xhr.send();
+        })
+    }
 });
 
 function scrollDown(){
