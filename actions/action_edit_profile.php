@@ -28,7 +28,6 @@
         $Image = User::editImage($db, $userID, $id);
         if($editName || $editAboutMe){
        $session->addMessage('success', 'Edit profile successful!');
-        header('Location: /../pages/settings.php');
         }
     header('Location: /../pages/settings.php');
 

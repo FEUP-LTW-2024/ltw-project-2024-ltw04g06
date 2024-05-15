@@ -35,6 +35,8 @@ require_once(__DIR__ . '/image.class.php');
       $this->imageID = $imageID;
     }
 
+    /*--Getters--*/
+
     static function getItem(PDO $db, int $itemID) {
       $preparedStmt = $db->prepare( 'SELECT * FROM Item WHERE itemID = ?');
       $preparedStmt->execute(array($itemID));
@@ -70,7 +72,8 @@ require_once(__DIR__ . '/image.class.php');
   
       return $items;
   }
-  static function getImagePic(PDO $db, Item $item) {
+  static function getImagePic(PDO $db, int $imageID) {
+    $item = Item::getItem($db, $imageID);
     if($item!= null){
       $image = Image::getImage($db, $item->imageID);
       return $image;
@@ -162,7 +165,16 @@ require_once(__DIR__ . '/image.class.php');
       return $status->name;
     }
 
-        
+
+    /*--Add--*/
+    static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $imageID)  {
+      $statusID = Status::addStatus($db,"Available");
+      $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, imageID ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $imageID]);
+    }
+
+    /*--Edit--*/
+
     static function editItemStatus(PDO $db, int $itemID, string $name): bool {
       $item = self::getItem($db, $itemID);
       $itemStatus = Status::getStatus($db, $item->statusID);
@@ -186,15 +198,145 @@ require_once(__DIR__ . '/image.class.php');
       } else {
           return false;
       }
-  }
-  
-
-
-    static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $imageID)  {
-      $statusID = Status::addStatus($db,"Available");
-      $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, imageID ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $imageID]);
     }
+
+    static function editName(PDO $db, Item $item, string $newName) : bool {
+      $itemID = $item->itemID;
+      if($item->name == $newName) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET name = :newName WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newName', $newName, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editImage(PDO $db, Item $item, int $newImageID) : bool {
+      $itemID = $item->itemID;
+      if($item->imageID == $newImageID) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET imageID = :newImageID WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newImageID', $newImageID, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editCategory(PDO $db, Item $item, int $newCategoryID) : bool {
+      $itemID = $item->itemID;
+      if($item->categoryID == $newCategoryID) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET categoryID = :newCategoryID WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newCategoryID', $newCategoryID, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editCondition(PDO $db, Item $item, int $newConditionID) : bool {
+      $itemID = $item->itemID;
+      if($item->conditionID == $newConditionID) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET conditionID = :newConditionID WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newConditionID', $newConditionID, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editSize(PDO $db, Item $item, int $newSizeID) : bool {
+      $itemID = $item->itemID;
+      if($item->sizeID == $newSizeID) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET sizeID = :newSizeID WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newSizeID', $newSizeID, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editPrice(PDO $db, Item $item, float $newPrice) : bool {
+      $itemID = $item->itemID;
+      if($item->price == $newPrice) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET price = :newPrice WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newPrice', $newPrice, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editBrand(PDO $db, Item $item, string $newBrand) : bool {
+      $itemID = $item->itemID;
+      if($item->brand == $brand) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET brand = :newBrand WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newBrand', $newBrand, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editModel(PDO $db, Item $item, string $newModel) : bool {
+      $itemID = $item->itemID;
+      if($item->model == $model) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET model = :newModel WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newModel', $newModel, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+    static function editDescription(PDO $db, Item $item, string $newDescription) : bool {
+      $itemID = $item->itemID;
+      if($item->description == $description) return false;
+      $preparedStmt = $db->prepare("UPDATE Item SET description = :newDescription WHERE itemID = :itemID");
+      $preparedStmt->bindParam(':newDescription', $newModel, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+      $preparedStmt->execute();
+      
+      if ($preparedStmt->execute()) {
+        return true;
+      } else {
+          return false;
+      }
+    }
+
+
+    /*--Remove--*/
 
     static function removeItem(PDO $db, int $itemID) {
       $item = self::getItem($db, $itemID);
