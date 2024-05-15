@@ -35,13 +35,16 @@ body{
             form .img{
                 display: flex;
                 flex-direction: row;
-                >*{align-self: center;}
+                >*{align-self: center;
+                    margin: 1em;}
                 input{
                     margin-right: 1em;
+                    max-width: 25em;
                 }
                 img{
                     border-radius: 50%;
-                    max-width: 8em;
+                    width: 8em;
+                    height: 8em;
                     margin: 2em;
                 }
                 button{
@@ -199,7 +202,8 @@ body{
                 }
                 img{
                     border-radius: 50%;
-                    max-width: 3em;
+                    width: 3em;
+                    height: 3em;
                     margin: 2em;
                 }
                 button{
