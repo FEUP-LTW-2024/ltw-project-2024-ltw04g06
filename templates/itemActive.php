@@ -33,7 +33,7 @@
            </div>               
         </div>
         <div class="right-column">
-            <form id="editItem<?= $item->itemID ?>"action="/../pages/editItem.php" method="post" >
+            <form action="/../pages/editItem.php" method="get" >
             <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
             <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>            
             </form>

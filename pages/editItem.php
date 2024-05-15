@@ -10,7 +10,7 @@
     $session = new Session();
     $db = getDatabaseConnection();
     $userID = $session->getID();
-    $itemID = $_POST['itemID'];
+    $itemID = $_GET['itemID'];
     $item = Item::getItem($db, $itemID);
     $user = User::getUser($db, $userID);
     topo($db, $user);

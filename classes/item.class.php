@@ -306,7 +306,7 @@ require_once(__DIR__ . '/image.class.php');
 
     static function editModel(PDO $db, Item $item, string $newModel) : bool {
       $itemID = $item->itemID;
-      if($item->model == $model) return false;
+      if($item->model == $newModel) return false;
       $preparedStmt = $db->prepare("UPDATE Item SET model = :newModel WHERE itemID = :itemID");
       $preparedStmt->bindParam(':newModel', $newModel, PDO::PARAM_STR);
       $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
@@ -323,7 +323,7 @@ require_once(__DIR__ . '/image.class.php');
       $itemID = $item->itemID;
       if($item->description == $description) return false;
       $preparedStmt = $db->prepare("UPDATE Item SET description = :newDescription WHERE itemID = :itemID");
-      $preparedStmt->bindParam(':newDescription', $newModel, PDO::PARAM_STR);
+      $preparedStmt->bindParam(':newDescription', $newDescription, PDO::PARAM_STR);
       $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
       $preparedStmt->execute();
       

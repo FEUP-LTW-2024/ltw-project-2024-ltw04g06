@@ -16,8 +16,8 @@
 <?php } ?>
 
 <?php function editItemForm($item){ ?>
-    <form id="ediItem<?= $item->itemID ?>" action="/../actions/action_edit_item.php" method="post" class="hidden">
- <!-- <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data">-->
+    <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data">
+
  <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
     <div class="form">
         <div class="left-column">
@@ -37,18 +37,18 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">New description</label>
-                <input class="description-input" type="text" name="newDescription">
+                <input class="description-input" type="text" name="newDescription" >
             </div>
             <div class="brand">
                 <label for="brand">New brand</label>
-                <input class="brand-input" type="text" name="brand">
+                <input class="brand-input" type="text" name="newBrand">
         
                 <label class="model-label" for="model">New model</label>
-                <input class="model-input" type="text" name="model">
+                <input class="model-input" type="text" name="newModel">
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">New condition</label>
-                <select class="condition" name="newCondition">
+                <select class="condition" name="newConditionName">
                 <?php
                         $db = getDatabaseConnection();
                         $conditions = Condition::getAllConditions($db);
@@ -65,7 +65,7 @@
                     $sizes = Size::getAllSizes($db);
                     foreach ($sizes as $size) {
                         echo '<label for='.htmlspecialchars($size->name) . '>';
-                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="sizes" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
+                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="newSizeName" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
                         echo '</label> ';
                     }
                     echo '</select>';
@@ -76,7 +76,7 @@
             </div>
             <div class="category">
                 <label for="category">New category</label>
-                <select name="category">
+                <select name="newCategoryName">
                 <?php
                         $db = getDatabaseConnection();
                         $categories = Category::getAllCategories($db);
