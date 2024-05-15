@@ -13,7 +13,7 @@
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <header>
-                    <button onclick="window.location.href='/../pages/itemActive.php?itemID=<?=$item->itemID?>'" class="submitButton">Sold</button>
+                    <button class="submitButton">Sold</button>
                 </header>
             
                     <p class="item-name"><?= $item->name ?></p>

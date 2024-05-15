@@ -12,7 +12,7 @@
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <header>
-                    <button onclick="window.location.href='/../pages/itemSold.php?itemID=<?=$item->itemID?>'" class="submitButton">Active</button>
+                    <button class="submitButton">Active</button>
                 </header>
             
                     <p class="item-name"><?= $item->name ?></p>
@@ -33,7 +33,7 @@
            </div>               
         </div>
         <div class="right-column">
-            <form action="" method="post">
+            <form action="/../pages/editItem.php" method="post">
                 <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>
             </form>
             <div class="description">
