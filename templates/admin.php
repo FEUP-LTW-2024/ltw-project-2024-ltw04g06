@@ -29,71 +29,89 @@
 
     <?php } ?>
 
-    <hr>
             
 </main>
+<div class="change-type"><h1>Delete</h1></div>
+
 <div class="change">
             <div class="category">
                 <h3>Category</h3>
-                <form action="">
+                <form action="/../actions/action_rem_category.php" method="post">
                     <?php
                         $db = getDatabaseConnection();
                         $categories = Category::getAllCategories($db);
-                        echo ' <select name="category">';
-                        echo '<option value="NULL" selected>No filter</option>';
+                        echo ' <select name="categoryName">';
+                        echo '<option value="NULL" selected>Not selected</option>';
                         foreach ($categories as $category) {
                             echo '<option value= "' . $category->name . '">' . $category->name . '</option>';
                         }
                         echo '</select>';
                     ?>
-                    <button type="submit">Delete</button>
+                    <button type="submit">DELETE</button>
                 </form>
-                </div>
+            </div>
                 
                 <div class="condition">
                     <h3>Condition</h3>
-                    <form action="">
+                    <form action="/../actions/action_rem_condition.php" method="post">
                     <?php
                         $db = getDatabaseConnection();
                         $conditions = Condition::getAllConditions($db);
-                        echo ' <select name="condition">';
+                        echo ' <select name="conditionName">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($conditions as $condition) {
                             echo '<option value= "' . $condition->usage . '">' . $condition->usage . '</option>';
                         }
                         echo '</select>';
                     ?>
-                     <button type="submit">Delete</button>
+                     <button type="submit">DELETE</button>
                     </form>
                 </div>  
 
  
         <div class="size">
                 <h3>Size</h3>
-                <form action="">
+                <form action="/../actions/action_rem_size.php" method="post">
                     <?php
                         $db = getDatabaseConnection();
                         $sizes = Size::getAllSizes($db);
-                        echo '<select name="size">';
+                        echo '<select name="sizeName">';
                         echo '<option value="NULL" selected>No filter</option>';
                         foreach ($sizes as $size) {
                             echo '<option value= "' . $size->name . '">' . $size->name . '</option>';
                         }
                         echo '</select>';
                     ?>
-                    <button type="submit">Delete</button>
+                    <button type="submit">DELETE</button>
                 </form>
             </div> 
     </div>
+
+    <div class="change-type"><h1>Add</h1></div>
+
     <div class="addition">
-            <form action="">
-                    <select name="type" id="">
-                        <option value="category">Category</option>
-                        <option value="condition">Condition</option>
-                        <option value="size">Size</option>
-                    </select>
-                    <input type="text" name="texto" id="">
+        <div class="category">
+            <h3>Category</h3>
+            <form action="/../actions/action_add_category.php" method="post">
+                <input type="text" name="newCategory" id="newCategory">
+                <button type="submit">ADD</button>
+            </form>
+            </div>
+            <div class="condition">
+                <h3>Condition</h3>
+                <form action="/../actions/action_add_condition.php" method="post">
+                    <input type="text" name="newCondition" id="newCondition">
                     <button type="submit">ADD</button>
             </form>
-        </div>
+                </div>
+                <div class="size">
+                <h3>Size</h3>
+                <form action="/../actions/action_add_size.php" method="post">
+                <input type="text" name="newSize" id="newSize">
+                <button type="submit">ADD</button>
+            </form>
+            </div>   
+                
+    </div>
+    
 <?php } ?>

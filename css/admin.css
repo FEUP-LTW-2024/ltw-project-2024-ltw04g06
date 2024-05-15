@@ -77,22 +77,25 @@ body{
 
     }
 
+    .change-type{
+        margin: auto 5%;
+        color:#800000;
+        border-top: 1px solid #800000;
+    }
     .addition,
     .change {
         margin: auto 5%;
         display: flex;
         max-width: 100%;
-        max-height: 70%;
+        max-height: 20%;
         flex-direction: row;
         flex-wrap: wrap;
 
     }
-    .change{border-top: 1px solid #800000;}
-    .addition{margin-left: 30%;}
 
     .addition > *,
     .change > * {
-        margin: 5% 10%;
+        margin: 1% 10% 5% 10%;
     }
     
     .addition form,

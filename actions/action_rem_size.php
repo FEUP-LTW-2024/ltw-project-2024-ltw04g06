@@ -17,18 +17,18 @@
 
     if(!Size::existingSize($db, $sizeName)){
         $session->addMessage('error', 'Size doesnt exist.');
-            header('Location: /../pages/home.php'); 
+            header('Location: /../pages/admin.php'); 
     }
     else{
-        $items = Item::getFilteredItems($db, NULL, NULL, NULL, $size, NULL);
+        $items = Item::getFilteredItems($db, NULL, NULL, NULL, $size->sizeID, NULL);
         if(empty($items)){
             Size::remSize($db, $sizeName);
             $session->addMessage('success', 'Size removed!');
-                header('Location: /../pages/home.php'); 
+                header('Location: /../pages/admin.php'); 
         }
         else{
             $session->addMessage('error', 'There are items in this size. Cant remove it!');
-                header('Location: /../pages/home.php'); 
+                header('Location: /../pages/admin.php'); 
         }
 
     }

@@ -15,12 +15,12 @@
 
     if(Condition::existingCondition($db, $newCondition)){
         $session->addMessage('error', 'Condition already exists!');
-        header('Location: /../pages/home.php');
+        header('Location: /../pages/admin.php');
     }
     else{
     $condition = Condition::addCondition($db, $newCondition);
     $session->addMessage('success', 'Condition added!');
-            header('Location: /../pages/home.php');
+            header('Location: /../pages/admin.php');
         }
 
 ?>
