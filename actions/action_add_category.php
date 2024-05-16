@@ -21,9 +21,14 @@
         header('Location: /../pages/admin.php');
     }
     else{
+        if(validCatConSize($newCategory)){
     $category = Category::addCategory($db, $newCategory);
     $session->addMessage('success', 'Category added!');
             header('Location: /../pages/admin.php');
+        } else{
+        $session->addMessage('error', 'Category not added!');
+        header('Location: /../pages/admin.php');
         }
+    }
 
 ?>

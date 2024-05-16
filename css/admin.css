@@ -127,6 +127,13 @@ body{
         cursor: pointer;
         padding: 0.5em 1em;
     }
+    .message {margin-left: 10%;}
+    .message.error {
+        color: red; 
+    }
+    .message.success{
+        color: green; 
+    }
     
     .addition button:hover,
     .change button:hover {

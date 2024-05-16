@@ -21,9 +21,14 @@
         header('Location: /../pages/admin.php');
     }
     else{
-    $condition = Condition::addCondition($db, $newCondition);
+        if(validCatConSize($newCondition)){
+            $condition = Condition::addCondition($db, $newCondition);
     $session->addMessage('success', 'Condition added!');
             header('Location: /../pages/admin.php');
+        } else {
+            $session->addMessage('error', 'Condition not added! Maximum of 30 chars.');
+        header('Location: /../pages/admin.php');
         }
+    }
 
 ?>

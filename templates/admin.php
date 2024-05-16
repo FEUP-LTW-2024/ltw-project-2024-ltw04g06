@@ -1,5 +1,5 @@
 <?php
-function showUsers($db, $userID, $users){ 
+function showOptions($db,$session, $userID, $users){ 
 ?>
 <head>
     <link rel="stylesheet" href="../css/admin.css">
@@ -86,6 +86,9 @@ function showUsers($db, $userID, $users){
 </div>
 
 <div class="change-type"><h1>Add</h1></div>
+<?php 
+        $session->displayMessages();
+    ?>   
 <div class="addition">
     <div class="category">
         <h3>Category</h3>

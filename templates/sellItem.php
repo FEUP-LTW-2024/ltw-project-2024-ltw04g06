@@ -14,7 +14,7 @@
          <p>Sell an item</p>
 <?php } ?>
 
-<?php function sellItemForm(){ ?>
+<?php function sellItemForm($session){ ?>
  <form action="/../actions/action_add_item.php" method="post"  enctype="multipart/form-data">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <div class="form">
@@ -90,7 +90,10 @@
                 <input class="price-input" type="text" name="price">
             </div>
         </div>
-    </div>        
+    </div>
+    <?php 
+        $session->displayMessages();
+    ?>        
     <input type="submit" class="submitButton" value="Continue">
     </form>
 </main>

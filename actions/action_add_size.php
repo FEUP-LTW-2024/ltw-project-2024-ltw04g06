@@ -20,9 +20,14 @@
         header('Location: /../pages/admin.php');
     }
     else{
-    $size = Size::addSize($db, $newSize);
-    $session->addMessage('success', 'Size added!');
+        if(validCatConSize($newSize)){
+            $size = Size::addSize($db, $newSize);
+            $session->addMessage('success', 'Size added!');
             header('Location: /../pages/admin.php');
+        } else {
+            $session->addMessage('error', 'Size not added! Maximum of 30 chars.');
+        header('Location: /../pages/admin.php');
         }
+    }
 
 ?>

@@ -39,13 +39,11 @@
     $imageID = $id;
 
     //brand, size e model não são campos obrigatórios
-    if (!empty($name) && !empty($categoryName) && !empty($conditionName)
-    && !empty($description) && !empty($price) && !empty($imageID)) {
-        echo "Formulário.";
+    if (validTitle($name) && !empty($categoryName) && !empty($conditionName)
+    && !empty($description) && validPrice($price) && !empty($imageID)) {
         if ($name !== false && $sellerID !== false && $categoryName !== false && $sizeName !== false &&
             $conditionName !== false && $brand !== false && $model !== false &&
             $description !== false && $price !== false && $images !== false) {
-            try {
                 $category = Category::getCategoryByName($db, $categoryName);
                 $condition = Condition::getConditionByName($db, $conditionName);
                 $size = Size::getSizeByName($db, $sizeName); 
@@ -53,16 +51,14 @@
                 $session->addMessage('success', 'O item foi adicionado com sucesso!');
                 header('Location: /../pages/profile.php');
                 exit;
-                echo "sucesso";
-            } catch (Exception $e) {
-                echo "erro.";
-            }
         } else {
-            echo "Por , preencha todos os campos obrigatórios do formulário.";
+            $session->addMessage('error', 'Please complete the required fields: title, photo, description, category, condition, and price.');
+                header('Location: /../pages/sellItem.php');
         }
     }
     else{
-        echo "Por favor, preencha todos os campos obrigatórios do formulário.";
+        $session->addMessage('error', 'Please complete the required fields: title, photo, description, category, condition, and price.');
+header('Location: /../pages/sellItem.php');
     }
 
     ?>

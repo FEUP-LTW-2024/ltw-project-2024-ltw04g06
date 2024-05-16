@@ -32,7 +32,7 @@
             <form action="/../actions/action_add_to_wishlist.php" method="post">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
-            <p><?=$item->name?>
+            <p class="item-name"><?=$item->name?>
             <button type="submit" class="wishlist"><i class="fa-regular fa-heart <?php echo User::existItemUserWish($db, $userID, $item->itemID) ? 'red' : ''?>"></i></button></p>
             </form>
             
