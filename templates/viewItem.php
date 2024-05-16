@@ -37,9 +37,6 @@
            </div>               
         </div>
         <div class="right-column">
-            <form action="/../pages/message.php" method="post">
-                <button type="submit" class="message">Message seller</button>
-            </form>
             <div class="description">
                 <p><label class="description"><strong>Description: </strong> <?= $item->description ?></p></label>
             </div>
