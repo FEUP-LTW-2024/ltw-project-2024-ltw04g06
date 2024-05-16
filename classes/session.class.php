@@ -70,6 +70,10 @@ class Session {
       public function addMessage(string $type, string $message) {
         $_SESSION['msgs'][] = array('type' => $type, 'text' => $message);
       }
+
+      public function addSpecificMessage(string $type,string $specificType, string $message) {
+        $_SESSION['msgs'][] = array('type' => $type,'specificType'=> $specificType, 'text' => $message);
+      }
   
       public function getMessages() {
         return $this->msgs;
@@ -82,11 +86,22 @@ class Session {
           }
         }
       }
+      public function displayMessage( $msg) {
+            echo '<div class="message ' . $msg['type'] . '">' . $msg['text'] . '</div>';
+      }
 
       public function findMsgWithType($type) {
         if ($this->getMessages()) {
           foreach ($this->getMessages() as $msg) {
             if($msg['type'] == $type) return $msg;
+          }
+        }
+        return null;
+      }
+      public function findMsgWithSpecificType($specificType) {
+        if ($this->getMessages()) {
+          foreach ($this->getMessages() as $msg) {
+            if($msg['specificType'] == $specificType) return $msg;
           }
         }
         return null;

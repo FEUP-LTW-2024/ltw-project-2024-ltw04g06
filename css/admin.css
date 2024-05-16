@@ -98,7 +98,7 @@ body{
         margin: 1% 10% 5% 10%;
     }
     
-    .addition form,
+
     .change form {
         display: flex;
         flex-direction: row;
@@ -127,7 +127,7 @@ body{
         cursor: pointer;
         padding: 0.5em 1em;
     }
-    .message {margin-left: 10%;}
+
     .message.error {
         color: red; 
     }

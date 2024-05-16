@@ -87,31 +87,41 @@ function showOptions($db,$session, $userID, $users){
 
 <div class="change-type"><h1>Add</h1></div>
 <?php 
-        $session->displayMessages();
+        $categoryMsg = $session->findMsgWithSpecificType('categoryMsg');
+        $conditionMsg = $session->findMsgWithSpecificType('conditionMsg');
+        $sizeMsg = $session->findMsgWithSpecificType('sizeMsg');
     ?>   
 <div class="addition">
     <div class="category">
-        <h3>Category</h3>
-        <form action="/../actions/action_add_category.php" method="post">
-            <input type="text" name="newCategory" id="newCategory">
-            <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <button type="submit">ADD</button>
-        </form>
-    </div>
-    <div class="condition">
-        <h3>Condition</h3>
-        <form action="/../actions/action_add_condition.php" method="post">
-            <input type="text" name="newCondition" id="newCondition">
-            <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <button type="submit">ADD</button>
-        </form>
-    </div>
-    <div class="size">
-        <h3>Size</h3>
-        <form action="/../actions/action_add_size.php" method="post">
-            <input type="text" name="newSize" id="newSize">
-            <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <button type="submit">ADD</button>
+    <form action="/../actions/action_add_ItemAttribute.php" method="post">
+        <?php if ($categoryMsg) {
+                    $session->displayMessage($categoryMsg);
+                }
+            ?>
+            <h3>Category</h3>
+                <input type="text" name="newCategory" id="newCategory">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+                <button type="submit">ADD</button>
+        </div>
+        <div class="condition">
+        <?php if ($conditionMsg) {
+                    $session->displayMessage($conditionMsg);
+                }
+            ?>
+            <h3>Condition</h3>
+                <input type="text" name="newCondition" id="newCondition">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+                <button type="submit">ADD</button>
+        </div>
+        <div class="size">
+        <?php if ($sizeMsg) {
+                    $session->displayMessage($sizeMsg);
+                }
+            ?>
+            <h3>Size</h3>
+                <input type="text" name="newSize" id="newSize">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+                <button type="submit">ADD</button>
         </form>
     </div>   
 </div>
