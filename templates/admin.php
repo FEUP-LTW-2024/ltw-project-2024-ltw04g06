@@ -34,10 +34,19 @@ function showOptions($db,$session, $userID, $users){
 </main>
 
 <div class="change-type"><h1>Delete</h1></div>
+<?php 
+        $categoryMsg = $session->findMsgWithSpecificType('categoryRem');
+        $conditionMsg = $session->findMsgWithSpecificType('conditionRem');
+        $sizeMsg = $session->findMsgWithSpecificType('sizeRem');
+    ?>   
 <div class="change">
     <div class="category">
+        <?php if ($categoryMsg) {
+                    $session->displayMessage($categoryMsg);
+                }
+            ?>
         <h3>Category</h3>
-        <form action="/../actions/action_rem_category.php" method="post">
+        <form action="/../actions/action_edit_CatCondSize.php" method="post">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
             <?php
             $categories = Category::getAllCategories($db);
@@ -49,51 +58,58 @@ function showOptions($db,$session, $userID, $users){
             echo '</select>';
             ?>
             <button type="submit">DELETE</button>
-        </form>
+
     </div>
     <div class="condition">
+    <?php if ($conditionMsg) {
+                $session->displayMessage($conditionMsg);
+            }
+        ?>
         <h3>Condition</h3>
-        <form action="/../actions/action_rem_condition.php" method="post">
+
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
             <?php
             $conditions = Condition::getAllConditions($db);
             echo '<select name="conditionName">';
-            echo '<option value="NULL" selected>No filter</option>';
+            echo '<option value="NULL" selected>Not selected</option>';
             foreach ($conditions as $condition) {
                 echo '<option value="' . htmlspecialchars($condition->usage) . '">' . htmlspecialchars($condition->usage) . '</option>';
             }
             echo '</select>';
             ?>
             <button type="submit">DELETE</button>
-        </form>
+
     </div>  
     <div class="size">
+    <?php if ($sizeMsg) {
+                $session->displayMessage($sizeMsg);
+            }
+        ?>
         <h3>Size</h3>
-        <form action="/../actions/action_rem_size.php" method="post">
+
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
             <?php
             $sizes = Size::getAllSizes($db);
             echo '<select name="sizeName">';
-            echo '<option value="NULL" selected>No filter</option>';
+            echo '<option value="NULL" selected>Not selected</option>';
             foreach ($sizes as $size) {
                 echo '<option value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name) . '</option>';
             }
             echo '</select>';
             ?>
             <button type="submit">DELETE</button>
-        </form>
+
     </div> 
 </div>
 
 <div class="change-type"><h1>Add</h1></div>
 <?php 
-        $categoryMsg = $session->findMsgWithSpecificType('categoryMsg');
-        $conditionMsg = $session->findMsgWithSpecificType('conditionMsg');
-        $sizeMsg = $session->findMsgWithSpecificType('sizeMsg');
+        $categoryMsg = $session->findMsgWithSpecificType('categoryAdd');
+        $conditionMsg = $session->findMsgWithSpecificType('conditionAdd');
+        $sizeMsg = $session->findMsgWithSpecificType('sizeAdd');
     ?>   
 <div class="addition">
     <div class="category">
-    <form action="/../actions/action_add_ItemAttribute.php" method="post">
         <?php if ($categoryMsg) {
                     $session->displayMessage($categoryMsg);
                 }
