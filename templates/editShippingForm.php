@@ -1,11 +1,11 @@
-<?php function shippingForm(){ ?>
+<?php function editShippingForm(){ ?>
 <head>
     <link rel="stylesheet" href="../css/shippingForm.css">
 </head>
 <main class="shipping"> 
 
 <h1><i class="fa-solid fa-truck"> Shipping</i></h1>
-<div class="profile-setting">
+<div class="">
         <form action="/../actions/action_edit_profile.php" method="post">
             <h2><i class="fa-solid fa-person"></i> Personal infos</h2>
             <label for="fname">First Name</label>

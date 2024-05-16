@@ -31,7 +31,7 @@
                     </div>   
             </label> 
                </div>
-           </div>               
+           </div>             
         </div>
         <div class="right-column">
             <div class="description">
@@ -71,7 +71,7 @@
     </div>
     <?php 
         if ($item->sellerID == $userID){?>
-            <form action="/../actions/action_edit_shippingForm.php" method="post">
+            <form action="/../pages/printShipping.php" method="post">
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                 <button type="submit" class="print">Print Ship Form</button>
             </form>
