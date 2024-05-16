@@ -33,7 +33,7 @@ class Session {
       $lastActivityTime = $_SESSION['last_activity'];
       $timeDifference = $currentTime - $lastActivityTime;
   
-      if ($timeDifference > 10) {// will log off after 5 seconds
+      if ($timeDifference > 3600) {// will log off after 1 hour
           header('Location: /../pages/signIn.php');
           $this->logout();
       } else {
