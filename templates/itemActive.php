@@ -39,9 +39,10 @@ function itemActiveForm($item, $db)
             </div>
         </div>
         <div class="right-column">
-            <form action="/../pages/editItem.php" method="post">
-                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-                <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>
+            <form action="/../pages/editItem.php" method="get" >
+            <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+            <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+            <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>            
             </form>
             <div class="description">
                 <p><label class="description"><strong>Description: </strong> <?= htmlspecialchars($item->description) ?></p></label>
