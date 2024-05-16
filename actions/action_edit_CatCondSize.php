@@ -60,7 +60,7 @@
         $size = Size::getSizeByName($db, $sizeName);
         
         if(Size::existingSize($db, $sizeName)){
-            $items = Item::getFilteredItems($db, NULL, NULL, NULL, $size->sizeID, NULL);
+            $items = Item::getFilteredItems($db, NULL, NULL, NULL, $size->sizeName, NULL);
             if(empty($items)){
                 Size::remSize($db, $sizeName);
                 $session->addSpecificMessage('success','sizeRem', 'Size removed!');

@@ -116,7 +116,7 @@ require_once(__DIR__ . '/image.class.php');
       }
 
       if ($size != NULL && $size != "NULL") {
-        $query .= ' AND size.name = ?';
+        $query .= ' AND Size.name = ?';
         $params[] = $size;
     }
   
