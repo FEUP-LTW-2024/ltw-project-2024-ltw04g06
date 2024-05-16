@@ -93,6 +93,7 @@ function showOptions($db,$session, $userID, $users){
             echo '<select name="sizeName">';
             echo '<option value="NULL" selected>Not selected</option>';
             foreach ($sizes as $size) {
+                if($size->sizeID == 0) {continue;}
                 echo '<option value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name) . '</option>';
             }
             echo '</select>';
