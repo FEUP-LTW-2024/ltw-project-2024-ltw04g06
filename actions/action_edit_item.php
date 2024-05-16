@@ -11,6 +11,9 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
 
     $itemID = $_POST['itemID'];
     $newName = $_POST['newName'];

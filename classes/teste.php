@@ -285,6 +285,9 @@ foreach ($users as $user) {
 $category = Category::getCategoryByName($db, "Clothing");
 echo $category->categoryID;
 
+$addedUserID = User::addUser($db, "ola", "ola@gmail.com", "ola_tudobem1");
+echo "userID" . $addedUserID."<br>";
+
 
 ?>
 

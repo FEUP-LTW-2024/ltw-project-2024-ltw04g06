@@ -30,6 +30,7 @@
   }
   
   $session = new Session();
+
   $db = getDatabaseConnection();
   $userID = $session->getID();
   $user = User::getUser($db, $userID);

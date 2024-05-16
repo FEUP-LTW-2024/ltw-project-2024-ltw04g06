@@ -5,15 +5,15 @@
     require_once(__DIR__ . '/../classes/size.class.php'); 
 
     $db = getDatabaseConnection();
-
     $session = new Session();
-    if ($_SESSION['csrf'] !== $_POST['csrf']) {
-        header('Location: /../pages/signIn.php');
-      }
+    
     if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;
     }
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
 
     $sizeName = $_POST['sizeName'];
     $size = Size::getSizeByName($db, $sizeName);

@@ -15,6 +15,7 @@
             </header>
         
             <form action="/../actions/action_signIn.php" method = "post">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <label for=""><i class="fa-regular fa-user"></i></label>
                 <input type="text" name = "userField" placeholder="Email or username"><br>
                 <label for=""><i class="fa-solid fa-lock"></i></label>

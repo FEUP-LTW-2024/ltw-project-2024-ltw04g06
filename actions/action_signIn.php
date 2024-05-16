@@ -6,6 +6,10 @@
 	$session = new Session();
 	$db = getDatabaseConnection();
 
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
 	$userField = $_POST['userField'];
   	$password = $_POST['password'];
 	if((validUsername($userField)||validEmail($userField))&&validPassword($password)){

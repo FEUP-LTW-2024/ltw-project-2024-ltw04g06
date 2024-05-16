@@ -11,6 +11,8 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
     $newSize = $_POST['newSize'];
 
     if(Size::existingSize($db, $newSize)){

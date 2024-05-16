@@ -16,6 +16,7 @@
 
 <?php function sellItemForm(){ ?>
  <form action="/../actions/action_add_item.php" method="post"  enctype="multipart/form-data">
+    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <div class="form">
         <div class="left-column">
             <div class="title">

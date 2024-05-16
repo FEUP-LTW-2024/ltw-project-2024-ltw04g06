@@ -13,6 +13,9 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
 	$content = $_POST['content'];
 	$recipientID = $_POST['recipientID'];
 	$senderID = $_POST['senderID'];

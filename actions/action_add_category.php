@@ -11,6 +11,9 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
     $newCategory = $_POST['newCategory'];
 
     if(Category::existingCategory($db, $newCategory)){

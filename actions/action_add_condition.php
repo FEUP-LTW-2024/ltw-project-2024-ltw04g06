@@ -11,6 +11,9 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
     $newCondition = $_POST['newCondition'];
 
     if(Condition::existingCondition($db, $newCondition)){

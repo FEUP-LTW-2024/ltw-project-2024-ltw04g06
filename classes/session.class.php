@@ -10,7 +10,7 @@ class Session {
     }
 
     public function __construct() {
-      session_set_cookie_params(3600, '/'); // it will log off after 1 hour of inactivity
+      session_set_cookie_params(43200, '/'); 
       session_start();
   
       if (!isset($_SESSION['csrf'])) {
@@ -33,7 +33,7 @@ class Session {
       $lastActivityTime = $_SESSION['last_activity'];
       $timeDifference = $currentTime - $lastActivityTime;
   
-      if ($timeDifference > 3600) {
+      if ($timeDifference > 10) {// will log off after 5 seconds
           header('Location: /../pages/signIn.php');
           $this->logout();
       } else {
