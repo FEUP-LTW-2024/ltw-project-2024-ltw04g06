@@ -59,32 +59,36 @@ function messageBox(PDO $db, int $userID1, int $userID2){
 <head>
     <link rel="stylesheet" href="../css/msg.css">
 </head>
-<div class="pessoa">
-    <img src="<?= htmlspecialchars(User::getUserPic($db, $user2->userID)) ?>" alt="">
-    <span><?= htmlspecialchars($user2->username) ?></span>
-    <button><i class="fa-regular fa-trash-can"></i></button>
-</div>
-<div class="caixa" id="caixaDeMensagens">
-    <div class="conjunto">
-        <?php foreach ($msgs as $m) { 
-            $messageUser = User::getUser($db, $m->senderID);
-        ?>
-        <div class="fr">
-            <img src="<?= htmlspecialchars(User::getUserPic($db, $messageUser->userID)) ?>" alt="">
-            <span><?= htmlspecialchars($messageUser->username) ?></span>
-            <div class="time"><?= htmlspecialchars($m->time) ?></div>
-        </div>
-        <div class="msg">
-            <?= htmlspecialchars($m->content) ?>
-        </div>
-        <?php } ?>
-    </div>
-    <form id="messageForm" class="typing-area" method="post">
-        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-        <input type="text" class="writerID" name="senderID" value="<?= htmlspecialchars($userID1) ?>" hidden>
-        <input type="text" class="receiverID" name="recipientID" value="<?= htmlspecialchars($userID2) ?>" hidden>
-        <textarea name="content" class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
-        <button type="button" class="send_message"><i class="fab fa-telegram-plane"></i></button>
-    </form>
-</div>
+            <div class="pessoa">
+                <img src=" <?=User::getUserPic($db, $user2->userID)?> ">
+                <span><?=$user2->username?></span>
+                <button><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+            <div class="caixa" id="caixaDeMensagens">
+                <div class="conjunto">
+                <?php foreach ($msgs as $m) { 
+                $messageUser = User::getUser($db, $m->senderID);
+                ?>
+                    <div class="fr">
+                        <img src="<?= User::getUserPic($db, $messageUser->userID) ?>" alt="">
+                        <span><?=$messageUser->username?></span>
+                        <div class="time"><?=$m->time?></div>
+                    </div>
+                    
+                    <div class="msg">
+                        <?=$m->content?>
+                    </div>
+                <?php } ?>
+                </div>
+           
+                <form id="messageForm" class="typing-area" method="post" onsubmit="encodeAndSendMessage(event, 'messageForm', 'path/to/action_message.php')">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+                <input type="text" class="writerID" name="senderID" value="<?php echo htmlspecialchars($userID1); ?>" hidden>
+                <input type="text" class="receiverID" name="recipientID" value="<?php echo htmlspecialchars($userID2); ?>" hidden>
+                <textarea name="content" class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
+                <button type="submit" class="send_message"><i class="fab fa-telegram-plane"></i></button>
+            </form>
+            <p id="encodedMessage" style="display:none;"></p>
+            </div>        
+    </main>
 <?php } ?>
