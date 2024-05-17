@@ -15,5 +15,5 @@
     $user = User::getUser($db, $userID);
     topo($db, $user);
     displayEditItem($item);
-    editItemForm($item);
+    editItemForm($item, $session);
 ?>

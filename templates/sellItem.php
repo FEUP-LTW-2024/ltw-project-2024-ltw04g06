@@ -14,8 +14,9 @@
          <p>Sell an item</p>
 <?php } ?>
 
-<?php function sellItemForm(){ ?>
- <form action="/../actions/action_add_item.php" method="post"  enctype="multipart/form-data">
+<?php function sellItemForm($session){ ?>
+ <form action="/../actions/action_add_item.php" method="post"  enctype="multipart/form-data" onsubmit="encodeAndSendMessage(event, 'sellItemForm', '/../actions/action_add_item.php')">
+    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <div class="form">
         <div class="left-column">
             <div class="title">
@@ -91,7 +92,10 @@
                 <textarea class="price-input" type="text" rows="1" cols="20" name="price"></textarea>
             </div>
         </div>
-    </div>        
+    </div>
+    <?php 
+        $session->displayMessages();
+    ?>        
     <input type="submit" class="submitButton" value="Continue">
     </form>
 </main>

@@ -116,7 +116,7 @@ require_once(__DIR__ . '/image.class.php');
       }
 
       if ($size != NULL && $size != "NULL") {
-        $query .= ' AND size.name = ?';
+        $query .= ' AND Size.name = ?';
         $params[] = $size;
     }
   
@@ -191,7 +191,7 @@ require_once(__DIR__ . '/image.class.php');
       if ($preparedStmt->rowCount() > 0) {
           if ($name == "Sold") {
               $currentTime = date('Y-m-d H:i:s');
-              //ShippingForm::createShippingForm($db, $itemID, $item->sellerID, $item->buyerID, $item->description, $currentTime);
+              ShippingForm::createShippingForm($db, $itemID, $item->sellerID, $item->buyerID, $item->description, $currentTime);
           }
           return true;
       } else {

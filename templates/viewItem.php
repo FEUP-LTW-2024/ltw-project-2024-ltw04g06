@@ -12,6 +12,7 @@
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>
                 <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
@@ -21,6 +22,7 @@
             
                     <p class="item-name"><?= $item->name ?></p>
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                         <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                     </form>
@@ -28,6 +30,7 @@
                 <label for="foto" class="foto-label">
                 <div class="image">
                     <form id="viewItem<?= $item->itemID ?>" action="" method="post" class="hidden">
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
                     <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
@@ -72,8 +75,9 @@
         </div>
     </div>   
     <form action="/../actions/action_add_to_shopCart.php" method="post">
-                    <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
-                    <button type="submit" class="submitButton">Buy</button>
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+        <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+        <button type="submit" class="submitButton">Buy</button>
     </form>
 </main>
 <?php } ?>

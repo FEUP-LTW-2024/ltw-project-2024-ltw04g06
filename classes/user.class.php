@@ -202,7 +202,7 @@ require_once(__DIR__ . '/image.class.php');
       $shoppingCartID = $db->lastInsertId();
       
       $stmt = $db->prepare("INSERT INTO User (username, password, name, email, role, imageID, aboutMe, address, phoneNumber, wishlistID, shoppingCartID) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]), '', $email, 'User', 'images/profilePictures/default.jpg','','',0, $wishlistID, $shoppingCartID]);
+      $stmt->execute([ $username,password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]), '', $email, 'User',28,'','',0, $wishlistID, $shoppingCartID]);
       $userID = $db->lastInsertId();
 
       return $userID;

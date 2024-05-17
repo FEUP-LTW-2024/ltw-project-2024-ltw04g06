@@ -8,39 +8,26 @@
     $db = getDatabaseConnection();
     $session = new Session();
 
-    if (!$session->isLoggedIn()) {
+	if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;
     }
 
     if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
 
-
     $userID = $session->getID();
-
-    $itemID = $_POST['itemID'];
-
     $user = User::getUser($db, $userID);
     $shoppingCartID = $user -> shoppingCartID;
 
-
-
-    if(ShoppingCart::existItemInShoppingCart($db, $shoppingCartID, $itemID)){
-        $session->addMessage('error', 'Item is already in the Shopping Cart.');
-        header('Location: /../pages/home.php');
-     } 
-     else {
-        if (ShoppingCart::addItemToShoppingCart($db, $shoppingCartID, $itemID)) {
-            $session->addMessage('success', 'Item added to shopping Cart successful!');
-            header('Location: /../pages/cart.php');
-        } 
-        else {
-            echo "Failed to add item to shopping Cart.";
+    $items = ShoppingCart::getShoppingCartItems($db, $shoppingCartID);
+    
+    if($items!=NULL) {
+        foreach($items as $item){
+            Item::editItemStatus($db, $item, "Sold");
         }
     }
-
-    
-
-
+    else{
+        die(header('Location: /../pages/error.php'));
+    }
 
 ?>

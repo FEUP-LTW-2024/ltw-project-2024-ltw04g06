@@ -10,7 +10,7 @@
 	$email = $_POST['email'];
     $password = $_POST['password'];
 	if(!validUsername($username)) {
-		$session->addMessage('usernameError', 'Only letters, digits and . - _ are allowed.');
+		$session->addMessage('usernameError', 'Only letters, digits and . - _ are allowed. Max 20 chars.');
 		header('Location: /../pages/signUp.php');
 	}
 	if(!validEmail($email)) {

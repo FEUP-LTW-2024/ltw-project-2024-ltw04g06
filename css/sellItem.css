@@ -195,6 +195,15 @@ label{
     margin-bottom: 2.5em;
 }
 
+
 .load-photo{
     margin-top: 80px;
 }
+
+.message.error {
+    color: red; 
+}
+.message.success{
+    color: green; 
+}
+
