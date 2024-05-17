@@ -81,12 +81,13 @@
                 <?php } ?>
                 </div>
            
-                <form  id="messageForm" class="typing-area" method="post">
-                    <input type="text" class="writerID" name="senderID" value="<?php echo htmlspecialchars($userID1); ?>" hidden>
-                    <input type="text" class="receiverID" name="recipientID" value="<?php echo htmlspecialchars($userID2); ?>" hidden>
-                    <textarea name="content"class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
-                    <button type="button" class="send_message"><i class="fab fa-telegram-plane"></i></button>
-                </form>
+                <form id="messageForm" class="typing-area" method="post" onsubmit="encodeAndSendMessage(event, 'messageForm', 'path/to/action_message.php')">
+                <input type="text" class="writerID" name="senderID" value="<?php echo htmlspecialchars($userID1); ?>" hidden>
+                <input type="text" class="receiverID" name="recipientID" value="<?php echo htmlspecialchars($userID2); ?>" hidden>
+                <textarea name="content" class="input-field" id="messageContent" placeholder="Message..." autocomplete="off"></textarea>
+                <button type="submit" class="send_message"><i class="fab fa-telegram-plane"></i></button>
+            </form>
+            <p id="encodedMessage" style="display:none;"></p>
             </div>        
     </main>
 <?php } ?>

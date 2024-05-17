@@ -18,9 +18,11 @@
     $phoneNumber = $_POST['phoneNumber'];
     $description = $_POST['description'];
 
+
+    $name = User::editName($db, $user)
     $editAddress = User::editAddress($db, $sellerID, $address);
     $editPhoneNumber = User::editPhoneNumber($db, $sellerID, $phoneNumber);
-    $editDescription = ShippingForm::editDescription($db, $sellerID, $description);
+
 
     if($editAddress || $editPhoneNumber || $editDescription){
         $session->addMessage('success', 'Edit shipping Form successful!');
