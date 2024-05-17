@@ -17,15 +17,12 @@ p.title{
 }
 
 .image {
-    width: 50%; 
     text-align: center;
 }
 
 .image img {
     width: 100%; 
     height: 100%;
-    /*max-width: 100%;
-    max-height: 100%;*/
     width: 200px;
     height: 200px;
 }
@@ -93,4 +90,52 @@ a {
 
 .buy:hover{
     background-color: #5a0000;
+}
+
+.foto{
+    max-height: 13em;
+    max-width: 13em;
+    cursor: pointer;
+}
+.foto:hover{
+    border: 3px solid var(--borderLine);
+}
+
+.products{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2em 5em;
+    .product{
+        display: flex;
+        flex-direction: column;
+        margin-right: 2em;
+        margin-bottom: 2em;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        width: 13em;
+        height: 25em;
+        >*{align-self: center;}
+        header {
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+            background: var(--beige);
+            margin-bottom: 1em;
+            img{
+                border-radius: 50%;
+                width: 2em;
+                height: 2em;
+                align-self: center;
+                margin: 0 1em ;
+            }
+        }
+        header:hover{
+            background: var(--bordeaux);
+            color: white;
+            transition: all 0.3s ease-out;
+        }
+    }
 }

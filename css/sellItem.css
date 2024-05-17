@@ -19,7 +19,7 @@ label{
 }
 
 .title-input, .description-input, .brand-input, .model-input, .price-input{
-    border: 1px solid var(--bordeaux);
+    border: 1.5px solid var(--bordeaux);
     border-radius: 2px; 
     margin: .75em;
 }
@@ -110,11 +110,6 @@ label{
     padding-right: 4.5em;
 }
 
-label[for="description"] + input {
-    padding-bottom: 7em;
-    padding-right: 20em;
-}
-
 .size input[type="radio"] {
     display: none; 
 }
@@ -183,11 +178,12 @@ label[for="description"] + input {
 }
 
 #imagemExibida {
-    width: 200px; 
+    width: 170px; 
     height: 200px; 
     display: block; 
     margin: auto; 
     border-radius: 8px; 
+    margin-left:  48px;
 }
 
 .edit{
@@ -198,9 +194,16 @@ label[for="description"] + input {
     margin-left: 6em;
     margin-bottom: 2.5em;
 }
+
+
+.load-photo{
+    margin-top: 80px;
+}
+
 .message.error {
     color: red; 
 }
 .message.success{
     color: green; 
 }
+

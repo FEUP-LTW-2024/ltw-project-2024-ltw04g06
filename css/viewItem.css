@@ -159,31 +159,3 @@ button.wishlist {
 .brand-model, .condition-size{
     margin-bottom: 2.5em;
 }
-
-.message {
-    padding: 5px 15px;
-    background-color: transparent;
-    color: #800000; 
-    border: 2px solid #800000; 
-    border-radius: 20px; 
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 40em;
-    margin-top: 40px;
-}
-
-.message:hover {
-    background-color: #800000; 
-    color: #fff;
-}
-
-.mini-images {
-    display: flex;
-}
-
-.mini-images img {
-    width: 40px;
-    max-height: 2px;
-    margin-right: 10px; 
-    margin-top: 5px;
-}
