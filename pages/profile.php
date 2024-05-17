@@ -17,5 +17,6 @@
 
     topo($db, $user);
     profileEditDescript($db, $user);
-    myItemsAnalytics($db, $items, $user->role == 'Admin');
+    profileOptions($db, $items, $user->role == 'Admin');
+
 ?>

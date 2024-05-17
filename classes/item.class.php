@@ -87,7 +87,7 @@ require_once(__DIR__ . '/image.class.php');
       $preparedStmt->execute(array($sellerID));
       $items = array();
 
-      while ($itemID = $preparedStmt->fetch(PDO::FETCH_ASSOC)) {
+      while ($itemID = $preparedStmt->fetch()) {
 				$ID = $itemID['itemID'];
 				$item = self::getItem($db, $ID);
 				$items[] = $item;
@@ -97,6 +97,24 @@ require_once(__DIR__ . '/image.class.php');
 			}
 			return $items;
     }
+
+    static function getPurchasedItems(PDO $db, int $userID) {
+      $preparedStmt = $db->prepare('SELECT itemID FROM ShippingForm WHERE buyerID = ?');
+      $preparedStmt->execute(array($userID));
+      $items = array();
+
+      while ($row = $preparedStmt->fetch()) {
+          $itemID = $row['itemID'];
+          $item = self::getItem($db, $itemID);
+          $items[] = $item;
+      }
+      if (empty($items)) {
+				return null;
+			}
+
+      return $items;
+  }
+
     static function getNumAvailableItems(PDO $db, int $sellerID) {
       $items = self::getUserItems($db, $sellerID);
       if ($items === null) {

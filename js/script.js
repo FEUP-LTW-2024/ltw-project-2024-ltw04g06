@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() { 
-const showFormButton = document.getElementById('showFormButton');
-const elementToToggle = document.getElementById('elementToToggle');
+    const showFormButton = document.getElementById('showFormButton');
+    const elementToToggle = document.getElementById('elementToToggle');
 
     showFormButton.addEventListener('click', () => {
         if (elementToToggle.style.display == 'none') elementToToggle.style.display = 'block';
         else elementToToggle.style.display = 'none';
     });
-    
-
-    
 
     document.querySelectorAll('.radio-btn').forEach(function(radio) {
         if (radio.checked) {
@@ -40,6 +37,7 @@ const elementToToggle = document.getElementById('elementToToggle');
             xhr.send();
         });
     });
+
     const links = document.querySelectorAll('.selectSetting a');
 
     links.forEach(function(link) {
@@ -64,9 +62,10 @@ const elementToToggle = document.getElementById('elementToToggle');
         xhttp.open("GET", "/../actions/action_load_setting.php?type=" + settingType, true);
         xhttp.send();
     }
+
     var c = document.getElementById('condition');
-    if (c != null){
-        document.getElementById('condition').addEventListener('change', ()=>{
+    if (c != null) {
+        c.addEventListener('change', () => {
             var selectedCondition = document.getElementById('condition').value;
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
@@ -76,15 +75,14 @@ const elementToToggle = document.getElementById('elementToToggle');
                     }
                 }
             };
-            xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition + 
-            '&userID=' + parseInt(document.getElementById('userID').innerText), true);
-    
+            xhr.open('GET', '/../actions/action_active_or_sold.php?condition=' + selectedCondition + '&userID=' + parseInt(document.getElementById('userID').innerText), true);
             xhr.send();
-        })
+        });
     }
+
     var c = document.getElementById('conditionSeeP');
-    if (c != null){
-        document.getElementById('conditionSeeP').addEventListener('change', ()=>{
+    if (c != null) {
+        c.addEventListener('change', () => {
             var selectedCondition = document.getElementById('conditionSeeP').value;
             console.log(selectedCondition);
             var xhr = new XMLHttpRequest();
@@ -95,15 +93,11 @@ const elementToToggle = document.getElementById('elementToToggle');
                     }
                 }
             };
-            xhr.open('GET', '/../actions/action_active_or_sold_seeP.php?condition=' + selectedCondition + 
-            '&userID=' + parseInt(document.getElementById('userID').innerText), true);
-    
+            xhr.open('GET', '/../actions/action_active_or_sold_seeP.php?condition=' + selectedCondition + '&userID=' + parseInt(document.getElementById('userID').innerText), true);
             xhr.send();
-        })
+        });
     }
-
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const togglePassword = document.getElementById('togglePassword');
@@ -117,12 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function scrollDown(){
+function scrollDown() {
     var caixaDeMensagens = document.getElementById("caixaDeMensagens");
     caixaDeMensagens.scrollTop = caixaDeMensagens.scrollHeight;
 }
 
-function Give(){
+function Give() {
     document.querySelector('.send_message').addEventListener('click', MessageAdd);
     document.getElementById('messageContent').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
@@ -130,35 +124,31 @@ function Give(){
         }
     });
 }
-function MessageAdd(){
+
+function MessageAdd() {
     var formData = new FormData(document.getElementById('messageForm'));
     var mensagem = formData.get('content');
     if (mensagem.trim() === '') return;
-        document.getElementById('messageContent').value = '';
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/../actions/action_message.php', true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                const tempElement = document.createElement('div');
-                tempElement.innerHTML = xhr.responseText;
-                document.querySelector('.conjunto').appendChild(tempElement);
-                scrollDown();
-            }
-        };
-        xhr.send(formData); 
+    document.getElementById('messageContent').value = '';
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/../actions/action_message.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const tempElement = document.createElement('div');
+            tempElement.innerHTML = xhr.responseText;
+            document.querySelector('.conjunto').appendChild(tempElement);
+            scrollDown();
+        }
+    };
+    xhr.send(formData); 
 }
+
 function previewImage(event) {
     var reader = new FileReader();
     reader.onload = function() {
-      var output = document.getElementById('preview');
-      output.src = reader.result;
-      output.style.display = 'block';
+        var output = document.getElementById('preview');
+        output.src = reader.result;
+        output.style.display = 'block';
     };
     reader.readAsDataURL(event.target.files[0]);
-  }
-
-
-
-
-
-  
+}

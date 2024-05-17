@@ -290,13 +290,11 @@ echo "userID" . $addedUserID."<br>";
 
 
 */
-$items = Item::getFilteredItems($db, NULL, NULL, NULL, 6, NULL);
+$items = Item::getPurchasedItems($db,1);
 foreach($items as $item) {
   echo "item". $item->itemID . "<br>";
 }
 
-$item  = Item::getItem($db, 1);
-echo $item->sizeID;
 
 
 ?>

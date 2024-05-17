@@ -21,7 +21,7 @@ function profileEditDescript(PDO $db, User $user)
 <?php
 }
 
-function myItemsAnalytics($db, $items, $isAdmin)
+function profileOptions($db, $items, $isAdmin)
 {
 ?>
         <div class="choice">
@@ -35,6 +35,7 @@ function myItemsAnalytics($db, $items, $isAdmin)
                 <select id="condition" name="condition">
                     <option value="Sold">Sold</option>
                     <option value="Available" selected>Available</option>
+                    <option value="Purchased">Purchased</option>
                 </select>
             </div>
             <div id="prodShow" class="products">

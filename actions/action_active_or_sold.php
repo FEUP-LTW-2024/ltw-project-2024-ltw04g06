@@ -9,27 +9,26 @@ require_once(__DIR__ . '/../classes/item.class.php');
 $selectedCondition = $_GET['condition'];
 $userID = $_GET['userID'];
 $db = getDatabaseConnection();
-$user = User::getUser($db,$userID);
-$Items = Item::getUserItems($db, $userID);
+$user = User::getUser($db, $userID);
+$Items = $selectedCondition == 'Purchased' ? Item::getPurchasedItems($db, $userID) : Item::getUserItems($db, $userID);
 
-if($selectedCondition == 'Available'){
+if ($selectedCondition == 'Available') {
     echo '<a class="addProduct" href="/../pages/sellItem.php">';
     echo '<div class="mais">+</div>';
     echo '</a>';
 }
 
-
 foreach ($Items as $item) {
     $status = Item::getItemStatus($db, $item->itemID);
-    if ($status !=  $selectedCondition) continue;
-    $filePath = $status == 'Available' ? '/../pages/itemActive.php' : '/../pages/itemSold.php';
+    if ($status != $selectedCondition && $selectedCondition != 'Purchased') continue;
+    $filePath = $status == 'Available' ? '/../pages/itemActive.php' : ($status == 'Sold' ? '/../pages/itemSold.php' : '');
     echo '<div class="product">';
-    echo '<form id="itemActive' . $item->itemID . '" action="'.$filePath.'" method="post" class="hidden">';
-    echo '    <input type="hidden" name="itemID" value="' . $item->itemID . '">';
+    echo '<form id="itemActive' . htmlspecialchars($item->itemID) . '" action="' . htmlspecialchars($filePath) . '" method="post" class="hidden">';
+    echo '    <input type="hidden" name="itemID" value="' . htmlspecialchars($item->itemID) . '">';
     echo '</form>';
-    echo '<img onclick="document.getElementById(\'itemActive' . $item->itemID . '\').submit();" class="foto" src="' . Item::getImagePic($db, $item) . '" alt="">';
-    echo '<p>' . $item->name . '</p>';
-    echo '<h4 class="price">' . $item->price . '<i class="fa-solid fa-euro-sign"></i></h4>';
+    echo '<img onclick="document.getElementById(\'itemActive' . htmlspecialchars($item->itemID) . '\').submit();" class="foto" src="' . htmlspecialchars(Item::getImagePic($db, $item)) . '" alt="">';
+    echo '<p>' . htmlspecialchars($item->name) . '</p>';
+    echo '<h4 class="price">' . htmlspecialchars($item->price) . '<i class="fa-solid fa-euro-sign"></i></h4>';
     echo '</div>';
 }
 ?>
