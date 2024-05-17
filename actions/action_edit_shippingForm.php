@@ -12,8 +12,8 @@
         exit;
     }
 
-    $buyerID = $session->getID();
-
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }~
+    
     $address = $_POST['address'];
     $phoneNumber = $_POST['phone'];
     $name = $_POST['name'];
@@ -23,6 +23,7 @@
     $editPhoneNumber = User::editPhoneNumber($db, $buyerID, $phoneNumber);
     $editEmail = User::editEmail($db, $buyerID, $email);
     $editName = User::editName($db, $buyerID, $name);
+
 
     if($editAddress || $editPhoneNumber || $editEmail || $editName){
         $session->addMessage('success', 'Edit shipping Form successful!');

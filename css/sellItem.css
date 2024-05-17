@@ -189,3 +189,18 @@ label[for="description"] + input {
     margin: auto; 
     border-radius: 8px; 
 }
+
+.edit{
+    font-family:'Courier New', Courier, monospace;
+    color: black;
+    width: 400px;
+    font-size: 20px;
+    margin-left: 6em;
+    margin-bottom: 2.5em;
+}
+.message.error {
+    color: red; 
+}
+.message.success{
+    color: green; 
+}

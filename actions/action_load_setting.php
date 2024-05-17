@@ -7,6 +7,13 @@ require_once(__DIR__ . '/../classes/user.class.php');
 $db = getDatabaseConnection();
 $session = new Session();
 
+if (!$session->isLoggedIn()) {
+    header('Location: /../pages/signIn.php');
+    exit;
+}
+
+
+
 $userID = $session->getID();
 $user = User::getUser($db,$userID);
 

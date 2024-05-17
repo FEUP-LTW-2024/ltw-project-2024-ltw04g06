@@ -10,7 +10,7 @@ class Session {
     }
 
     public function __construct() {
-      session_set_cookie_params(3600, '/'); // it will log off after 1 hour of inactivity
+      session_set_cookie_params(43200, '/'); 
       session_start();
   
       if (!isset($_SESSION['csrf'])) {
@@ -33,7 +33,7 @@ class Session {
       $lastActivityTime = $_SESSION['last_activity'];
       $timeDifference = $currentTime - $lastActivityTime;
   
-      if ($timeDifference > 3600) {
+      if ($timeDifference > 3600) {// will log off after 1 hour
           header('Location: /../pages/signIn.php');
           $this->logout();
       } else {
@@ -70,6 +70,10 @@ class Session {
       public function addMessage(string $type, string $message) {
         $_SESSION['msgs'][] = array('type' => $type, 'text' => $message);
       }
+
+      public function addSpecificMessage(string $type,string $specificType, string $message) {
+        $_SESSION['msgs'][] = array('type' => $type,'specificType'=> $specificType, 'text' => $message);
+      }
   
       public function getMessages() {
         return $this->msgs;
@@ -82,11 +86,22 @@ class Session {
           }
         }
       }
+      public function displayMessage( $msg) {
+            echo '<div class="message ' . $msg['type'] . '">' . $msg['text'] . '</div>';
+      }
 
       public function findMsgWithType($type) {
         if ($this->getMessages()) {
           foreach ($this->getMessages() as $msg) {
             if($msg['type'] == $type) return $msg;
+          }
+        }
+        return null;
+      }
+      public function findMsgWithSpecificType($specificType) {
+        if ($this->getMessages()) {
+          foreach ($this->getMessages() as $msg) {
+            if($msg['specificType'] == $specificType) return $msg;
           }
         }
         return null;

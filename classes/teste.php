@@ -281,9 +281,22 @@ $users = User::getTopSellers($db);
 foreach ($users as $user) {
   echo 'user ' . $user->name . '<br>';
 }
-*/
+
 $category = Category::getCategoryByName($db, "Clothing");
 echo $category->categoryID;
+
+$addedUserID = User::addUser($db, "ola", "ola@gmail.com", "ola_tudobem1");
+echo "userID" . $addedUserID."<br>";
+
+
+*/
+$items = Item::getFilteredItems($db, NULL, NULL, NULL, 6, NULL);
+foreach($items as $item) {
+  echo "item". $item->itemID . "<br>";
+}
+
+$item  = Item::getItem($db, 1);
+echo $item->sizeID;
 
 
 ?>

@@ -13,11 +13,13 @@
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
                 <header>
-                    <button onclick="window.location.href='/../pages/itemActive.php?itemID=<?=$item->itemID?>'" class="submitButton">Sold</button>
+                    <button class="submitButton">Sold</button>
                 </header>
             
                     <p class="item-name"><?= $item->name ?></p>
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                         <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                     </form>
@@ -25,6 +27,8 @@
                 <label for="foto" class="foto-label">
                 <div class="image">
                     <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
                     <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
@@ -72,6 +76,7 @@
     <?php 
         if ($item->sellerID == $userID){?>
             <form action="/../pages/printShipping.php" method="post">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                 <button type="submit" class="print">Print Ship Form</button>
             </form>

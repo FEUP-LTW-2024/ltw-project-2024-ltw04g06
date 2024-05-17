@@ -12,6 +12,9 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
     $userID = $session->getID();
     $name = $_POST['name'];
 	$aboutMe = $_POST['aboutMe'];
@@ -28,7 +31,6 @@
         $Image = User::editImage($db, $userID, $id);
         if($editName || $editAboutMe){
        $session->addMessage('success', 'Edit profile successful!');
-        header('Location: /../pages/settings.php');
         }
     header('Location: /../pages/settings.php');
 

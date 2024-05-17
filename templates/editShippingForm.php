@@ -6,8 +6,10 @@
 
 <h1><i class="fa-solid fa-truck"> Shipping</i></h1>
 <div class="">
+
 <div class="divisor">
     <form action="/../actions/action_edit_shippingForm.php" method="post">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <h2><i class="fa-solid fa-person"></i> Buyer</h2>
             <div class="line"> <label for="fname">Name : </label>
             <input type="text" name="name" placeholder="<?php $user->name?>"></div>

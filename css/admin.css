@@ -98,7 +98,7 @@ body{
         margin: 1% 10% 5% 10%;
     }
     
-    .addition form,
+
     .change form {
         display: flex;
         flex-direction: row;
@@ -126,6 +126,13 @@ body{
         border-radius: 5px;
         cursor: pointer;
         padding: 0.5em 1em;
+    }
+
+    .message.error {
+        color: red; 
+    }
+    .message.success{
+        color: green; 
     }
     
     .addition button:hover,
