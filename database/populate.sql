@@ -55,18 +55,14 @@ VALUES
 
     
 
-INSERT OR IGNORE INTO ShippingForm (shippingFormID, itemID, sellerID, buyerID, description, date)
+INSERT OR IGNORE INTO ShippingForm (shippingFormID, itemID, sellerID, buyerID, date)
 VALUES 
     
-    (1, 3, 2, 1, 'not fragile. FedEx. estimated arrival : 2025-04-19', '2022-04-19'),
-    (2, 15, 2, 3, 'Fast shipping via UPS.', '2024-05-13'),
-    (3, 17, 4, 1, 'Handle with care.', '2024-05-13'),
-    (4, 20, 1, 5, 'Fast shipping via FedEx.', '2024-05-13'),
-    (5, 21, 1, 4, 'Handle with care.', '2024-05-13');
-    --(6, 1, 1, 2, 'very good item. very fragile! transport carefully.', '2022-04-19'),
-    --(7, 8, 4, 1, 'Express shipping available.', '2024-05-13'),
-    --(8, 9, 3, 2, 'Signature required upon delivery.', '2024-05-13'),
-    --(9, 10, 6, 1, 'Standard shipping.', '2024-05-13');
+    (1, 3, 2, 1, '2022-04-19'),
+    (2, 15, 2, 3, '2024-05-13'),
+    (3, 17, 4, 1, '2024-05-13'),
+    (4, 20, 1, 5, '2024-05-13'),
+    (5, 21, 1, 4, '2024-05-13');
 
 
 INSERT OR IGNORE INTO Message (messageID, senderID, recipientID, content, time)
