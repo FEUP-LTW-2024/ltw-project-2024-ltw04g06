@@ -38,6 +38,12 @@ h1{
         }
     }
     
+    .fa-lock {
+        margin-left: 1em;
+    }
+    #password {
+        margin: .5em 0em .5em .5em;
+    }
 
     header{
         color: #800000;
@@ -49,6 +55,12 @@ h1{
 }
 .message {
     color: red; 
+}
+
+
+
+.fa-eye-slash:before {
+    content: '\f070'; 
 }
 
 
