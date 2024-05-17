@@ -31,5 +31,5 @@ if ($messageID !== false) {
           <div class="msg">' . htmlspecialchars($content) . '</div>';
     exit;
 } else {
-    die(header('Location: /'));
+    die(header('Location: /../pages/error.php'));
 }
