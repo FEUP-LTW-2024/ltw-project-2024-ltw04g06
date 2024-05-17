@@ -1,4 +1,4 @@
-<?php function editShippingForm(){ ?>
+<?php function editShippingForm(User $user){ ?>
 <head>
     <link rel="stylesheet" href="../css/shippingForm.css">
 </head>
@@ -6,36 +6,23 @@
 
 <h1><i class="fa-solid fa-truck"> Shipping</i></h1>
 <div class="">
-        <form action="/../actions/action_edit_profile.php" method="post">
-            <h2><i class="fa-solid fa-person"></i> Personal infos</h2>
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Enter your first name">
-            <br>
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Enter your last name">
-            <br>
-            <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone" placeholder="Enter your last phone number">
-            <br>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email">
-            <br>
+<div class="divisor">
+    <form action="/../actions/action_edit_shippingForm.php" method="post">
+            <h2><i class="fa-solid fa-person"></i> Buyer</h2>
+            <div class="line"> <label for="fname">Name : </label>
+            <input type="text" name="name" placeholder="<?php $user->name?>"></div>
+            <div class="line"><label for="phone">Phone : </label>
+            <input type="number" name="phone" placeholder="<?php $user->phoneNumber?>"></div>
+            <div class="line"><label for="email">Email : </label>
+            <input type="email" name="email" placeholder="<?php $user->email?>"></div>
             <h2><i class="fa-solid fa-location-dot"></i> Delivery location</h2>
-            <label for="address">Address</label>
-            <input type="text" id="Address" name="Address" placeholder="Enter your adress">
-            <br>
-            <label for="Postal">Postal/Zip Code</label>
-            <input type="text" id="Postal" name="Postal" placeholder="Enter your zip code">
-            <br>
-            <h2><i class="fa-solid fa-money-check-dollar"></i> Payment</h2>
-            <p>  > Choose one of the methodes to pay </p>
-            <label for="MbWay">MbWay</label>
-            <input type="text" id="MbWay" name="MbWay" placeholder="Enter your number for Mbway Payment">
-            <br>
-            <label for="bank">Bank Account</label>
-            <input type="text" id="bank" name="bank" placeholder="Enter your bank account number">
-            <br>
-            <br><br>
+            <div class="line"><label for="address">Address : </label>
+            <input type="text" name="address"></div>
+            <h2><i class="fa-solid fa-money-check-dollar"></i> Payment : </h2>
+            <div class="line">
+                <label for="address">CreditCard number : </label>
+                <input type="number" name="email"></div>
+            </div>
             <input type="submit" value="Buy">
         </form>
     </div>

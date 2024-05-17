@@ -12,27 +12,25 @@
         exit;
     }
 
-    $sellerID = $session->getID();
+    $buyerID = $session->getID();
 
     $address = $_POST['address'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $description = $_POST['description'];
+    $phoneNumber = $_POST['phone'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
 
-    $editAddress = User::editAddress($db, $sellerID, $address);
-    $editPhoneNumber = User::editPhoneNumber($db, $sellerID, $phoneNumber);
-    $editDescription = ShippingForm::editDescription($db, $sellerID, $description);
+    $editAddress = User::editAddress($db, $buyerID, $address);
+    $editPhoneNumber = User::editPhoneNumber($db, $buyerID, $phoneNumber);
+    $editEmail = User::editEmail($db, $buyerID, $email);
+    $editName = User::editName($db, $buyerID, $name);
 
-    if($editAddress || $editPhoneNumber || $editDescription){
+    if($editAddress || $editPhoneNumber || $editEmail || $editName){
         $session->addMessage('success', 'Edit shipping Form successful!');
-        header('Location: /../pages/shippingForm.php');
+        header('Location: /../pages/creditCard.php');
         }
         else{
             $session->addMessage('error', 'Did not edit shipping Form settings!');
             header('Location: /../pages/settings.php');
         }
-
-
-
-
 
 ?>

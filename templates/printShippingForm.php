@@ -25,8 +25,6 @@
             <h2><i class="fa-solid fa-person"></i> Seller</h2>
             <div class="line"> <label for="fname">Name : </label>
             <?= $seller->name ?></div>
-            <div class="line"><label for="phone">Phone : </label>
-            <?= $seller->phoneNumber ?></div>
             <div class="line"> <label for="email">Email : </label>
            <?= $seller->email ?>.com</div>
             <h2><i class="fa-solid fa-cart-shopping"></i> Product</h2>

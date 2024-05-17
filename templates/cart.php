@@ -25,7 +25,9 @@
             <?php } ?>
         </div>
         <p class="total">Total: <?= number_format($totalPrice, 2, ',', '.') ?>€</p>
-        <button class="buy">Buy all</button>
+        <form action="/../pages/editShipping.php" method="post">
+            <button class="buy" type="submit">Buy all</button>
+        </form>
     </body>
 </html>   
 </main>
