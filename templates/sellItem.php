@@ -20,11 +20,13 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">Title</label>
-                <input class="title-input" type="text" id="title" name="title">
+                <textarea class="title-input" type="text" rows="1" cols="24" id="title" name="title"></textarea>
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
-                    Load photo
+                    <div class="load-photo">
+                       Load photo
+                    </div>
                 </div>
                 <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)">
                 <img id="imagemExibida" src="#" alt="Minha Imagem" style="display: none;">
@@ -34,14 +36,14 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">Description</label>
-                <input class="description-input" type="text" name="description">
+                <textarea class="description-input" name="description" rows="10" cols="58"></textarea>
             </div>
             <div class="brand">
                 <label for="brand">Brand</label>
-                <input class="brand-input" type="text" name="brand">
+                <textarea class="brand-input" type="text" rows="1" cols="19" name="brand"></textarea>
         
                 <label class="model-label" for="model">Model</label>
-                <input class="model-input" type="text" name="model">
+                <textarea class="model-input" type="text" rows="1" cols="20" name="model"></textarea>
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">Condition</label>
@@ -86,7 +88,7 @@
                 </select>
             
                 <label class="price-label" for="price">Price</label>
-                <input class="price-input" type="text" name="price">
+                <textarea class="price-input" type="text" rows="1" cols="20" name="price"></textarea>
             </div>
         </div>
     </div>        

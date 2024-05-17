@@ -23,11 +23,13 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">New title</label>
-                <input class="title-input" type="text" id="title" name="newName">
+                <textarea placeholder="<?= $item->name?>" class="title-input" type="text" rows="1" cols="24" id="title" name="newName"></textarea>
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
-                    Load new photo
+                    <div class="load-photo">
+                        Load new photo
+                    </div>
                 </div>
                 <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)" multiple>
                 <img id="imagemExibida" src="#" alt="Minha Imagem" style="display: none;">
@@ -37,22 +39,23 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">New description</label>
-                <input class="description-input" type="text" name="newDescription" >
+                <textarea placeholder="<?= $item->description?>" class="description-input" name="newDescription" rows="10" cols="58"></textarea>
             </div>
             <div class="brand">
                 <label for="brand">New brand</label>
-                <input class="brand-input" type="text" name="newBrand">
+                <input placeholder="<?= $item->brand?>" class="brand-input" type="text" name="newBrand">
         
                 <label class="model-label" for="model">New model</label>
-                <input class="model-input" type="text" name="newModel">
+                <textarea placeholder="<?= $item->model?>" class="model-input" type="text" rows="1" cols="20" name="newModel"></textarea>
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">New condition</label>
                 <select class="condition" name="newConditionName">
                 <?php
                         $db = getDatabaseConnection();
+                        $conditionItem = Condition::getCondition($db, $item->conditionID);
                         $conditions = Condition::getAllConditions($db);
-                        echo '<option value="NULL" selected>Not selected</option>';
+                        echo '<option value="NULL" selected>' . htmlspecialchars($conditionItem->usage) . '</option>';
                         foreach ($conditions as $condition) {
                             echo '<option value= "' .  htmlspecialchars($condition->usage) . '">' .  htmlspecialchars($condition->usage) . '</option>';
                         }
@@ -79,8 +82,9 @@
                 <select name="newCategoryName">
                 <?php
                         $db = getDatabaseConnection();
+                        $categoryItem = Category::getCategory($db, $item->categoryID);
                         $categories = Category::getAllCategories($db);
-                        echo '<option value="NULL" selected>Not selected</option>';
+                        echo '<option value="NULL" selected>' . htmlspecialchars($categoryItem->name) . '</option>';
                         foreach ($categories as $category) {
                             echo '<option value= "' . htmlspecialchars($category->name) . '">' .htmlspecialchars($category->name) . '</option>';
                         }
@@ -89,7 +93,7 @@
                 </select>
             
                 <label class="price-label" for="price">New price</label>
-                <input class="price-input" type="text" name="newPrice">
+                <textarea placeholder="<?= $item->price?>€" class="price-input" type="text" rows="1" cols="20" name="newPrice"></textarea>
             </div>
         </div>
     </div>        
