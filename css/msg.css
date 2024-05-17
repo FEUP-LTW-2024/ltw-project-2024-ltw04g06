@@ -141,11 +141,10 @@ body{
 }
 
   @media (max-width: 70em){
-    img{
+    .caixa img{
         border-radius: 50%;
         width: 1em;
         border: .15em solid var(--beige);
-        
     }
     .sideBar{
         margin: 1%;

@@ -24,7 +24,7 @@ $message = Message::getMessage($db, $messageID);
 
 if ($messageID !== false) {
     echo '<div class="fr">
-            <img src=' . User::getUserPic($db, $sender->userID) . '>
+            <img class="imgs" src=' . User::getUserPic($db, $sender->userID) . '>
             <span>' . htmlspecialchars($sender->username) . '</span>
             <div class="time"> ' . htmlspecialchars($message->time) . ' </div>
           </div>
