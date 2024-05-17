@@ -63,17 +63,15 @@
                 </select>
                 <label class="size-label" for="size">New size</label>
                 <div class="size2">
-                <?php
+                    <?php
                     $db = getDatabaseConnection();
                     $sizes = Size::getAllSizes($db);
                     foreach ($sizes as $size) {
-                        echo '<label for='.htmlspecialchars($size->name) . '>';
-                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="newSizeName" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
-                        echo '</label> ';
+                        $name = htmlspecialchars($size->name);
+                        echo '<input type="radio" id="' . $name . '" name="sizes" value="' . $name . '" class="radio-input">';
+                        echo '<label for="' . $name . '" class="radio-label">' . $name . '</label>';
                     }
-                    echo '</select>';
                 ?>
-
  
                 </div>
             </div>

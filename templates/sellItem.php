@@ -20,7 +20,7 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">Title</label>
-                <textarea class="title-input" type="text" rows="1" cols="24" id="title" name="title"></textarea>
+                <textarea placeholder="You must fill this." class="title-input" type="text" rows="1" cols="24" id="title" name="title"></textarea>
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
@@ -36,7 +36,7 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">Description</label>
-                <textarea class="description-input" name="description" rows="10" cols="58"></textarea>
+                <textarea placeholder="You must fill this." class="description-input" name="description" rows="10" cols="58"></textarea>
             </div>
             <div class="brand">
                 <label for="brand">Brand</label>
@@ -63,11 +63,10 @@
                     $db = getDatabaseConnection();
                     $sizes = Size::getAllSizes($db);
                     foreach ($sizes as $size) {
-                        echo '<label for='.htmlspecialchars($size->name) . '>';
-                        echo '<input type="radio" id="' . htmlspecialchars($size->name) . '" name="sizes" value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name);
-                        echo '</label> ';
+                        $name = htmlspecialchars($size->name);
+                        echo '<input type="radio" id="' . $name . '" name="sizes" value="' . $name . '" class="radio-input">';
+                        echo '<label for="' . $name . '" class="radio-label">' . $name . '</label>';
                     }
-                    echo '</select>';
                 ?>
 
  
@@ -88,7 +87,7 @@
                 </select>
             
                 <label class="price-label" for="price">Price</label>
-                <textarea class="price-input" type="text" rows="1" cols="20" name="price"></textarea>
+                <textarea placeholder="You must fill this." class="price-input" type="text" rows="1" cols="20" name="price"></textarea>
             </div>
         </div>
     </div>        

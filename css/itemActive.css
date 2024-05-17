@@ -33,17 +33,12 @@ button.wishlist {
 }
 
 .submitButton{
-    background: var(--bordeaux);
+    background: #2E6963;
     color: white;
     border-radius: 1em;
     padding: 1px 30px;
-    border: 3px solid var(--bordeaux);
+    border: 3px solid #2E6963;
     margin-top: 1em;
-}
-.submitButton:hover{
-    background: var(--backgroundColor);
-    color: var(--bordeaux);
-    border: 3px solid var(--bordeaux);    
 }
 
 .products{

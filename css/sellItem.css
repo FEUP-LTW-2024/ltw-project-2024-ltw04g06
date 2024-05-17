@@ -82,10 +82,6 @@ label{
     margin-bottom: 10px;
 }
 
-.brand input{
-    border: 1px solid #D19F9D;
-}
-
 .title input{
     padding-right: 30px; /*size of box*/
 }
@@ -114,20 +110,11 @@ label{
     display: none; 
 }
 
-.size2 label {
-    display: inline-block; 
-    cursor: pointer; 
-    color: #D19F9D;
-}
 
-.size2 label:active{
-    color:var(--bordeaux);
-    background-color: var(--backgroundColor);
-}
 
 .quadrado {
-    width: 170px;
-    height: 200px;
+    width: 200px;
+    height: 250px;
     background-color: var(--backgroundColor);
     border-radius: 10px;
     border-style: dotted;
@@ -178,8 +165,8 @@ label{
 }
 
 #imagemExibida {
-    width: 170px; 
-    height: 200px; 
+    width: 200px; 
+    height: 250px; 
     display: block; 
     margin: auto; 
     border-radius: 8px; 
@@ -196,5 +183,30 @@ label{
 }
 
 .load-photo{
-    margin-top: 80px;
+    margin-top: 100px;
+}
+
+.size2 .radio-label {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid var(--bordeaux);
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: black; 
+}
+
+.size2 .radio-input {
+    display: none; 
+}
+
+.size2 .radio-input:checked + .radio-label {
+    background-color: var(--bordeaux);
+    color: white;
+}
+
+.size2 .radio-label:hover {
+    background-color: var(--bordeaux);
+    color: white;
 }

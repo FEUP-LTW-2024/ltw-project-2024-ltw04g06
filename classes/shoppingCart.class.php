@@ -21,7 +21,6 @@ declare(strict_types = 1);
 			}
 		
 			if (empty($items)) {
-				throw new Exception("ShoppingCart not found with ID: $shoppingCartID");
 				return null;
 			}
 			return $items;
