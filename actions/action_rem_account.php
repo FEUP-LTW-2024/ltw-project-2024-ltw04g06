@@ -11,6 +11,9 @@
         exit;
     }
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+
     $userID = $session->getID();
 
 	if(User::removeUser($db,$userID)){

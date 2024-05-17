@@ -15,10 +15,11 @@
          <p class="edit"><i class="fas fa-pencil-alt"></i> Write only on the parameters you want to change.</p>
 <?php } ?>
 
-<?php function editItemForm($item){ ?>
+<?php function editItemForm($item, $session){ ?>
     <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data">
 
  <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+ <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <div class="form">
         <div class="left-column">
             <div class="title">
@@ -93,6 +94,9 @@
             </div>
         </div>
     </div>        
+    <?php 
+        $session->displayMessages();
+    ?>    
     <input type="submit" class="submitButton" value="Continue">
     </form>
 </main>

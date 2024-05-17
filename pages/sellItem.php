@@ -12,5 +12,5 @@
     $user = User::getUser($db, $userID);
     topo($db, $user);
     displaySellItem();
-    sellItemForm();
+    sellItemForm($session);
 ?>

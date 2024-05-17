@@ -14,6 +14,6 @@
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
     topo($db, $user);
-    showUsers($db, $userID, User::getAllUsers($db));
+    showOptions($db, $session, $userID, User::getAllUsers($db));
 
 ?>

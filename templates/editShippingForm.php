@@ -7,6 +7,7 @@
 <h1><i class="fa-solid fa-truck"> Shipping</i></h1>
 <div class="">
         <form action="/../actions/action_edit_profile.php" method="post">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <h2><i class="fa-solid fa-person"></i> Personal infos</h2>
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="firstname" placeholder="Enter your first name">

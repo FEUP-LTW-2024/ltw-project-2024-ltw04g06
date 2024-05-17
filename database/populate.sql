@@ -272,5 +272,6 @@ INSERT OR IGNORE INTO Image (link, imageID)
     ('/../images/profilePictures/toze_pp.jpg', 24),
     ('/../images/profilePictures/alice_pp.jpg', 25),
     ('/../images/profilePictures/bob_pp.jpg', 26),
-    ('/../images/profilePictures/charlie_pp.jpg', 27);
+    ('/../images/profilePictures/charlie_pp.jpg', 27),
+    ('/../images/profilePictures/default.jpg', 28);
     
