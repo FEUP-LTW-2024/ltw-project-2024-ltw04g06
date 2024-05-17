@@ -198,3 +198,9 @@ label[for="description"] + input {
     margin-left: 6em;
     margin-bottom: 2.5em;
 }
+.message.error {
+    color: red; 
+}
+.message.success{
+    color: green; 
+}

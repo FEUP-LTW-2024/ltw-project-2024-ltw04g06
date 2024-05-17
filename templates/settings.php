@@ -16,12 +16,14 @@
     <?php } ?>
 <?php function ProfileSettins(PDO $db, $user,$session){?>
     <div class="profile-setting">
-        <form action="/../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
+        <form action="/../actions/action_edit_profile.php" id="formProfile" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <div class="img">
-                <input type="file" id="foto" accept="image/*" class="foto-input" name="foto" onchange="showImage(this)" multiple>
-                <img id="imagemExibida" src="<?=User::getUserPic($db, $user->userID)?>" alt="Minha Imagem" style="display: none;">
-                <button><i class="fa-solid fa-pen-to-square"></i> Change Photo</button><br>
+                <img id="preview" src="<?=User::getUserPic($db, $user->userID)?>" alt="Foto de Perfil">            
+                <label for="Image">Profile image</label>
+                <input type="file" name="foto" accept="image/*" onchange="previewImage(event)" title="Select new profile image"> <br>
             </div>
+            <br>
             <label for="Name">Name</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($user->name); ?>"><br><br>
             <label for="AboutMe">About me</label>
@@ -39,6 +41,7 @@
 <?php function AccountSettings($user,$session){?>
     <div class="account-setting">
     <form action="/../actions/action_edit_account.php" method="post">
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="Username">Username</label>
             <input type="text" name="username" value="<?php echo htmlspecialchars($user->username); ?>"><br><br>
             <label for="Email">Email</label>
@@ -48,6 +51,7 @@
     </div>
     <div class="account-setting">
     <form action="/../actions/action_rem_account.php" method="post">
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <h2>Account desactivation</h2>
         <p>Your account will be deleted and can <span>NOT</span> be recovered</p>
         <button>Delete account</button>
@@ -59,6 +63,7 @@
 <?php function SecuritySettings($user,$session){?>
     <div class="security-setting">
     <form action="/../actions/action_edit_security.php" method="post">
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="CurrentPassword">Current Password</label>
             <input type="password" name="currentPassword" ><br><br>
             <label for="NewPassword">New Password</label>

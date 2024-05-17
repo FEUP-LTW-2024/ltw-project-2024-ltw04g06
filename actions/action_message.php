@@ -17,6 +17,8 @@ $recipientID = $_POST['recipientID'];
 $senderID = $_POST['senderID'];
 $sender = User::getUser($db, $senderID);
 
+if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
 $messageID = Message::addMessage($db, $senderID, $recipientID, $content);
 $message = Message::getMessage($db, $messageID);
 

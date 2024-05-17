@@ -6,7 +6,7 @@
     <main>
 <?php } ?>
 
-<?php function itemSoldForm($item, $db){ ?>
+<?php function itemSoldForm(Item $item, PDO $db, int $userID){ ?>
     <div class="form">
         <div class="left-column">
            <div class="products">
@@ -18,6 +18,8 @@
             
                     <p class="item-name"><?= $item->name ?></p>
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                         <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                     </form>
@@ -25,13 +27,15 @@
                 <label for="foto" class="foto-label">
                 <div class="image">
                     <form id="itemActive<?= $item->itemID ?>" action="" method="post" class="hidden">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
                     <img onclick="document.getElementById('itemActive<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
                     </div>   
             </label> 
                </div>
-           </div>               
+           </div>             
         </div>
         <div class="right-column">
             <div class="description">
@@ -70,15 +74,9 @@
         </div>
     </div>
     <?php 
-          $db = getDatabaseConnection();
-          $session = new Session();
-          if (!$session->isLoggedIn()) {
-              header('Location: /../pages/signIn.php');
-              exit;
-          }
-          $userID = $session->getID();
-        if ($item->$sellerID ==  $userID){?>
-            <form action="/../actions/action_edit_shippingForm.php" method="post">
+        if ($item->sellerID == $userID){?>
+            <form action="/../pages/printShipping.php" method="post">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                 <button type="submit" class="print">Print Ship Form</button>
             </form>
