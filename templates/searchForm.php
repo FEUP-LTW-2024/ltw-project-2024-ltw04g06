@@ -67,7 +67,7 @@
             <br>
             <button type="submit">Search</button>
         </div>   
-            
+    </form>
 
 </div>
 <?php } ?>

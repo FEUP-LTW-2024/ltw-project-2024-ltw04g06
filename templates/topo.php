@@ -18,10 +18,10 @@ function topo(PDO $db, User $user){
                 <div id="elementToToggle" class="hidden">
                     <?php searchForm(); ?>
                 </div>
-                <form action="/../pages/home.php" method="post">
+                <form class="pesqForm" action="/../pages/home.php" method="post">
                     <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                     <input name="word" type="text">
-                    <button type="submit" class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button type="submit" class="pesquisaTopo"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
             <h3><i class="fa-regular fa-bell"></i></h3> 
