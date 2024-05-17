@@ -9,7 +9,9 @@ function topo(PDO $db, User $user){
 <body>
     <div class="topo">
         <div class="firstRow">
-            <h2>LOGO</h2>
+        <a href="/../pages/home.php">
+                <img class="logo" src="<?= htmlspecialchars(Image::getImage($db, 0)) ?>">
+            </a>
             <div class="barra">
                 <button class="all" id="showFormButton">All<i class="fa-solid fa-caret-down"></i>
                 </button>

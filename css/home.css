@@ -3,6 +3,7 @@ body{
     --beige: #D19F9D;
     --bordeaux: #800000;
     --borderLine: #E2D0BC;
+    --grayText : #63656C;
 }
 .biggest-sellers {
     color: var(--bordeaux);
@@ -19,22 +20,27 @@ body{
     background: var(--backgroundColor);
     display: flex; 
     flex-direction: row; 
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+
 
     
     header {
+        position: relative; 
         width: 100%;
         cursor: pointer;
         align-self: center;
         display: flex; 
         flex-direction: row; 
         flex-wrap: wrap;
-    
         margin-bottom: 1em;
+
+
         img{
             flex-wrap: wrap;
             border-radius: 50%;
             border: .15em solid var(--bordeaux);
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+            transition: all 0.3s ease-out;
 
             width: 6em;
             height: 6em;
@@ -48,26 +54,41 @@ body{
             color: white;
             transition: all 0.3s ease-out;
             border-radius: 50%;
+
     
         }
-        .username{
-            font-weight: bold;
-            font-size: large; 
 
+
+        .username{
+            color:var(--bordeaux);
+            font-weight:normal;
+            font-size: x-large;
         }
-        .user-info { /* isto nao está a dar*/
-            display: none; /* Initially hide the user information */
-            position: absolute; /* Position it relative to the header */
-            top: 100%; /* Place it below the header */
-            left: 0; /* Align it with the left edge of the header */
-            background-color: white;
-            padding: 0.5em;
-            border: 1px solid var(--borderLine);
-            border-radius: 5px;
+
+        .crown {
+            display: block;
+            font-size: large;
+            color: #de9a1c;            
+            opacity: 0; 
+            max-height: 0; 
+            transition: opacity 0.5s ease, max-height 0.5s ease;
         }
-        
-        .user-info.hidden {
-            display: none; /* Hide the user information when the hidden class is applied */
+        .crown.visible {
+            opacity: 1; 
+            max-height: 2em; 
+        }
+
+        .user-info {
+            display: block;
+            font-size: large;
+            opacity: 0; 
+            max-height: 0; 
+            color: var(--grayText); 
+            transition: opacity 0.5s ease, max-height 0.5s ease;
+        }
+        .user-info.visible {
+            opacity: 1; 
+            max-height: 1em; 
         }
     }
     

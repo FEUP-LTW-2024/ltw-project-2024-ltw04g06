@@ -1,16 +1,18 @@
 <?php
-function displayNameLogo()
+    require_once(__DIR__ . '/../classes/image.class.php');
+
+function displayNameLogo($db)
 { 
 ?>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="/../css/style.css">
+        <script src="../js/script.js" defer></script>
     </head>
     <main>
-        <h1>Random name/logo</h1>
+    <img class="logoLogs" src="<?= htmlspecialchars(Image::getImage($db, 0)) ?>">
 <?php 
 } 
-
 function signInBox($session)
 { 
 ?>
@@ -24,7 +26,9 @@ function signInBox($session)
             <label for=""><i class="fa-regular fa-user"></i></label>
             <input type="text" name="userField" placeholder="Email or username"><br>
             <label for=""><i class="fa-solid fa-lock"></i></label>
-            <input type="password" name="password" placeholder="Password"><br>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <i class="fa-solid fa-eye" id="togglePassword"></i><br>
+
             <?php 
             $session->displayMessages();
             ?>
@@ -70,7 +74,9 @@ function signUpBox($session)
             }
             ?>
             <label for=""><i class="fa-solid fa-lock"></i></label>
-            <input type="password" name="password" placeholder="Password"><br>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <i class="fa-solid fa-eye" id="togglePassword"></i><br>
+
             <?php if ($passwordError) {
                 echo '<div class="message passwordError">' . htmlspecialchars($passwordError['text']) . '</div>';
             }

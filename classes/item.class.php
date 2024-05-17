@@ -97,6 +97,35 @@ require_once(__DIR__ . '/image.class.php');
 			}
 			return $items;
     }
+    static function getNumAvailableItems(PDO $db, int $sellerID) {
+      $items = self::getUserItems($db, $sellerID);
+      if ($items === null) {
+          return 0;
+      }
+      $availableCount = 0;
+      foreach ($items as $item) {
+          $status = self::getItemStatus($db, $item->itemID);
+          if ($status === "Available") {
+              $availableCount++;
+          }
+      }
+      return $availableCount;
+    }
+    static function getNumSoldItems(PDO $db, int $sellerID) {
+      $items = self::getUserItems($db, $sellerID);
+      if ($items === null) {
+          return 0;
+      }
+      $soldCount = 0;
+      foreach ($items as $item) {
+          $status = self::getItemStatus($db, $item->itemID);
+          if ($status === "Sold") {
+              $soldCount++;
+          }
+      }
+      return $soldCount;
+    }
+    
 
     static function getFilteredItems(PDO $db, $category, $condition, $minPrice, $size, $maxPrice) {
       $query = 'SELECT * FROM Item join Category on Item.categoryID = Category.categoryID

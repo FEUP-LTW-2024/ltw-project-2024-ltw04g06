@@ -12,6 +12,7 @@ function anuncio(PDO $db){
     <div class="anuncios">
     <?php
     $users = User::getTopSellers($db);
+    $firstUser = true;
     foreach ($users as $user) {
     ?>
         <form id="profileForm<?= htmlspecialchars($user->userID) ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
@@ -19,28 +20,27 @@ function anuncio(PDO $db){
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']); ?>">
         </form>
         <header onclick="document.getElementById('profileForm<?= htmlspecialchars($user->userID) ?>').submit();">
-            <img src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)); ?>" alt="">
-            <p class="username"><?= htmlspecialchars($user->username); ?></p>
+
+        <img src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)); ?>" alt="" onmouseover="showUserInfo(this)" onmouseout="hideUserInfo(this)">
+            <div class="user-details">
+            <div class="crown">
+            <?php if ($firstUser): ?>
+                <i class="fas fa-crown"></i>
+            <?php  $firstUser = false;endif; ?>
+            </div>
+                <p class="username"><?= htmlspecialchars($user->username); ?></p>
+                <div class="user-info">
+                <p>Available items: <?= htmlspecialchars(Item::getNumAvailableItems($db, $user->userID)); ?></p>
+                <p>Sold Items: <?= htmlspecialchars(Item::getNumSoldItems($db, $user->userID)); ?></p>
+            </div>
         </header>
-        <div class="user-info hidden"><?= htmlspecialchars($user->email); ?></div>
         
     <?php 
     } 
     ?> 
     </div>
 </main>
-<script>
-    function showUserInfo(email) {
-        const userInfo = document.querySelector('.user-info');
-        userInfo.textContent = email;
-        userInfo.classList.remove('hidden');
-    }
-
-    function hideUserInfo() {
-        const userInfo = document.querySelector('.user-info');
-        userInfo.classList.add('hidden');
-    }
-</script>
+<script src="../js/showInfo.js"></script>
 <?php 
 } 
 ?>

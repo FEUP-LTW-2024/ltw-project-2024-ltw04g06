@@ -3,13 +3,16 @@ body{
     --beige: #D19F9D;
     --bordeaux: #800000;
     --borderLine: #E2D0BC;
+    --grayText : #63656C;
+
+    
 }
 @media (max-width: 500em){
     main{
         display: flex;
         flex-direction: row;
     }
-    img{
+    .imgs{
         border-radius: 50%;
         width: 2em;
         border: .15em solid var(--beige);
@@ -49,6 +52,8 @@ body{
         background: var(--beige);
     }
     .mensagem{
+
+
         width: 60%;
         margin: 2em auto;
         
@@ -75,6 +80,8 @@ body{
             margin: 1em;
             position: relative;
             .msg{
+                color: var(--grayText); 
+            font-weight: lighter;
                 max-width: 90%;
                 display: flex;
                 flex-direction: row;
@@ -82,6 +89,7 @@ body{
                 margin-left: 7%;
                 font-size: small;
                 word-wrap: break-word;
+                font-family: Georgia, 'Times New Roman', Times, serif; 
             }
             .fr{
                 display: flex;

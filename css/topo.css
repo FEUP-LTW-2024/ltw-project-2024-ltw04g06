@@ -100,6 +100,10 @@ body{
       margin: 0;
       list-style-type: none;
       display: flex;
+      li.active a {
+        color: #FFFFFF; /* Change to your desired color for active category */
+        background-color: #800000; /* Change to your desired background color for active category */
+    }
       li{
         transition: all 1s ease-in-out;
         margin-right: 3em;
@@ -207,3 +211,12 @@ a{
     }
     
   }
+  @media (max-width: 500em) {
+    .logo {
+      width: 10em;
+      height: auto;
+    }
+    .logo:hover {
+      cursor: pointer;
+    }
+}

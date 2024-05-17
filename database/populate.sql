@@ -242,6 +242,7 @@ INSERT OR IGNORE INTO MessageUser (messageID, userID)
 
 INSERT OR IGNORE INTO Image (link, imageID)
     VALUES
+    ('/../images/logo.jpg', 0),
     ('/../images/items/unicorn_dab_shirt.png', 1),
     ('/../images/items/plushies_0.png', 2),
     ('/../images/items/unicorn_dab_shirt.png', 3),
