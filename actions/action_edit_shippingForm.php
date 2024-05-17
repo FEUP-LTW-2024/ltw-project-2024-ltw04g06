@@ -12,32 +12,26 @@
         exit;
     }
 
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
-
-
-    $sellerID = $session->getID();
-
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }~
+    
     $address = $_POST['address'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $description = $_POST['description'];
+    $phoneNumber = $_POST['phone'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+
+    $editAddress = User::editAddress($db, $buyerID, $address);
+    $editPhoneNumber = User::editPhoneNumber($db, $buyerID, $phoneNumber);
+    $editEmail = User::editEmail($db, $buyerID, $email);
+    $editName = User::editName($db, $buyerID, $name);
 
 
-    $name = User::editName($db, $user)
-    $editAddress = User::editAddress($db, $sellerID, $address);
-    $editPhoneNumber = User::editPhoneNumber($db, $sellerID, $phoneNumber);
-
-
-    if($editAddress || $editPhoneNumber || $editDescription){
+    if($editAddress || $editPhoneNumber || $editEmail || $editName){
         $session->addMessage('success', 'Edit shipping Form successful!');
-        header('Location: /../pages/shippingForm.php');
+        header('Location: /../pages/creditCard.php');
         }
         else{
             $session->addMessage('error', 'Did not edit shipping Form settings!');
             header('Location: /../pages/settings.php');
         }
-
-
-
-
 
 ?>

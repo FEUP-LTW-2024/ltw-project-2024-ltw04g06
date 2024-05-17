@@ -14,8 +14,8 @@
     $userID = $session->getID();
     $user = User::getUser($db,$userID);
 
-  topo($db, $user);
-  editShippingForm();
+    topo($db, $user);
+    editShippingForm($user);
 
 ?>
 
