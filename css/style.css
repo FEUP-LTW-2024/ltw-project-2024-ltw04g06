@@ -89,3 +89,11 @@ a{
     color: var(--bordeaux);
     border: 3px solid var(--bordeaux);
 }
+@media (max-width: 500em) {
+    .logoLogs {
+        margin: 5% 30% ;
+        grid-column: 2;
+      width: 15em;
+      height: auto;
+    }
+}

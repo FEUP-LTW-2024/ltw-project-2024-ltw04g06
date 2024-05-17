@@ -12,7 +12,7 @@ body{
         display: flex;
         flex-direction: row;
     }
-    img{
+    .imgs{
         border-radius: 50%;
         width: 2em;
         border: .15em solid var(--beige);

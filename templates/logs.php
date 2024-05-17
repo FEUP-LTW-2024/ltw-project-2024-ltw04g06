@@ -1,5 +1,7 @@
 <?php
-function displayNameLogo()
+    require_once(__DIR__ . '/../classes/image.class.php');
+
+function displayNameLogo($db)
 { 
 ?>
     <head>
@@ -8,10 +10,9 @@ function displayNameLogo()
         <script src="../js/script.js" defer></script>
     </head>
     <main>
-        <h1>Random name/logo</h1>
+    <img class="logoLogs" src="<?= htmlspecialchars(Image::getImage($db, 0)) ?>">
 <?php 
 } 
-
 function signInBox($session)
 { 
 ?>

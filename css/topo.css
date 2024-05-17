@@ -211,3 +211,12 @@ a{
     }
     
   }
+  @media (max-width: 500em) {
+    .logo {
+      width: 10em;
+      height: auto;
+    }
+    .logo:hover {
+      cursor: pointer;
+    }
+}

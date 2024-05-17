@@ -19,7 +19,7 @@ function sideBar(PDO $db, int $userID, int $receiverID){
             ?>
             <input checked type="radio" id="<?= htmlspecialchars($contact->username) ?>" name="userID" class="radio-btn" value="<?= htmlspecialchars($contact->userID) ?>">
             <label for="<?= htmlspecialchars($contact->username) ?>" class="pessoa">
-                <img src="<?= htmlspecialchars(User::getUserPic($db, $contact->userID)) ?>" alt="">
+                <img class="imgs" src="<?= htmlspecialchars(User::getUserPic($db, $contact->userID)) ?>" alt="">
                 <p><?= htmlspecialchars($contact->username) ?></p>
             </label> 
             <?php } ?>
@@ -28,7 +28,7 @@ function sideBar(PDO $db, int $userID, int $receiverID){
             ?>
             <input type="radio" id="<?= htmlspecialchars($contact->username) ?>" name="userID" class="radio-btn" value="<?= htmlspecialchars($contact->userID) ?>">
             <label for="<?= htmlspecialchars($contact->username) ?>" class="pessoa">
-                <img src="<?= htmlspecialchars(User::getUserPic($db, $contact->userID)) ?>" alt="">
+                <img class="imgs" src="<?= htmlspecialchars(User::getUserPic($db, $contact->userID)) ?>" alt="">
                 <p><?= htmlspecialchars($contact->username) ?></p>
             </label> 
             <?php } ?>
@@ -60,7 +60,7 @@ function messageBox(PDO $db, int $userID1, int $userID2){
     <link rel="stylesheet" href="../css/msg.css">
 </head>
             <div class="pessoa">
-                <img src=" <?=User::getUserPic($db, $user2->userID)?> ">
+                <img class="imgs" src=" <?=User::getUserPic($db, $user2->userID)?> ">
                 <span><?=$user2->username?></span>
                 <button><i class="fa-regular fa-trash-can"></i></button>
             </div>
@@ -70,7 +70,7 @@ function messageBox(PDO $db, int $userID1, int $userID2){
                 $messageUser = User::getUser($db, $m->senderID);
                 ?>
                     <div class="fr">
-                        <img src="<?= User::getUserPic($db, $messageUser->userID) ?>" alt="">
+                        <img class="imgs" src="<?= User::getUserPic($db, $messageUser->userID) ?>" alt="">
                         <span><?=$messageUser->username?></span>
                         <div class="time"><?=$m->time?></div>
                     </div>
