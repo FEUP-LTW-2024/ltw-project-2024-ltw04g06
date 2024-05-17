@@ -19,28 +19,21 @@ function anuncio(PDO $db){
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']); ?>">
         </form>
         <header onclick="document.getElementById('profileForm<?= htmlspecialchars($user->userID) ?>').submit();">
-            <img src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)); ?>" alt="">
-            <p class="username"><?= htmlspecialchars($user->username); ?></p>
+        <img src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)); ?>" alt="" onmouseover="showUserInfo(this)" onmouseout="hideUserInfo(this)">
+            <div class="user-details">
+                <p class="username"><?= htmlspecialchars($user->username); ?></p>
+                <div class="user-info">
+                <p><?= htmlspecialchars($user->email); ?></p>
+                <p><?= htmlspecialchars($user->name); ?></p>
+            </div>
         </header>
-        <div class="user-info hidden"><?= htmlspecialchars($user->email); ?></div>
         
     <?php 
     } 
     ?> 
     </div>
 </main>
-<script>
-    function showUserInfo(email) {
-        const userInfo = document.querySelector('.user-info');
-        userInfo.textContent = email;
-        userInfo.classList.remove('hidden');
-    }
-
-    function hideUserInfo() {
-        const userInfo = document.querySelector('.user-info');
-        userInfo.classList.add('hidden');
-    }
-</script>
+<script src="../js/showInfo.js"></script>
 <?php 
 } 
 ?>

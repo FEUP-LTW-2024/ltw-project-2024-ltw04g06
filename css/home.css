@@ -52,22 +52,19 @@ body{
         }
         .username{
             font-weight: bold;
-            font-size: large; 
+            font-size: larger; 
 
         }
-        .user-info { /* isto nao está a dar*/
-            display: none; /* Initially hide the user information */
-            position: absolute; /* Position it relative to the header */
-            top: 100%; /* Place it below the header */
-            left: 0; /* Align it with the left edge of the header */
-            background-color: white;
-            padding: 0.5em;
-            border: 1px solid var(--borderLine);
-            border-radius: 5px;
+        .user-info {
+            display: block;
+            font-size: large;
+            opacity: 0; 
+            max-height: 0; 
+            transition: opacity 0.5s ease, max-height 0.5s ease; 
         }
-        
-        .user-info.hidden {
-            display: none; /* Hide the user information when the hidden class is applied */
+        .user-info.visible {
+            opacity: 1; 
+            max-height: 1em; 
         }
     }
     

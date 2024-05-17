@@ -97,6 +97,7 @@ require_once(__DIR__ . '/image.class.php');
 			}
 			return $items;
     }
+    
 
     static function getFilteredItems(PDO $db, $category, $condition, $minPrice, $size, $maxPrice) {
       $query = 'SELECT * FROM Item join Category on Item.categoryID = Category.categoryID
