@@ -182,6 +182,7 @@ label{
     margin-bottom: 2.5em;
 }
 
+
 .load-photo{
     margin-top: 100px;
 }
@@ -210,3 +211,11 @@ label{
     background-color: var(--bordeaux);
     color: white;
 }
+
+.message.error {
+    color: red; 
+}
+.message.success{
+    color: green; 
+}
+

@@ -11,10 +11,14 @@
     $db = getDatabaseConnection();
 
     $session = new Session();
+    
     if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;
     }
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
 
 
     $name = $_POST['title'];
@@ -37,28 +41,28 @@
     //brand, size e model não são campos obrigatórios
     if (!empty($name) && !empty($categoryName) && !empty($conditionName)
     && !empty($description) && !empty($price) && !empty($imageID)) {
-        echo "Formulário.";
-        if ($name !== false && $sellerID !== false && $categoryName !== false && $sizeName !== false &&
+        if (validTitle($name) && $sellerID !== false && $categoryName !== false && $sizeName !== false &&
             $conditionName !== false && $brand !== false && $model !== false &&
-            $description !== false && $price !== false && $images !== false) {
-            try {
+            $description !== false && validPrice($price) && $images !== false) {
                 $category = Category::getCategoryByName($db, $categoryName);
                 $condition = Condition::getConditionByName($db, $conditionName);
-                $size = Size::getSizeByName($db, $sizeName); 
-                Item::addItem($db, $name, $sellerID, $category->categoryID, $size->sizeID, $condition->conditionID, $brand, $model, $description, $price, $imageID);
-                $session->addMessage('success', 'O item foi adicionado com sucesso!');
+                if($sizeName!= NULL){ 
+                    $size = Size::getSizeByName($db, $sizeName);
+                    $s = $size->sizeID;
+                 }
+                 else{$s = 0;}
+                Item::addItem($db, $name, $sellerID, $category->categoryID, $s, $condition->conditionID, $brand, $model, $description, $price, $imageID);
+                $session->addMessage('success', 'item successfully added!');
                 header('Location: /../pages/profile.php');
                 exit;
-                echo "sucesso";
-            } catch (Exception $e) {
-                echo "erro.";
-            }
         } else {
-            echo "Por , preencha todos os campos obrigatórios do formulário.";
+            $session->addMessage('error', 'Title can only contain letters, digits and . - _ with a max of 35 chars.');
+                header('Location: /../pages/sellItem.php');
         }
     }
     else{
-        echo "Por favor, preencha todos os campos obrigatórios do formulário.";
+        $session->addMessage('error', 'Please complete the required fields: title, photo, description, category, condition, and price.');
+header('Location: /../pages/sellItem.php');
     }
 
     ?>

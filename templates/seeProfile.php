@@ -13,6 +13,7 @@
                 <h3>About me : </h3>
                 <h4><?= $user->aboutMe?></h4>
                 <form id="OpenMessage" action="/../pages/message.php" method="post">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="hidden" name="receiverID" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>
                 <h3 class = "msgbutton" onclick="document.getElementById('OpenMessage').submit();" >Message me <i class="fa-regular fa-envelope"></i></h3>
@@ -40,6 +41,7 @@
                             ?>
                             <div class="product" >
                                     <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+                                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                                      </form>
                                   <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">

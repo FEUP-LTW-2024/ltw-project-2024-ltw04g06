@@ -1,5 +1,6 @@
-
-<?php function topo(PDO $db,User $user){ ?>
+<?php
+function topo(PDO $db, User $user){ 
+?>
 <head>
     <link rel="stylesheet" href="../css/topo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,9 +14,10 @@
                 <button class="all" id="showFormButton">All<i class="fa-solid fa-caret-down"></i>
                 </button>
                 <div id="elementToToggle" class="hidden">
-                    <?php searchForm() ?>
+                    <?php searchForm(); ?>
                 </div>
                 <form action="/../pages/home.php" method="post">
+                    <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                     <input name="word" type="text">
                     <button type="submit" class="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -35,7 +37,7 @@
                         <li><a href="/../actions/action_logout.php">Log out</a></li>
                     </ul>
                 </div>
-                <img class="profilePic" src="<?=User::getUserPic($db, $user->userID)?>">
+                <img class="profilePic" src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)) ?>">
             </div>
         </div>
         <div class="types">
@@ -46,12 +48,11 @@
                 $categories = Category::getAllCategories($db);
                 echo '<ul>';
                 foreach ($categories as $category) {
-                    echo '<li><a href="/../pages/home.php?category=' . $category->name . '">' . $category->name . '</a></li>';
+                    echo '<li><a href="/../pages/home.php?category=' . htmlspecialchars($category->name) . '">' . htmlspecialchars($category->name) . '</a></li>';
                 }
                 echo '</ul>';
             ?>
         </div>
     </div>
-    
 </body>
 <?php } ?>

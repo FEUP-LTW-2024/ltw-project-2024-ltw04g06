@@ -24,26 +24,42 @@ body{
         form >*{align-self: center;
             margin: 1em;
         }
-        form label{
+        label{
             color: var(--bordeaux);
-            margin: 2em;
+            margin: 1em;
         }
-        form input{
+        input{
             border: 1px solid var(--beige);
             border-radius: 5px;
             width: 50%;
             height: 5%;
         }
-        form input[type="submit"] {
-            background-color: var(--bordeaux);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 10em;
+        .divisor{
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 10em;
+                height: 10em;
+                margin: 3em;
+            }
+            button{
+                background-color: var(--bordeaux);
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 10em;
+                height: 5em;
+                margin: 2em;
+            }
+            button:hover{
+                background-color: burlywood;
+            }
         }
-        form input[type="submit"]:hover {
-            background-color: burlywood;
+        .line{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
     }
 }
@@ -57,5 +73,19 @@ body{
             font-size: smaller;
             width: 45%;
         }
+    }
+}
+@media print{
+    .topo{
+        display: none;
+    }
+    button{
+        display: none;
+    }
+    .shipping h2{
+        color: black;
+    }
+    .shipping h1{
+        display: none;
     }
 }
