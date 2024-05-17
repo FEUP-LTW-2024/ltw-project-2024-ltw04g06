@@ -24,6 +24,8 @@
     if($items!=NULL) {
         foreach($items as $item){
             Item::editItemStatus($db, $item->itemID, $userID, "Sold");
+            ShoppingCart::remItemFromShoppingCart($db, $user->shoppingCartID, $item->itemID);
+        
         }
         header('Location: /../pages/home.php');
     }
