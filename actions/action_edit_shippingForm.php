@@ -13,7 +13,7 @@
     }
 
     if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }~
-    
+    $buyerID = $session->getID();
     $address = $_POST['address'];
     $phoneNumber = $_POST['phone'];
     $name = $_POST['name'];

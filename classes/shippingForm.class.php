@@ -7,16 +7,14 @@ declare(strict_types = 1);
     public int $itemID;
     public int $sellerID;
     public int $buyerID;
-    public string $description;
     public string $date;
 
 
-    public function __construct(int $shippingFormID, int $itemID, int $sellerID, int $buyerID, string $description, string $date) {
+    public function __construct(int $shippingFormID, int $itemID, int $sellerID, int $buyerID,  string $date) {
       $this->shippingFormID = $shippingFormID;
       $this->itemID = $itemID;
       $this->sellerID = $sellerID;
       $this->buyerID = $buyerID;
-      $this->description = $description;
       $this->date = $date;
     }
 
@@ -35,7 +33,6 @@ declare(strict_types = 1);
           $shippingFormData['itemID'],
           $shippingFormData['sellerID'],
           $shippingFormData['buyerID'],
-          $shippingFormData['description'],
           $shippingFormData['date']
       );
   }
@@ -53,8 +50,23 @@ declare(strict_types = 1);
     return self::getShippingForm($db, $shippingForm['shippingFormID']);
   }
 
+
+
+  static function addShippingForm(PDO $db,int $itemID, int $sellerID, int $buyerID, $currentTime){
+    $preparedStmt = $db->prepare("INSERT INTO ShippingForm (itemID, sellerID, buyerID, date ) VALUES ( ?, ?, ?, ?)");
+    if ($preparedStmt->execute([ $itemID, $sellerID, $buyerID, $currentTime])) {
+      return true;
+    } else {
+        return false;
+    }
+
+
+  }
+
     /*--Edit--*/
 
+
+    /*
   static function editDescription(PDO $db, int $shippingFormID, string $newDescription) {
     $shippingForm = self::getShippingForm($db, $shippingFormID);
     if ($shippingForm->description == $newDescription) {
@@ -72,7 +84,7 @@ declare(strict_types = 1);
       return false;
         //return array("success" => false, "message" => "Failed to update description for shippingFormID: $shippingFormID");
     }
-  }
+  }*/
 
 
   

@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 require_once(__DIR__ . '/status.class.php');
+require_once(__DIR__ . '/shippingForm.class.php');
 require_once(__DIR__ . '/image.class.php');
 
 
@@ -169,12 +170,16 @@ require_once(__DIR__ . '/image.class.php');
     static function addItem (PDO $db, string $name, int $sellerID, int $categoryID, int $sizeID, int $conditionID, string $brand, string $model, string $description, float $price, string $imageID)  {
       $statusID = Status::addStatus($db,"Available");
       $preparedStmt = $db->prepare("INSERT INTO Item (name, sellerID, categoryID, sizeID, conditionID, statusID, brand, model, description, price, imageID ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $imageID]);
+      if ($preparedStmt->execute([ $name, $sellerID, $categoryID, $sizeID, $conditionID, $statusID, $brand, $model, $description, $price, $imageID])) {
+        return true;
+      } else {
+          return false;
+      }
     }    
 
     /*--Edit--*/
         
-    static function editItemStatus(PDO $db, int $itemID, string $name): bool {
+    static function editItemStatus(PDO $db, int $itemID, int $buyerID, string $name) {
       $item = self::getItem($db, $itemID);
       $itemStatus = Status::getStatus($db, $item->statusID);
   
@@ -188,16 +193,13 @@ require_once(__DIR__ . '/image.class.php');
       $preparedStmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
       $preparedStmt->execute();
   
-      if ($preparedStmt->rowCount() > 0) {
-          if ($name == "Sold") {
-              $currentTime = date('Y-m-d H:i:s');
-              ShippingForm::createShippingForm($db, $itemID, $item->sellerID, $item->buyerID, $item->description, $currentTime);
-          }
-          return true;
+      if ($name == "Sold") {
+        $currentTime = date('Y-m-d H:i:s');
+        ShippingForm::addShippingForm($db, $itemID, $item->sellerID, $buyerID, $currentTime);
       } else {
-          return false;
+        return false;
       }
-  }
+    }
     
     static function editName(PDO $db, Item $item, string $newName) : bool {
       $itemID = $item->itemID;

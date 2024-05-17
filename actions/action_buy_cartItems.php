@@ -13,7 +13,7 @@
         exit;
     }
 
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+    //if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
 
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
@@ -23,8 +23,9 @@
     
     if($items!=NULL) {
         foreach($items as $item){
-            Item::editItemStatus($db, $item, "Sold");
+            Item::editItemStatus($db, $item->itemID, $userID, "Sold");
         }
+        header('Location: /../pages/home.php');
     }
     else{
         die(header('Location: /../pages/error.php'));

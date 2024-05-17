@@ -107,7 +107,6 @@ CREATE TABLE ShippingForm (
     itemID INT,
     sellerID INT,
     buyerID INT,
-    description TEXT,
     date TEXT,
     FOREIGN KEY (itemID) REFERENCES Item(itemID) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (sellerID) REFERENCES User(userID) ON UPDATE CASCADE ON DELETE CASCADE,
