@@ -11,7 +11,7 @@
            <div class="products">
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
-                <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                <form id="profileForm<?= $user->userID ?>" action="/../actions/action_toSeeProfile.php" method="post" class="hidden">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>

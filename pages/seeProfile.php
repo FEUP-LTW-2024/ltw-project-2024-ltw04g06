@@ -15,18 +15,18 @@
         exit;
     }
 
-    $userIDD = $session->getID();
-    $userD = User::getUser($db,$userIDD);
+    $userID = $session->getID();
+    $userD = User::getUser($db,$userID);
 
-    $userID = $_POST['userId'];
-    $user = User::getUser($db,$userID);
+    $userProfileID = $_SESSION['receiverID'];
+    $user = User::getUser($db,$userProfileID);
 
-    if ($userIDD == $userID) {
+    if ($userID == $userProfileID || $userProfileID == null) {
         header('Location: profile.php');
         exit(); 
     }
 
-    $items = Item::getUserItems($db, $userID);
+    $items = Item::getUserItems($db, $userProfileID);
 
     topo($db, $userD);
     SeeProfile($db, $user);

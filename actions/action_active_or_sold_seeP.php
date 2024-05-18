@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../classes/user.class.php');
 require_once(__DIR__ . '/../classes/item.class.php');
 
 $selectedCondition = $_GET['condition'];
-$userID = $_GET['userID'];
+$userID = $_SESSION['receiverID'];
 $db = getDatabaseConnection();
 $user = User::getUser($db,$userID);
 $Items = Item::getUserItems($db, $userID);
@@ -16,7 +16,7 @@ $Items = Item::getUserItems($db, $userID);
 foreach ($Items as $item) {
     $status = Item::getItemStatus($db, $item->itemID);
     if ($status !=  $selectedCondition) continue;
-    $filePath = $status == 'Available' ? '/../pages/ViewItem.php' : '/../pages/itemSold.php';
+    $filePath = $status == 'Available' ? '/../actions/action_toViewItem.php' : '/../actions/action_toItemSold.php';
     echo '<div class="product">';
     echo '<form id="itemActive' . $item->itemID . '" action="'.$filePath.'" method="post" class="hidden">';
     echo '    <input type="hidden" name="itemID" value="' . $item->itemID . '">';

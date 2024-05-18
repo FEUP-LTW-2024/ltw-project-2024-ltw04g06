@@ -17,6 +17,7 @@
     $user = User::getUser($db, $userID);
 
     $itemID = $_POST['itemID'];
+    $_SESSION['itemID'] = $_POST['itemID'];
     $shoppingCartID = $user->shoppingCartID; 
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {

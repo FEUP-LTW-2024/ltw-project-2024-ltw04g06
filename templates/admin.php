@@ -14,7 +14,7 @@ function showOptions($db, $session, $userID, $users) {
     ?>
     <div class="user">
         <h2 class="username"><?= htmlspecialchars($user->username) ?></h2>
-        <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post">
+        <form id="profileForm<?= $user->userID ?>" action="/../actions/action_adminToProfile.php" method="post">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
             <input type="hidden" name="userId" value="<?= htmlspecialchars($user->userID) ?>">
         </form>

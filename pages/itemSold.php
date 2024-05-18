@@ -17,7 +17,7 @@
     $user = User::getUser($db, $userID);
     topo($db, $user);
     displayItemSold();
-    $itemID = $_POST['itemID'];
+    $itemID = $_SESSION['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
             itemSoldForm($item, $db, $userID);

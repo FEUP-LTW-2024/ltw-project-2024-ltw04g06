@@ -20,8 +20,8 @@
     topo($db, $user);
     displayViewItem();
 
-    if (isset($_POST['itemID'])) {
-        $itemID = $_POST['itemID'];
+    if (isset($_SESSION['itemID'])) {
+        $itemID = $_SESSION['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
             viewItemForm($item, $db);

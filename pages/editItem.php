@@ -14,7 +14,7 @@
     }
     $db = getDatabaseConnection();
     $userID = $session->getID();
-    $itemID = $_GET['itemID'];
+    $itemID = $_SESSION['itemID'];
     $item = Item::getItem($db, $itemID);
     $user = User::getUser($db, $userID);
     topo($db, $user);

@@ -12,7 +12,7 @@
                 <h4><?= $user->email?></h4>
                 <h3>About me : </h3>
                 <h4><?= $user->aboutMe?></h4>
-                <form id="OpenMessage" action="/../pages/message.php" method="post">
+                <form id="OpenMessage" action="/../actions/action_profileToMessage.php" method="post">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="hidden" name="receiverID" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>
@@ -40,7 +40,7 @@
                             if ($status != "Available") continue;
                             ?>
                             <div class="product" >
-                                    <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+                                    <form id="viewItem<?= $item->itemID ?>" action="/../actions/action_toViewItem.php" method="post" class="hidden">
                                         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                                      </form>

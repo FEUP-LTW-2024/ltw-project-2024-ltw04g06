@@ -21,7 +21,7 @@ if ($selectedCondition == 'Available') {
 foreach ($Items as $item) {
     $status = Item::getItemStatus($db, $item->itemID);
     if ($status != $selectedCondition && $selectedCondition != 'Purchased') continue;
-    $filePath = $status == 'Available' ? '/../pages/itemActive.php' : ($status == 'Sold' ? '/../pages/itemSold.php' : '');
+    $filePath = $status == 'Available' ? '/../actions/action_toItemActive.php' : ($status == 'Sold' ? '/../actions/action_toItemSold.php.php' : '');
     echo '<div class="product">';
     echo '<form id="itemActive' . htmlspecialchars($item->itemID) . '" action="' . htmlspecialchars($filePath) . '" method="post" class="hidden">';
     echo '    <input type="hidden" name="itemID" value="' . htmlspecialchars($item->itemID) . '">';

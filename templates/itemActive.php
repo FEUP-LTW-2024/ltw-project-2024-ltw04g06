@@ -15,7 +15,6 @@ function itemActiveForm($item, $db)
     <div class="form">
         <div class="left-column">
             <div class="products">
-                <?php $user = Item::getItemSeller($db, $item->itemID); ?>
                 <div class="product">
                     <header>
                         <button class="submitButton">Active</button>
@@ -38,7 +37,7 @@ function itemActiveForm($item, $db)
             </div>
         </div>
         <div class="right-column">
-            <form action="/../pages/editItem.php" method="get" >
+            <form action="/../actions/action_itemToEdit.php" method="post" >
             <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
             <button type="submit" class="edit"><i class="fas fa-pencil-alt"></i>Edit item</button>            

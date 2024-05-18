@@ -48,7 +48,7 @@ function profileOptions($db, $items, $isAdmin)
                     if ($status != "Available") continue;
                 ?>
                     <div class="product">
-                        <form action="/../pages/itemActive.php" method="post" class="hidden" id="itemActive<?= htmlspecialchars($item->itemID) ?>">
+                        <form action="/../actions/action_toItemActive.php" method="post" class="hidden" id="itemActive<?= htmlspecialchars($item->itemID) ?>">
                             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                             <input type="hidden" name="itemID" value="<?= htmlspecialchars($item->itemID) ?>">
                         </form>

@@ -19,7 +19,7 @@
 
     $userID = $session->getID();
     $user = User::getUser($db,$userID);
-    $itemID = $_POST['itemID'];
+    $itemID = $_SESSION['itemID'];
 
     topo($db, $user);
     printShippingForm($db, $user, $itemID);

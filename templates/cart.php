@@ -19,7 +19,7 @@ function cartDisplay(PDO $db, $cartItems){
                 $totalPrice += $item->price;
                 $user = Item::getItemSeller($db, $item->itemID);?>
                 <div class="product">
-                <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                <form id="profileForm<?= $user->userID ?>" action="/../actions/action_toSeeProfile.php" method="post" class="hidden">
                     <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
                 </form>
                 <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
@@ -27,7 +27,7 @@ function cartDisplay(PDO $db, $cartItems){
                     <p><?=$user->username?></p>
                 </header>
                 <div class="image">
-                    <form id="viewItem<?= $item->itemID ?>" action="/../pages/viewItem.php" method="post" class="hidden">
+                    <form id="viewItem<?= $item->itemID ?>" action="/../actions/action_toItemSold.php" method="post" class="hidden">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
                     </form>
                     <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">

@@ -15,7 +15,7 @@ function anuncio(PDO $db){
     $firstUser = true;
     foreach ($users as $user) {
     ?>
-        <form id="profileForm<?= htmlspecialchars($user->userID) ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+        <form id="profileForm<?= htmlspecialchars($user->userID) ?>" action="/../actions/action_toSeeProfile.php" method="post" class="hidden">
             <input type="hidden" name="userId" value="<?= htmlspecialchars($user->userID); ?>">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']); ?>">
         </form>

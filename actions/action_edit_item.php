@@ -27,7 +27,12 @@
     $newBrand = $_POST['newBrand'];
     $newModel = $_POST['newModel'];
     $newDescription = $_POST['newDescription'];
-    //$newImageID = $_POST['itemID']; // nao sei como é que isto funciona Costinha
+    Image::addImage($db, "/../images/items/$newName.jpg");
+
+    $imageID = $db->lastInsertId();
+    $originalFileName =  __DIR__ . "/../images/items/$newName.jpg";
+  
+    move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
 
     $item = Item::getItem($db, $itemID);
     if($newCategoryName!= null)$category = Category::getCategoryByName($db, $newCategoryName);

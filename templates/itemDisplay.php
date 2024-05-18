@@ -18,14 +18,14 @@
         if ($status != "Available") continue;
         ?>
         <div class="product"onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();">
-            <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+            <form id="profileForm<?= $user->userID ?>" action="/../actions/action_toSeeProfile.php" method="post" class="hidden">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
             <header onclick="event.stopPropagation(); document.getElementById('profileForm<?= $user->userID ?>').submit();">                <img src=<?= User::getUserPic($db, $item->sellerID)?> alt="">
                 <p><?=$user->username?></p>
             </header>
-            <?php $page = $item->sellerID == $userID ? '/../pages/itemActive.php' : '/../pages/viewItem.php'?>
+            <?php $page = $item->sellerID == $userID ? '/../actions/action_toItemActive.php' : '/../actions/action_toViewItem.php'?>
             <form id="viewItem<?= $item->itemID ?>" action="<?= $page?>" method="post" class="hidden">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">

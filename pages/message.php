@@ -19,11 +19,10 @@
     $user = User::getUser($db, $userID);
     $receiverID = -1;
 
-   if ($_SERVER["REQUEST_METHOD"] == "POST"){
-     $receiverID = $_POST['receiverID'];
-   }
+    $receiverID = $_SESSION['receiverID'];
 
-  $userID = $session->getID();
-  topo($db, $user);
-  sideBar($db, $userID, $receiverID);
+    $userID = $session->getID();
+    topo($db, $user);
+    sideBar($db, $userID, $receiverID);
+  
   ?>

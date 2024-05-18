@@ -20,7 +20,7 @@
     $user = User::getUser($db, $userID);
     topo($db, $user);
     createWishlist();
-    $itemID=$_POST['itemID'];
+    $itemID = $_SESSION['itemID'];
     
     $wishlistID = $user->wishlistID;
     $wishlistItems=Wishlist::getWishlistItems($db, $wishlistID);

@@ -70,7 +70,7 @@
                     <label class="price"><strong>Price:</strong> <?= number_format($item->price, 2, ',', '.') ?>€</label></p>
                 </div>
                 <p class="seller">Seller</p>
-                <form id="profileForm<?= $item->sellerID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                <form id="profileForm<?= $item->sellerID ?>" action="/../actions/action_toSeeProfile.php" method="post" class="hidden">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="hidden" name="userId" value="<?php echo htmlspecialchars($item->sellerID); ?>">
                 </form>
