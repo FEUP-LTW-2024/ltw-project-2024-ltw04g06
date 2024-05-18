@@ -24,7 +24,6 @@ function itemActiveForm($item, $db)
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
                         <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                         <input type="hidden" name="itemID" value="<?= htmlspecialchars($item->itemID) ?>">
-                        <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
                     </form>
                     <label for="foto" class="foto-label">
                         <div class="image">
