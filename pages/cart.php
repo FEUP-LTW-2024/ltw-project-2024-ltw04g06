@@ -19,7 +19,7 @@
     $user = User::getUser($db, $userID);
     topo($db, $user);
     createCart();
-    $itemID=$_POST['itemID'];
+    $itemID = $_POST['itemID'];
 
     $cartID = $user->shoppingCartID;
     $cartItems=ShoppingCart::getShoppingCartItems($db, $cartID);

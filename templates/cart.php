@@ -44,9 +44,11 @@ function cartDisplay(PDO $db, $cartItems){
             <?php } ?>
         </div>
         <p class="total">Total: <?= number_format($totalPrice, 2, ',', '.') ?>€</p>
-        <form action="/../pages/editShipping.php" method="post">
-            <button class="buy" type="submit">Buy all</button>
-        </form>
+        <?php if ($cartItems != null){?>
+            <form action="/../pages/editShipping.php" method="post">
+                <button class="buy" type="submit">Buy all</button>
+            </form>
+        <?php }?>
     </body>
 </html>   
 </main>

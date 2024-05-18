@@ -28,14 +28,12 @@
                 <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
             </form>
             <img onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();" class="foto" src=<?=Item::getImagePic($db, $item)?> alt="">
-            
             <form action="/../actions/action_add_to_wishlist.php" method="post">
-            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-            <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
-            <p class="item-name"><?=$item->name?>
-            <button type="submit" class="wishlist"><i class="fa-regular fa-heart <?php echo User::existItemUserWish($db, $userID, $item->itemID) ? 'red' : ''?>"></i></button></p>
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
+                <p class="item-name"><?=$item->name?>
+                <button type="submit" class="wishlist"><i class="fa-regular fa-heart <?php echo User::existItemUserWish($db, $userID, $item->itemID) ? 'red' : ''?>"></i></button></p>
             </form>
-            
             <h4 class="price"><?=$item->price?><i class="fa-solid fa-euro-sign"></i></h4>
         </div>
         <?php } ?> 

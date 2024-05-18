@@ -23,6 +23,7 @@ body{
 .pesquisaTopo{
   background: var(--bordeaux);
   margin-left: auto;
+  cursor: pointer;
 }
 .topo .firstRow{
     padding:0;
