@@ -8,25 +8,21 @@
     require_once(__DIR__ . '/../classes/shoppingCart.class.php');
     require_once(__DIR__ . '/../classes/user.class.php');
 
+    $db = getDatabaseConnection();
     $session = new Session();
     if (!$session->isLoggedIn()) {
         header('Location: /../pages/signIn.php');
         exit;
     }
-    $db = getDatabaseConnection();
+
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
-    if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
-    }
-
     topo($db, $user);
     createCart();
     $itemID=$_POST['itemID'];
-    $user = User::getUser($db, $userID);
-    $shoppingCartID = $user -> shoppingCartID;
-    $cartItems=ShoppingCart::getShoppingCartItems($db, $shoppingCartID);
+
+    $cartID = $user->shoppingCartID;
+    $cartItems=ShoppingCart::getShoppingCartItems($db, $cartID);
     if(empty($cartItems)){
         emptyCart();
     }
