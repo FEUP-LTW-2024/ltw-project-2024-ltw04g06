@@ -11,10 +11,9 @@
         <div class="left-column">
            <div class="products">
             <?php $user = Item::getItemSeller($db, $item->itemID);?>
-                <div class="product">
-                <header>
-                    <button class="submitButton">Sold</button>
-                </header>
+                <div class="product">  
+                <button class="submitButton">Sold</button>
+              
             
                     <p class="item-name"><?= $item->name ?></p>
                     <form action="/../actions/action_add_to_wishlist.php" method="post">
@@ -71,6 +70,30 @@
 
                     <label class="price"><strong>Price:</strong> <?= number_format($item->price, 2, ',', '.') ?>€</label></p>
                 </div>
+                <p class="seller">Seller</p>
+                <form id="profileForm<?= $item->sellerID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input type="hidden" name="userId" value="<?php echo htmlspecialchars($item->sellerID); ?>">
+                </form>
+                <header onclick="document.getElementById('profileForm<?= $item->sellerID ?>').submit();">
+                    <?php $userSeller= User::getUser($db, $item->sellerID);?>
+                    <img src=<?= User::getUserPic($db, $userSeller->userID)?> alt="">
+                    <p><?=$userSeller->username?></p>
+                </header>
+
+                <p class="buyer">Buyer</p>
+                <?php $shipForm = ShippingForm::getShippingFormByItemID($db, $item->itemID);
+                $buyerID = $shipForm->buyerID;
+                $buyer = User::getUser($db, $buyerID);?>
+                <form id="profileForm<?= $buyerID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input type="hidden" name="userId" value="<?php echo htmlspecialchars($buyerID); ?>">
+                </form>
+                <header onclick="document.getElementById('profileForm<?= $buyerID ?>').submit();">
+                    <img src=<?= User::getUserPic($db, $buyerID)?> alt="">
+                    <p><?=$buyer->username?></p>
+                </header>
+
         </div>
     </div>
     <?php 
