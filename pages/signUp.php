@@ -5,6 +5,7 @@
 
     $db = getDatabaseConnection();
     $session = new Session(); 
+
     displayNameLogo($db);
     signUpBox($session);
 ?>

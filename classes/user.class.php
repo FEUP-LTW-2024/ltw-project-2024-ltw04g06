@@ -163,7 +163,7 @@ require_once(__DIR__ . '/image.class.php');
       }
     }
 
-    static function existItemUserWish (PDO $db, int $userID, int $itemID) {                  //----------temos de filtrar as coisas que recebemos nesta string antes de chegar aqui. ver pp de segurança ex: slide28---------//
+    static function existItemUserWish (PDO $db, int $userID, int $itemID) {                  
       $user = self::getUser($db, $userID);
       $wishlistID = $user->wishlistID;
       $existItemInWishlist = Wishlist::existItemInWishlist($db, $wishlistID, $itemID);

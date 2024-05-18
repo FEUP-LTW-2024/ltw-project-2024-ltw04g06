@@ -7,19 +7,22 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <main>
-    <div class="products">
-    <?php foreach ($items as $item) {
+    <div class="products">  
+    <?php if(empty($items)){ ?>
+        <p class="empty">No items that match this filter.</p>
+        <a href="sellItem.php" class="sell">Try selling an Item!</a>
+        <?php } ?>
+        <?php foreach ($items as $item) {
         $user = Item::getItemSeller($db, $item->itemID);
         $status = Item::getItemStatus($db, $item->itemID);
         if ($status != "Available") continue;
         ?>
-        <div class="product">
+        <div class="product"onclick="document.getElementById('viewItem<?= $item->itemID ?>').submit();">
             <form id="profileForm<?= $user->userID ?>" action="/../pages/seeProfile.php" method="post" class="hidden">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" name="userId" value="<?php echo htmlspecialchars($user->userID); ?>">
             </form>
-            <header onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
-                <img src=<?= User::getUserPic($db, $item->sellerID)?> alt="">
+            <header onclick="event.stopPropagation(); document.getElementById('profileForm<?= $user->userID ?>').submit();">                <img src=<?= User::getUserPic($db, $item->sellerID)?> alt="">
                 <p><?=$user->username?></p>
             </header>
             <?php $page = $item->sellerID == $userID ? '/../pages/itemActive.php' : '/../pages/viewItem.php'?>

@@ -9,6 +9,11 @@
 
     $db = getDatabaseConnection();
     $session = new Session();
+    
+    if (!$session->isLoggedIn()) {
+        header('Location: /../pages/signIn.php');
+        exit;
+    }
 
     $userID = $session->getID();
     $user = User::getUser($db,$userID);
@@ -16,7 +21,7 @@
     $items = Item::getUserItems($db, $userID);
 
     topo($db, $user);
-    profileEditDescript($db, $user);
+    profileEdit($db, $user);
     profileOptions($db, $items, $user->role == 'Admin');
 
 ?>

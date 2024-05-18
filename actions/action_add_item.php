@@ -38,7 +38,6 @@
     move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
     $imageID = $id;
 
-    //brand, size e model não são campos obrigatórios
     if (!empty($name) && !empty($categoryName) && !empty($conditionName)
     && !empty($description) && !empty($price) && !empty($imageID)) {
         if (validTitle($name) && $sellerID !== false && $categoryName !== false && $sizeName !== false &&
@@ -57,12 +56,12 @@
                 exit;
         } else {
             $session->addMessage('error', 'Title can only contain letters, digits and . - _ with a max of 35 chars.');
-                header('Location: /../pages/sellItem.php');
+            header('Location: /../pages/sellItem.php');
         }
     }
     else{
         $session->addMessage('error', 'Please complete the required fields: title, photo, description, category, condition, and price.');
-header('Location: /../pages/sellItem.php');
+        header('Location: /../pages/sellItem.php');
     }
 
     ?>

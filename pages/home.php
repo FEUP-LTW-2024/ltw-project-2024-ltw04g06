@@ -19,6 +19,12 @@
     $minPrice = $_GET["min"] ?? null;
     $maxPrice = $_GET["max"] ?? null;
   
+  $session = new Session();
+  if (!$session->isLoggedIn()) {
+    header('Location: /../pages/signIn.php');
+    exit;
+  }
+
   topo($db, $user);
   anuncio($db);
   if (isset($_GET["word"])) $items = Item::getItemsByName($db, $_GET["word"]);
