@@ -36,10 +36,10 @@ body {
         color:blue;
       }
       .fa-heart:hover{
-        color:red
+        color:red;
       }
       .sellItem:hover{
-        color:green;
+        color:#66B09F;
       }
 
       > * {

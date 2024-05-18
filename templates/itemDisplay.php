@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <main>
-    <div class="products">
+    <div class="products">  
     <?php if(empty($items)){ ?>
         <p class="empty">No items that match this filter.</p>
         <a href="sellItem.php" class="sell">Try selling an Item!</a>
-<?php } ?>
-    <?php foreach ($items as $item) {
+        <?php } ?>
+        <?php foreach ($items as $item) {
         $user = Item::getItemSeller($db, $item->itemID);
         $status = Item::getItemStatus($db, $item->itemID);
         if ($status != "Available") continue;
