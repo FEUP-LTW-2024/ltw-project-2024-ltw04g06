@@ -16,15 +16,18 @@ body{
                 border-radius: 50%;
                 width: 15em;
                 height: 15em;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
                 margin-right: 2em;
                 
             }
             .text{
                 h4{
+                    font-weight: normal;
                     color: var(--bordeaux);
                 }
             }
             button{
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
                 background: var(--bordeaux);
                 border-radius: 10px;
                 height: 3em;
@@ -35,6 +38,10 @@ body{
                 font-size: larger;
                 cursor: pointer;
                 a{color: white;}
+            }
+            button:hover {
+                background: var(--backgroundColor);
+                a{color: var(--bordeaux);}
             }
             .msgbutton{
                 cursor: pointer;
@@ -52,15 +59,27 @@ body{
                 width: 10%;
                 border: none;
                 border-radius: 1.5em;
-                background: var(--backgroundColor);
+                background:var(--backgroundColor);
+                h3{
+                    color: var(--beige);
+                }
+            }
+            button:hover{
                 h3{
                     color: #800000;
                 }
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+            background: var(--backgroundColor);
+            transition: all 0.3s ease-out;
+            border-radius:  1.5em;
+
             }
+
        }
        .myItems{
             margin: .5em 2em;
             .condition select{
+                cursor: pointer;
                 border: 2px solid var(--beige);
                 border-radius: 3px;
                 color: var(--beige);
@@ -91,6 +110,7 @@ body{
             }
             .foto{
                 height: 13em;
+                
                 width: 13em;
                 cursor: pointer;
             }
@@ -132,11 +152,6 @@ body{
                 max-height: 5em;
                 margin-right: 2em;
             }
-        }
-        .choice{
-            button h3{
-                font-size: smaller;
-            }    
         }
     }
     

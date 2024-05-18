@@ -35,7 +35,7 @@
                 $session->addSpecificMessage('success','categoryRem', 'Category removed!');
             }
             else{
-                $session->addSpecificMessage('error','categoryRem', 'There are items in this category. Cant remove it!');
+                $session->addSpecificMessage('error','categoryRem', 'Cant remove, items present in this category!');
             }
         }
     }
@@ -51,7 +51,7 @@
                 $session->addSpecificMessage('success','conditionRem', 'Condition removed!');
             }
             else{
-                $session->addSpecificMessage('error','conditionRem', 'There are items in this condition. Cant remove it!');
+                $session->addSpecificMessage('error','conditionRem', 'Cant remove, items present in this condition!');
             }
         }
     }
@@ -66,7 +66,7 @@
                 $session->addSpecificMessage('success','sizeRem', 'Size removed!');
             }
             else{
-                $session->addSpecificMessage('error','sizeRem', 'There are items in this size. Cant remove it!');
+                $session->addSpecificMessage('error','sizeRem', 'Cant remove, items present in this size!');
             }
         }
     }

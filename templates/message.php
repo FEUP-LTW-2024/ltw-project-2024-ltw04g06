@@ -4,6 +4,7 @@ function sideBar(PDO $db, int $userID, int $receiverID){
 ?>
 <head>
     <link rel="stylesheet" href="../css/msg.css">
+    <script src="/../js/encode.js"></script>
 </head>
 <main>
     <div class="sideBar">

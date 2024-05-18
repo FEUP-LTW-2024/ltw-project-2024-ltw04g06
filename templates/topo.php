@@ -28,7 +28,7 @@ function topo(PDO $db, User $user){
             <h3><a href="/../pages/message.php"><i class="fa-regular fa-envelope"></i></a></h3> 
             <h3><a href="/../pages/wishlist.php"><i class="fa-regular fa-heart"></i></h3>
             <button class="carrinho"><a href="/../pages/cart.php"><i class="fa-solid fa-cart-shopping"></i></button>
-            <h3><a href="/../pages/sellItem.php">Sell an item</a></h3>
+            <h3><a href="/../pages/sellItem.php" class="sellItem">Sell an item</a></h3>
             <div class="avatar">
                 <div id="menu">
                     <input type="checkbox" id="hamburger"> 
@@ -39,7 +39,7 @@ function topo(PDO $db, User $user){
                         <li><a href="/../actions/action_logout.php">Log out</a></li>
                     </ul>
                 </div>
-                <img class="profilePic" src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)) ?>">
+                <img class="profilePic" src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)) ?>" onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
             </div>
         </div>
         <div class="types">

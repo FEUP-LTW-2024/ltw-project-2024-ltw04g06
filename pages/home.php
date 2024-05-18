@@ -30,6 +30,10 @@
   }
   
   $session = new Session();
+  if (!$session->isLoggedIn()) {
+    header('Location: /../pages/signIn.php');
+    exit;
+}
 
   $db = getDatabaseConnection();
   $userID = $session->getID();

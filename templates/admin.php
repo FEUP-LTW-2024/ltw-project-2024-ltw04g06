@@ -1,5 +1,5 @@
 <?php
-function showOptions($db,$session, $userID, $users){ 
+function showOptions($db, $session, $userID, $users) {
 ?>
 <head>
     <link rel="stylesheet" href="../css/admin.css">
@@ -8,8 +8,8 @@ function showOptions($db,$session, $userID, $users){
     <h1>Admin Options</h1>
 </div>
 
-<main class="admin"> 
-    <?php foreach($users as $user){   
+<main class="admin">
+    <?php foreach($users as $user) {   
         if ($user->role == 'Admin') continue;
     ?>
     <div class="user">
@@ -35,16 +35,16 @@ function showOptions($db,$session, $userID, $users){
 
 <div class="change-type"><h1>Delete</h1></div>
 <?php 
-        $categoryMsg = $session->findMsgWithSpecificType('categoryRem');
-        $conditionMsg = $session->findMsgWithSpecificType('conditionRem');
-        $sizeMsg = $session->findMsgWithSpecificType('sizeRem');
-    ?>   
+    $categoryMsg = $session->findMsgWithSpecificType('categoryRem');
+    $conditionMsg = $session->findMsgWithSpecificType('conditionRem');
+    $sizeMsg = $session->findMsgWithSpecificType('sizeRem');
+?>   
 <div class="change">
     <div class="category">
         <?php if ($categoryMsg) {
-                    $session->displayMessage($categoryMsg);
-                }
-            ?>
+            $session->displayMessage($categoryMsg);
+        }
+        ?>
         <h3>Category</h3>
         <form action="/../actions/action_edit_CatCondSize.php" method="post">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
@@ -57,89 +57,79 @@ function showOptions($db,$session, $userID, $users){
             }
             echo '</select>';
             ?>
-            <button type="submit">DELETE</button>
-
     </div>
     <div class="condition">
-    <?php if ($conditionMsg) {
-                $session->displayMessage($conditionMsg);
-            }
+        <?php if ($conditionMsg) {
+            $session->displayMessage($conditionMsg);
+        }
         ?>
         <h3>Condition</h3>
-
-            <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <?php
-            $conditions = Condition::getAllConditions($db);
-            echo '<select name="conditionName">';
-            echo '<option value="NULL" selected>Not selected</option>';
-            foreach ($conditions as $condition) {
-                echo '<option value="' . htmlspecialchars($condition->usage) . '">' . htmlspecialchars($condition->usage) . '</option>';
-            }
-            echo '</select>';
-            ?>
-            <button type="submit">DELETE</button>
-
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+        <?php
+        $conditions = Condition::getAllConditions($db);
+        echo '<select name="conditionName">';
+        echo '<option value="NULL" selected>Not selected</option>';
+        foreach ($conditions as $condition) {
+            echo '<option value="' . htmlspecialchars($condition->usage) . '">' . htmlspecialchars($condition->usage) . '</option>';
+        }
+        echo '</select>';
+        ?>
     </div>  
     <div class="size">
-    <?php if ($sizeMsg) {
-                $session->displayMessage($sizeMsg);
-            }
+        <?php if ($sizeMsg) {
+            $session->displayMessage($sizeMsg);
+        }
         ?>
         <h3>Size</h3>
-
-            <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <?php
-            $sizes = Size::getAllSizes($db);
-            echo '<select name="sizeName">';
-            echo '<option value="NULL" selected>Not selected</option>';
-            foreach ($sizes as $size) {
-                if($size->sizeID == 0) {continue;}
-                echo '<option value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name) . '</option>';
-            }
-            echo '</select>';
-            ?>
-            <button type="submit">DELETE</button>
-
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+        <?php
+        $sizes = Size::getAllSizes($db);
+        echo '<select name="sizeName">';
+        echo '<option value="NULL" selected>Not selected</option>';
+        foreach ($sizes as $size) {
+            if ($size->sizeID == 0) { continue; }
+            echo '<option value="' . htmlspecialchars($size->name) . '">' . htmlspecialchars($size->name) . '</option>';
+        }
+        echo '</select>';
+        ?>
     </div> 
 </div>
 
 <div class="change-type"><h1>Add</h1></div>
 <?php 
-        $categoryMsg = $session->findMsgWithSpecificType('categoryAdd');
-        $conditionMsg = $session->findMsgWithSpecificType('conditionAdd');
-        $sizeMsg = $session->findMsgWithSpecificType('sizeAdd');
-    ?>   
+    $categoryMsg = $session->findMsgWithSpecificType('categoryAdd');
+    $conditionMsg = $session->findMsgWithSpecificType('conditionAdd');
+    $sizeMsg = $session->findMsgWithSpecificType('sizeAdd');
+?>   
 <div class="addition">
     <div class="category">
         <?php if ($categoryMsg) {
-                    $session->displayMessage($categoryMsg);
-                }
-            ?>
-            <h3>Category</h3>
-                <input type="text" name="newCategory" id="newCategory">
-                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-                <button type="submit">ADD</button>
-        </div>
-        <div class="condition">
+            $session->displayMessage($categoryMsg);
+        }
+        ?>
+        <h3>Category</h3>
+        <input type="text" name="newCategory" id="newCategory">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+    </div>
+    <div class="condition">
         <?php if ($conditionMsg) {
-                    $session->displayMessage($conditionMsg);
-                }
-            ?>
-            <h3>Condition</h3>
-                <input type="text" name="newCondition" id="newCondition">
-                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-                <button type="submit">ADD</button>
-        </div>
-        <div class="size">
+            $session->displayMessage($conditionMsg);
+        }
+        ?>
+        <h3>Condition</h3>
+        <input type="text" name="newCondition" id="newCondition">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+    </div>
+    <div class="size">
         <?php if ($sizeMsg) {
-                    $session->displayMessage($sizeMsg);
-                }
-            ?>
-            <h3>Size</h3>
-                <input type="text" name="newSize" id="newSize">
-                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-                <button type="submit">ADD</button>
-        </form>
-    </div>   
+            $session->displayMessage($sizeMsg);
+        }
+        ?>
+        <h3>Size</h3>
+        <input type="text" name="newSize" id="newSize">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+        </div> 
+        <button type="submit">SUBMIT CHANGES</button>
+    </form>  
 </div>
 <?php } ?>
