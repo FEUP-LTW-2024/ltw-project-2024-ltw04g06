@@ -14,7 +14,7 @@
     <header>
         <h3>Filter by:</h3>
     </header>
-    <form action="/../pages/home.php" method="post">
+    <form action="/../pages/home.php" method="get">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <div class="category">
                 <h3>Category</h3>

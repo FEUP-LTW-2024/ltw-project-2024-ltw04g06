@@ -1,17 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() { 
+    // To form on top appear on click
     const showFormButton = document.getElementById('showFormButton');
     const elementToToggle = document.getElementById('elementToToggle');
-
     showFormButton.addEventListener('click', () => {
         if (elementToToggle.style.display == 'none') elementToToggle.style.display = 'block';
         else elementToToggle.style.display = 'none';
     });
 
+    // To change the message box when we change de person
     document.querySelectorAll('.radio-btn').forEach(function(radio) {
         if (radio.checked) {
             var selectedUserID = radio.value;
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/../templates/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
+            xhr.open('GET', '/../actions/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     document.querySelector('.mensagem').style.display = 'block';
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         radio.addEventListener('click', function() {
             var selectedUserID = this.value;
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/../templates/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
+            xhr.open('GET', '/../actions/ajaxHandler.php?action=messageBox&userID=' + selectedUserID, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     document.querySelector('.mensagem').style.display = 'block';
@@ -38,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // To change the type of setting we are in
     const links = document.querySelectorAll('.selectSetting a');
-
     links.forEach(function(link) {
         link.addEventListener('click', function(event) {
             links.forEach(function(link) {
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhttp.send();
     }
 
+    // To change the condition of products we are seeing in profile
     var c = document.getElementById('condition');
     if (c != null) {
         c.addEventListener('change', () => {
@@ -80,11 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // To change the condition of products we are seeing in Seeprofile
     var c = document.getElementById('conditionSeeP');
     if (c != null) {
         c.addEventListener('change', () => {
             var selectedCondition = document.getElementById('conditionSeeP').value;
-            console.log(selectedCondition);
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -97,6 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.send();
         });
     }
+
+    
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -152,3 +156,11 @@ function previewImage(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
 }
+window.addEventListener("beforeunload", function() {
+    var selectElement = document.getElementById("condition");
+    selectElement.value = "Available";
+});
+window.addEventListener("beforeunload", function() {
+    var selectElement = document.getElementById("conditionSeeP");
+    selectElement.value = "Available";
+});
