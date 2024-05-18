@@ -1,5 +1,5 @@
 <?php
-function profileEditDescript(PDO $db, User $user)
+function profileEdit(PDO $db, User $user)
 {
 ?>
     <head>

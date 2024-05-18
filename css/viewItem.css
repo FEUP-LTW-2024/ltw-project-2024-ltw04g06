@@ -41,8 +41,10 @@ button.wishlist {
     border: 3px solid var(--bordeaux);
     margin-left: 50em;
     margin-bottom: 4em;
+    cursor: pointer;
 }
 .submitButton:hover{
+    transition: all 0.3s ease-out;
     background: var(--backgroundColor);
     color: var(--bordeaux);
     border: 3px solid var(--bordeaux);    

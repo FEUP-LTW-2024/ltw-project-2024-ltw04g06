@@ -9,6 +9,11 @@
 
     $db = getDatabaseConnection();
     $session = new Session();
+    
+    if (!$session->isLoggedIn()) {
+        header('Location: /../pages/signIn.php');
+        exit;
+    }
 
     $userIDD = $session->getID();
     $userD = User::getUser($db,$userIDD);
