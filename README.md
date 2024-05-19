@@ -3,15 +3,15 @@
 Develop a website that facilitates the buying and selling of pre-loved items
 
 ## Project done by:
-  Alexandre Torres Costa up202207499
-  Beatriz Alexandra de Almeida Bernardo up202206097
-  Diana Magalhães Moreira Nunes up202208247
+  <p>Alexandre Torres Costa up202207499</p>
+  <p>Beatriz Alexandra de Almeida Bernardo up202206097</p>
+  <p>Diana Magalhães Moreira Nunes up202208247</p>
 
 
 ## Some credentials:
-  (Username/Password)
-  john_doe / john_doe1
-  alice_wonderland / alice_wonder1
+   <p>(Username/Password)</p>
+  <p> john_doe / john_doe1</p>
+   <p>alice_wonderland / alice_wonder1</p>
 
 #MockUps
 
