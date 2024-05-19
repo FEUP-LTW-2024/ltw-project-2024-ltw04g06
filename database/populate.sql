@@ -154,7 +154,6 @@ VALUES
 
 INSERT OR IGNORE INTO ShoppingCartItem (shoppingCartID, itemID)
 VALUES 
-    (1, 1),
     (2, 2),
     (3, 3),
     (4, 2),
