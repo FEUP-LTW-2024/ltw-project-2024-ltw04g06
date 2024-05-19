@@ -26,6 +26,9 @@ body {
       background: var(--bordeaux);
       margin-left: auto;
   }
+  .pesquisaTopo:hover{
+    background: red;
+  }
   .topo .firstRow {
       padding: 0;
       margin: 1em;
@@ -104,7 +107,6 @@ body {
           display: flex;
           flex-direction: row;
           .profilePic {
-              cursor: pointer;
               border-radius: 50%;
               border: .15em solid var(--beige);
               width: 2em;
@@ -154,22 +156,23 @@ body {
       color: #2E6963;
   }
 
-  #menu .hamburger {
+  #animation .profilePop {
       cursor: pointer;
       display: block;
       padding: 1em;
       color: #D19F9D;
       text-align: right;
+      margin-top: 1em;
   }
-  #menu .hamburger:before {
+  #animation .profilePop:before {
       content: '\22C0';
   }
-  #hamburger:checked + .hamburger + ul li {
+  #profilePop:checked + .profilePop + ul li {
       max-height: 1em;
       padding: 1em;
       opacity: 1;
   }
-  #hamburger:checked + .hamburger + ul {
+  #profilePop:checked + .profilePop + ul {
       background: white;
       border: .1em solid var(--beige);
       li {
@@ -179,10 +182,10 @@ body {
           background-color: var(--backgroundColor);
       }
   }
-  #hamburger:checked + .hamburger:before {
+  #profilePop:checked + .profilePop:before {
       content: '\22C1';
   }
-  #menu ul li {
+  #animation ul li {
       max-height: 0;
       padding: 0 1em;
       background-color: #edeff0;
@@ -190,13 +193,13 @@ body {
       opacity: 0;
       transition: all .3s ease-in-out;
   }
-  #menu ul {
+  #animation ul {
       margin: 0;
       padding: 0;
       position: relative;
       z-index: 9999;
   }
-  #menu li {
+  #animation li {
       background-color: white;
       text-align: center;
       list-style-type: none;
@@ -205,7 +208,7 @@ body {
           color: var(--bordeaux);
       }
   }
-  #hamburger, .hamburger {
+  #profilePop, .profilePop { 
       display: none;
   }
   .hidden {

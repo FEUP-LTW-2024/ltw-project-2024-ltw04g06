@@ -30,13 +30,14 @@
     $model = $_POST['model'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    Image::addImage($db, "/../images/items/$name.jpg");
 
-    $id = $db->lastInsertId();
-    $originalFileName =  __DIR__ . "/../images/items/$name.jpg";
-  
+    unlink(__DIR__ . "/../images/items/$itemID.jpg");
+    Image::addImage($db, "/../images/items/$itemID.jpg");
+
+    $imageID = $db->lastInsertId();
+    $originalFileName =  __DIR__ . "/../images/items/$itemID.jpg";
+            
     move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
-    $imageID = $id;
 
     if (!empty($name) && !empty($categoryName) && !empty($conditionName)
     && !empty($description) && !empty($price) && !empty($imageID)) {

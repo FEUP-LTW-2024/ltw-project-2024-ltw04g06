@@ -34,7 +34,7 @@ function profileOptions($db, $items, $isAdmin)
             <div class="condition">
                 <select id="condition" name="condition" onchange="document.getElementById('condition-form').submit();">
                     <option value="Sold"> Sold</option>
-                    <option value="Available"> Available</option>
+                    <option value="Available" selected> Available</option>
                     <option value="Purchased"> Purchased</option>
                 </select>
             </div>

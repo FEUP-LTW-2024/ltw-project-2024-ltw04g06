@@ -19,7 +19,10 @@
     $user = User::getUser($db, $userID);
     $receiverID = -1;
 
-    $receiverID = $_SESSION['receiverID'];
+    if (isset($_SESSION['receiverID']) &&  $_SESSION['page'] == 'actionProfileToMessage'){
+      $receiverID = $_SESSION['receiverID'];
+      unset($_SESSION['page']);
+    } 
 
     $userID = $session->getID();
     topo($db, $user);
