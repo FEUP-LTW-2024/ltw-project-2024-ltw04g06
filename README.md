@@ -13,7 +13,7 @@ Develop a website that facilitates the buying and selling of pre-loved items
   <p> john_doe / john_doe1</p>
    <p>alice_wonderland / alice_wonder1</p>
 
-#MockUps
+# MockUps
 
 <div style="display: flex; justify-content: center; gap: 20px;">
   <div style="text-align: center;">
@@ -48,7 +48,7 @@ Develop a website that facilitates the buying and selling of pre-loved items
   </div>
 </div>
 
-##UML
+## UML
 <p align="center" justify="center">
   <img src="docs/uml.png"/>
 </p>
