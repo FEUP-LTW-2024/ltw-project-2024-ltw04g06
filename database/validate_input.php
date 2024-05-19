@@ -33,5 +33,69 @@ function validPrice($price) {
     return preg_match("/^[0-9.]+$/", $price);
 }
 
+function validCreditCardNumber($cardNumber) {
+    $cardNumber = preg_replace('/\D/', '', $cardNumber);
+    $len = strlen($cardNumber);
+    $sum = 0;
+    $alt = false;
+    
+    for ($i = $len - 1; $i >= 0; $i--) {
+        $n = $cardNumber[$i];
+        
+        if ($alt) {
+            $n *= 2;
+            if ($n > 9) {
+                $n = ($n % 10) + 1;
+            }
+        }
+        
+        $sum += $n;
+        $alt = !$alt;
+    }
+    
+    return ($sum % 10 == 0);
+}
+
+function validCVV($cvv) {
+    return preg_match("/^\d{3,4}$/", $cvv);
+}
+
+function validExpiryDate($expiryDate) {
+    if (!preg_match("/^(0[1-9]|1[0-2])\/(\d{2})$/", $expiryDate, $matches)) {
+        return false;
+    }
+    
+    $month = $matches[1];
+    $year = '20' . $matches[2];  
+    
+    $currentYear = date('Y');
+    $currentMonth = date('m');
+    
+    if ($year < $currentYear || ($year == $currentYear && $month < $currentMonth)) {
+        return false;
+    }
+    
+    return true;
+}
+
+function validateCreditCardForm($formData) {
+    $errors = [];
+
+    if (!validName($formData['cardName'])) {
+        $errors[] = "Invalid card name.";
+    }
+    if (!validCreditCardNumber($formData['cardNumber'])) {
+        $errors[] = "Invalid card number.";
+    }
+    if (!validExpiryDate($formData['expiryDate'])) {
+        $errors[] = "Invalid expiry date.";
+    }
+    if (!validCVV($formData['cvv'])) {
+        $errors[] = "Invalid CVV.";
+    }
+
+    return $errors;
+}
+
 
 ?>

@@ -20,26 +20,21 @@
     $_SESSION['itemID'] = $_POST['itemID'];
     $shoppingCartID = $user->shoppingCartID; 
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if(!ShoppingCart::existItemInShoppingCart($db, $shoppingCartID, $itemID)){
-            $session->addMessage('error', 'Item is not in the shopping cart.');
+
+    if(!ShoppingCart::existItemInShoppingCart($db, $shoppingCartID, $itemID)){
+        $session->addMessage('error', 'Item is not in the shopping cart.');
+        header('Location: /../pages/cart.php'); 
+    } 
+    else {
+        if (ShoppingCart::remItemFromShoppingCart($db, $shoppingCartID, $itemID)) {
+            $session->addMessage('success', 'Item removed from shopping cart.');
             header('Location: /../pages/cart.php'); 
         } 
         else {
-            if (ShoppingCart::remItemFromShoppingCart($db, $shoppingCartID, $itemID)) {
-                $session->addMessage('success', 'Item removed from shopping cart successful!');
-                header('Location: /../pages/cart.php'); 
-            } 
-            else {
-                $session->addMessage('error', 'Failed to remove item from shopping cart.');
-                header('Location: /../pages/cart.php'); 
-            }
+            $session->addMessage('error', 'Failed to remove item from shopping cart.');
+            header('Location: /../pages/cart.php'); 
         }
-    } 
-    else {
-        echo "Invalid request.";
-        $session->addMessage('error', 'Invalid request.');
-        header('Location: /../pages/shoppingCart.php'); 
     }
+
 
 ?>

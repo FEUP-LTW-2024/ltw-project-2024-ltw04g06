@@ -13,7 +13,17 @@
         exit;
     }
 
-    //if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+
+    $formData = $_POST;
+
+
+    $errors = validateCreditCardForm($formData);
+
+    if (!empty($errors)) {
+            $sesson->addMessage('error', 'Invalid credit card information.')
+        exit;
+    }
 
     $userID = $session->getID();
     $user = User::getUser($db, $userID);
