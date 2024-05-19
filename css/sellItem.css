@@ -65,12 +65,6 @@ label{
     margin-bottom: 15%;
 }
 
-.title label, .description label,
-.brand label, .model label, .size label 
-.condition label, .category label, .price label{
-     /* espaço label e input */
-}
-
 .title input, .description input,
 .brand input, .category input, .price input {
     border: 1px solid var(--bordeaux);
