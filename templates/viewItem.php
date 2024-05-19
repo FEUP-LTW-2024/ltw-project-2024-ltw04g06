@@ -40,6 +40,11 @@
            </div>               
         </div>
         <div class="right-column">
+            <form action="" method="post" >
+                <input type="hidden" name="itemID" value="">
+                <input type="hidden" name="csrf" value="">
+                <p type="submit" class="edit"> </p>            
+                </form>
             <div class="description">
                 <p><label class="description"><strong>Description: </strong> <?= $item->description ?></p></label>
             </div>
