@@ -13,6 +13,35 @@ Develop a website that facilitates the buying and selling of pre-loved items
   <p> john_doe / john_doe1</p>
    <p>alice_wonderland / alice_wonder1</p>
 
+##Features
+    <p>Register a new account.</p>
+    <p>Log in and out.</p>
+    <p>Edit their profile, including their name, username, password, and email.</p>
+   <p>List new items, providing details such as category, brand, model, size, and condition, along with images.</p>
+   <p>Track and manage their listed items.</p>
+   <p>Respond to inquiries from buyers regarding their items and add further information if needed.</p>
+   <p>Print shipping forms for items that have been sold.</p>
+   <p>    Browse items using filters like category, price, and condition.</p>
+   <p>    Engage with sellers to ask questions or negotiate prices.</p>
+   <p>    Add items to a wishlist or shopping cart.</p>
+   <p>    Proceed to checkout with their shopping cart (simulate payment process).</p>
+   <p>    Elevate a user to admin status.</p>
+   <p>    Introduce new item categories, sizes, conditions, and other pertinent entities.</p>
+   <p>    Oversee and ensure the smooth operation of the entire system.</p>
+
+
+  ## Instalation 
+   git clone <[your_repo_url](https://github.com/FEUP-LTW-2024/ltw-project-2024-ltw04g06)>
+    git checkout final-delivery-v1
+    php -S localhost:9000
+
+   
+
+   
+
+
+
+
 # MockUps
 
 <div style="display: flex; justify-content: center; gap: 20px;">
