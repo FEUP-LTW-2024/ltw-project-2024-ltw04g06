@@ -39,8 +39,8 @@ button.wishlist {
     padding: .5em 4em;
     align-items: center;
     border: 3px solid var(--bordeaux);
-    margin-left: 50em;
-    margin-bottom: 4em;
+    margin-left: 30%;
+    margin-bottom: 5%;
     cursor: pointer;
 }
 .submitButton:hover{
@@ -55,6 +55,7 @@ button.wishlist {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 2em 5em;
+    margin-left: 30%;
     .product{
         display: flex;
         flex-direction: column;
@@ -160,4 +161,13 @@ button.wishlist {
 
 .brand-model, .condition-size{
     margin-bottom: 2.5em;
+}
+
+.edit {
+    padding: 5px 40px;
+    background-color: transparent;
+    border-radius: 10px; 
+    font-size: 14px;
+    margin-left: 35em;
+    margin-top: 40px;
 }
