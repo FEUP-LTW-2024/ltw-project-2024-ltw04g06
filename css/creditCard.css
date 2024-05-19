@@ -38,3 +38,16 @@ body {
       font-weight: bold;
       text-align: center;
     }
+    #expiryDate{
+      margin-left: 3%;
+    }
+    #cvv{
+      margin-left: 15%;
+    }
+  .message{margin-left: 3%;}
+  .message.error {
+      color: red; 
+  }
+  .message.success{
+      color: green; 
+  }

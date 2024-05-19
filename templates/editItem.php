@@ -16,7 +16,7 @@
 <?php } ?>
 
 <?php function editItemForm($item, $session){ ?>
-    <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data">
+    <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data" onsubmit="encodeAndSendMessage(event, 'edit-item-form', '/../actions/action_edit_item.php')">
 
  <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
  <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
