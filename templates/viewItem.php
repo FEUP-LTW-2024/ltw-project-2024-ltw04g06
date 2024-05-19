@@ -5,7 +5,7 @@
     <main>
 <?php } ?>
 
-<?php function viewItemForm($item, $db){ ?>
+<?php function viewItemForm($item, $db, $userID){ ?>
     <div class="form">
         <div class="left-column">
            <div class="products">
@@ -21,10 +21,10 @@
                 </header>
             
                     <p class="item-name"><?= $item->name ?></p>
-                    <form action="/../actions/action_add_to_wishlist.php" method="post">
+                    <form id = "wishlist-form" method="get">
                         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                         <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
-                        <button type="submit" class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <button type="submit" id = "heart" class="wishlist <?php echo User::existItemUserWish($db, $userID, $item->itemID) ? 'red' : ''?>"><i class="fa-regular fa-heart"></i></button>
                     </form>
           
                 <label for="foto" class="foto-label">

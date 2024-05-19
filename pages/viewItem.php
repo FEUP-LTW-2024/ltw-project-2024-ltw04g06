@@ -24,7 +24,7 @@
         $itemID = $_SESSION['itemID'];
         try {
             $item = Item::getItem($db, $itemID);
-            viewItemForm($item, $db);
+            viewItemForm($item, $db, $userID);
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }

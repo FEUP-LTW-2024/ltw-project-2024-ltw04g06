@@ -65,13 +65,14 @@ body{
                 }
             }
             button:hover{
-                h3{
-                    color: #800000;
-                }
+                
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
             background: var(--backgroundColor);
             transition: all 0.3s ease-out;
             border-radius:  1.5em;
+            h3{
+                color: #800000;
+            }
 
             }
 
@@ -102,6 +103,9 @@ body{
             margin-bottom: 2em;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
             display: flex;
+            width: 16em;
+            height: 25em;
+            border: 3px solid white;
             flex-direction: column;
             align-items: center;
             header {
@@ -109,10 +113,17 @@ body{
                 flex-direction: row;
             }
             .foto{
-                height: 13em;
-                
-                width: 13em;
+                border: 0.5em solid white;
+                max-height: 13em;
+                max-width: 13em;
                 cursor: pointer;
+            }
+            }
+            .product:hover{
+                cursor: pointer;
+                transition: all 0.3s ease-out;
+                    border: 3px solid var(--beige);
+                    border-radius: 7px;
             }
             .price{
                 color: #2E6963;
@@ -141,7 +152,6 @@ body{
               }
         }
     }
-}
 
 @media (max-width: 50em){
     main{

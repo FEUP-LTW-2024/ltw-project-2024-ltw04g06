@@ -99,22 +99,31 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.send();
         });
     }
-
-    
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-
-    togglePassword.addEventListener('click', function() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        // Change the eye icon based on the password field visibility
-        this.classList.toggle('fa-eye-slash');
+    // ADD / REMOVE from wishlist
+    var wishlistForms = document.querySelectorAll('form[id^="wishlist-form"]');
+    wishlistForms.forEach(function(form) {
+        var heartButton = form.querySelector('#heart');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData.get('itemID'));
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    if (heartButton.classList.contains('red')){
+                        heartButton.classList.remove('red');
+                    }else{
+                        heartButton.classList.add('red');
+                    }
+                }
+            }
+        };
+        xhr.open('GET', '/../actions/action_add_to_wishlist.php?itemID=' + formData.get('itemID') + '&csrf=' + formData.get('csrf'), true);
+        xhr.send();
+        });
     });
 });
-
 function scrollDown() {
     var caixaDeMensagens = document.getElementById("caixaDeMensagens");
     caixaDeMensagens.scrollTop = caixaDeMensagens.scrollHeight;

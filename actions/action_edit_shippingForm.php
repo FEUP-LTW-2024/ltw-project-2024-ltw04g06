@@ -3,7 +3,6 @@
 	require_once(__DIR__ . '/../database/connectdb.php');
     require_once(__DIR__ . '/../classes/user.class.php');
 
-
 	$db = getDatabaseConnection();
     $session = new Session();
 
@@ -12,7 +11,7 @@
         exit;
     }
 
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }~
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
     $buyerID = $session->getID();
     $address = $_POST['address'];
     $phoneNumber = $_POST['phone'];
