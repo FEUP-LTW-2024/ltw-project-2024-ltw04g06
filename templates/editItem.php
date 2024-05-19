@@ -24,7 +24,7 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">New title</label>
-                <textarea placeholder="You must fill this." class="title-input" type="text" rows="1" cols="24" id="title" name="title" maxlength="21"></textarea>
+                <textarea  class="title-input" type="text" rows="1" cols="24" id="title" name="newName"><?= $item->name?></textarea>
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
@@ -40,14 +40,14 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">New description</label>
-                <textarea  class="description-input" name="newDescription" rows="10" cols="58" maxlength="300"><?= $item->description?></textarea>
+                <textarea  class="description-input" name="newDescription" rows="10" cols="58"><?= $item->description?></textarea>
             </div>
             <div class="brand">
                 <label for="brand">New brand</label>
-                <input value="<?= $item->brand?>" class="brand-input" type="text" name="newBrand" maxlength="35">
+                <input value="<?= $item->brand?>" class="brand-input" type="text" name="newBrand">
         
                 <label class="model-label" for="model">New model</label>
-                <textarea class="model-input" type="text" rows="1" cols="20" name="newModel" maxlength="35"><?= $item->model?></textarea>
+                <textarea class="model-input" type="text" rows="1" cols="20" name="newModel"><?= $item->model?></textarea>
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">New condition</label>
@@ -104,7 +104,7 @@
                 </select>
             
                 <label class="price-label" for="price">New price</label>
-                <textarea class="price-input" type="text" rows="1" cols="20" name="newPrice" maxlength="35"><?= $item->price?>€</textarea>
+                <textarea class="price-input" type="text" rows="1" cols="20" name="newPrice"><?= $item->price?></textarea>
             </div>
         </div>
     </div>        
