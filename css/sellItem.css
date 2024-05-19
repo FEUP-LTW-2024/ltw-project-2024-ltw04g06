@@ -11,7 +11,7 @@ p{
     width: 200px;
     color: var(--bordeaux);
     font-size: 30px;
-    margin-left: 4.1em;
+    margin-left: 10%;
 }
 
 label{
@@ -21,14 +21,14 @@ label{
 .title-input, .description-input, .brand-input, .model-input, .price-input{
     border: 1.5px solid var(--bordeaux);
     border-radius: 2px; 
-    margin: .75em;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .form > div {
     display: flex;
     align-items: first baseline;
-    margin-right: 5em;
-    margin-bottom: 10px;/*espaço entre grupos label-input*/
+    margin-right: 10%;
 }
 
 
@@ -40,20 +40,13 @@ label{
     display: flex;
 }
 
-.left-column, .right-column {
-    flex: 1;
-    min-width: 200px;
-    margin-right: 20px;
-    margin-bottom: 10px;
-}
-
 .left-column {
     display: flex;
     flex-direction: column;
     max-width: max-content; /*para n ir direita*/
     padding: .5em 4em;
     align-items: center;
-    margin-left: 1em;
+    margin-left: 10%;
 }
 
 .right-column {
@@ -65,32 +58,31 @@ label{
 .condition, .category, .price {
     display: flex;
     align-items: baseline; 
-    margin-bottom: 10px; 
+    margin-bottom: 1%; 
+}
+
+.title{
+    margin-bottom: 15%;
 }
 
 .title label, .description label,
 .brand label, .model label, .size label 
 .condition label, .category label, .price label{
-    margin-right: 10px; /* espaço label e input */
+     /* espaço label e input */
 }
 
 .title input, .description input,
 .brand input, .category input, .price input {
     border: 1px solid var(--bordeaux);
     border-radius: 2px;
-    margin: 0;
-    margin-bottom: 10px;
-}
-
-.title input{
-    padding-right: 30px; /*size of box*/
 }
 
 .condition {
     border: 1px solid var(--bordeaux);
     border-radius: 2px;
     margin: 0;  
-    margin-bottom: 10px; 
+    margin-bottom: 4%; 
+    margin-top: 4%; 
     background-color: #fff; 
     color: #000; 
     padding-right: 3.6em;
@@ -100,7 +92,6 @@ label{
     border: 1px solid var(--bordeaux);
     border-radius: 2px;
     margin: 0;  
-    margin-bottom: 10px; 
     background-color: #fff; 
     color: #000; 
     padding-right: 4.5em;
@@ -110,8 +101,6 @@ label{
     display: none; 
 }
 
-
-
 .quadrado {
     width: 200px;
     height: 250px;
@@ -120,9 +109,18 @@ label{
     border-style: dotted;
     border-color: #800000;
     border-width: 2px;
-    margin-left: 48px;
+    margin-left: 30%;
     text-align: center;
     color: var(--bordeaux);
+}
+
+#imagemExibida {
+    width: 200px; 
+    height: 250px; 
+    display: block; 
+    margin: auto; 
+    border-radius: 8px; 
+    margin-left: 30%;
 }
 
 .foto-input {
@@ -136,7 +134,8 @@ label{
     padding: .5em 4em;
     border: 3px solid var(--bordeaux);
     margin-left: 50em;
-    margin-top: 2.5em;
+    margin-top: 5%;
+    margin-bottom: 2%;
 }
 .submitButton:hover{
     background: var(--backgroundColor);
@@ -156,35 +155,18 @@ label{
     margin-left: 3.1em;
 }
 
-.model-input{
-    padding-right: 2em;
-}
-
-.price-input{
-    padding-right: 2.6em;
-}
-
-#imagemExibida {
-    width: 200px; 
-    height: 250px; 
-    display: block; 
-    margin: auto; 
-    border-radius: 8px; 
-    margin-left:  48px;
-}
-
 .edit{
     font-family:'Courier New', Courier, monospace;
     color: black;
     width: 400px;
     font-size: 20px;
-    margin-left: 6em;
-    margin-bottom: 2.5em;
+    margin-left: 10%;
+    margin-bottom: 2%;
 }
 
 
 .load-photo{
-    margin-top: 100px;
+    margin-top: 50%;
 }
 
 .size2 .radio-label {
@@ -192,7 +174,7 @@ label{
     padding: 5px;
     border: 1px solid var(--bordeaux);
     border-radius: 4px;
-    margin: 5px;
+    margin: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     color: black; 
