@@ -14,8 +14,8 @@ Develop a website that facilitates the buying and selling of pre-loved items
    <p>alice_wonderland / alice_wonder1</p>
 
 ## Features
-    <p>Register a new account.</p>
-    <p>Log in and out.</p>
+  <p>Register a new account.</p>
+  <p>Log in and out.</p>
     <p>Edit their profile, including their name, username, password, and email.</p>
    <p>List new items, providing details such as category, brand, model, size, and condition, along with images.</p>
    <p>Track and manage their listed items.</p>
