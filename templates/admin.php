@@ -46,7 +46,7 @@ function showOptions($db, $session, $userID, $users) {
         }
         ?>
         <h3>Category</h3>
-        <form id ="edit-catCondSize-form"  method="post" onsubmit="encodeAndSendMessage(event, 'edit-catCondSize-form', '/../actions/action_edit_CatCondSize.php')">
+        <form action = '/../actions/action_edit_CatCondSize.php' id ="edit-catCondSize-form"  method="post" onsubmit="encodeAndSendMessage(event, 'edit-catCondSize-form', '/../actions/action_edit_CatCondSize.php')">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
             <?php
             $categories = Category::getAllCategories($db);
