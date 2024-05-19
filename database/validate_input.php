@@ -26,7 +26,7 @@ function validAboutMe($aboutMe) {
 }
 
 function validTitle($title) {
-    return preg_match("/^[a-zA-Z0-9\s.\-_!]{1,35}$/", $title);
+    return preg_match("/^[a-zA-Z0-9\s.\-_!]{1,21}$/", $title);
 }
 
 function validPrice($price) {

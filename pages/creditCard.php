@@ -15,6 +15,6 @@
 
 
     topo($db, User::getUser($db, $buyerID));
-    creditCard();
+    creditCard($session);
 
 ?>

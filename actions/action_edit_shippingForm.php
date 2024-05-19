@@ -23,7 +23,6 @@
 
 
     if($editAddress || $editPhoneNumber || $editEmail || $editName){
-        $session->addMessage('success', 'Edit shipping Form successful!');
         header('Location: /../pages/creditCard.php');
         }
         else{

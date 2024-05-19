@@ -47,18 +47,18 @@
     $newImage = move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
     if($newImage){$editImage = Item::editImage($db, $item, $imageID);}
 
-    if($editName || $editCategory || $editCondition || $editSize || $editPrice
-    || $editBrand || $editModel || $editDescription 
+    if(($editName || $editCategory || $editCondition || $editSize || $editPrice
+    || $editBrand || $editModel || $editDescription )&& (validTitle($newName) && validPrice($newPrice))
     ){
         
     $session->addMessage('success', 'Edit Item successful!');
-    header('Location: /../pages/home.php');
+    header('Location: /../pages/itemActive.php?itemID=' . $itemID);
     }
     else{
         if($editImage){    unlink(__DIR__ . "/../images/items/$itemID.jpg");Item::editImage($db, $item, $imageID);}
 
 
-        $session->addMessage('error', 'Item not edited! Title can only contain letters, digits and . - _ ! with a max of 35 chars. Price can only contain . and numbers.');
+        $session->addMessage('error', 'Item not edited! Title can only contain letters, digits and . - _ ! with a max of 21 chars. Price can only contain . and numbers.');
         header('Location: /../pages/editItem.php?itemID=' . $itemID);
     }
 
