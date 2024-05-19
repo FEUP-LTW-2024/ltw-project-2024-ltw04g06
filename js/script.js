@@ -99,11 +99,31 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.send();
         });
     }
-
-    
+    // ADD / REMOVE from wishlist
+    var wishlistForms = document.querySelectorAll('form[id^="wishlist-form"]');
+    wishlistForms.forEach(function(form) {
+        var heartButton = form.querySelector('#heart');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData.get('itemID'));
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    if (heartButton.classList.contains('red')){
+                        heartButton.classList.remove('red');
+                    }else{
+                        heartButton.classList.add('red');
+                    }
+                }
+            }
+        };
+        xhr.open('GET', '/../actions/action_add_to_wishlist.php?itemID=' + formData.get('itemID') + '&csrf=' + formData.get('csrf'), true);
+        xhr.send();
+        });
+    });
 });
-
-
 
 function scrollDown() {
     var caixaDeMensagens = document.getElementById("caixaDeMensagens");

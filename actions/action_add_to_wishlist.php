@@ -7,27 +7,27 @@
 
     $db = getDatabaseConnection();
     $session = new Session();
+
+
     if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
     if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); exit; }
 
+
     $userID = $session->getID();
 
-    $itemID = $_POST['itemID'];
+    $itemID = $_GET['itemID'];
     $user = User::getUser($db, $userID);
     $wishlistID = $user->wishlistID;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_SERVER['REQUEST_METHOD'] === 'GET') {
         if(Wishlist::existItemInWishlist($db, $wishlistID, $itemID)){
            Wishlist::remItemFromWishlist($db, $wishlistID, $itemID);
-           header('Location: /../pages/home.php');
         } 
         else {
             if (Wishlist::addItemToWishlist($db, $wishlistID, $itemID)) {
                echo "Item added to wishlist.";
                $session->addMessage('success', 'Item added to wishlist successful!');
-               header('Location: /../pages/home.php');
-            } 
-            else {
+            } else {
                 echo "Failed to add item to wishlist.";
             }
         }
