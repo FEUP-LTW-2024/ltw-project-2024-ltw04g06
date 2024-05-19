@@ -13,7 +13,7 @@ Develop a website that facilitates the buying and selling of pre-loved items
   <p> john_doe / john_doe1</p>
    <p>alice_wonderland / alice_wonder1</p>
 
-##Features
+## Features
     <p>Register a new account.</p>
     <p>Log in and out.</p>
     <p>Edit their profile, including their name, username, password, and email.</p>
