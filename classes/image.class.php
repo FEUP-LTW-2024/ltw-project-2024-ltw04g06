@@ -13,9 +13,15 @@ require_once(__DIR__ . '/status.class.php');
       $this->imageID = $imageID;
       $this->link = $link;
     }
-    static function addImage(PDO $db, string $link){
+    static function addImage(PDO $db, string $link) :bool {
       $preparedStmt = $db->prepare("INSERT INTO Image VALUES(NULL, ?)");
-      $preparedStmt -> execute([$link]);
+      $success = $preparedStmt->execute([$link]);
+        
+      if ($success) {
+          return true;
+      } else {
+          return false;
+      }
     }
     static function getImage(PDO $db, int $imageID) {
 			$preparedStmt = $db->prepare('SELECT link FROM Image WHERE Image.imageID = ?');

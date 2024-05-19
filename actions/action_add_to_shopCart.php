@@ -7,14 +7,8 @@
 
     $db = getDatabaseConnection();
     $session = new Session();
-
-    if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
-    }
-
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
-
+    if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); exit; }
 
     $userID = $session->getID();
 
@@ -27,15 +21,15 @@
 
     if(ShoppingCart::existItemInShoppingCart($db, $shoppingCartID, $itemID)){
         $session->addMessage('error', 'Item is already in the Shopping Cart.');
-        header('Location: /../pages/home.php');
+        header('Location: /../pages/cart.php');
      } 
      else {
         if (ShoppingCart::addItemToShoppingCart($db, $shoppingCartID, $itemID)) {
-            $session->addMessage('success', 'Item added to shopping Cart successful!');
+            $session->addMessage('success', 'Item added to shopping Cart!');
             header('Location: /../pages/cart.php');
         } 
         else {
-            echo "Failed to add item to shopping Cart.";
+            $session->addMessage('error', 'Failed to add item to shopping Cart.');
         }
     }
 
