@@ -23,8 +23,8 @@ p.title{
 .image img {
     width: 100%; 
     height: 100%;
-    width: 12.5px;
-    height: 12.5px;
+    width: 12.5em;
+    height: 12.5em;
 }
 
 p.empty{
