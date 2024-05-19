@@ -82,7 +82,7 @@ function messageBox(PDO $db, int $userID1, int $userID2){
                 <?php } ?>
                 </div>
            
-                <form id="messageForm" class="typing-area" method="post" onsubmit="encodeAndSendMessage(event, 'messageForm', 'path/to/action_message.php')">
+                <form id="messageForm" class="typing-area" method="post" onsubmit="encodeAndSendMessage(event, 'messageForm', '/../actions/action_message.php')">
                 <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                 <input type="text" class="writerID" name="senderID" value="<?php echo htmlspecialchars($userID1); ?>" hidden>
                 <input type="text" class="receiverID" name="recipientID" value="<?php echo htmlspecialchars($userID2); ?>" hidden>

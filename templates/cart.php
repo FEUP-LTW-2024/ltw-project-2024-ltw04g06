@@ -9,7 +9,7 @@ function createCart(){
 <?php 
 } 
 
-function cartDisplay(PDO $db, $cartItems){ 
+function cartDisplay(PDO $db,$session, $cartItems){ 
 ?>
     <body>
 
@@ -44,6 +44,9 @@ function cartDisplay(PDO $db, $cartItems){
             <?php } ?>
         </div>
         <p class="total">Total: <?= number_format($totalPrice, 2, ',', '.') ?>€</p>
+        <?php 
+            $session->displayMessages();
+            ?>
         <?php if ($cartItems != null){?>
             <form action="/../pages/editShipping.php" method="post">
                 <button class="buy" type="submit">Buy all</button>

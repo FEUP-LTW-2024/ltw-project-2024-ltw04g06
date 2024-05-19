@@ -7,13 +7,17 @@
 
     $db = getDatabaseConnection();
     $session = new Session();
+    if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
+    
+    $formData = $_POST;
+    $errors = validateCreditCardForm($formData);
 
-	if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
+    if (!empty($errors)) {
+        foreach($errors as $error){
+            $session->addMessage('error', $error);}
+            header('Location: /../pages/creditCard.php');
+            exit;
     }
-
-    //if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
 
     $userID = $session->getID();
     $user = User::getUser($db, $userID);

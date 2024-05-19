@@ -8,13 +8,8 @@
 
 	$db = getDatabaseConnection();
     $session = new Session();
-
-	if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
-    }
-
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+    if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); exit; }
 
 
 
@@ -43,25 +38,27 @@
     if($newBrand!= null)$editBrand = Item::editBrand($db, $item, $newBrand);
     if($newModel!= null)$editModel = Item::editModel($db, $item, $newModel);
     if($newDescription!= null)$editDescription = Item::editDescription($db, $item, $newDescription);
-    unlink(__DIR__ . "/../images/items/$itemID.jpg");
+
     Image::addImage($db, "/../images/items/$itemID.jpg");
 
     $imageID = $db->lastInsertId();
     $originalFileName =  __DIR__ . "/../images/items/$itemID.jpg";
   
-    move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
+    $newImage = move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
+    if($newImage){$editImage = Item::editImage($db, $item, $imageID);}
 
-
-    if($editName || $editCategory || $editCondition || $editSize || $editPrice
-    || $editBrand || $editModel || $editDescription 
-    //|| $editImage
+    if(($editName || $editCategory || $editCondition || $editSize || $editPrice
+    || $editBrand || $editModel || $editDescription )&& (validTitle($newName) && validPrice($newPrice))
     ){
-        Item::editImage($db, $item, $imageID);
+        
     $session->addMessage('success', 'Edit Item successful!');
-    header('Location: /../pages/home.php');
+    header('Location: /../pages/itemActive.php?itemID=' . $itemID);
     }
     else{
-        $session->addMessage('error', 'Item not edited! Title can only contain letters, digits and . - _ with a max of 35 chars. Price can only contain . and numbers.');
+        if($editImage){    unlink(__DIR__ . "/../images/items/$itemID.jpg");Item::editImage($db, $item, $imageID);}
+
+
+        $session->addMessage('error', 'Item not edited! Title can only contain letters, digits and . - _ ! with a max of 21 chars. Price can only contain . and numbers.');
         header('Location: /../pages/editItem.php?itemID=' . $itemID);
     }
 

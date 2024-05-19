@@ -1,5 +1,5 @@
 header {
-    padding: 10px;
+    padding: 0.63em;
 }
 
 main{
@@ -9,7 +9,7 @@ main{
 
 .item-name{
     color: black;
-    font-size: 20px;
+    font-size: 1.25em;
     margin: 0;
     margin-bottom: 1em;
 }
@@ -29,7 +29,7 @@ label{
     border-radius: 1em;
     padding: 1px 30px;
     border: 3px solid #2E6963;
-    margin-top: 1em;
+    margin-top: 15%;
     margin-bottom: 2em;
 }
 
@@ -44,7 +44,6 @@ label{
         margin-right: 2em;
         margin-bottom: 2em;
         box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1); 
-        width: 13em;
         height: 25em;
         >*{align-self: center;}
         header {
@@ -138,10 +137,10 @@ label{
     color: #800000; 
     border: 2px solid #800000; 
     border-radius: 10px; 
-    font-size: 14px;
+    font-size: 0.88em;
     cursor: pointer;
     margin-left: 35em;
-    margin-top: 40px;
+    margin-top: 2.5em;
 }
 
 .edit:hover {
@@ -150,5 +149,5 @@ label{
 }
 
 .edit i{
-    margin-right: 10px;
+    margin-right: 0.63em;
 }

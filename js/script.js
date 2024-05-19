@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 function scrollDown() {
     var caixaDeMensagens = document.getElementById("caixaDeMensagens");
     caixaDeMensagens.scrollTop = caixaDeMensagens.scrollHeight;

@@ -8,7 +8,7 @@
 <div class="">
 
 <div class="divisor">
-    <form action="/../actions/action_edit_shippingForm.php" method="post">
+    <form action="/../actions/action_edit_shippingForm.php" method="post" onsubmit="encodeAndSendMessage(event, 'edit-ship-form', '/../actions/action_edit_shippingForm.php')">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <h2><i class="fa-solid fa-person"></i> Buyer</h2>
             <div class="line"> <label for="fname">Name : </label>
