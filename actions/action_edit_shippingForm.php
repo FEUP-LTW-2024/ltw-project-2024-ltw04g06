@@ -14,8 +14,12 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
 
+    if(!validName($name) || !validPhoneNumber($phoneNumber)|| !validEmail($email)) {
+        $session->addMessage('error', 'Did not edit shipping Form! Write valid inputs');
+        header('Location: /../pages/editShipping.php');
+        exit;
+    }
     $editAddress = User::editAddress($db, $buyerID, $address);
-    $editPhoneNumber = User::editPhoneNumber($db, $buyerID, $phoneNumber);
     $editEmail = User::editEmail($db, $buyerID, $email);
     $editName = User::editName($db, $buyerID, $name);
 
@@ -24,8 +28,8 @@
         header('Location: /../pages/creditCard.php');
         }
         else{
-            $session->addMessage('error', 'Did not edit shipping Form settings!');
-            header('Location: /../pages/settings.php');
+            $session->addMessage('error', 'Did not edit shipping Form! Write valid inputs');
+            header('Location: /../pages/editShipping.php');
         }
 
 ?>
