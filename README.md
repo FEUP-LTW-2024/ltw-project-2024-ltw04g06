@@ -21,11 +21,11 @@ Develop a website that facilitates the buying and selling of pre-loved items
     <p><b><i>Fig 1. Log in</i></b></p>
   </div>
   <div style="text-align: center;">
-    <img src="docs/MockUps/signUp.png" alt="Instructions Menu" style="max-width: 100%;"/>
+    <img src="docs/MockUps/signUp.png" alt="" style="max-width: 100%;"/>
     <p><b><i>Fig 2. Sign up</i></b></p>
   </div>
   <div style="text-align: center;">
-    <img src="docs/MockUps/mainPage.png" alt="Difficulty Menu" style="max-width: 100%;"/>
+    <img src="docs/MockUps/mainPage.png" alt="" style="max-width: 100%;"/>
     <p><b><i>Fig 3. Main Page </i></b></p>
   </div>
 </div>
