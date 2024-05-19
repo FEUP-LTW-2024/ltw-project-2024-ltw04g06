@@ -89,3 +89,10 @@ body{
         display: none;
     }
 }
+.message{margin-left: 3%;}
+.message.error {
+    color: red; 
+}
+.message.success{
+    color: green; 
+}

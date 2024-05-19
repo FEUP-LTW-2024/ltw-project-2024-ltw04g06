@@ -33,6 +33,10 @@ function validPrice($price) {
     return preg_match("/^[0-9.]+$/", $price);
 }
 
+function validPhoneNumber($phoneNumber) {
+    return preg_match("/^[0-9]+$/", $phoneNumber);
+}
+
 function validCreditCardNumber($cardNumber) {
     $cardNumber = preg_replace('/\D/', '', $cardNumber);
     $len = strlen($cardNumber);
