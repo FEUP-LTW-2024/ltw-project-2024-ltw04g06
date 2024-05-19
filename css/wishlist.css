@@ -4,14 +4,14 @@ main{
 }
 
 p.title{
-    width: 200px;
+    width: 12.5em;
     color: var(--bordeaux);
-    font-size: 30px;
+    font-size: 1.88em;
     margin-left: 4.1em;
 }
 
 p.empty{
-    font-size: 20px;
+    font-size: 1.25em;
     margin-left: 6.3em;
     margin-bottom: 3em;
 }
@@ -23,7 +23,7 @@ p.empty{
     text-decoration: none; 
     border: none; 
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 1em;
     cursor: pointer; 
     margin-left: 30%;
 }
@@ -43,13 +43,13 @@ a {
     text-decoration: none; 
     border: none; 
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 0.88em;
     cursor: pointer; 
     margin-left: 4em;
 }
 
 .item-name{
-    font-size: 18px;
+    font-size: 1.13em;
     text-align: center;
 }
 

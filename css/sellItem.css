@@ -1,5 +1,5 @@
 header {
-    padding: 10px;
+    padding: 0.63em;
 }
 
 main{
@@ -10,8 +10,8 @@ main{
 p{
     width: 200px;
     color: var(--bordeaux);
-    font-size: 30px;
-    margin-left: 10%;
+    font-size: 1.9em;
+    margin-left: 4.1em;
 }
 
 label{
@@ -33,7 +33,7 @@ label{
 
 
 .form>div label {
-    margin-right: 15px; /*espaço label e input*/
+    margin-right: 0.94em; /*espaço label e input*/
 }
 
 .form {
@@ -96,8 +96,8 @@ label{
 }
 
 .quadrado {
-    width: 200px;
-    height: 250px;
+    width: 12.5em;
+    height: 15.63em;
     background-color: var(--backgroundColor);
     border-radius: 10px;
     border-style: dotted;
@@ -109,8 +109,8 @@ label{
 }
 
 #imagemExibida {
-    width: 200px; 
-    height: 250px; 
+    width: 12.5em; 
+    height: 15.63em; 
     display: block; 
     margin: auto; 
     border-radius: 8px; 
@@ -153,7 +153,7 @@ label{
     font-family:'Courier New', Courier, monospace;
     color: black;
     width: 400px;
-    font-size: 20px;
+    font-size: 1.25em;
     margin-left: 10%;
     margin-bottom: 2%;
 }

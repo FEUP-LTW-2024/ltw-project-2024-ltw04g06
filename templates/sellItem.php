@@ -21,7 +21,7 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">Title</label>
-                <textarea placeholder="You must fill this." class="title-input" type="text" rows="1" cols="24" id="title" name="title"></textarea>
+                <textarea placeholder="You must fill this." class="title-input" type="text" rows="1" cols="24" id="title" name="title" maxlength="21"></textarea>
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
@@ -37,14 +37,14 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">Description</label>
-                <textarea placeholder="You must fill this." class="description-input" name="description" rows="10" cols="58"></textarea>
+                <textarea placeholder="You must fill this." class="description-input" name="description" rows="10" cols="58" maxlength="300"></textarea>
             </div>
             <div class="brand">
                 <label for="brand">Brand</label>
-                <textarea class="brand-input" type="text" rows="1" cols="19" name="brand"></textarea>
+                <textarea class="brand-input" type="text" rows="1" cols="19" name="brand" maxlength="35"></textarea>
         
                 <label class="model-label" for="model">Model</label>
-                <textarea class="model-input" type="text" rows="1" cols="20" name="model"></textarea>
+                <textarea class="model-input" type="text" rows="1" cols="20" name="model" maxlength="35"></textarea>
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">Condition</label>
@@ -88,7 +88,7 @@
                 </select>
             
                 <label class="price-label" for="price">Price</label>
-                <textarea placeholder="You must fill this." class="price-input" type="text" rows="1" cols="20" name="price"></textarea>
+                <textarea placeholder="You must fill this." class="price-input" rows="1" cols="20" maxlength="35"></textarea>
             </div>
         </div>
     </div>
