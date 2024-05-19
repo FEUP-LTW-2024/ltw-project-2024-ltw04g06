@@ -5,7 +5,7 @@
     border-radius: 1em;
     padding: 1px 30px;
     border: 3px solid var(--bordeaux);
-    margin-top: 1.5em;
+    margin-top: 15%;
 }
 
 main{
@@ -15,7 +15,7 @@ main{
 
 .item-name{
     color: black;
-    font-size: 20px;
+    font-size: 1.25em;
     margin: 0;
 }
 
@@ -28,10 +28,10 @@ button.wishlist {
     background-color: transparent;
     border: none;
     padding: 0;
-    font-size: 15px;
+    font-size: 0.94em;
     cursor: pointer;
-    margin-left: 7px;
-    margin-top: 13px;
+    margin-left: 0.44em;
+    margin-top: 0.82em;
 }
 
 .foto-input {
@@ -49,8 +49,7 @@ button.wishlist {
         margin-right: 2em;
         margin-bottom: 2em;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-        width: 13em;
-        height: 25em;
+        height: 42em;
         >*{align-self: center;}
         header {
             img{
@@ -64,6 +63,7 @@ button.wishlist {
         .foto{
             max-height: 13em;
             max-width: 13em;
+            margin-top: 50%;
             cursor: pointer;
         }
         .foto:hover{
@@ -137,23 +137,6 @@ button.wishlist {
     margin-bottom: 2.5em;
 }
 
-.edit {
-    padding: 5px 40px;
-    background-color: transparent;
-    color: #800000; 
-    border: 2px solid #800000; 
-    border-radius: 10px; 
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 35em;
-    margin-top: 40px;
-}
-
-.edit:hover {
-    background-color: #800000; 
-    color: #fff;
-}
-
 .print{
     background: var(--bordeaux);
     color: white;
@@ -164,17 +147,13 @@ button.wishlist {
     margin-left: 30em;
     margin-bottom: 4em;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 1.25em;
     margin-top: 3em;
 }
 .print:hover{
     background: var(--backgroundColor);
     color: var(--bordeaux);
     border: 3px solid var(--bordeaux);    
-}
-
-.edit i{
-    margin-right: 10px;
 }
 
 header {
@@ -201,12 +180,21 @@ header:hover{
 }
 
 .seller, .buyer {
-    width: 200px;
+    width: 12.5em;
     color: var(--bordeaux);
-    font-size: 30px;
+    font-size: 1.88em;
     margin-top: 2em;
 }
 
 .red{
     color: red;
+}
+
+.edit {
+    padding: 5px 40px;
+    background-color: transparent;
+    border-radius: 10px; 
+    font-size: 0.88em;
+    margin-left: 35em;
+    margin-top: 2.5em;
 }
