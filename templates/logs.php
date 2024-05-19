@@ -8,7 +8,9 @@ function displayNameLogo($db)
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="/../css/style.css">
         <link rel="icon" href="/../images/logo.jpg" type="image/x-icon">
-        <script src="../js/script.js" defer></script>
+        <script src="../js/togglePass.js" defer></script>
+
+
     </head>
     <main>
     <img class="logoLogs" src="<?= htmlspecialchars(Image::getImage($db, 0)) ?>">
@@ -22,11 +24,11 @@ function signInBox($session)
             Log in
         </header>
         
-        <form action="/../actions/action_signIn.php" method="post">
+        <form id = "sign-in-form" action="/../actions/action_signIn.php" method="post" onsubmit="encodeAndSendMessage(event, 'sign-in-form', '/../actions/action_signIn.php')">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <label for=""><i class="fa-regular fa-user"></i></label>
-            <input type="text" name="userField" placeholder="Email or username"><br>
-            <label for=""><i class="fa-solid fa-lock"></i></label>
+            <label for="userField"><i class="fa-regular fa-user"></i></label>
+            <input type="text"id = "userField" name="userField" placeholder="Email or username"><br>
+            <label for="userField"><i class="fa-solid fa-lock"></i></label>
             <input type="password" name="password" id="password" placeholder="Password">
             <i class="fa-solid fa-eye" id="togglePassword"></i><br>
 
@@ -60,21 +62,21 @@ function signUpBox($session)
             echo '<div class="message existAccError">' . htmlspecialchars($existAccError['text']) . '</div>';
         }
         ?>
-        <form action="/../actions/action_signUp.php" method="post">
+        <form id = 'sign-up-form' action="/../actions/action_signUp.php" method="post" onsubmit="encodeAndSendMessage(event, 'sign-up-form', '/../actions/action_signUp.php')">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
-            <label for=""><i class="fa-regular fa-user"></i></label>
+            <label for="username"><i class="fa-regular fa-user"></i></label>
             <input type="text" name="username" placeholder="Username"><br>
             <?php if ($usernameError) {
                 echo '<div class="message usernameError">' . htmlspecialchars($usernameError['text']) . '</div>';
             }
             ?>
-            <label for=""><i class="fa-regular fa-envelope"></i></label>
+            <label for="email"><i class="fa-regular fa-envelope"></i></label>
             <input type="email" name="email" placeholder="Email"><br>
             <?php if ($emailError) {
                 echo '<div class="message emailError">' . htmlspecialchars($emailError['text']) . '</div>';
             }
             ?>
-            <label for=""><i class="fa-solid fa-lock"></i></label>
+            <label for="password"><i class="fa-solid fa-lock"></i></label>
             <input type="password" name="password" id="password" placeholder="Password">
             <i class="fa-solid fa-eye" id="togglePassword"></i><br>
 

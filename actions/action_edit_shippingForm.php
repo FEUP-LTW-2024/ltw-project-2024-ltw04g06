@@ -6,13 +6,10 @@
 
 	$db = getDatabaseConnection();
     $session = new Session();
+    if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); exit; }
 
-	if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
-    }
 
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }~
     $buyerID = $session->getID();
     $address = $_POST['address'];
     $phoneNumber = $_POST['phone'];

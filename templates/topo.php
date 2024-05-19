@@ -31,16 +31,16 @@ function topo(PDO $db, User $user){
             <button class="carrinho"><a href="/../pages/cart.php"><i class="fa-solid fa-cart-shopping"></i></button>
             <h3><a href="/../pages/sellItem.php" class="sellItem">Sell an item</a></h3>
             <div class="avatar">
-                <div id="menu">
-                    <input type="checkbox" id="hamburger"> 
-                    <label class="hamburger" for="hamburger"></label>
+                <div id="animation">
+                    <input type="checkbox" id="profilePop"> 
+                    <label class="profilePop" for="profilePop"></label>
                     <ul>
                         <li><a href="/../pages/profile.php">Profile</a></li>
                         <li><a href="/../pages/settings.php">Settings</a></li>
                         <li><a href="/../actions/action_logout.php">Log out</a></li>
                     </ul>
                 </div>
-                <img class="profilePic" src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)) ?>" onclick="document.getElementById('profileForm<?= $user->userID ?>').submit();">
+                <img class="profilePic" src="<?= htmlspecialchars(User::getUserPic($db, $user->userID)) ?>">
             </div>
         </div>
         <div class="types">

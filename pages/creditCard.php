@@ -8,11 +8,8 @@
 
 	$db = getDatabaseConnection();
     $session = new Session();
+    if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
 
-	if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
-    }
 
     $buyerID = $session->getID();
 

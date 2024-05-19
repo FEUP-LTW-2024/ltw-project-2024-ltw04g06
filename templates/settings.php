@@ -16,7 +16,7 @@
     <?php } ?>
 <?php function ProfileSettins(PDO $db, $user,$session){?>
     <div class="profile-setting">
-        <form action="/../actions/action_edit_profile.php" id="formProfile" method="post" enctype="multipart/form-data">
+        <form action="/../actions/action_edit_profile.php" id="formProfile" method="post" enctype="multipart/form-data"  onsubmit="encodeAndSendMessage(event, 'edit-profle-form', '/../actions/action_edit_profile.php')">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <div class="img">
                 <img id="preview" src="<?=User::getUserPic($db, $user->userID)?>" alt="Foto de Perfil">            
@@ -40,12 +40,13 @@
 
 <?php function AccountSettings($user,$session){?>
     <div class="account-setting">
-    <form action="/../actions/action_edit_account.php" method="post">
+    <form action="/../actions/action_edit_account.php" method="post" enctype="multipart/form-data" onsubmit="encodeAndSendMessage(event, 'edit-account-form', '/../actions/action_edit_account.php')">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="Username">Username</label>
             <input type="text" name="username" value="<?php echo htmlspecialchars($user->username); ?>"><br><br>
             <label for="Email">Email</label>
             <input type="text" name="email" value="<?php echo htmlspecialchars($user->email); ?>"><br><br>
+            
             <button type="submit">Apply Changes</button>
         </form>
     </div>
@@ -62,7 +63,7 @@
 <?php } ?>
 <?php function SecuritySettings($user,$session){?>
     <div class="security-setting">
-    <form action="/../actions/action_edit_security.php" method="post">
+    <form action="/../actions/action_edit_security.php" method="post" enctype="multipart/form-data"  onsubmit="encodeAndSendMessage(event, 'edit-seccurity-form', '/../actions/action_edit_security.php')">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="CurrentPassword">Current Password</label>
             <input type="password" name="currentPassword" ><br><br>

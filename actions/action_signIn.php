@@ -7,11 +7,15 @@
 	$db = getDatabaseConnection();
 
 
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php');exit; }
 
 
 	$userField = $_POST['userField'];
   	$password = $_POST['password'];
+
+	echo "AAAAAAAAAAAAAAAAAAAAA";
+
+
 	if((validUsername($userField)||validEmail($userField))&&validPassword($password)){
 		$user = User::verifyUserPass($db, $userField, $password);
 		if ($user !== false) {

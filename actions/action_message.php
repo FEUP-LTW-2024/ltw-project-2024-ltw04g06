@@ -7,17 +7,15 @@ require_once(__DIR__ . '/../classes/user.class.php');
 $db = getDatabaseConnection();
 $session = new Session();
 
-if (!$session->isLoggedIn()) {
-    header('Location: /../pages/signIn.php');
-    exit;
-}
+if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
+if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); exit; }
+
+
 
 $content = $_POST['content'];
 $recipientID = $_POST['recipientID'];
 $senderID = $_POST['senderID'];
 $sender = User::getUser($db, $senderID);
-
-if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
 
 $messageID = Message::addMessage($db, $senderID, $recipientID, $content);
 $message = Message::getMessage($db, $messageID);

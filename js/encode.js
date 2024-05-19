@@ -29,9 +29,15 @@ function encodeAndSendMessage(event, formId, endpoint) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.text())
+    .then(response => {
+        if (response.status === 302) {
+            const locationHeader = response.headers.get('Location');
+            window.location.href = locationHeader;
+        } else {
+            return response.text();
+        }
+    })
     .then(data => {
-        console.log(data);
         const encodedMessageElement = document.getElementById('encodedMessage');
         if (encodedMessageElement) {
             encodedMessageElement.innerHTML = data;

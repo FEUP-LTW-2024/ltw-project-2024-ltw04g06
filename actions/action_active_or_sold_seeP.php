@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../classes/user.class.php');
 require_once(__DIR__ . '/../classes/item.class.php');
 
 $selectedCondition = $_GET['condition'];
-$userID = $_SESSION['receiverID'];
+$userID = $_GET['userID'];
 $db = getDatabaseConnection();
 $user = User::getUser($db,$userID);
 $Items = Item::getUserItems($db, $userID);

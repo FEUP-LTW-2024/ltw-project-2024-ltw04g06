@@ -8,13 +8,8 @@
 
 	$db = getDatabaseConnection();
     $session = new Session();
-
-	if (!$session->isLoggedIn()) {
-        header('Location: /../pages/signIn.php');
-        exit;
-    }
-
-    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); }
+    if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
+    if ($_SESSION['csrf'] !== $_POST['csrf']) { header('Location: /../pages/error.php'); exit; }
 
 
 
@@ -27,12 +22,8 @@
     $newBrand = $_POST['newBrand'];
     $newModel = $_POST['newModel'];
     $newDescription = $_POST['newDescription'];
-    Image::addImage($db, "/../images/items/$newName.jpg");
 
-    $imageID = $db->lastInsertId();
-    $originalFileName =  __DIR__ . "/../images/items/$newName.jpg";
-  
-    move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
+    
 
     $item = Item::getItem($db, $itemID);
     if($newCategoryName!= null)$category = Category::getCategoryByName($db, $newCategoryName);
@@ -47,18 +38,27 @@
     if($newBrand!= null)$editBrand = Item::editBrand($db, $item, $newBrand);
     if($newModel!= null)$editModel = Item::editModel($db, $item, $newModel);
     if($newDescription!= null)$editDescription = Item::editDescription($db, $item, $newDescription);
-    //if($newImageID!= null)$editImage = Item::editImage($db, $item, $newImageID);
 
+    Image::addImage($db, "/../images/items/$itemID.jpg");
+
+    $imageID = $db->lastInsertId();
+    $originalFileName =  __DIR__ . "/../images/items/$itemID.jpg";
+  
+    $newImage = move_uploaded_file($_FILES['foto']['tmp_name'], $originalFileName);
+    if($newImage){$editImage = Item::editImage($db, $item, $imageID);}
 
     if($editName || $editCategory || $editCondition || $editSize || $editPrice
     || $editBrand || $editModel || $editDescription 
-    //|| $editImage
     ){
+        
     $session->addMessage('success', 'Edit Item successful!');
     header('Location: /../pages/home.php');
     }
     else{
-        $session->addMessage('error', 'Item not edited! Title can only contain letters, digits and . - _ with a max of 35 chars. Price can only contain . and numbers.');
+        if($editImage){    unlink(__DIR__ . "/../images/items/$itemID.jpg");Item::editImage($db, $item, $imageID);}
+
+
+        $session->addMessage('error', 'Item not edited! Title can only contain letters, digits and . - _ ! with a max of 35 chars. Price can only contain . and numbers.');
         header('Location: /../pages/editItem.php?itemID=' . $itemID);
     }
 

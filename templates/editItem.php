@@ -16,7 +16,7 @@
 <?php } ?>
 
 <?php function editItemForm($item, $session){ ?>
-    <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data">
+    <form action="/../actions/action_edit_item.php" method="post"  enctype="multipart/form-data" onsubmit="encodeAndSendMessage(event, 'edit-item-form', '/../actions/action_edit_item.php')">
 
  <input type="hidden" name="itemID" value="<?php echo htmlspecialchars($item->itemID); ?>">
  <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
@@ -24,7 +24,7 @@
         <div class="left-column">
             <div class="title">
                 <label for="title">New title</label>
-                <textarea placeholder="<?= $item->name?>" class="title-input" type="text" rows="1" cols="24" id="title" name="newName"></textarea>
+                <textarea  class="title-input" type="text" rows="1" cols="24" id="title" name="newName"><?= $item->name?></textarea>
             </div>
             <label for="foto" class="foto-label">
                 <div id="quadrado" class="quadrado">
@@ -40,14 +40,14 @@
         <div class="right-column">
             <div class="description">
                 <label for="description">New description</label>
-                <textarea placeholder="<?= $item->description?>" class="description-input" name="newDescription" rows="10" cols="58"></textarea>
+                <textarea  class="description-input" name="newDescription" rows="10" cols="58"><?= $item->description?></textarea>
             </div>
             <div class="brand">
                 <label for="brand">New brand</label>
-                <input placeholder="<?= $item->brand?>" class="brand-input" type="text" name="newBrand">
+                <input value="<?= $item->brand?>" class="brand-input" type="text" name="newBrand">
         
                 <label class="model-label" for="model">New model</label>
-                <textarea placeholder="<?= $item->model?>" class="model-input" type="text" rows="1" cols="20" name="newModel"></textarea>
+                <textarea class="model-input" type="text" rows="1" cols="20" name="newModel"><?= $item->model?></textarea>
             </div>
             <div class="size">
                 <label class="condition-label" for="condition">New condition</label>
@@ -56,9 +56,13 @@
                         $db = getDatabaseConnection();
                         $conditionItem = Condition::getCondition($db, $item->conditionID);
                         $conditions = Condition::getAllConditions($db);
-                        echo '<option value="NULL" selected>' . htmlspecialchars($conditionItem->usage) . '</option>';
+                        echo '<option value="NULL">' . htmlspecialchars($conditionItem->usage) . '</option>';
                         foreach ($conditions as $condition) {
-                            echo '<option value= "' .  htmlspecialchars($condition->usage) . '">' .  htmlspecialchars($condition->usage) . '</option>';
+                            if ($item->conditionID == $condition->conditionID){
+                                echo '<option selected value= "' .  htmlspecialchars($condition->usage) . '">' .  htmlspecialchars($condition->usage) . '</option>';
+                            }else{
+                                echo '<option value= "' .  htmlspecialchars($condition->usage) . '">' .  htmlspecialchars($condition->usage) . '</option>';
+                            }
                         }
                     ?>
                 </select>
@@ -69,7 +73,11 @@
                     $sizes = Size::getAllSizes($db);
                     foreach ($sizes as $size) {
                         $name = htmlspecialchars($size->name);
-                        echo '<input type="radio" id="' . $name . '" name="sizes" value="' . $name . '" class="radio-input">';
+                        if ($item->sizeID == $size->sizeID){
+                            echo '<input type="radio" checked id="' . $name . '" name="newSizeName" value="' . $name . '" class="radio-input">';
+                        }else{
+                            echo '<input type="radio" id="' . $name . '" name="newSizeName" value="' . $name . '" class="radio-input">';
+                        }
                         echo '<label for="' . $name . '" class="radio-label">' . $name . '</label>';
                     }
                 ?>
@@ -85,14 +93,18 @@
                         $categories = Category::getAllCategories($db);
                         echo '<option value="NULL" selected>' . htmlspecialchars($categoryItem->name) . '</option>';
                         foreach ($categories as $category) {
-                            echo '<option value= "' . htmlspecialchars($category->name) . '">' .htmlspecialchars($category->name) . '</option>';
+                            if ($item->categoryID == $category->categoryID){
+                                echo '<option selected value= "' . htmlspecialchars($category->name) . '">' .htmlspecialchars($category->name) . '</option>';
+                            }else{
+                                echo '<option value= "' . htmlspecialchars($category->name) . '">' .htmlspecialchars($category->name) . '</option>';
+                            }
                         }
                     ?>
 
                 </select>
             
                 <label class="price-label" for="price">New price</label>
-                <textarea placeholder="<?= $item->price?>€" class="price-input" type="text" rows="1" cols="20" name="newPrice"></textarea>
+                <textarea class="price-input" type="text" rows="1" cols="20" name="newPrice"><?= $item->price?></textarea>
             </div>
         </div>
     </div>        

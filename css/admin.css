@@ -79,7 +79,7 @@ body{
     .change-type{
         margin: auto 5%;
         color:#800000;
-        border-top: 1px solid #800000;
+    
     }
     .addition,
     .change {
@@ -94,7 +94,7 @@ body{
 
 
     .addition > * {
-        margin: 1% 10% 5% 11%;
+        margin: 1% 10% 5% 10%;
     }
     .change > * {
         margin: 1% 10% 5% 13.5%;
