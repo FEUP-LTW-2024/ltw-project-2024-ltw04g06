@@ -47,12 +47,12 @@ function profileOptions($db, $items, $isAdmin)
                     $status = Item::getItemStatus($db, $item->itemID);
                     if ($status != "Available") continue;
                 ?>
-                    <div class="product">
+                    <div onclick="document.getElementById('itemActive<?= htmlspecialchars($item->itemID) ?>').submit();" class="product">
                         <form action="/../actions/action_toItemActive.php" method="post" class="hidden" id="itemActive<?= htmlspecialchars($item->itemID) ?>">
                             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                             <input type="hidden" name="itemID" value="<?= htmlspecialchars($item->itemID) ?>">
                         </form>
-                        <img onclick="document.getElementById('itemActive<?= htmlspecialchars($item->itemID) ?>').submit();" class="foto" src="<?= htmlspecialchars(Item::getImagePic($db, $item)) ?>" alt="">
+                        <img class="foto" src="<?= htmlspecialchars(Item::getImagePic($db, $item)) ?>" alt="">
                         <p><?= htmlspecialchars($item->name) ?></i></p>
                         <h4 class="price"><?= htmlspecialchars($item->price) ?><i class="fa-solid fa-euro-sign"></i></h4>
                     </div>
