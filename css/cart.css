@@ -13,7 +13,7 @@ p.title{
 .all-images {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 3.13em; /*distancia entre linhas*/
+    gap: 3.13em; 
 }
 
 .image {
