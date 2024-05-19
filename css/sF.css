@@ -14,10 +14,10 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        > *{
+        >*{
             display: flex;
             flex-direction: column;
-            margin: auto;
+            margin: 1em;
             select{
                 border: 1px solid var(--beige);
                 padding: 5%; 

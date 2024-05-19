@@ -8,14 +8,11 @@
     $db = getDatabaseConnection();
     $session = new Session();
 
-
     if (!$session->isLoggedIn()) {header('Location: /../pages/signIn.php');exit;}
 
-
     $userID = $session->getID();
-
-    $itemID = $_GET['itemID'];
     $user = User::getUser($db, $userID);
+    $itemID = $_GET['itemID'];
     $wishlistID = $user->wishlistID;
 
     if($_SERVER['REQUEST_METHOD'] === 'GET') {

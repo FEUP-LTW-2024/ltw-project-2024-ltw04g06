@@ -48,7 +48,7 @@
     if($newImage){$editImage = Item::editImage($db, $item, $imageID);}
 
     if(($editName || $editCategory || $editCondition || $editSize || $editPrice
-    || $editBrand || $editModel || $editDescription )&& (validTitle($newName) && validPrice($newPrice))
+    || $editBrand || $editModel || $editDescription )
     ){
         
     $session->addMessage('success', 'Edit Item successful!');
